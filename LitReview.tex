@@ -1,0 +1,62 @@
+Although the FEM discretization of the QGE is relatively scarce, the corresponding error analysis
+seems to be even more scarce. To our knowledge, \emph{all} the error analysis for the FEM
+discretization of the QGE has been done for the vorticity-streamfunction formulation, none being
+done for the streamfunction formulation. Furthermore, to the best of our knowledge, all the
+available error estimates for the FEM discretization of the QGE are \emph{suboptimal}. The first FEM
+error analysis for the FEM discretization of the QGE was carried out by Fix \cite{Fix}, in which
+suboptimal error estimates for the vorticity-streamfunction formulation were proved. Indeed,
+relationships (4.7) and (4.8) (and the discussion above these) in \cite{Fix} show that the FEM
+approximations for \emph{both} the potential vorticity (denoted by $\zeta$) and streamfunction
+(denoted by $\psi$) consist of piecewise polynomials of degree $k-1$. At the top of page 381, the
+author concludes that the error analysis yields the following estimates:
+\begin{eqnarray}
+  \| \psi - \psi^h \|_1 &=& O(h^{k-1}), \label{eqn:fix_1} \\
+  \| \zeta - \zeta ^h \|_0 &=& O(h^{k-1}) . \label{eqn:fix_2}
+\end{eqnarray}
+Although the streamfunction error estimate \eqref{eqn:fix_1} appears to be optimal, the potential
+vorticity error estimate \eqref{eqn:fix_2} is clearly suboptimal. Indeed, using piecewise
+polynomials of degree $k-1$ for the FEM approximation of the vorticity, one would expect an $O(h^k)$
+error estimate in the $L^2$ norm. Medjo \cite{Medjo99, Medjo00} used a FEM discretization of the
+vorticity-streamfunction formulation and proved error estimates for the time discretization, but no
+error estimates for the spatial discretization. Finally, Cascon et al. \cite{Cascon} proved both
+\emph{a priori} and \emph{a posteriori} error estimates for the FEM discretization of the \emph{linear
+Stommel-Munk} model (see Section~\ref{ch:Tests} for more details). This model, while similar to the
+QGE, has one significant difference: the linear Stommel-Munk model is linear, whereas the QGE is
+nonlinear.
+%Thus, it appears that \emph{no optimal} error estimates for the FEM discretization of the QGE exist.
+
+We note that the state-of-the-art in the FEM error analysis for the QGE seems to reflect that for
+the \emph{two-dimensional Navier-Stokes equations (2D NSE)}, to which the QGE are similar in form.
+Indeed, as carefully discussed in \cite{Gunzburger89}, the 2D NSE in streamfunction-vorticity
+formulation are easy to implement (only $C^0$ elements are needed for a conforming discretization),
+but the available error estimates are suboptimal (see Section 11.6 in \cite{Gunzburger89}). Next,
+we summarize the discussion in \cite{Gunzburger89}, since we believe it sheds light on the QGE
+setting. For $C^0$ piecewise polynomial of degree $k$ FEM approximation for \emph{both} the
+vorticity (denoted by $\omega$) and streamfunction (denoted by $\psi$), the error estimates given in
+\cite{Girault86} are (see (1.26) in \cite{Gunzburger89}):
+\begin{eqnarray}
+  | \psi - \psi^h |_1 + \| \omega - \omega^h \|_0 \leq C \, h^{k - 1/2} \, | \ln h |^{\sigma} ,
+  \label{eqn:gunzburger_1}
+\end{eqnarray}
+where $\sigma = 1$ for $k = 1$ and $\sigma = 0$ for $k > 1$. It is noted in \cite{Gunzburger89}
+that the error estimate in \eqref{eqn:gunzburger_1} is not optimal: one may loose a half power in
+$h$ for the derivatives of the streamfunction (i. e., for the velocity), and three-halves power for
+the vorticity. It is also noted that there is computational and theoretical evidence that
+\eqref{eqn:gunzburger_1} is not sharp with respect to the streamfunction error. Furthermore, in
+\cite{Fix84} it was shown that, for the \emph{linear} Stokes equations, the derivatives of the
+streamfunction are essentially optimally approximated (see (11.27) in \cite{Gunzburger89}):
+\begin{eqnarray}
+  | \psi - \psi^h |_1 \leq C \, h^{k - \varepsilon} , \label{eqn:gunzburger_2}
+\end{eqnarray}
+where $\varepsilon = 0$ for $k > 1$ and $\varepsilon > 0$ is arbitrary for $k = 1$. That being
+said, it is then noted in \cite{Gunzburger89} that  \eqref{eqn:gunzburger_1} seems to be sharp for
+the vorticity error and thus vorticity approximations are, in general, very poor.
+
+There has been extensive research in the area of closure models for three
+dimensional engineering flows, however the same cannot be said for geophysical flows
+\cite{Berselli06, San11}. In fact, to our knowledge LES has not been applied to the pure
+streamfunction formulation of the QGE using finite elements. In \cite{San11} they apply the AD
+method to streamfunction vorticity formulation of the QGE, but using a finite difference scheme
+rather than for a FE scheme. So here will be adding two aspects to their work. That is, we will add
+the LES applied to a pure streamfunction formulation of QGE with a FE discretization. Therefore, the
+biggest contribution of this thesis will be in this area. 

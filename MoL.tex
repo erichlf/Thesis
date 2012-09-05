@@ -1,0 +1,43 @@
+The \emph{method of lines} refers to the application of the \emph{finite difference} method to a
+semi-discretization of an equation, i.e. the spatial domain has been discretized by the finite
+element method and then the time domain is discretized using a finite difference method. This is the
+preferable method for discretization of the time domain, due to its simplicity and the fact that the
+time domain does not have geometry.
+
+In particular, we may apply a a \emph{backward Euler} finite difference scheme to \eqref{eqn:QGEFE}
+which would produce the following discretization of the streamfunction form of the QGE
+\begin{equation}
+  a_0(\psi_h^{n+1} - \psi_h^n, \chi_h) + k\, \left[a_1(\psi_h^n,\chi_h) + a_2(\psi_h^n,\psi_h^n,\chi_h)
+      + a_3(\psi_h^n,\chi_h)\right] = k\, \ell^n(\chi_h),\quad \forall \, \chi_h \in X^h.
+  \label{eqn:BEQGE}
+\end{equation}
+where $k$ is the time step, subscripts represent the discretization in spatial domains, and
+superscripts represent the discretization in time domain. Additionally, fince the linear form
+$\ell(\chi_h)$ is, in fact, time dependent we place a superscript to indicate the discretization of
+the $\ell$ in the time domain.  The attractiveness of using this backward Euler scheme is that it is
+explicit and therefore one need not solve the non-linear system that would arize from the
+\emph{forward Euler} scheme. However, it is well known that the backward Euler scheme is not
+a-stable and therefore one needs to be careful to satisfy a CFL type condition.
+
+Here in lies the problem with using a high order finite element scheme, such as the Argyris element,
+and the method of lines; the backward Euler scheme is first order in time whereas the Argyris
+element is sixth order in the $L^2$ norm. Thus, we might expect a CFL condition of the form
+\begin{equation*}
+  \frac{k}{h^6} \le C
+\end{equation*}
+where $C$ is a dimensionless constant that does not depend on either $k$ or $h$. Thus, we might
+expect to need quite a small time step, which may be unreasonably small for numerical simulations.
+Therefore, either a higher order finite difference scheme will need to be used, or an explicit
+finite difference scheme will need to be employed. 
+
+While an implicit scheme might seem an attactive option, one must take into account the ammount of
+time required to solve the nonlinear system at each time step. For larger spatial discretizations
+the time to solve such nonlinear systems might be prohibitive. Therefore, higher order finite
+difference schemes appear to be the more attractive approach.
+
+However, there may be hope for the explicit finite element schemes after all. It might be possible
+to apply the Two-level method (\autoref{alg:TwoLevel}) to the QGE at each time step. That is we
+solve the nonlinear system on a coarse mesh and then use that solution to linearize the nonlinear
+system on the fine mesh. This method may allow for much quicker calculations than might be expected
+using just an explicit finite difference scheme alone. We expect that this method will produce good
+results.

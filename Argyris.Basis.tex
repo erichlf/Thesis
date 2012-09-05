@@ -1,0 +1,87 @@
+%In this subsection we derive the basis for the Argyris element using the
+%standard Cartesian coordinates on a reference triangle $\hat{K}$ as opposed to
+%the area coordinates on a general triangle $K$ as used by \cite{Okabe}.
+%The transformation developed by \cite{Dominguez08}, which will be discussed in \autoref{sse:Trans}, allows for all computations to be done on the reference triangle
+%and so the bulk of the discussion will be concerned with developing the basis
+%functions on $\hat{K}$ and the transformation.
+\input{Ref.Triangle.tex}
+
+The Argyris triangle has 21 degrees of freedom and therefore has 21 basis functions per triangle.
+Additionally, the basis for Argyris in reference coordinates (depicted in \autoref{fig:RefTriangle})
+belong to the space $\mathbb{P}_5$, which has the standard monomial basis
+\begin{equation*}
+	\left\{
+    1, x, y, x^2, xy, y^2, x^3, x^2y, xy^2, y^3, x^4, x^3y, 
+    x^2y^2, xy^3, y^4, x^5, x^4y, x^3y^2, x^2y^3, xy^4, y^4 
+  \right\}
+\end{equation*}
+Thus, the $i^{th}$ basis function for the Argyris triangle can be written as 
+\begin{equation}
+	\begin{split}
+	\hat{\varphi}_i(\hat{x},\hat{y}) = m^i_1 + m^i_2 \hat{x} + m^i_3 \hat{x}^2 + m^i_4 \hat{x}^3 + m^i_5 \hat{x}^4 + m^i_6 \hat{x}^5 + m^i_7 \hat{y} + m^i_8
+ 	\hat{y}^2 + m^i_9 \hat{y}^3 \\
+ + m^i_{10} \hat{y}^4 + m^i_{11} \hat{y}^5 + m^i_{12}  \hat{x} \hat{y} + m^i_{13} \hat{x} \hat{y}^2 + m^i_{14} \hat{x} \hat{y}^3 + m^i_{15}
+ 	\hat{x} \hat{y}^4 + m^i_{16} \hat{x}^2 \hat{y} \\ 
+ + m^i_{17} \hat{x}^2 \hat{y}^2 + m^i_{18}\hat{x}^2 \hat{y}^3 + m^i_{19} \hat{x}^3 \hat{y} + m^i_{20}\hat{x}^3 \hat{y}^2 + m^i_{21} \hat{x}^4 \hat{y}
+ \end{split}
+	\label{eqn:Basis}
+\end{equation}
+
+Now, consider the reference triangle $\hat{K}$ in Figure \ref{fig:RefTriangle} with
+vertices numbered counter clockwise $1,\, 2,\text{ and } 3$, i.e.
+$(\hat{x}_1,\hat{y}_1)=(0,0),\, (\hat{x}_2,\hat{y}_2)=(1,0),\text{ and } (\hat{x}_3,\hat{y}_3)=(0,1)$.
+Additionally, let the vector $v_i$ represent the $i^{th}$ edge with
+\begin{equation*}
+  v_1 = [\hat{x}_2-\hat{x}_1,\hat{y}_2-\hat{y}_1]^T, \quad v_2=[\hat{x}_3-\hat{x}_1,\hat{y}_3-\hat{y}_1]^T \text{ and } v_3=[\hat{x}_3
+  -\hat{x}_2,\hat{y}_3-\hat{y}_2]^T.
+\end{equation*}
+Also, we will use the convention that the $i^{th}$ normal vector is the rotation
+of the $v_i$ counter-clockwise $90^\circ$. Therefore, the $i^{th}$ basis
+function can be found using the restriction in Table \ref{tab:Constraints}.
+
+\input{Basis.Table.tex}
+
+Now, let $z$ be the vector containing the monomial basis for $\mathbb{P}_5$, i.e.
+\small{
+\begin{equation*}
+  z=\left[
+    1, \hat{x}, \hat{y}, \hat{x}^2, \hat{x}\hat{y}, \hat{y}^2, \hat{x}^3, \hat{x}^2\hat{y}, \hat{x}\hat{y}^2, \hat{y}^3, \hat{x}^4, \hat{x}^3\hat{y}, 
+    \hat{x}^2\hat{y}^2, \hat{x}\hat{y}^3, \hat{y}^4, \hat{x}^5, \hat{x}^4\hat{y}, \hat{x}^3\hat{y}^2, \hat{x}^2\hat{y}^3, \hat{x}\hat{y}^4, \hat{y}^4 
+  \right]^{T}
+\end{equation*}}
+Then the $i^{th}$ Argyris basis function on $\hat{K}$ is given by
+\begin{equation*}
+  \hat{\varphi}_i = M_i z,
+\end{equation*}
+where $M_i$ is the $i^{th}$ row of the matrix $M$. Therefore, the evaluation of
+$\hat{\varphi}_i(\hat{x},\hat{y})$ comes down to the matrix-vector multiplication
+\begin{equation*}
+  \hat{\varphi}_i(\hat{x},\hat{y}) = M_i z(\hat{x},\hat{y}).
+\end{equation*}
+
+To determine the matrix $M$ we must solve the linear system 
+\begin{equation*}
+  ZM^T=I_{21}
+\end{equation*}
+that result from the constraints in Table \ref{tab:Constraints}. Here
+\begin{equation*}
+  \begin{split}Z=[z(0,0), z(0,1), z(1,0), 
+  z_{\hat{x}}(0,0), z_{\hat{y}}(0,0), 
+  z_{\hat{x}}(1,0), z_{\hat{y}}(1,0), 
+  z_{\hat{x}}(0,1), z_{\hat{y}}(0,1), \\
+  z_{\hat{x}\hat{x}}(0,0), z_{\hat{x}\hat{y}}(0,0), z_{\hat{y}\hat{y}}(0,0), 
+  z_{\hat{x}\hat{x}}(1,0), z_{\hat{x}\hat{y}}(1,0), z_{\hat{y}\hat{y}}(1,0), \\
+  z_{\hat{x}\hat{x}}(0,1), z_{\hat{x}\hat{y}}(0,1), z_{\hat{y}\hat{y}}(0,1), 
+  z_{\hat{y}}(\nicefrac{1}{2},0), -z_{\hat{x}}(0,\nicefrac{1}{2}), \\
+  -\frac{1}{\sqrt{2}}(z_{\hat{x}}(\nicefrac{1}{2},\nicefrac{1}{2}) +
+  z_{\hat{y}}(\nicefrac{1}{2},\nicefrac{1}{2}))]^T\end{split}
+\end{equation*}
+$I_{21}$ is a $21\times 21$ identity matrix and $M$ is the matrix containing the
+coefficients for all 21 basis functions. Therefore solving this system will
+result in a matrix, $M$, that contains the coefficients for the Argyris basis
+functions for the reference triangle as in \eqref{eqn:Basis}. Thus, the matrix
+$M$ is \\ 
+\input{Coefficients.tex}
+Therefore, the Argyris basis functions are
+\input{Basis.Functions.tex}
+

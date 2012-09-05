@@ -1,0 +1,26 @@
+By using Theorem 6.1.1 and inequality (6.1.5) in \cite{Ciarlet}, we obtain the following two
+approximation properties for the Argyris FEM space $X^h$:
+\begin{align}
+  \forall \, \chi \in H^6(\Omega) \cap H^2_0(\Omega), \ \exists \, \chi^h \in X^h
+  \quad \text{such that} \quad
+  \| \chi - \chi^h \|_2
+  &\leq C \, h^4 \, | \chi |_6 ,
+  \label{eqn:argyris_approximation_0} \\[0.2cm]
+  \forall \, \chi \in H^4(\Omega) \cap H^2_0(\Omega), \ \exists \, \chi^h \in X^h
+  \quad \text{such that} \quad
+  \| \chi - \chi^h \|_2
+  &\leq C \, h^2 \, | \chi |_4 ,
+  \label{eqn:argyris_approximation_1} \\[0.2cm]
+  \forall \, \chi \in H^3(\Omega) \cap H^2_0(\Omega), \ \exists \, \chi^h \in X^h
+  \quad \text{such that} \quad
+  \| \chi - \chi^h \|_2
+  &\leq C \, h \, | \chi |_3 ,
+  \label{eqn:argyris_approximation_2}
+\end{align}
+where $C$ is a generic constant that can depend on the data, but not on the meshsize $h$.
+Approximation property \eqref{eqn:argyris_approximation_0} follows from inequality (6.1.5) in
+\cite{Ciarlet} with $q = 2, \, p = 2, \, m = 2$ and $k+1 = 6$. Approximation property
+\eqref{eqn:argyris_approximation_1} follows from inequality (6.1.5) in \cite{Ciarlet} with $q = 2,
+\, p = 2, \, m = 2$ and $k+1 = 4$. Approximation property \eqref{eqn:argyris_approximation_2}
+follows from inequality (6.1.5) in \cite{Ciarlet} with $q = 2, \, p = 2, \, m = 2$ and $k+1 = 3$.
+

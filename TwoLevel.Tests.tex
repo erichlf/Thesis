@@ -1,0 +1,161 @@
+The main goal of this section is to verify the theoretical rates of convergence developed in
+\autoref{sse:SQGE2LE} by comparing with the observed rates of convergence in our numerical tests.
+%Additonally, we intend to demonstrate the time savings from applying the Two-Level method to the
+%SQGE. To demonstrate that the two-level method is an affective way to address computational time we
+%must demonstrate that the error is at least the same order of convergence as the FE applied to SQGE
+%without the two-level method, or we must demonstrate that the cost of using a finer mesh that will
+%produce the same level of accuracy is still cheaper computationally.
+Unlike the previous section, for the two-level method we must demonstrate rates of convergence for
+two different meshes, the fine mesh, $h$, and the coarse mesh $H$. Since the error corresponding to
+the coarse mesh dominates the error corresponding to the fine mesh the rate of convergence in the
+coarse mesh is easy to demonstrate. To this end one need only pick a constant fine mesh and then
+refine the coarse mesh. By doing this one is able to demonstrate the rate of convergence in the
+coarse mesh. However, the rate of convergence in the fine mesh is a bit more trick to demonstrate,
+because as stated previously the coarse mesh error dominates the fine mesh error and therefore one
+must balance the error between the fine mesh and the coarse mesh so as to be able to demonstrate the
+rate of convergence in the fine mesh. To this end we set the error terms in
+\eqref{eqn:TwoLevelError} equal to eachother to come up with the relationship 
+\begin{equation}
+  h = \left(\ln h\right)^{\frac{1}{8}} H^{\frac{5}{4}}.
+  \label{eqn:OrderRelation}
+\end{equation}
+This relation is super linear and essentially means that the coarse mesh $H$ must be about half the
+size the fine mesh $h$. 
+
+To this end we apply the Two-Level method to the SQGE \eqref{sqge_psi_1} with $Re=Ro=1$ and exact
+solution
+\begin{equation}
+  \left(\sin 4\pi x \cdot \sin 2\pi y\right)^2.
+  \label{eqn:2LExact}
+\end{equation}
+Additionally, the homogeneous boundary conditions are $\psi=\dfrac{\partial \psi}{\partial
+\mathbf{n}}=0$ and the forcing function $F$ corresponds to applying the SQGE to the exact solution
+\eqref{eqn:2LExact}. Theses BCs and exact solution will be used in all the Two-Level tests that
+follow.
+
+First, we benchmark our numerical tests by running SQGE without the two-level method. Comparing to
+this benchmark will allows us to compare errors in the $H^2$ norm for SQGE to the errors in $H^2$
+norm with the two-level method applied.
+\begin{table}[H]
+  \begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    $h$ & $DoFs$ & $e_2$ & $H^2$ order & time (s) \\
+    \hline
+    $\nicefrac{1}{2}$ & $70$ & $174.5$ & $-$ & $0.70114$ \\[0.2em] 
+    $\nicefrac{1}{4}$ & $206$ & $45.11$ & $1.951$ & $0.63921$ \\[0.2em] 
+    $\nicefrac{1}{8}$ & $694$ & $9.286$ & $2.28$ & $3.3169$ \\[0.2em] 
+    $\nicefrac{1}{16}$ & $2534$ & $0.6503$ & $3.836$ & $15.105$ \\[0.2em] 
+    $\nicefrac{1}{32}$ & $9670$ &  $0.03566$ & $4.189$ & $66.037$ \\[0.2em] 
+    $\nicefrac{1}{64}$ & $37766$ & $0.002109$ & $4.08$ & $303.05$ \\[0.2em]
+    \hline
+  \end{tabular}
+  \caption{Benchmark Errors and Rate of Convergence SQGE \eqref{sqge_psi_1}.}
+  \label{tab:2LBenchmark}
+  \end{center}
+\end{table}
+As can be seen in \autoref{tab:2LBenchmark} the initial error is quite large in the $H^2$
+norm. This is due to lack of resolution in the approximate solution because of the mesh coarseness.
+The given exact solution \eqref{eqn:2LExact} has a period of $\dfrac{1}{2}$ in the $x$-direction and
+a period of one in the $y$-direction, therefore we must have a mesh size that much smaller than
+$\dfrac{1}{2}$ to be able to approximate the function appropriately. However, we see that by
+$h=\dfrac{1}{64}$ the error has on the order of $10^{-3}$ and the rate of convergence matches the
+theoretical rate of convergence predicted in \autoref{sec:QGEError}.
+
+\begin{table}[H]
+  \begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    $H$ & $DoFs$ for $H$ & $h$ & $DoFs$ for $h$ & $e_2$ & $H^2$ order \\
+    \hline
+    $\nicefrac{1}{2}$ & $70$ & $\nicefrac{1}{4}$ & $206$ & $45.44$ & $-$ \\[0.2em] 
+    $\nicefrac{1}{4}$ & $206$ & $\nicefrac{1}{8}$ & $694$ & $10.89$ & $2.061$ \\[0.2em] 
+    $\nicefrac{1}{8}$ & $694$ &$\nicefrac{1}{16}$ & $2534$ & $0.8404$ & $3.696$ \\[0.2em] 
+    $\nicefrac{1}{16}$ & $2534$ & $\nicefrac{1}{32}$ & $9670$ & $0.04075$ & $4.366$ \\[0.2em] 
+    $\nicefrac{1}{32}$ & $9670$ & $\nicefrac{1}{64}$ & $37766$ &  $0.002141$ & $4.25$ \\[0.2em] 
+    $\nicefrac{1}{64}$ & $37766$ & $\nicefrac{1}{128}$ & $149254$ & $0.0001298$ & $4.044$ \\[0.2em]
+    \hline
+  \end{tabular}
+  \caption{Errors and Rate of Convergence in $h$ for the Two-Level method applied to SQGE \eqref{sqge_psi_1}.}
+  \label{tab:TwoLevelh}
+  \end{center}
+\end{table}
+
+In \autoref{tab:TwoLevelh} we use the relationship \eqref{eqn:OrderRelation} to determine a mesh
+size relationship between $h$ and $H$. As stated previously, this relation implies that $H \approx
+\dfrac{h}{2}$ and therefore we chose the $(H,h)$ pairs corresponding to 
+\begin{equation*}
+  \left\{ \left(\frac{1}{2}, \frac{1}{4}\right),
+  \left(\frac{1}{4}, \frac{1}{8}\right),
+  \left(\frac{1}{8}, \frac{1}{16}\right),
+  \left(\frac{1}{16}, \frac{1}{32}\right),
+  \left(\frac{1}{32}, \frac{1}{64}\right),
+  \left(\frac{1}{64}, \frac{1}{128}\right)\right\}
+\end{equation*}
+so as to demonstrate the rate of convergence in $h$. As can be seen in \autoref{tab:TwoLevelh} the
+rate of convergence does, in deed, approach the rate of convergence predicted in
+\autoref{sse:SQGE2LE}. Additionally, we see that the $H^2$ errors are of the same order
+as the corresponding errors in \autoref{tab:2LBenchmark} for the same value of $h$.
+
+To demonstrate the rate of convergence in $H$ we take a constant fine mesh size of
+$h=\dfrac{1}{128}$ and vary the coarse mesh $H$. To this end we chose the $(H,h)$ pairs
+corresponding to 
+\begin{equation*}
+  \left\{ \left(\frac{1}{2}, \frac{1}{128}\right),
+  \left(\frac{1}{4}, \frac{1}{128}\right),
+  \left(\frac{1}{8}, \frac{1}{128}\right),
+  \left(\frac{1}{16}, \frac{1}{128}\right),
+  \left(\frac{1}{32}, \frac{1}{128}\right),
+  \left(\frac{1}{64}, \frac{1}{128}\right)\right\}.
+\end{equation*}
+
+\begin{table}[H]
+  \begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    $H$ & $DoFs$ for $H$ & $h$ & $DoFs$ for $h$ & $e_2$ & $H^2$ order \\
+    \hline
+    $\nicefrac{1}{2}$ & $70$ & $\nicefrac{1}{128}$ & $149254$ & $7.653$ & $-$ \\[0.2em] 
+    $\nicefrac{1}{4}$ & $206$ & $\nicefrac{1}{128}$ & $149254$ & $5.916$ & $0.3715$ \\[0.2em] 
+    $\nicefrac{1}{8}$ & $694$ & $\nicefrac{1}{128}$ & $149254$ & $0.5373$ & $3.461$ \\[0.2em] 
+    $\nicefrac{1}{16}$ & $2534$ & $\nicefrac{1}{128}$ & $149254$ & $0.0199$ & $4.755$ \\[0.2em] 
+    $\nicefrac{1}{32}$ & $9670$ & $\nicefrac{1}{128}$ & $149254$ &  $0.0003779$ & $5.719$ \\[0.2em] 
+    $\nicefrac{1}{64}$ & $37766$ & $\nicefrac{1}{128}$ & $149254$ & $1.381\times 10^{-5}$ & $4.775$ \\[0.2em]
+    \hline
+  \end{tabular}
+  \caption{Errors and Rate of Convergence in $H$ for the Two-Level method applied to SQGE \eqref{sqge_psi_1}.}
+  \label{tab:TwoLevelH}
+  \end{center}
+\end{table}
+
+As can be seen in \autoref{tab:TwoLevelH} the rate of convergence does, in deed, approach the rate
+of convergence predicted in \autoref{sse:SQGE2LE}. Additionally, we see that the $H^2$ errors are of
+the same order as the corresponding errors in \autoref{tab:2LBenchmark} for the same value of $h$.
+
+%Finally, to demonstrate the computational efficiency of the two-level method we compare the time
+%required to run simulations for the SQGE with out the two-level method on various mesh sizes and
+%then we simulate the SQGE with the two-level method for the same fine mesh size as those used in the
+%non two-level method, while maintaining the same coarse mesh size accross all simulations. For these
+%simulations we will take the coarse mesh to be $H=\dfrac{1}{2}$ and vary the fine mesh $h$ over 
+%\begin{equation*}
+%  \left\{\frac{1}{2}, \frac{1}{4}, \frac{1}{8}, \frac{1}{16}, \frac{1}{32}, \frac{1}{64}\right\}.
+%\end{equation*}
+%
+%\begin{table}[H]
+%  \begin{center}
+%  \begin{tabular}{|c|c|c|c|c|c|c|}
+%    \hline
+%    $H$ & $DoFs$ for $H$ & $h$ & $DoFs$ for $h$ & $e_2$ & $H^2$ order & time (s) \\
+%    \hline
+%    $\nicefrac{1}{2}$ & $70$ & $\nicefrac{1}{2}$ & $70$ & $174.55$ & $-$ & $0.2287$ \\[0.2em] 
+%    $\nicefrac{1}{2}$ & $70$ & $\nicefrac{1}{4}$ & $206$ & $45.44$ & $1.941$ & $0.2898$ \\[0.2em] 
+%    $\nicefrac{1}{2}$ & $70$ &$\nicefrac{1}{8}$ & $694$ & $11.99$ & $ 1.922$ & $0.6902$ \\[0.2em] 
+%    $\nicefrac{1}{2}$ & $70$ & $\nicefrac{1}{16}$ & $2534$ & $7.681$ & $0.6431$ & $2.803$ \\[0.2em] 
+%    $\nicefrac{1}{2}$ & $70$ & $\nicefrac{1}{32}$ & $9670$ &  $7.653$ & $0.00511$ & $12.75$ \\[0.2em] 
+%    $\nicefrac{1}{2}$ & $70$ & $\nicefrac{1}{64}$ & $37766$ & $7.653$ & $1.526\times 10^{-5}$ & $58.67$ \\[0.2em]
+%    \hline
+%  \end{tabular}
+%  \caption{Errors and Rate of Convergence in $H$ for the Two-Level method applied to SQGE \eqref{sqge_psi_1}.}
+%  \label{tab:TwoLevelH}
+%  \end{center}
+%\end{table}

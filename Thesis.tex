@@ -1,0 +1,124 @@
+\documentclass[proposal]{VTthesis}
+\usepackage{elf}
+
+\title{Large Eddy Simulation for the Streamfunction Formulation of the Quasigeostrophic Equations of the Ocean}
+
+\keywords{Quasigeostrophic equations, finite element method, Argyris element.}
+
+\author{Erich L Foster}
+\program{Mathematics}
+\degree{Doctor of Philosophy}
+\type{Proposal}
+\submitdate{02 May 2012}
+\principaladvisor{Traian Iliescu}
+\firstreader{Slimane Adjerid}
+\secondreader{John A. Burns}
+\thirdreader{Anne Staples}
+
+%\dedication{This is where you put your dedications.}
+%\acknowledge{This is where you put your acknowledgements.}
+
+\abstract{We present a Large Eddy Simulation model of the conforming finite element discretization
+of the streamfunction formulation of the one-layer quasigeostrophic equations, which are a commonly
+used model for the large scale wind-driven ocean circulation. Optimal error estimates for this
+finite element discretization with the Argyris element and for the large eddy simulation will be
+derived. Numerical tests for the finite element discretization and large eddy simulation of the
+quasigeostrophic equations. Additionally, numerical tests for two of its standard simplifications
+(the linear Stommel model and the linear Stommel-Munk model) are carried out. By benchmarking the
+numerical results against those in the published literature, we conclude that our finite element
+discretization is accurate. Furthermore, the numerical results have the same convergence rates as
+those predicted by the theoretical error estimates.} 
+
+\begin{document}
+  \frontmatter
+  \maketitle
+  \tableofcontents
+  \listoftables
+  \listoffigures
+
+  \mainmatter
+
+  \chapter{Introduction} \label{ch:Intro}
+    \section{Motivation} \label{sec:Motivation}
+    \input{Motivation.tex}
+    \section{Problem Overview}
+    \input{Overview.tex}
+    \section{Existing Research}
+    \input{LitReview.tex}
+    \section{Proposal Outline}
+    \input{Outline.tex}
+    
+  \chapter{Governing Equations} \label{ch:Model}
+    \section{The Quasi-Geostrophic Equations} \label{sec:QGE}
+    \input{QGE.tex}
+    \section{Stationary QGE} \label{sec:SQGE}
+    \input{SQGE.tex}
+    \section{Large Eddy Simulation} \label{sec:LES}
+    \input{LES.tex}
+  
+  \chapter{Weak Solutions and Well Posedness} \label{ch:WellPosed}
+    \section{QGE Weak Formulation} \label{sec:QGEWeak}
+    \input{QGE.WF.tex}
+    \section{SQGE Weak Formulation} \label{sec:SQGEWeak}
+    \input{SQGE.WF.tex}
+      \subsection{Well-Posedness of SQGE}
+      \input{SQGE.WP.tex}
+    \section{LES Weak Formulation} \label{sec:LESWeak}
+    \input{LESWF.tex}
+
+  \chapter{Finite Element Formulation} \label{ch:FEM}
+    \section{QGE Finite Element Formulation} \label{sec:QGEFEM}
+    \input{QGE.FEF.tex}
+    \section{SQGE Finite Element Formulation} \label{sec:SQGEFEM}
+    \input{SQGE.FEF.tex}
+    \section{LES Finite Element Formulation} \label{sec:LESFEF}
+    \input{LESFEF.tex}
+    \section{Argyris Element} \label{sec:Argyris}
+    \input{Argyris.tex}
+      \subsection{Basis Functions} \label{sse:Basis}
+      \input{Argyris.Basis.tex}
+      \subsection{Transformation} \label{sse:Trans}
+      \input{Transformation.tex}
+      \subsection{Normal Derivatives} \label{sse:Normals} 
+      \input{Normal.Derivs.tex}
+      \subsection{Interpolation Error} \label{sse:IntErr}
+      \input{Interpolation.tex}
+    \section{Two Level Method} \label{sec:TwoLevel}
+    \input{TwoLevel.tex}
+      \subsection{Two Level Algorithm} \label{sse:Algorithm}
+      \input{TwoLevelAlgorithm.tex}
+    \section{Method of Lines} \label{sec:MoL}
+    \input{MoL.tex}
+  
+  \chapter{Error Analysis} \label{ch:Errors}
+    \section{SQGE} \label{sec:SQGEErrors}
+    \input{SQGE.Error.tex}
+      \subsection{Two Level Method} \label{sse:SQGE2LE}
+      \input{TwoLevelErrors.tex}
+    \section{QGE} \label{sec:QGEError}
+    \input{QGE.Errors.tex}
+    \section{LES} \label{sec:LESError}
+    \input{LES.Errors.tex}
+
+  \chapter{Numerical Tests} \label{ch:Tests}
+%  \input{numerical_results} \label{sec:NumericalResults}
+  \section{SQGE} \label{sec:SQGETests}
+  \input{SQGE.Tests.tex}
+  \section{SQGE Two-Level} \label{sec:SQGE2LTests}
+  \input{TwoLevel.Tests.tex}
+  \section{QGE} \label{sec:QGETests}
+  \input{QGE.Tests.tex}
+  \section{LES} \label{sec:LESTests}
+  \input{LES.Tests.tex}
+
+  \chapter{Future Work} \label{ch:Future}
+  \input{Future.tex}
+
+  \bibliographystyle{plain}
+  \bibliography{ThesisProp}
+
+  %\appendix
+  %\chapter{Newton Method} \label{sec:Newton}
+  %\input{Newton.tex}
+\end{document}
+

@@ -1,0 +1,62 @@
+In this section we discuss Large Eddy Simulation (LES). To our knowledge LES has not been applied to
+the finite element formulation of the streamfunction formulation of the QGE. It is the application
+of LES to this problem that will be the major contribution of this Thesis and therefore will be the
+main focus of the thesis. 
+
+To derive the quations for the filtered flow variable, $\bar{\psi}$, the QGE \eqref{qge_psi_3} has a
+spacial filter applied to it. Letting a bar denote the filtered variable, the filtered QGE reads:
+\begin{equation}
+  -\frac{\partial [\Delta \bar{\psi}]}{\partial t} + Re^{-1} \Delta^2 \bar{\psi} +
+    J(\bar{\psi},\Delta \bar{\psi}) - Ro^{-1} \frac{\partial \bar{\psi}}{\partial x} = Ro^{-1}
+    \bar{F} + S
+  \label{eqn:FQGE}
+\end{equation}
+where $S$ is the \emph{subfilter-scale} term, given by
+\begin{equation}
+  S = - \bar{J(\psi, \Delta \psi)} + J(\bar{\psi}, \Delta \bar{\psi}). 
+  \label{eqn:Subfilter}
+\end{equation}
+It is precisely this point where the closure model comes in, since the first term in the subfilter
+scale still requires the unfiltered variable. For the filtered QGE \eqref{eqn:FQGE} to be closed the
+subfilter scale must be modeled in terms of the filtered variable $\bar{\psi}$, therefore closure
+models are necessary so as to close the filtered equation. 
+
+We propose to use \emph{Approximate Deconvolution (AD)} for the closure model. The AD method uses
+repeated filtering in order to obtain an approximation to the unfiltered variable when the filtered
+variable is available. These approximations are used in the subfilter scale to close the model. 
+
+If we denote our spatial filtering operator by $G$ then $G\psi = \bar{\psi}$. Using the fact that $G
+= I - (I - G)$ we can write the inverse filter $G^{-1}$ using the Neumann series:
+\begin{equation}
+  G^{-1} \approx \sum_{i=0}^{\infty} (I - G)^i.
+  \label{eqn:NeumannInverse}
+\end{equation}
+For practical use we must truncate this series, thus truncating the series after $N$ terms gives the
+approximate deconvolution operator, $Q_N$. Therefore the approximate deconvolution of $\psi$ is
+obtained by 
+\begin{equation}
+  \psi \approx \psi^* = Q_N \bar{\psi}.
+  \label{eqn:ADOperator}
+\end{equation}
+By increasing the value of $N$ we get a more accurate approximation to the variable $\psi$. Using
+this idea of approximate convolution we can now approximate the Jacobian:
+\begin{equation}
+  \bar{J(\psi,\Delta \psi)} \approx \bar{J(\psi^*, \Delta \psi^*)}.
+  \label{eqn:ADJac}
+\end{equation}
+Thus, we can close the filtered QGE \eqref{eqn:FQGE} and we get the AD model
+\begin{equation}
+  -\frac{\partial [\Delta \bar{\psi}]}{\partial t} + Re^{-1} \Delta^2 \bar{\psi} 
+    + J(\bar{\psi},\Delta \bar{\psi}) - Ro^{-1} \frac{\partial \bar{\psi}}{\partial x} = Ro^{-1}
+    \bar{F} + S^*
+  \label{eqn:ADQGE}
+\end{equation}
+where $S^*$ is the subfilter scale modeled by
+\begin{equation}
+  S^* = -\bar{J(\psi^*, \Delta \psi^*)} + J(\bar{\psi}, \Delta \bar{\psi}). 
+  \label{eqn:ApproxSubfilter}
+\end{equation}
+
+In the rest of this section we will discuss the AD model theory at length, since it is of great
+importance to model results. 
+

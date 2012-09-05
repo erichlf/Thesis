@@ -1,0 +1,15 @@
+During the discussion above we have been concerned with transforming a basis on a local triangle to
+that of a basis on a reference triangle. However, we have not considered the implications that
+results from the assumption of always rotating the normal derivative positive $\dfrac{\pi}{2}$.
+If we always rotate positive $\dfrac{\pi}{2}$ there will be a jump discontinuity in the basis
+function along that edge. 
+
+This results from assuming $\dfrac{\partial\varphi_i}{\partial\mathbf{n}_i} = 1$ on triangle $I$
+while at the same time assuming $\dfrac{\partial\varphi_i}{\partial\mathbf{n}_i} = -1$ on the
+adjacent triangle $J$. The issue can be seen graphically in \autoref{fig:Normals}. This is what
+causes the discontinuity along shared edges. To address this we need only multiply the value of
+$\varphi_i$ by negative one on the triangle $J$, while leaving $\varphi_i$ alone on triangle $I$. 
+
+\input{Normal.Cont.tex}
+
+

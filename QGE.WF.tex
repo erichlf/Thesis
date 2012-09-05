@@ -1,0 +1,113 @@
+We are now ready to derive the weak formulation of the QGE in streamfunction formulation
+\eqref{qge_psi_3}. To this end, it is necessary to introduce the appropriate functional setting.
+Here we will need to reference \cite{Braess,
+Ciarlet,Cascon,GunzburgerApprox,GunzburgerMethods,Gunzburger89,Layton08,Girault79,Girault79,Medjo99}
+However, in light of the research still needed to be done to determine the appropriate functional
+setting for the weak form of QGE we will for now let
+\begin{equation*}
+  X := L^{\infty}(0,T; L^2(\Omega)) \cap L^2(0,T;H^2_0(\Omega)) 
+\end{equation*}
+where 
+\begin{align*}
+  L^2(0,T;H^2_0(\Omega)) &:= \left\{ \psi(t,\mathbf{x}):[0,T] \to H^2_0(\Omega):
+    \int_{0}^{T}\! \|\Delta \psi\| \,dt < \infty \right\} \\
+  L^{\infty}(0,T;L^2(\Omega)) &:= \left\{ \psi(t,\mathbf{x}):[0,T] \to L^2(\Omega):
+    \ess \sup_{0<t<T} \|\psi\| < \infty\right\}.
+\end{align*}
+The choice for this space will have to be verify using the previously referred to references.
+
+Multiplying \eqref{qge_psi_3} by a test function $\chi \in X$ and using the divergence theorem, we
+get in a standard way%(see \cite{Gunzburger89}) the \emph{weak formulation} of the QGE in streamfunction formulation:
+\begin{equation*}
+  \int_{\Omega}\! \left(-\frac{\partial \left[ \Delta \psi \right]}{\partial t} + Re^{-1}
+    \Delta^2 \psi +  J(\psi,\Delta \psi) - Ro^{-1}\frac{\partial \psi}{\partial
+    x}\right)\, \chi \,d\mathbf{x} = Ro^{-1} \int_{\Omega}\! F\, \chi \,d\mathbf{x}
+\end{equation*}
+and then transferring some of the derivatives from $\psi$ to $\chi$. But first, we need to rewrite
+the Jacobian term, from \eqref{qge_psi_3} in a more useful form
+\begin{align*}
+  -\frac{\partial}{\partial t} \int_{\Omega}\! \Delta \psi \, \chi \,d\mathbf{x}
+    &+ Re^{-1} \int_{\Omega}\! \Delta^2 \psi \,d\mathbf{x}
+    - \int_{\Omega}\! \left(\frac{\partial\left[\Delta\psi \right]}{\partial x}\cdot \frac{\partial
+      \psi}{\partial y} -
+    \frac{\partial\left[ \Delta\psi \right]}{\partial y}\cdot
+    \frac{\partial \psi}{\partial x}\right)\, \chi\, d\mathbf{x} \\ 
+    &- Ro^{-1} \int_{\Omega}\! \frac{\partial \psi}{\partial x}\, \chi \,d\mathbf{x} 
+    = Ro^{-1} \int_{\Omega}\! F\, \chi \,d\mathbf{x} \\
+  -\frac{\partial}{\partial t} \int_{\Omega}\! \Delta \psi \, \chi \,d\mathbf{x}
+    + Re^{-1} \int_{\Omega}\! \Delta^2 \psi \,d\mathbf{x}
+    & - \int_{\Omega}\! \nabla \left[\Delta\psi\right]\cdot \nabla \times \psi \, \chi\,
+      d\mathbf{x} 
+    -Ro^{-1} \int_{\Omega}\! \frac{\partial \psi}{\partial x}\, \chi \,d\mathbf{x} 
+    = Ro^{-1} \int_{\Omega}\! F\, \chi \,d\mathbf{x} \\
+\end{align*}
+For the remaining portion of the weak formulation we shall deal with each summand individually (from
+left to right) and so
+\begin{align*}
+  -\frac{\partial}{\partial t} \int_{\Omega}\! \Delta \psi\, \chi \,d\mathbf{x} &= 
+    -\frac{\partial}{\partial t} \int_{\Omega}\! \nabla \left( \nabla \psi \, \chi \right) -
+    \nabla \psi \cdot \nabla \chi \,d\mathbf{x} \\
+  &= -\frac{\partial}{\partial t} \cancelto{0}{\int_{\partial \Omega}\! \nabla \psi \, \chi
+    \cdot \mathbf{n} \, dS} + \frac{\partial}{\partial t} \int_{\Omega}\! \nabla \psi \nabla \chi
+    \,d\mathbf{x}
+\end{align*}
+the next summand gives
+\begin{align*}
+  Re^{-1}\int_{\Omega}\! \Delta^2 \psi\, \chi \,d\mathbf{x} &= Re^{-1}\int_{\Omega}\! \nabla\left[
+    \nabla^3 \psi \, \chi \right] + \nabla^3 \psi \nabla \chi \,d\mathbf{x} \\
+  &= Re^{-1}\cancelto{0}{\int_{\partial\Omega}\, \nabla^3 \psi\, \chi\cdot \mathbf{n}
+    \,dS} - Re^{-1}\int_{\Omega}\! \nabla\left[ \Delta\psi \nabla \chi \right] - \Delta
+    \psi \Delta \chi \,d\mathbf{x} \\
+  &= -Re^{-1} \cancelto{0}{\int_{\partial\Omega}\, \Delta\psi \nabla \chi \cdot
+    \mathbf{n}\, dS} + Re^{-1} \int_{\Omega} \Delta \psi \Delta \chi \,d\mathbf{x}
+\end{align*}
+and the third and final summand that needs to be evaluated gives 
+\begin{align*}
+  -\int_{\Omega}\! \nabla\left[ \Delta\psi\right]\cdot
+    \nabla\times\psi \, \chi \,d\mathbf{x} &= -\int_{\Omega}\!
+    \nabla\left[\Delta\psi\right]\cdot \nabla\times\psi \, \chi\, d\mathbf{x}\\
+  &= -\int_{\Omega}\! \nabla\left[ \Delta\psi \cdot \nabla\times\psi\, \chi
+    \right] -\Delta\psi\cdot \cancelto{0}{\nabla\left[ \nabla\times\psi \chi
+    \right]} \\ 
+      &\qquad - \Delta\psi\cdot \nabla\times\psi \cdot \nabla\chi \,d\mathbf{x} \\
+  &= -\cancelto{0}{\int_{\partial\Omega}\, \Delta\psi \cdot \nabla\times\psi\, \chi
+    \cdot \mathbf{n} \,dS} \\
+    &\qquad + \int_{\Omega}\! \Delta \psi \cdot \nabla\times \psi \cdot
+      \nabla \chi \,d\mathbf{x} \\ 
+  &= \int_{\Omega}\! \Delta\psi\left( \psi_y\chi_x - \psi_x\chi_y \right)\, d\mathbf{x}.
+\end{align*}
+Thus, the weak form of the QGE in streamfunction form is
+\begin{eqnarray}
+  && \frac{\partial}{\partial t} \int_{\Omega}\! \nabla \psi\, \nabla \chi  \,d\mathbf{x} 
+    + Re^{-1} \, \int_{\Omega}\! \Delta \psi \, \Delta \chi \, d{\bf x} + \int_{\Omega}\! \Delta
+    \zeta \, \left( \psi_y \, \chi_x - \psi_x \, \chi_y \right)\, d{\bf x} - Ro^{-1} \, \int_{\Omega}
+    \, \psi_x \, \chi \, d{\bf x} \nonumber \\ 
+  && \hspace*{3.0cm} = Ro^{-1}\, \int_{\Omega}\! F \, \chi \, d{\bf x} \qquad \forall \, \chi \in X .
+\label{eqn:qge_psi_weak}
+\end{eqnarray}
+Therefore, letting
+\begin{align}
+  a_0(\psi,\chi) &= \int_{\Omega}\! \nabla \psi \nabla \chi \,d\mathbf{x} \label{eqn:a0} \\
+  a_1(\psi,\chi) &= Re^{-1} \, \int_{\Omega}\! \Delta \psi \, \Delta \chi \, d{\bf x} , \label{eqn:a1} \\
+  a_2(\zeta;\psi,\chi) &= \int_{\Omega}\! \Delta \zeta \, \left( \psi_y \, \chi_x - \psi_x \, \chi_y \right) \, d{\bf x} , \label{eqn:a2} \\
+  a_3(\psi,\chi) &= - Ro^{-1} \, \int_{\Omega}\! \psi_x \, \chi \, d{\bf x} , \label{eqn:a3} \\
+  \ell(\chi) &= Ro^{-1} \, \int_{\Omega}\! F \, \chi \, d{\bf x} , \label{eqn:l}
+\end{align}
+gives the following weak formulation of the QGE in streamfunction formulation: 
+\begin{equation}
+  \begin{split}
+    \text{Find } \psi &\in X \text{ such that} \\
+    \frac{\partial}{\partial t} a_0(\psi,\chi) + a_1(\psi,\chi) +& a_2(\psi,\psi,\chi) + a_3(\psi,\chi)
+    = \ell(\chi),\quad \forall \chi \in X. 
+  \end{split}
+  \label{eqn:QGEWF}
+\end{equation}
+The linear form $\ell$, the bilinear forms $a_0$, $a_1$, $a_3$ and the trilinear
+form $a_2$ are continuous \cite{Cayco86}: There exists $\Gamma_1 > 0$ such that 
+\begin{align}
+  |a_0(\psi,\chi)| &\le |\psi|_2 |\chi|_2 \quad \forall \, \psi,\chi\in X, \label{eqn:a0cont} \\
+  |a_1(\psi,\chi)| &\le Re^{-1} \,  |\psi|_2 \, |\chi|_2 \quad \forall \, \psi,\chi\in X , \label{eqn:a1Cont} \\
+  |a_2(\zeta,\psi,\chi)| &\le \Gamma_1 \, |\zeta|_2 \, |\psi|_2 \, |\chi|_2 \quad \forall \, \zeta,\psi,\chi\in X , \label{eqn:a2Cont} \\
+  |a_3(\psi,\chi)| &\le Ro^{-1} \, |\psi|_2 \, |\chi|_2 \quad \forall \, \psi, \, \chi \in X , \label{eqn:a3Cont} \\
+  |\ell(\chi)| &\le Ro^{-1} \,\|F\|_{-2} \, |\chi|_2 \quad \forall \, \chi \in X . \label{eqn:lCont}
+\end{align}
