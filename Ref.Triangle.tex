@@ -1,4 +1,4 @@
-\begin{figure}[H]
+\begin{figure}%[H]
 	\begin{center}
 \begin{tikzpicture}
   %draw the axes
@@ -8,17 +8,17 @@
 	\draw (0,0) -- (4,0) -- (0,4) -- cycle;
 	%draw the interpolation points
 	%function values
-	\filldraw (0,0) circle(3pt); 
-	\filldraw (4,0) circle(3pt); 
-	\filldraw (0,4) circle(3pt); 
+	\filldraw (0,0) circle(3pt);
+	\filldraw (4,0) circle(3pt);
+	\filldraw (0,4) circle(3pt);
 	%first derivatives
-	\draw (0,0) circle(6pt); 
-	\draw (4,0) circle(6pt); 
-	\draw (0,4) circle(6pt); 
+	\draw (0,0) circle(6pt);
+	\draw (4,0) circle(6pt);
+	\draw (0,4) circle(6pt);
 	%second derivatives
-	\draw (0,0) circle(9pt); 
-	\draw (4,0) circle(9pt); 
-	\draw (0,4) circle(9pt); 
+	\draw (0,0) circle(9pt);
+	\draw (4,0) circle(9pt);
+	\draw (0,4) circle(9pt);
 	%normal derivatives
   \draw[->] (2,0) -- (2,0.5) node[above,fill=none] {$n_1$};
   \draw[->] (0,2) -- (-0.5,2) node[left,fill=none] {$n_2$};

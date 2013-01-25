@@ -1,33 +1,46 @@
-\documentclass[proposal]{VTthesis}
+\documentclass{VTthesis}
 \usepackage{elf}
 
-\title{Large Eddy Simulation for the Streamfunction Formulation of the Quasigeostrophic Equations of the Ocean}
+\title{
+  Finite Elements for the Ocean
+}
 
-\keywords{Quasigeostrophic equations, finite element method, Argyris element.}
+\keywords{Quasi-geostrophic equations, finite element method, Argyris element.}
 
 \author{Erich L Foster}
 \program{Mathematics}
 \degree{Doctor of Philosophy}
 \type{Proposal}
-\submitdate{02 May 2012}
+\submitdate{15 April 2013}
 \principaladvisor{Traian Iliescu}
 \firstreader{Slimane Adjerid}
 \secondreader{John A. Burns}
 \thirdreader{Anne Staples}
 
 %\dedication{This is where you put your dedications.}
-%\acknowledge{This is where you put your acknowledgements.}
+%\acknowledge{This is where you put your acknowledgments.}
 
-\abstract{We present a Large Eddy Simulation model of the conforming finite element discretization
-of the streamfunction formulation of the one-layer quasigeostrophic equations, which are a commonly
-used model for the large scale wind-driven ocean circulation. Optimal error estimates for this
-finite element discretization with the Argyris element and for the large eddy simulation will be
-derived. Numerical tests for the finite element discretization and large eddy simulation of the
-quasigeostrophic equations. Additionally, numerical tests for two of its standard simplifications
-(the linear Stommel model and the linear Stommel-Munk model) are carried out. By benchmarking the
-numerical results against those in the published literature, we conclude that our finite element
-discretization is accurate. Furthermore, the numerical results have the same convergence rates as
-those predicted by the theoretical error estimates.} 
+\abstract{
+  With the continuous increase in computational power, complex mathematical
+  models are becoming more and more popular in the numerical simulation of
+  \emph{oceanic and atmospheric flows}. For some \emph{geophysical flows} in
+  which \emph{computational efficiency} is of paramount importance, however,
+  simplified mathematical models are central.  However, resolving all scales can
+  still be computationally prohibitive, therefore \emph{DNS} may not be feasible
+  and other methods, such as \emph{Large Eddy Simulation}, must be used to
+  simulate the system. We present a Large Eddy Simulation model of the
+  \emph{conforming finite element} discretization of the \emph{streamfunction
+  formulation of the one-layer quasi-geostrophic equations}, which are a commonly
+  used model for the \emph{large scale wind-driven ocean circulation}.
+  \emph{Optimal error estimates} for this finite element discretization with the
+  \emph{Argyris element} and for the large eddy simulation are derived.
+  Numerical tests for the finite element discretization and large eddy
+  simulation of the quasi-geostrophic equations are presented and theoretical
+  error estimates are verified.  By benchmarking the numerical results against
+  those in the published literature, we conclude that our finite element
+  discretization is accurate. Furthermore, the numerical results have the same
+  convergence rates as those predicted by the theoretical error estimates.
+}
 
 \begin{document}
   \frontmatter
@@ -45,17 +58,15 @@ those predicted by the theoretical error estimates.}
     \input{Overview.tex}
     \section{Existing Research}
     \input{LitReview.tex}
-    \section{Proposal Outline}
+    \section{Outline}
     \input{Outline.tex}
-    
+
   \chapter{Governing Equations} \label{ch:Model}
     \section{The Quasi-Geostrophic Equations} \label{sec:QGE}
     \input{QGE.tex}
     \section{Stationary QGE} \label{sec:SQGE}
     \input{SQGE.tex}
-    \section{Large Eddy Simulation} \label{sec:LES}
-    \input{LES.tex}
-  
+
   \chapter{Weak Solutions and Well Posedness} \label{ch:WellPosed}
     \section{QGE Weak Formulation} \label{sec:QGEWeak}
     \input{QGE.WF.tex}
@@ -63,23 +74,19 @@ those predicted by the theoretical error estimates.}
     \input{SQGE.WF.tex}
       \subsection{Well-Posedness of SQGE}
       \input{SQGE.WP.tex}
-    \section{LES Weak Formulation} \label{sec:LESWeak}
-    \input{LESWF.tex}
 
   \chapter{Finite Element Formulation} \label{ch:FEM}
     \section{QGE Finite Element Formulation} \label{sec:QGEFEM}
     \input{QGE.FEF.tex}
     \section{SQGE Finite Element Formulation} \label{sec:SQGEFEM}
     \input{SQGE.FEF.tex}
-    \section{LES Finite Element Formulation} \label{sec:LESFEF}
-    \input{LESFEF.tex}
     \section{Argyris Element} \label{sec:Argyris}
     \input{Argyris.tex}
       \subsection{Basis Functions} \label{sse:Basis}
       \input{Argyris.Basis.tex}
       \subsection{Transformation} \label{sse:Trans}
       \input{Transformation.tex}
-      \subsection{Normal Derivatives} \label{sse:Normals} 
+      \subsection{Normal Derivatives} \label{sse:Normals}
       \input{Normal.Derivs.tex}
       \subsection{Interpolation Error} \label{sse:IntErr}
       \input{Interpolation.tex}
@@ -89,7 +96,7 @@ those predicted by the theoretical error estimates.}
       \input{TwoLevelAlgorithm.tex}
     \section{Method of Lines} \label{sec:MoL}
     \input{MoL.tex}
-  
+
   \chapter{Error Analysis} \label{ch:Errors}
     \section{SQGE} \label{sec:SQGEErrors}
     \input{SQGE.Error.tex}
@@ -97,28 +104,25 @@ those predicted by the theoretical error estimates.}
       \input{TwoLevelErrors.tex}
     \section{QGE} \label{sec:QGEError}
     \input{QGE.Errors.tex}
-    \section{LES} \label{sec:LESError}
-    \input{LES.Errors.tex}
 
   \chapter{Numerical Tests} \label{ch:Tests}
-%  \input{numerical_results} \label{sec:NumericalResults}
   \section{SQGE} \label{sec:SQGETests}
   \input{SQGE.Tests.tex}
   \section{SQGE Two-Level} \label{sec:SQGE2LTests}
   \input{TwoLevel.Tests.tex}
   \section{QGE} \label{sec:QGETests}
   \input{QGE.Tests.tex}
-  \section{LES} \label{sec:LESTests}
-  \input{LES.Tests.tex}
 
-  \chapter{Future Work} \label{ch:Future}
-  \input{Future.tex}
+  \chapter{Conclusions} \label{ch:Conclusions}
+  \input{Conclusions.tex}
 
   \bibliographystyle{plain}
-  \bibliography{ThesisProp}
+  \bibliography{Thesis}
 
-  %\appendix
-  %\chapter{Newton Method} \label{sec:Newton}
-  %\input{Newton.tex}
+  \appendix
+  \chapter{Newton Method} \label{sec:Newton}
+  \input{Newton.tex}
+  \chapter{Boundary Conditions} \label{sse:BCs}
+  \input{BCs.tex}
 \end{document}
 

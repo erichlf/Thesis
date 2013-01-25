@@ -1,10 +1,12 @@
-Although, the streamfunction formulation of the QGE contains only one flow variable, the
-streamfunction $\psi$, the streamfunction formulation of the QGE still suffers from having to solve
-a large nonlinear system of equations. This is usually done by using a nonlinear solver, such as
-Newton's Method. These nonlinear solvers typically require solving large linear systems multiple
-times to obtain the solution to the nonlinear system. Solving these large linear systems multiple
-times can be time consuming. Thus, a two-level algorthm can improve solve times greatly over the
-standard non-linear sover, since we need only solve the non-linear system on a coarse mesh and then
-use that solution to solve a linear system on a fine mesh. To this end, in this section discusses
-the two-level finite element discretization for the pure streamfunction formulation of the SQGE and
-QGE in $H^2$ norm.
+Although, the streamfunction formulation of the QGE contains only one flow
+variable, the streamfunction $\psi$, the streamfunction formulation of the QGE
+still suffers from having to solve a large nonlinear system of equations. This
+is usually done by using a nonlinear solver, such as Newton's Method. These
+nonlinear solvers typically require solving large linear systems multiple times
+to obtain the solution to the nonlinear system. Solving these large linear
+systems multiple times can be time consuming. Thus, a two-level algorthm can
+improve solve times greatly over the standard non-linear sover, since we need
+only solve the non-linear system on a coarse mesh and then use that solution to
+solve a linear system on a fine mesh. To this end, in this section discusses the
+two-level finite element discretization for the pure streamfunction formulation
+of the SQGE and QGE in $H^2$ norm.

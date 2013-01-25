@@ -1,6 +1,6 @@
 The main goal of this section is to develop a rigorous numerical analysis for
 \autoref{alg:TwoLevel}. The proof for the error bounds follows a very similar pattern presented in
-\cite{Fairag98}. 
+\cite{Fairag98}.
 
 To this end, we first introduce an improved bound on the trilinear form $a_2(\zeta; \xi, \chi)$ using
 the discrete Sobolev inequality, i.e.
@@ -22,7 +22,7 @@ The following lemma will prove useful for proving the error bounds for \autoref{
     a_2(\psi; \xi, \chi) = a_2^*(\xi; \chi, \psi) - a_2^*(\chi; \xi, \psi)
     \label{eqn:eqn:trilinear}
   \end{equation}
-  where 
+  where
   \begin{equation}
     a_2^*(\xi; \chi, \psi) = \int_{\Omega}\! (\chi_y\xi_{xy}-\xi_x\chi_{yy}) \psi_y -
     (\xi_y\chi_{yx}-\xi_y\chi_{xx}) \psi_x \,d\vec{x}.
@@ -33,7 +33,7 @@ For a proof see \cite{Fairag98}.
 
 The following theorem gives the error bound after Step 2 and is the main result of this paper. The
 proof of this theorem is similar to the proof for a similar theorem in \cite{Fairag98}.
-\begin{theorem} \label{thm:2LTwoLevel}
+\begin{thm} \label{thm:2LTwoLevel}
   Let $X^h,\, X^H\in H^2_0(\Omega)$ be two finite element spaces. Let $\psi$ be the solution to
   \eqref{eqn:SQGEWF} and $\psi^h$ the solution to \eqref{eqn:Fine}. Then $\psi^h$ satisfies
   \begin{equation}
@@ -41,20 +41,20 @@ proof of this theorem is similar to the proof for a similar theorem in \cite{Fai
     \label{eqn:Error}
   \end{equation}
   where $C_1 = 2 + Re\,Ro^{-1} + Re^2 Ro^{-1} \Gamma_1 \|F\|_{-2}$ and $C_2= 2 Re^2 Ro^{-1} \Gamma_1
-  C\,\|F\|_{-2}$. 
-\end{theorem}
+  C\,\|F\|_{-2}$.
+\end{thm}
 \begin{proof}
   Subtracting \eqref{eqn:Fine} from \eqref{eqn:SQGEWF} and letting $\chi=\chi^h$ yields
   \begin{equation*}
-    a_1(\psi - \psi^h,\chi^h) + a_2(\psi;\psi,\chi^h) - a_2(\psi^H;\psi^h,\chi^h)  
+    a_1(\psi - \psi^h,\chi^h) + a_2(\psi;\psi,\chi^h) - a_2(\psi^H;\psi^h,\chi^h)
       + a_3(\psi-\psi^h,\chi^h) = 0, \quad \forall \chi^h \in X^h.
   \end{equation*}
   Using \autoref{lma:trilinear} gives
   \begin{equation*}
     \begin{split}
-      a_1(\psi - \psi^h,\chi^h) 
-        + a_2^*(\psi;\chi^h, \psi) - a_2^*(\chi^h;\psi,\psi) \\ 
-      - a_2^*(\psi^h;\chi^h,\psi^H) + a_2^*(\chi^h; \psi^h,\psi^H)  
+      a_1(\psi - \psi^h,\chi^h)
+        + a_2^*(\psi;\chi^h, \psi) - a_2^*(\chi^h;\psi,\psi) \\
+      - a_2^*(\psi^h;\chi^h,\psi^H) + a_2^*(\chi^h; \psi^h,\psi^H)
         + a_3(\psi-\psi^h,\chi^h) = 0, \quad \forall \chi^h \in X^h.
     \end{split}
   \end{equation*}
@@ -65,9 +65,9 @@ proof of this theorem is similar to the proof for a similar theorem in \cite{Fai
   gives
   \begin{equation*}
     \begin{split}
-      &a_1(\psi - \psi^h,\chi^h) 
-        + a_2^*(\psi-\psi^h;\chi^h, \psi) + a_2^*(\chi^h;\psi^h-\psi,\psi) \\ 
-      &\quad+ a_2^*(\psi^h;\chi^h,\psi-\psi^H) + a_2^*(\chi^h; \psi^h,\psi^H-\psi)  
+      &a_1(\psi - \psi^h,\chi^h)
+        + a_2^*(\psi-\psi^h;\chi^h, \psi) + a_2^*(\chi^h;\psi^h-\psi,\psi) \\
+      &\quad+ a_2^*(\psi^h;\chi^h,\psi-\psi^H) + a_2^*(\chi^h; \psi^h,\psi^H-\psi)
         + a_3(\psi-\psi^h,\chi^h) = 0, \quad \forall \chi^h \in X^h.
     \end{split}
   \end{equation*}
@@ -75,12 +75,12 @@ proof of this theorem is similar to the proof for a similar theorem in \cite{Fai
   $\Phi^h = \psi^h-\lambda^h$ and $\eta=\psi-\lambda^h$ and we have
   \begin{equation*}
     \begin{split}
-      &a_1(\Phi^h,\chi^h) 
-        + a_2^*(\Phi^h;\chi^h, \psi) - a_2^*(\chi^h;\Phi^h,\psi) 
+      &a_1(\Phi^h,\chi^h)
+        + a_2^*(\Phi^h;\chi^h, \psi) - a_2^*(\chi^h;\Phi^h,\psi)
         + a_3(\Phi^h,\chi^h) \\
-      &\quad = a_1(\eta,\chi^h) 
-        + a_2^*(\eta;\chi^h, \psi) - a_2^*(\chi^h;\eta,\psi) \\ 
-      &\quad+ a_2^*(\psi^h;\chi^h,\psi-\psi^H) + a_2^*(\chi^h; \psi^h,\psi^H-\psi)  
+      &\quad = a_1(\eta,\chi^h)
+        + a_2^*(\eta;\chi^h, \psi) - a_2^*(\chi^h;\eta,\psi) \\
+      &\quad+ a_2^*(\psi^h;\chi^h,\psi-\psi^H) + a_2^*(\chi^h; \psi^h,\psi^H-\psi)
         + a_3(\eta,\chi^h), \quad \forall \chi^h \in X^h.
     \end{split}
   \end{equation*}
@@ -88,9 +88,9 @@ proof of this theorem is similar to the proof for a similar theorem in \cite{Fai
   implies
   \begin{equation*}
     \begin{split}
-      a_1(\Phi^h,\Phi^h) + a_3(\Phi^h,\Phi^h) &= a_1(\eta,\Phi^h) 
-        + a_2^*(\eta;\Phi^h, \psi) - a_2^*(\Phi^h;\eta,\psi) \\ 
-      &\quad+ a_2^*(\psi^h;\Phi^h,\psi-\psi^H) + a_2^*(\Phi^h; \psi^h,\psi^H-\psi)  
+      a_1(\Phi^h,\Phi^h) + a_3(\Phi^h,\Phi^h) &= a_1(\eta,\Phi^h)
+        + a_2^*(\eta;\Phi^h, \psi) - a_2^*(\Phi^h;\eta,\psi) \\
+      &\quad+ a_2^*(\psi^h;\Phi^h,\psi-\psi^H) + a_2^*(\Phi^h; \psi^h,\psi^H-\psi)
         + a_3(\eta,\Phi^h).
     \end{split}
   \end{equation*}
@@ -98,14 +98,14 @@ proof of this theorem is similar to the proof for a similar theorem in \cite{Fai
   \autoref{lma:trilinear} implies
   \begin{equation*}
     \begin{split}
-      a_1(\Phi^h,\Phi^h) &= a_1(\eta,\Phi^h) + a_2(\psi;\eta,\Phi^h) \\ 
-      &\quad+ a_2^*(\psi^h;\Phi^h,\psi-\psi^H) + a_2^*(\Phi^h; \psi^h,\psi^H-\psi)  
+      a_1(\Phi^h,\Phi^h) &= a_1(\eta,\Phi^h) + a_2(\psi;\eta,\Phi^h) \\
+      &\quad+ a_2^*(\psi^h;\Phi^h,\psi-\psi^H) + a_2^*(\Phi^h; \psi^h,\psi^H-\psi)
         + a_3(\eta,\Phi^h).
     \end{split}
   \end{equation*}
   Using the error bounds given in \eqref{eqn:a1Cont}, \eqref{eqn:a2Cont}, \eqref{eqn:a3Cont},
   \eqref{eqn:lCont}, \autoref{lma:bImproved}, \autoref{thm:stability_sqge},
-  \autoref{thm:stability_fem_sqge} and \autoref{lma:Fine} gives 
+  \autoref{thm:stability_fem_sqge} and \autoref{lma:Fine} gives
   \begin{align*}
     Re^{-1} |\Phi^h|_2^2 &\le Re^{-1} |\eta|_2\, |\Phi^h|_2 + \Gamma_1\, |\psi|_2\, |\eta|_2\, |\Phi^h|_2 \\
       &\quad+ 2 \Gamma_1\, C\, |\psi^H|_2\, |\Phi^h|_2\, |\psi - \psi^H|_1 \sqrt{|\ln(h)|} + Ro^{-1}
@@ -126,16 +126,16 @@ proof of this theorem is similar to the proof for a similar theorem in \cite{Fai
       \psi^H|_1
   \end{equation*}
   where $C_1 = 2 + Re\,Ro^{-1} + Re^2 Ro^{-1} \Gamma_1 \|F\|_{-2}$ and $C_2= 2 Re^2 Ro^{-1} \Gamma_1
-  C\,\|F\|_{-2}$. 
+  C\,\|F\|_{-2}$.
 \end{proof}
 
 As an example, consider the case of the Argyris triangle; for this element we have the following inequalities
-for this particular element the following theorem follows from approximation theory \cite{Bernadou94} and Theorem 6.1.1 \cite{Ciarlet}: 
+for this particular element the following theorem follows from approximation theory \cite{Bernadou94} and Theorem 6.1.1 \cite{Ciarlet}:
 \begin{align*}
   |\psi - \psi^h|_j &\le Ch^{6-j} \\
-  |\psi - \psi^H|_j &\le CH^{6-j} 
+  |\psi - \psi^H|_j &\le CH^{6-j}
 \end{align*}
-\begin{corollary}
+\begin{corollary} \label{crl:Argyris2L}
   Let $X^h,\, X^H \in H^2_0(\Omega)$ be the Argyris finite elements, then $\psi^h$ satisfies
   \begin{equation}
     |\psi - \psi^h|_2 \le C_1 h^4 + C_2 \sqrt{|\ln(h)|}\cdot H^5.

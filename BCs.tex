@@ -1,0 +1,71 @@
+Unlike Lagrange FEs \emph{boundary conditions} (BCs) for $C^1$ FEs can be a bit
+tricky to implement. We will demonstrate the difficulty of implementing BCs for
+$C^1$ FEs through an example. Consider the \emph{Poisson problem}
+\begin{equation}
+  \begin{split}
+    -\Delta &u = f \quad \text{on } \Omega \\
+    &u = 0 \quad \text{on } \partial \Omega
+  \end{split}
+  \label{eqn:Poisson}
+\end{equation}
+The weak form of \eqref{eqn:Poisson} is given by
+\begin{equation}
+  \begin{split}
+    \text{Fi}&\text{nd }u \in X := H^1_0(\Omega) \text{ such that} \\
+    &(\nabla u, \nabla v) = (f, v) \quad \forall v \in X.
+  \end{split}
+  \label{eqn:PoissonWeak}
+\end{equation}
+Thus, for conforming FEs the FE formulation is given by
+\begin{equation}
+  \begin{split}
+    &\text{Find }u^H \in X^h \subset X \text{ such that} \\
+    (\nabla &u^h, \nabla v^h) = (f, v^h) \quad \forall v^h \in X^h.
+  \end{split}
+  \label{eqn:PoissonFE}
+\end{equation}
+Since $u \in H^1_0(\Omega)$ and $u^h \in X^h \subset H^1_0(\Omega)$ only $C^0$
+Lagrange FEs need be used. However, for demonstration purposes lets assume $u^h
+\in X^h \subset C^1(\Omega) \subset X$ and therefore Lagrange FEs are no longer
+an appropriate choice for our FE discretization.
+
+With Lagrange FEs the most straight forward and usual way to deal with BCs is to
+enforce them by explicitly setting the degrees of freedom (DoFs) on the boundary
+to zero and reduce the linear system to contain only the internal nodes. This
+can be seen graphically in \autoref{fig:ReducedBCs}. One major benefit to
+treating BCs in this way is in reducing the size of the linear system that must
+be solved, and therefore reducing computational time.
+\input{ReducedBC}
+
+This method can be problematic when using $C^1$ FEs. Consider the boundary
+$\partial \Omega = \Gamma_1 \bigcup \Gamma_2$, where $\Gamma_1$ and $\Gamma_2$
+correspond to the vertical and horizontal boundaries, respectively (see
+\autoref{fig:SplitBoundary}).  On $\Gamma_1$ we know $u=0$ which implies $u_y =
+u_{yy} = 0$ on $\Gamma_1$.  While on $\Gamma_2$ we know $u=0$ which implies $u_x
+= u_{xx} = 0$ on $\Gamma_2$. Thus, simply setting $u^h = 0$ on the boundary
+results in the DoFs corresponding to $u_x,\,u_y,\,u_{xx}$, and $u_{yy}$ not
+necessarily being set to zero. Thus, one must force these DoFs to be zero too or
+another scheme must be implemented to deal with this case. However, setting the
+appropriate DoFs to zero requires some analysis of the problem domain before
+implementation, which is problematic when one wants to implement a generalized
+code. To avoid this one can implement a Lagrange Multiplier scheme.
+\input{SplitBoundary}
+
+Let $\Lambda$ be the matrix of constraints implied by the BCs and $\lambda$ be
+the Lagrange multipliers, then one can enforce BCs in \eqref{eqn:PoissonFE} in
+the following way
+\begin{equation}
+  \begin{split}
+    A u^h + \Lambda^T \lambda &= \ell \\
+    \Lambda u^h + \varepsilon \lambda &= \mathbf{0},
+  \end{split}
+  \label{eqn:Lagrange}
+\end{equation}
+where
+\begin{equation*}
+  A = (\nabla v^h, \nabla v^h)
+\end{equation*}
+and $\varepsilon$ is a matrix consisting of ``small'' values along its
+diagonal. This $\epsilon$ is introduced to prevent a singular system from
+occurring.
+

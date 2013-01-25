@@ -6,10 +6,10 @@ let $\mathcal{T}^h$ denote a finite element triangulation of $\Omega$ with meshs
 triangle diameter) $h$. We consider a \emph{conforming} FEM discretization of \eqref{eqn:SQGEWF},
 i.e., $X^h \subset X = H_0^2(\Omega)$.
 
-The FEM discretization of the streamfunction formulation of the SQGE \eqref{eqn:SQGEWF} reads: 
+The FEM discretization of the streamfunction formulation of the SQGE \eqref{eqn:SQGEWF} reads:
 \begin{equation}
   \begin{split}
-    &\text{Find } \psi^h \in X^h \text{ such that} \\ 
+    &\text{Find } \psi^h \in X^h \text{ such that} \\
     a_1(\psi^h,\chi^h) + a_2&(\psi^h,\psi^h,\chi^h)
       + a_3(\psi^h,\chi^h) = \ell(\chi^h),\quad \forall \, \chi^h \in X^h.
     \label{eqn:SQGEFEF}
@@ -19,14 +19,14 @@ Using standard arguments \cite{Girault79,Girault86}, one can prove that, if the 
 used in proving the well-posedness result for the continuous case holds, then \eqref{eqn:SQGEFEF}
 has a unique solution $\psi^h$ (see Theorem 2.1 in \cite{Cayco86}). Furthermore, one can prove the
 following stability result for $\psi^h$ using the same arguments as those used in the proof of
-\eqref{thm:stability_sqge} for the continuous setting.  
-\begin{theorem} \label{thm:stability_fem_sqge} The
+\eqref{thm:stability_sqge} for the continuous setting.
+\begin{thm} \label{thm:stability_fem_sqge} The
   solution $\psi^h$ of \eqref{eqn:SQGEFEF} satisfies the following stability estimate:
  \begin{equation}
-   |\psi^h|_2 \le Re \, Ro^{-1} \, \| F \|_{-2} . 
+   |\psi^h|_2 \le Re \, Ro^{-1} \, \| F \|_{-2} .
    \label{eqn:stability_fem_sqge}
  \end{equation}
-\end{theorem}
+\end{thm}
 \begin{proof}
   The proof is almost identical to the proof of \autoref{thm:stability_sqge}, but is given here for
   completeness.
@@ -34,9 +34,9 @@ following stability result for $\psi^h$ using the same arguments as those used i
   Let $\chi^h = \psi^h$ in \eqref{eqn:SQGEFEF} which gives
   \begin{equation*}
     a_1(\psi^h,\psi^h) + a_2(\psi^h,\psi^h,\psi^h) + a_3(\psi^h,\psi^h) = \ell(\psi^h)\qquad  \forall
-    \pi^h \in X^h. 
+    \pi^h \in X^h.
   \end{equation*}
-  Since, $a_2(\psi^h, \psi^h, \psi^h) =0$ and $a_3(\psi^h,\psi^h)=0$ we have 
+  Since, $a_2(\psi^h, \psi^h, \psi^h) =0$ and $a_3(\psi^h,\psi^h)=0$ we have
   \begin{align*}
     a_1(\psi^h,\psi^h) &= \ell(\psi^h) \\
     Re^{-1}\, \|\psi^h\|_2^2 &= Ro^{-1}\, (F,\psi^h) \\
@@ -53,5 +53,5 @@ constructing subspaces of the space $H^2_0(\Omega)$. Since the standard, piecewi
 spaces are locally regular, this construction amounts in practice to finding FEM spaces $X^h$ that
 satisfy the inclusion $X^h \subset C^1({\bar \Omega})$, i.e., finding $C^1$ finite elements. As was
 discussed previously the Argyris finite element is an element of class $C^1$ and therefore will be
-the element of interest for the FE discretization of the SQGE. 
+the element of interest for the FE discretization of the SQGE.
 

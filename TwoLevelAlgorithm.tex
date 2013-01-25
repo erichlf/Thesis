@@ -1,12 +1,14 @@
-We consider an approximate solution to \eqref{eqn:SQGEWF} by a two-level finite element procedure
-as described by \cite{Fairag98,Layton93}. If we let $X^h,\, X^H \subset H^2_0(\Omega)$ denote two
-conforming finite element meshes with $H \gg h$. We compute an approximate solution $\psi^h$ in the
-finite element space $X^h$ by solving a linear system consisting of the degrees of freedom in $X^h$.
-This linear system requires us to first compute the approximate solution $\psi^H$ to the nonlinear
-system in the finite element space $X^H$ where the mesh is very coarse, i.e. $H \gg h$ and then
-using this solution, $\psi^H$, in the linear system. This procedure is as follows
+We consider an approximate solution to \eqref{eqn:SQGEWF} by a two-level finite
+element procedure as described by \cite{Fairag98,Layton93}. If we let $X^h,\,
+X^H \subset H^2_0(\Omega)$ denote two conforming finite element meshes with $H
+\gg h$. We compute an approximate solution $\psi^h$ in the finite element space
+$X^h$ by solving a linear system consisting of the degrees of freedom in $X^h$.
+This linear system requires us to first compute the approximate solution
+$\psi^H$ to the nonlinear system in the finite element space $X^H$ where the
+mesh is very coarse, i.e. $H \gg h$ and then using this solution, $\psi^H$, in
+the linear system. This procedure is as follows
 
-\begin{algorithm}[H]
+\begin{algorithm}%[H]
   \caption{}%Two-Level algorithm for the Streamfunction formulation of QGE}
   \label{alg:TwoLevel}
   \begin{enumerate}[Step 1:]
@@ -25,7 +27,8 @@ using this solution, $\psi^H$, in the linear system. This procedure is as follow
   \end{enumerate}
 \end{algorithm}
 \begin{lemma}\label{lma:Fine}
-  Given a solution $\psi^H$ of \eqref{eqn:Coarse}, then the solution to the following problem exists uniquely
+  Given a solution $\psi^H$ of \eqref{eqn:Coarse}, then the solution to the
+  following problem exists uniquely
     \begin{equation}
       \begin{split}
         \text{find } &\hat{\psi} \in H^2_0(\Omega) \text{ such that, for all } \chi\in H^2_0(\Omega), \\
@@ -36,12 +39,14 @@ using this solution, $\psi^H$, in the linear system. This procedure is as follow
     and satisfies $\|\hat{\psi}\|_2 \le Re\, Ro^{-1} \|F\|_{-2}$.
 \end{lemma}
 \begin{proof}
-  First we introduce a new continuous bilinear form $B:\, H^2_0(\Omega) \times H^2_0(\Omega) \to \R$ given by
+  First we introduce a new continuous bilinear form $B:\, H^2_0(\Omega) \times
+  H^2_0(\Omega) \to \R$ given by
   \begin{equation*}
     B(\psi,\chi) = a_1(\psi,\chi) + a_2(\psi^H;\psi,\chi) + a_3(\psi,\chi).
   \end{equation*}
-  B is continuous and coercive and therefore $\hat{\psi}$ exists and is unique. Now setting $\chi=\hat{\psi}$ in
-  \eqref{eqn:FineProb} and noting that $a_3(\psi,\chi) = -a_3(\chi,\psi)$ which implies that
+  B is continuous and coercive and therefore $\hat{\psi}$ exists and is unique.
+  Now setting $\chi=\hat{\psi}$ in \eqref{eqn:FineProb} and noting that
+  $a_3(\psi,\chi) = -a_3(\chi,\psi)$ which implies that
   $a_3(\hat{\psi},\hat{\psi}) = 0$ gives
   \begin{align*}
     Re^{-1} \|\hat{\psi}\|_2^2 &= \ell(\hat{\psi}) \\
@@ -57,9 +62,9 @@ using this solution, $\psi^H$, in the linear system. This procedure is as follow
   \end{equation*}
 \end{lemma}
 \begin{proof}
-  The bilinear form $B$ is continuous and coercive on $X^h$ and so $\psi^h$ exists and is unique. Setting,
-  $\chi^h=\psi^h$ in \eqref{eqn:Fine} and again noting that $a_3(\psi^h,\psi^h)=0$ and using
-  \eqref{eqn:lCont} gives
+  The bilinear form $B$ is continuous and coercive on $X^h$ and so $\psi^h$
+  exists and is unique. Setting, $\chi^h=\psi^h$ in \eqref{eqn:Fine} and again
+  noting that $a_3(\psi^h,\psi^h)=0$ and using \eqref{eqn:lCont} gives
   \begin{align*}
     Re^{-1} \|\psi^h\|_2^2 &= \ell(\psi^h) \\
     \|\psi^h\|_2 &= Re \frac{\ell(\psi^h)}{\|\psi^h\|_2} \\

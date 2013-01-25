@@ -1,84 +1,103 @@
-With the continuous increase in computational power, complex mathematical models are becoming more
-and more popular in the numerical simulation of oceanic and atmospheric flows. For some geophysical
-flows in which computational efficiency is of paramount importance, however, simplified mathematical
-models are central. For example, the \emph{quasi-geostrophic equations (QGE)}, a standard
+With the continuous increase in computational power, complex mathematical models
+are becoming more and more popular in the numerical simulation of oceanic and
+atmospheric flows. For some geophysical flows in which computational efficiency
+is of paramount importance, however, simplified mathematical models are central.
+For example, the \emph{quasi-geostrophic equations (QGE)}, a standard
 mathematical model for large scale oceanic and atmospheric flows
-\cite{Cushman11,Majda,Pedlosky92,Vallis06}, are often used in climate modeling \cite{Dijkstra05}.
+\cite{Cushman11,Majda,Pedlosky92,Vallis06}, are often used in climate modeling
+\cite{Dijkstra05}.
 
-The QGE are usually discretized in space by using the \emph{finite difference method} (FDM)
-\cite{San11}. The \emph{finite element method} (FEM), however, offers several advantages over the
-popular FDM, as outlined in \cite{Myers}: (i) an easy treatment of complex boundaries, such as those
-of continents for the ocean, or mountains for the atmosphere; (ii) an easy grid refinement to
-achieve a high resolution in regions of interest \cite{Cascon}; (iii) a natural treatment of
-boundary conditions; and (iv) a straightforward approach for the treatment of multiply connected
-domains \cite{Myers}. Despite these advantages, there are relatively few papers that consider the
-FEM applied to the QGE \cite{Cascon, Fix, LeProvost94, Myers, Stevens82}.
+The QGE are usually discretized in space by using the \emph{finite difference
+method} (FDM) \cite{San11}. The \emph{finite element method} (FEM), however,
+offers several advantages over the popular FDM, as outlined in \cite{Myers}: (i)
+an easy treatment of complex boundaries, such as those of continents for the
+ocean, or mountains for the atmosphere; (ii) an easy grid refinement to achieve
+a high resolution in regions of interest \cite{Cascon}; (iii) a natural
+treatment of boundary conditions; and (iv) a straightforward approach for the
+treatment of multiply connected domains \cite{Myers}. Despite these advantages,
+there are relatively few papers that consider the FEM applied to the QGE
+\cite{Cascon, Fix, LeProvost94, Myers, Stevens82}.
 
-To our knowledge, \emph{all} the FEM discretizations of the QGE have been developed for the
-streamfunction-vorticity formulation, none using the streamfunction formulation. The reason is
-simple: The streamfunction-vorticity formulation yields a second order \emph{partial differential
-equation (PDE)}, whereas the streamfunction formulation yields a fourth order PDE. Thus, although
-the streamfunction-vorticity formulation has two variables ($q$ and $\psi$) and the streamfunction
-formulation has just one ($\psi$), the former is the preferred formulation used in practical
-computations, since its conforming FEM discretization requires low-order ($C^0$) elements, whereas
-the latter requires high-order ($C^1$) elements.
+To our knowledge, \emph{all} the FEM discretizations of the QGE have been
+developed for the streamfunction-vorticity formulation, none using the
+streamfunction formulation. The reason is simple: The streamfunction-vorticity
+formulation yields a second order \emph{partial differential equation (PDE)},
+whereas the streamfunction formulation yields a fourth order PDE. Thus, although
+the streamfunction-vorticity formulation has two variables ($q$ and $\psi$) and
+the streamfunction formulation has just one ($\psi$), the former is the
+preferred formulation used in practical computations, since its conforming FEM
+discretization requires low-order ($C^0$) elements, whereas the latter requires
+high-order ($C^1$) elements.
 
-The streamfunction formulation is, from both mathematical and computational points of view,
-completely different from the vorticity-streamfunction formulation. Indeed, the FEM discretization
-of the streamfunction formulation generally requires the use of $C^1$ elements (for a conforming
-discretization), which makes their implementation challenging. From a mathematical point of view,
-however, the streamfunction formulation has the following significant advantage over the
-vorticity-streamfunction formulation: there are optimal error estimates for the FEM discretization
-of the streamfunction formulation (see the error estimate (13.5) and Table 13.1 in
-\cite{Gunzburger89}), whereas the available error estimates for the vorticity-streamfunction
-formulation are suboptimal.
+The streamfunction formulation is, from both mathematical and computational
+points of view, completely different from the vorticity-streamfunction
+formulation. Indeed, the FEM discretization of the streamfunction formulation
+generally requires the use of $C^1$ elements (for a conforming discretization),
+which makes their implementation challenging. From a mathematical point of view,
+however, the streamfunction formulation has the following significant advantage
+over the vorticity-streamfunction formulation: there are optimal error estimates
+for the FEM discretization of the streamfunction formulation (see the error
+estimate (13.5) and Table 13.1 in \cite{Gunzburger89}), whereas the available
+error estimates for the vorticity-streamfunction formulation are suboptimal.
 
-Despite the simplification made in formulating the QGE from the full-fledged equations of
-ocean, the numerical simulation of the QGE is still computationally challenging when integrating
-over long time periods, as is the case in climate modeling. Therefore, it is necessary to reduce the
-computational cost of QGE simulations. We will consider two (not necessarily independent) approaches
-to reducing this computational cost; The first, by using a \emph{Two-Level} method to calculate the
-streamfunction at each time step, and the second approach will be to apply \emph{Large Eddy
-Simulation (LES)}, namely \emph{Approximate Deconvolution} (AD), to the QGE. To our knowledge it
-will be the first time either of these approaches have been applied to the streamfunction formulation
+Despite the simplification made in formulating the QGE from the full-fledged
+equations of ocean, the numerical simulation of the QGE is still computationally
+challenging when integrating over long time periods, as is the case in climate
+modeling. Therefore, it is necessary to reduce the computational cost of QGE
+simulations. We will consider two (not necessarily independent) approaches to
+reducing this computational cost; The first, by using a \emph{Two-Level} method
+to calculate the streamfunction at each time step, and the second approach will
+be to apply \emph{Large Eddy Simulation (LES)}, namely \emph{Approximate
+Deconvolution} (AD), to the QGE. To our knowledge it will be the first time
+either of these approaches have been applied to the streamfunction formulation
 of the QGE.
 
-Two-level finite element discretizations are very promising approaches for finite element
-discretizations of nonlinear partial differential equations \cite{Fairag98,Layton93}. A Two-level
-finite element discretizations aims to solve a particular nonlinear elliptic equation by first
-solving the system on a coarse mesh and then using the coarse mesh solution as a linearized variable
-to solve the linearized elliptic equation on  a fine mesh. The attraction of such a method is that
-one need only solve the nonlinear equations on a coarse mesh and then use this solution to solve on
-a fine mesh, thereby reducing computational time without sacrificing much in the way of solution
-accuracy. The development of the two-level finite element discretization was originally by Xu in
-\cite{Xu94} and later algorithms for the Navier-Stokes Equations (NSE) were developed by Layton \cite{Layton93}, Fairag
-\cite{Fairag98, Fairag03}, and Shao \cite{Shao11}.
+Two-level finite element discretizations are very promising approaches for
+finite element discretizations of nonlinear partial differential equations
+\cite{Fairag98,Layton93}. A Two-level finite element discretizations aims to
+solve a particular nonlinear elliptic equation by first solving the system on a
+coarse mesh and then using the coarse mesh solution as a linearized variable to
+solve the linearized elliptic equation on  a fine mesh. The attraction of such a
+method is that one need only solve the nonlinear equations on a coarse mesh and
+then use this solution to solve on a fine mesh, thereby reducing computational
+time without sacrificing much in the way of solution accuracy. The development
+of the two-level finite element discretization was originally by Xu in
+\cite{Xu94} and later algorithms for the Navier-Stokes Equations (NSE) were
+developed by Layton \cite{Layton93}, Fairag \cite{Fairag98, Fairag03}, and Shao
+\cite{Shao11}.
 
-LES was developed mainly by the engineering and geophysics communities and has emerged as one of the
-most promising approaches for modeling turbulent flows \cite{Iliescu00}. In LES only the large
-spatial structures are computed directly while the interaction with small scales are modeled,
-allowing for a coarser spatial mesh. This coarser mesh leads to lower computational cost as compared
-to the \emph{direct numerical simulation} (DNS). However, when using LES one must address the
-\emph{closure problem}.  This closure problem is essentially the relationship between the energy
-cascade from small scales to large scales, in two dimensional flows, or from large scales to small
-scales, in three dimensional flows. Most of the development for LES models have been for 3D
-engineering flows \cite{Berselli06}.  Due to the difference in the energy cascade for 3D (forward
-energy cascade), as compared to 2D flows (inverse energy cascade), these LES closure models aren't
-appropriate for geophysical flows \cite{San11}. 
+LES was developed mainly by the engineering and geophysics communities and has
+emerged as one of the most promising approaches for modeling turbulent flows
+\cite{Iliescu00}. In LES only the large spatial structures are computed directly
+while the interaction with small scales are modeled, allowing for a coarser
+spatial mesh. This coarser mesh leads to lower computational cost as compared to
+the \emph{direct numerical simulation} (DNS). However, when using LES one must
+address the \emph{closure problem}.  This closure problem is essentially the
+relationship between the energy cascade from small scales to large scales, in
+two dimensional flows, or from large scales to small scales, in three
+dimensional flows. Most of the development for LES models have been for 3D
+engineering flows \cite{Berselli06}.  Due to the difference in the energy
+cascade for 3D (forward energy cascade), as compared to 2D flows (inverse energy
+cascade), these LES closure models aren't appropriate for geophysical flows
+\cite{San11}.
 
-The goals of this paper are five-fold. First, we use a $C^1$ finite element (the Argyris element)
-to discretize the streamfunction formulation of the QGE. To the best of our knowledge, this is the
-\emph{first} time that a $C^1$ finite element has been used in the numerical discretization of the
-QGE. Second, we derive optimal error estimates for the FEM discretization of the QGE and present
-supporting numerical experiments. To the best of our knowledge, this is the \emph{first} time that
-optimal error estimates for the QGE have been derived. Third, we present a Two-Level algorithm for
-solving the streamfunction formulation of the QGE and present the error analysis associated with
-this algorithm. To the best of our knowledge, this is the \emph{first} time that such an algorithm
-has been applied the the streamfunction formulation of the QGE. Fourth, we will present an LES
-closure model for the streamfunction formulation of the QGE and its theoretical framework. To the
-best of our knowledge, this is the \emph{first} time that LES has been applied to the streamfunction
-formulation of the QGE. Finally, we will present a finite element error analysis associated with the
-LES closure model applied to the streamfunction formulation of the QGE. To the best of our
-knowledge, this is the \emph{first} time that such an error analysis has been derived for LES
-applied to the streamfunction formulation of the QGE.
+The goals of this paper are five-fold. First, we use a $C^1$ finite element (the
+Argyris element) to discretize the streamfunction formulation of the QGE. To the
+best of our knowledge, this is the \emph{first} time that a $C^1$ finite element
+has been used in the numerical discretization of the QGE. Second, we derive
+optimal error estimates for the FEM discretization of the QGE and present
+supporting numerical experiments. To the best of our knowledge, this is the
+\emph{first} time that optimal error estimates for the QGE have been derived.
+Third, we present a Two-Level algorithm for solving the streamfunction
+formulation of the QGE and present the error analysis associated with this
+algorithm. To the best of our knowledge, this is the \emph{first} time that such
+an algorithm has been applied the the streamfunction formulation of the QGE.
+Fourth, we will present an LES closure model for the streamfunction formulation
+of the QGE and its theoretical framework. To the best of our knowledge, this is
+the \emph{first} time that LES has been applied to the streamfunction
+formulation of the QGE. Finally, we will present a finite element error analysis
+associated with the LES closure model applied to the streamfunction formulation
+of the QGE. To the best of our knowledge, this is the \emph{first} time that
+such an error analysis has been derived for LES applied to the streamfunction
+formulation of the QGE.
 

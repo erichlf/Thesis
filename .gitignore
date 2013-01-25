@@ -1,18 +1,13 @@
-Matlab/*.txt
-# automatically generated file - ignore it.
-Matlab/loadVectorFunction.m
 # ignore the log files.
 *.log
-*.bbl
-*.mex*
-*.el
-elf.sty
-siam*.cls
-siam10.clo
-siamtex.cls
-enforce_BC.m
-QGE_picard.m
-*.mesh
-loadvector*.m
-*.msh
+*.blg
 *.swp
+*.latexmain
+*.toc
+*.bbl
+*.blg
+*.lof
+*.lot
+*.aux
+*.out
+Thesis.pdf

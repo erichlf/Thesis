@@ -1,161 +1,259 @@
-The main goal of this section is to verify the theoretical rates of convergence developed in
-\autoref{sse:SQGE2LE} by comparing with the observed rates of convergence in our numerical tests.
-%Additonally, we intend to demonstrate the time savings from applying the Two-Level method to the
-%SQGE. To demonstrate that the two-level method is an affective way to address computational time we
-%must demonstrate that the error is at least the same order of convergence as the FE applied to SQGE
-%without the two-level method, or we must demonstrate that the cost of using a finer mesh that will
-%produce the same level of accuracy is still cheaper computationally.
-Unlike the previous section, for the two-level method we must demonstrate rates of convergence for
-two different meshes, the fine mesh, $h$, and the coarse mesh $H$. Since the error corresponding to
-the coarse mesh dominates the error corresponding to the fine mesh the rate of convergence in the
-coarse mesh is easy to demonstrate. To this end one need only pick a constant fine mesh and then
-refine the coarse mesh. By doing this one is able to demonstrate the rate of convergence in the
-coarse mesh. However, the rate of convergence in the fine mesh is a bit more trick to demonstrate,
-because as stated previously the coarse mesh error dominates the fine mesh error and therefore one
-must balance the error between the fine mesh and the coarse mesh so as to be able to demonstrate the
-rate of convergence in the fine mesh. To this end we set the error terms in
-\eqref{eqn:TwoLevelError} equal to eachother to come up with the relationship 
-\begin{equation}
-  h = \left(\ln h\right)^{\frac{1}{8}} H^{\frac{5}{4}}.
-  \label{eqn:OrderRelation}
-\end{equation}
-This relation is super linear and essentially means that the coarse mesh $H$ must be about half the
-size the fine mesh $h$. 
+The goal of this section is two-fold: first, we illustrate the computational
+efficiency of the two-level method, and second, we verify the theoretical rates
+of convergence developed in \autoref{sse:SQGE2LE}.  To illustrate the
+computational efficiency of the two-level method, we compare solution times for
+the full nonlinear one-level problem and for the two-level method applied to the
+SQGE. We choose coarse mesh/fine mesh pairs such that the ratio is
+$\nicefrac{1}{2}$. To verify the theoretical rates of convergence, we compare
+the theoretical error estimates to the observed rates of convergence from our
+numerical tests. For the one-level problem we rely on our original code that was
+benchmarked in \cite{Foster}.
 
-To this end we apply the Two-Level method to the SQGE \eqref{sqge_psi_1} with $Re=Ro=1$ and exact
-solution
+To this end we apply the two-level method to the SQGE \eqref{eqn:Streamfunction}
+with $Re=Ro=1$ and exact solution
 \begin{equation}
-  \left(\sin 4\pi x \cdot \sin 2\pi y\right)^2.
+  \psi(x,y) = \left(\sin 4\pi x \cdot \sin 2\pi y\right)^2.
   \label{eqn:2LExact}
 \end{equation}
-Additionally, the homogeneous boundary conditions are $\psi=\dfrac{\partial \psi}{\partial
-\mathbf{n}}=0$ and the forcing function $F$ corresponds to applying the SQGE to the exact solution
-\eqref{eqn:2LExact}. Theses BCs and exact solution will be used in all the Two-Level tests that
-follow.
+Additionally, the homogeneous boundary conditions are $\psi=\dfrac{\partial
+\psi}{\partial \vec{n}}=0$ and the forcing function $F$ corresponds to the exact
+solution \eqref{eqn:2LExact}. These boundary conditions and exact solution will
+be used in all the two-level tests that follow.
 
-First, we benchmark our numerical tests by running SQGE without the two-level method. Comparing to
-this benchmark will allows us to compare errors in the $H^2$ norm for SQGE to the errors in $H^2$
-norm with the two-level method applied.
-\begin{table}[H]
+\subsection{Practical Consideration}
+A key part of two-level algorithms is accessing a previous coarse mesh solution,
+i.e. finding the parent element given a child element. This step can negate any
+performance benefits if not implemented wisely. Indeed, let $ n $ be the number
+of elements in the FE discretization. For the unit square, a na\"{i}ve search
+across every element takes $ O(n/2) $ operations. This procedure may be improved
+with a binary search, which is summarized in \autoref{alg:TwoLevelLookup}.
+
+We note that every element on the fine mesh corresponds to exactly one element
+on the coarse mesh. However, a coarse mesh element may correspond to multiple
+elements on the fine mesh.
+
+\begin{algorithm}%[H]
+  \caption{ Given an element on the fine mesh determine the parent element on
+  the coarse mesh.}
+  \label{alg:TwoLevelLookup}
+  Before examining the fine mesh, sort the coarse mesh elements by their
+  centroid values.
+  \begin{enumerate}[Step 1:]
+    \item Select an element on the fine mesh and compute its centroid.
+    \item Perform a binary search across the coarse mesh elements until
+      the difference between the $ x $-values of the fine mesh centroid
+      and coarse mesh centroids is less than $ H $, the coarse mesh step
+      size. There should be many elements that fit this condition; save
+      them as a list.
+    \item Search through this list until we find the correct coarse mesh
+      element (that is, the centroid of the fine-mesh element is an
+      interior point of the correct coarse mesh element).
+  \end{enumerate}
+\end{algorithm}
+
+For the considered unit square, the binary search will examine on average
+$\log(n)$ elements, while the linear search component involves at most
+$\sqrt{n}/2$ elements. Therefore the search requires a $O(\sqrt{n}/2)$ number of
+element checks. Profiling results indicate that using
+\autoref{alg:TwoLevelLookup} to identify parent elements takes much less time
+than either setting up or solving the systems, so this approach is fast enough
+that lookup time does not contribute significantly to overall solution time.
+
+\subsection{Computational Efficiency}\label{sse:Efficiency}
+To illustrate the computational efficiency of the two-level method, we compare
+the simulation time for the standard one-level method (i.e. the full nonlinear
+system, without the two-level method) with the simulation time for the two-level
+method.
+
+In \autoref{tab:Efficiency}, the $L^2$-norm of the error ($e_{L^2}$), the
+$H^2$-norm of the error ($e_{H^2}$) and the simulation times are listed for
+various mesh sizes. For each fine mesh, we choose a coarse mesh that ensures the
+same order of magnitude for the errors in the one-level and two-level methods.
+For small values of the fine mesh size, $h$, the two-level method was
+significantly faster than the one-level method. The errors in the $H^2$-norm
+were nearly identical, while the error in the $L^2$-norm were generally of the
+same order of magnitude. We also note that the tolerance in Newton's method
+seems to cause a plateau in the $L^2$-norm of the error. The results in
+\autoref{tab:Efficiency} are illustrated graphically in
+\autoref{fig:Efficiency}. In this figure the simulation times of the one-level
+method (green) and of the two-level method (blue) are displayed for all the
+pairs $(h,H)$ in \autoref{tab:Efficiency}.  \autoref{fig:Efficiency} clearly
+shows that as the number of degrees of freedom (DoFs) increases, the
+computational efficiency of the two-level method increases as well.
+
+
+\begin{table}
   \begin{center}
-  \begin{tabular}{|c|c|c|c|c|}
-    \hline
-    $h$ & $DoFs$ & $e_2$ & $H^2$ order & time (s) \\
-    \hline
-    $\nicefrac{1}{2}$ & $70$ & $174.5$ & $-$ & $0.70114$ \\[0.2em] 
-    $\nicefrac{1}{4}$ & $206$ & $45.11$ & $1.951$ & $0.63921$ \\[0.2em] 
-    $\nicefrac{1}{8}$ & $694$ & $9.286$ & $2.28$ & $3.3169$ \\[0.2em] 
-    $\nicefrac{1}{16}$ & $2534$ & $0.6503$ & $3.836$ & $15.105$ \\[0.2em] 
-    $\nicefrac{1}{32}$ & $9670$ &  $0.03566$ & $4.189$ & $66.037$ \\[0.2em] 
-    $\nicefrac{1}{64}$ & $37766$ & $0.002109$ & $4.08$ & $303.05$ \\[0.2em]
-    \hline
-  \end{tabular}
-  \caption{Benchmark Errors and Rate of Convergence SQGE \eqref{sqge_psi_1}.}
-  \label{tab:2LBenchmark}
+    {\small
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+      \hline
+        $H$ & $h$    & DoFs, $H$ & DoFs, $h$ & $e_{L^2}$ & $e_{H^2}$ & time, $s$ \\
+      \hline
+      $-$         & $0.05146$   & $-$       & $4362$    & $4.286\times 10^{-8}$
+        & $1.648\times 10^{-3}$ & $3.328$ \\
+      $0.1083$    & $0.05146$   & $1158$    & $4362$    & $1.092\times 10^{-7}$
+        & $1.709\times 10^{-3}$            & $2.372$ \\
+      $-$         & $0.02561$   & $-$       & $16926$   & $5.748\times 10^{-10}$
+        & $1.009\times 10^{-4}$ & $19.92$ \\
+      $0.05146$   & $0.02561$   & $4362$    & $16926$   & $7.691\times 10^{-10}$
+        & $1.016\times 10^{-4}$           & $11.82$ \\
+      $-$         & $0.01597$   & $-$       & $43074$   & $4.751\times 10^{-11}$
+        & $1.793\times 10^{-5}$ & $55.69$ \\
+      $0.03384$   & $0.01597$   & $10983$   & $43074$   & $5.267\times 10^{-11}$
+        & $1.797\times 10^{-5}$ & $33.19$ \\
+      $-$         & $0.01277$   & $-$       & $66678$   & $8.66\times 10^{-12}$
+        & $6.207\times 10^{-6}$ & $102.4$ \\
+      $0.02561$   & $0.01277$   & $16926$   & $66678$   & $9.686\times 10^{-12}$
+        & $6.217\times 10^{-6}$ & $59.03$ \\
+      $-$         & $0.009659$  & $-$       & $116614$  & $3.876\times 10^{-12}$
+        & $2.382\times 10^{-6}$ & $161.7$ \\
+      $0.02035$   & $0.009659$  & $29501$   & $116614$  & $6.836\times 10^{-12}$
+        & $2.385\times 10^{-6}$ & $95.93$ \\
+      $-$         & $0.007959$  & $-$       & $170598$  & $4.791\times 10^{-12}$
+        & $1.111\times 10^{-6}$ & $325.1$ \\
+      $0.01597$   & $0.007959$  & $43074$   & $170598$  & $9.087\times 10^{-12}$
+        & $1.112\times 10^{-6}$ & $172.3$ \\
+      $-$         & $0.006854$  & $-$       & $230574$  & $1.79\times 10^{-11}$
+        & $6.16\times 10^{-7}$ & $401.7$ \\
+      $0.01436$   & $0.006854$  & $58131$   & $230574$  & $1.3\times 10^{-11}$
+        & $6.163\times 10^{-7}$ & $219.5$ \\
+      $-$         & $0.006374$  & $-$       & $264678$  & $3.912\times 10^{-11}$
+      & $3.846\times 10^{-7}$ & $559.7$ \\
+      $0.01277$   & $0.006374$  & $66678$   & $264678$  & $2.309\times 10^{-11}$
+        & $3.848\times 10^{-7}$ & $291.9$\\
+      $-$         & $0.005264$  & $-$       & $389994$  & $3.85\times 10^{-11}$
+        & $2.086\times 10^{-7}$ & $753.4$ \\
+      $0.01101$   & $0.005264$  & $98133$   & $389994$  & $6.495\times 10^{-11}$
+        & $2.087\times 10^{-7}$ & $397.7$ \\
+      \hline
+    \end{tabular}}
   \end{center}
+  \caption{Comparison of one-level and two-level methods: the $L^2$-norm of the
+    error ($e_{L^2}$), the $H^2$-norm of the error ($e_{H^2}$) and simulation
+    times.}
+  \label{tab:Efficiency}
 \end{table}
-As can be seen in \autoref{tab:2LBenchmark} the initial error is quite large in the $H^2$
-norm. This is due to lack of resolution in the approximate solution because of the mesh coarseness.
-The given exact solution \eqref{eqn:2LExact} has a period of $\dfrac{1}{2}$ in the $x$-direction and
-a period of one in the $y$-direction, therefore we must have a mesh size that much smaller than
-$\dfrac{1}{2}$ to be able to approximate the function appropriately. However, we see that by
-$h=\dfrac{1}{64}$ the error has on the order of $10^{-3}$ and the rate of convergence matches the
-theoretical rate of convergence predicted in \autoref{sec:QGEError}.
 
-\begin{table}[H]
+\begin{center}
+  \begin{figure}
+    \begin{center}
+    \includegraphics[width=4in,natwidth=610,natheight=642]{performanceplot.pdf}
+    \caption{The simulation times of the one-level method (green) and of the
+      two-level method (blue) are displayed for all the pairs $(h,H)$ in
+      \autoref{tab:Efficiency}.}
+    \label{fig:Efficiency}
+    \end{center}
+  \end{figure}
+\end{center}
+
+\subsection{Rates of Convergence}\label{sse:Rates}
+The goal of this subsection is to verify, numerically, the theoretical rates of
+convergence in \eqref{eqn:TwoLevelError} of Corollary \ref{crl:Argyris2L}. Unlike
+the theoretical error estimates for the one-level method developed in
+\cite{Foster}, for the two-level method we must verify rates of convergence
+for two different meshes: the fine mesh, $h$, and the coarse mesh, $H$.
+
+To verify, numerically, the theoretical rate of convergence with respect to $H$,
+given in \eqref{eqn:TwoLevelError}, we fix $h$ to a small value and we vary $H$.
+Thus, the total error in \eqref{eqn:TwoLevelError} will be dominated by the $H$
+term, i.e. the total error will of order $O(H^5)$. In \autoref{tab:TwoLevelH},
+we fix $h=0.0063$ and we vary $H$. The error in the $L^2$-norm ($e_{L^2}$), the
+error in the $H^2$-norm ($e_{H^2}$), and the rate of convergence with respect to
+$H$ are listed in \autoref{tab:TwoLevelH}. The rate of convergence follows the
+theoretical rate predicted in \eqref{eqn:TwoLevelError} (i.e. fifth-order). For the
+last mesh pair, however, the rate of convergence appears to drop off. This
+occurs because, for small values of $H$, the total error in
+\eqref{eqn:TwoLevelError} is not dominated anymore by the $H$ term.
+\begin{table}
   \begin{center}
-  \begin{tabular}{|c|c|c|c|c|c|}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
     \hline
-    $H$ & $DoFs$ for $H$ & $h$ & $DoFs$ for $h$ & $e_2$ & $H^2$ order \\
-    \hline
-    $\nicefrac{1}{2}$ & $70$ & $\nicefrac{1}{4}$ & $206$ & $45.44$ & $-$ \\[0.2em] 
-    $\nicefrac{1}{4}$ & $206$ & $\nicefrac{1}{8}$ & $694$ & $10.89$ & $2.061$ \\[0.2em] 
-    $\nicefrac{1}{8}$ & $694$ &$\nicefrac{1}{16}$ & $2534$ & $0.8404$ & $3.696$ \\[0.2em] 
-    $\nicefrac{1}{16}$ & $2534$ & $\nicefrac{1}{32}$ & $9670$ & $0.04075$ & $4.366$ \\[0.2em] 
-    $\nicefrac{1}{32}$ & $9670$ & $\nicefrac{1}{64}$ & $37766$ &  $0.002141$ & $4.25$ \\[0.2em] 
-    $\nicefrac{1}{64}$ & $37766$ & $\nicefrac{1}{128}$ & $149254$ & $0.0001298$ & $4.044$ \\[0.2em]
-    \hline
-  \end{tabular}
-  \caption{Errors and Rate of Convergence in $h$ for the Two-Level method applied to SQGE \eqref{sqge_psi_1}.}
-  \label{tab:TwoLevelh}
+      $H$ &   $h$ &   DoFs, $ H $ & DoFs, $ h $ & $e_{L^2}$ & $e_{H^2}$ & $H^2$ order \\
+      \hline
+      $0.43$ & $0.0063$ & $350$ & $296710$ & $2.26\times 10^{-3}$ & $4.54\times
+        10^{-1}$ & $-$ \\
+      $0.21$ & $0.0063$ & $1270$ & $296710$ & $4.39\times 10^{-5}$ & $1.755\time
+        10^{-2}$ & $4.45$ \\
+      $0.10$ & $0.0063$ & $4838$ & $296710$ & $1.86\times 10^{-7}$ & $4.92\times
+        10^{-4}$ & $5.04$ \\
+      $0.05$ & $0.0063$ & $18886$ & $296710$ & $2.11\times 10^{-9}$ &
+        $1.32\times 10^{-5}$ & $5.2$ \\
+      $0.025$ & $0.0063$ & $74630$ & $296710$ & $2..18\times 10^{-9}$ &
+        $6.02\times 10^{-7}$ & $4.45$ \\
+      \hline
+    \end{tabular}
   \end{center}
-\end{table}
-
-In \autoref{tab:TwoLevelh} we use the relationship \eqref{eqn:OrderRelation} to determine a mesh
-size relationship between $h$ and $H$. As stated previously, this relation implies that $H \approx
-\dfrac{h}{2}$ and therefore we chose the $(H,h)$ pairs corresponding to 
-\begin{equation*}
-  \left\{ \left(\frac{1}{2}, \frac{1}{4}\right),
-  \left(\frac{1}{4}, \frac{1}{8}\right),
-  \left(\frac{1}{8}, \frac{1}{16}\right),
-  \left(\frac{1}{16}, \frac{1}{32}\right),
-  \left(\frac{1}{32}, \frac{1}{64}\right),
-  \left(\frac{1}{64}, \frac{1}{128}\right)\right\}
-\end{equation*}
-so as to demonstrate the rate of convergence in $h$. As can be seen in \autoref{tab:TwoLevelh} the
-rate of convergence does, in deed, approach the rate of convergence predicted in
-\autoref{sse:SQGE2LE}. Additionally, we see that the $H^2$ errors are of the same order
-as the corresponding errors in \autoref{tab:2LBenchmark} for the same value of $h$.
-
-To demonstrate the rate of convergence in $H$ we take a constant fine mesh size of
-$h=\dfrac{1}{128}$ and vary the coarse mesh $H$. To this end we chose the $(H,h)$ pairs
-corresponding to 
-\begin{equation*}
-  \left\{ \left(\frac{1}{2}, \frac{1}{128}\right),
-  \left(\frac{1}{4}, \frac{1}{128}\right),
-  \left(\frac{1}{8}, \frac{1}{128}\right),
-  \left(\frac{1}{16}, \frac{1}{128}\right),
-  \left(\frac{1}{32}, \frac{1}{128}\right),
-  \left(\frac{1}{64}, \frac{1}{128}\right)\right\}.
-\end{equation*}
-
-\begin{table}[H]
-  \begin{center}
-  \begin{tabular}{|c|c|c|c|c|c|}
-    \hline
-    $H$ & $DoFs$ for $H$ & $h$ & $DoFs$ for $h$ & $e_2$ & $H^2$ order \\
-    \hline
-    $\nicefrac{1}{2}$ & $70$ & $\nicefrac{1}{128}$ & $149254$ & $7.653$ & $-$ \\[0.2em] 
-    $\nicefrac{1}{4}$ & $206$ & $\nicefrac{1}{128}$ & $149254$ & $5.916$ & $0.3715$ \\[0.2em] 
-    $\nicefrac{1}{8}$ & $694$ & $\nicefrac{1}{128}$ & $149254$ & $0.5373$ & $3.461$ \\[0.2em] 
-    $\nicefrac{1}{16}$ & $2534$ & $\nicefrac{1}{128}$ & $149254$ & $0.0199$ & $4.755$ \\[0.2em] 
-    $\nicefrac{1}{32}$ & $9670$ & $\nicefrac{1}{128}$ & $149254$ &  $0.0003779$ & $5.719$ \\[0.2em] 
-    $\nicefrac{1}{64}$ & $37766$ & $\nicefrac{1}{128}$ & $149254$ & $1.381\times 10^{-5}$ & $4.775$ \\[0.2em]
-    \hline
-  \end{tabular}
-  \caption{Errors and Rate of Convergence in $H$ for the Two-Level method applied to SQGE \eqref{sqge_psi_1}.}
+  \caption{Two-level method: the $L^2$-norm of the error ($e_{L^2}$), the
+  $H^2$-norm of the error ($e_{H^2}$), and the convergence rate with respect to
+  $H$}
   \label{tab:TwoLevelH}
-  \end{center}
 \end{table}
 
-As can be seen in \autoref{tab:TwoLevelH} the rate of convergence does, in deed, approach the rate
-of convergence predicted in \autoref{sse:SQGE2LE}. Additionally, we see that the $H^2$ errors are of
-the same order as the corresponding errors in \autoref{tab:2LBenchmark} for the same value of $h$.
+To verify, numerically, the theoretical rate of convergence with respect to
+$h$, given in \eqref{eqn:TwoLevelError}, we must proceed with caution. The reason is
+that a straightforward approach would fix $H$ and let $h$ go to zero. This
+approach, however, would fail, since the $H$ term would eventually dominate the
+total error. To avoid this, we consider the following scaling between the mesh
+sizes:
+\begin{equation}
+  H = C\, h,
+  \label{eqn:C-Scaling}
+\end{equation}
+where $C>1$. The scaling in \eqref{eqn:C-Scaling} implies that the total error
+in \eqref{eqn:TwoLevelError} is of order $O(h^4)$. Indeed, the second term on the
+right hand side of \eqref{eqn:TwoLevelError} now scales as follows:
+\begin{equation}
+  \begin{split}
+    C_2 \sqrt{|\ln(h)|}\, H^5 &\approx C_2 C \sqrt{|\ln(h)|}\, h^5 \\
+    \approx O(h^4),
+  \end{split}
+  \label{eqn:Balance}
+\end{equation}
+where in the last relation in \eqref{eqn:Balance} we used the fact that
+$\sqrt{|\ln(h)|}\, h \rightarrow 0$ when $h \rightarrow 0$ (which follows from
+l'Hospital's rule).
 
-%Finally, to demonstrate the computational efficiency of the two-level method we compare the time
-%required to run simulations for the SQGE with out the two-level method on various mesh sizes and
-%then we simulate the SQGE with the two-level method for the same fine mesh size as those used in the
-%non two-level method, while maintaining the same coarse mesh size accross all simulations. For these
-%simulations we will take the coarse mesh to be $H=\dfrac{1}{2}$ and vary the fine mesh $h$ over 
-%\begin{equation*}
-%  \left\{\frac{1}{2}, \frac{1}{4}, \frac{1}{8}, \frac{1}{16}, \frac{1}{32}, \frac{1}{64}\right\}.
-%\end{equation*}
-%
-%\begin{table}[H]
-%  \begin{center}
-%  \begin{tabular}{|c|c|c|c|c|c|c|}
-%    \hline
-%    $H$ & $DoFs$ for $H$ & $h$ & $DoFs$ for $h$ & $e_2$ & $H^2$ order & time (s) \\
-%    \hline
-%    $\nicefrac{1}{2}$ & $70$ & $\nicefrac{1}{2}$ & $70$ & $174.55$ & $-$ & $0.2287$ \\[0.2em] 
-%    $\nicefrac{1}{2}$ & $70$ & $\nicefrac{1}{4}$ & $206$ & $45.44$ & $1.941$ & $0.2898$ \\[0.2em] 
-%    $\nicefrac{1}{2}$ & $70$ &$\nicefrac{1}{8}$ & $694$ & $11.99$ & $ 1.922$ & $0.6902$ \\[0.2em] 
-%    $\nicefrac{1}{2}$ & $70$ & $\nicefrac{1}{16}$ & $2534$ & $7.681$ & $0.6431$ & $2.803$ \\[0.2em] 
-%    $\nicefrac{1}{2}$ & $70$ & $\nicefrac{1}{32}$ & $9670$ &  $7.653$ & $0.00511$ & $12.75$ \\[0.2em] 
-%    $\nicefrac{1}{2}$ & $70$ & $\nicefrac{1}{64}$ & $37766$ & $7.653$ & $1.526\times 10^{-5}$ & $58.67$ \\[0.2em]
-%    \hline
-%  \end{tabular}
-%  \caption{Errors and Rate of Convergence in $H$ for the Two-Level method applied to SQGE \eqref{sqge_psi_1}.}
-%  \label{tab:TwoLevelH}
-%  \end{center}
-%\end{table}
+\begin{remark}
+  We emphasize that the scaling in \eqref{eqn:C-Scaling} is not needed in the
+  two-level algorithm. We only use it in this subsection to monitor the
+  convergence rate with respect to $h$.
+\end{remark}
+
+In this subsection, we consider $C=2$ in \eqref{eqn:C-Scaling}. We note,
+however, that any other constant $C>1$ could be used in \eqref{eqn:C-Scaling}.
+With this choice, we are now ready to verify, numerically, the theoretical rate
+of convergence with respect to $h$ given in \eqref{eqn:TwoLevelError}, which, as
+shown in \eqref{eqn:Balance}, will be of order $O(h^4)$. In
+\autoref{tab:TwoLevelh}, for various mesh size pairs $(H=2h, h)$, we list the
+$L^2$-norm of the error ($e_{L^2}$), the $H^2$-norm of the error ($e_{H^2}$),
+and the rate of convergence. The rate of convergence follows the theoretical
+rate predicted in \eqref{eqn:TwoLevelError} (i.e. fourth-order).
+
+\begin{table}
+  \begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+    \hline
+      $H$ &   $h$  &  DoFs, $ H $ & DoFs, $ h $ & $e_{L^2}$ & $e_{H^2}$ & $H^2$ order \\
+      \hline
+      $1.1$ & $0.43$ & $38$ & $106$ & $1.31\times 10^{-2}$ & $5.832\times
+        10^0$ & $-$ \\
+      $0.43$ & $0.21$ & $106$ & $350$ & $2.25\times 10^{-3}$ & $6.61\times
+        10^{-1}$ & $2.56$ \\
+      $0.21$ & $0.10$ & $350$ & $1270$ & $4.40\times 10^{-5}$ & $3.65\times
+        10^{-2}$ & $3.96$ \\
+      $0.10$ & $0.05$ & $1270$ & $4838$ & $1.90\times 10^{-7}$ & $2.00 \times
+        10^{-3}$ & $4.10$ \\
+      $0.050$ & $0.025$ & $4838$ & $18886$ & $8.95\times 10^{-10}$ & $1.20\times
+        10^{-4}$ & $4.04$ \\
+      $0.025$ & $0.013$ & $18886$ & $74630$ & $1.36\times 10^{-10}$ &
+        $7.40\times 10^{-6}$ & $4.02$ \\
+      $0.013$ & $0.0063$ & $74630$ & $296710$ & $2.22\times 10^{-9}$ &
+        $4.68\times 10^{-7}$ & $3.99$ \\
+    \hline
+    \end{tabular}
+  \end{center}
+  \caption{Two-level method: the $L^2$-norm of the error ($e_{L^2}$), the
+  $H^2$-norm of the error ($e_{H^2}$), and the convergence rate with respect to
+  $h$}
+  \label{tab:TwoLevelh}
+\end{table}

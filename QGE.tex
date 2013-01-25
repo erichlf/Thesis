@@ -1,35 +1,41 @@
-One of the most popular mathematical models used in the study of large scale wind-driven ocean
-circulation is the QGE \cite{Cushman11,Vallis06}. The QGE represent a simplified model of the
-full-fledged equations (e.g., the Boussinesq equations), which allows efficient numerical
-simulations while preserving many of the essential features of the underlying large scale ocean
-flows. The assumptions used in the derivation of the QGE include the hydrostatic balance, the
-$\beta$-plane approximation, the geostrophic balance, and the eddy viscosity parametrization.
-Details of the derivation of the QGE and the approximations used along the way can be found in
-standard textbooks on geophysical fluid dynamics, such as
-\cite{Cushman11,Majda,Majda03,McWilliams06,Pedlosky92,Vallis06}. 
+One of the most popular mathematical models used in the study of large scale
+wind-driven ocean circulation is the QGE \cite{Cushman11,Vallis06}. The QGE
+represent a simplified model of the full-fledged equations (e.g., the Boussinesq
+equations), which allows efficient numerical simulations while preserving many
+of the essential features of the underlying large scale ocean flows. The
+assumptions used in the derivation of the QGE include the hydrostatic balance,
+the $\beta$-plane approximation, the geostrophic balance, and the eddy viscosity
+parametrization.  Details of the derivation of the QGE and the approximations
+used along the way can be found in standard textbooks on geophysical fluid
+dynamics, such as
+\cite{Cushman11,Majda,Majda03,McWilliams06,Pedlosky92,Vallis06}.
 
-In the \emph{one-layer QGE}, sometimes called the barotropic vorticity equation, the flow is assumed
-to be homogenous in the vertical direction. Thus, stratification effects are ignored in this model.
-The practical advantages of such a choice are obvious: the computations are two-dimensional, and,
-thus, the corresponding numerical simulation have a low computational cost. To include
-stratification effects, QGE models of increasing complexity have been devised by increasing the
-number of layers in the model (e.g., the two-layer QGE and the $N$-layer QGE \cite{Vallis06}). As a
-first step, in this report we use the one-layer QGE (referred to as ``the QGE" in what follows) to
-study the wind-driven circulation in an enclosed, midlatitude rectangular basin, which is a standard
-problem, studied extensively by modelers \cite{Cushman11, Layton08, Majda03, Majda, McWilliams06,
-Vallis06, Pedlosky92}. 
+In the \emph{one-layer QGE}, sometimes called the barotropic vorticity equation,
+the flow is assumed to be homogenous in the vertical direction. Thus,
+stratification effects are ignored in this model.  The practical advantages of
+such a choice are obvious: the computations are two-dimensional, and, thus, the
+corresponding numerical simulation have a low computational cost. To include
+stratification effects, QGE models of increasing complexity have been devised by
+increasing the number of layers in the model (e.g., the two-layer QGE and the
+$N$-layer QGE \cite{Vallis06}). As a first step, in this report we use the
+one-layer QGE (referred to as ``the QGE" in what follows) to study the
+wind-driven circulation in an enclosed, midlatitude rectangular basin, which is
+a standard problem, studied extensively by modelers \cite{Cushman11, Layton08,
+Majda03, Majda, McWilliams06, Vallis06, Pedlosky92}.
 
-The QGE are usually written as follows (see, e.g., equation (14.57) in \cite{Vallis06}, equation
-(1.1) in \cite{Majda}, equation (1.1) in \cite{Wang94}, and equation (1) in \cite{Greatbatch00}): 
+The QGE are usually written as follows (see, e.g., equation (14.57) in
+\cite{Vallis06}, equation (1.1) in \cite{Majda}, equation (1.1) in
+\cite{Wang94}, and equation (1) in \cite{Greatbatch00}):
 \begin{align}
   \frac{\partial q}{\partial t} + J(\psi , q) &= A \, \Delta q + F
     \label{qge_q_psi_dim_1} \\
   q &= \Delta \psi + \beta \, y , \label{qge_q_psi_dim_2}
 \end{align}
-where $q$ is the potential vorticity, $\psi$ is the velocity streamfunction, $\beta$ is the
-coefficient multiplying the $y$ coordinate (which is oriented northward) in the $\beta$-plane
-approximation \eqref{eqn:beta_plane}, $F$ is the forcing, $A$ is the eddy viscosity parametrization,
-and $J(\cdot , \cdot)$ is the Jacobian operator given by
+where $q$ is the potential vorticity, $\psi$ is the velocity streamfunction,
+$\beta$ is the coefficient multiplying the $y$ coordinate (which is oriented
+northward) in the $\beta$-plane approximation \eqref{eqn:beta_plane}, $F$ is the
+forcing, $A$ is the eddy viscosity parametrization, and $J(\cdot , \cdot)$ is
+the Jacobian operator given by
 \begin{align}
   J(\psi , q) := \frac{\partial \psi}{\partial x} \, \frac{\partial q}{\partial y} -
     \frac{\partial \psi}{\partial y} \, \frac{\partial q}{\partial x} . \label{eqn:jacobian}
@@ -38,56 +44,64 @@ The $\beta$-plane approximation reads
 \begin{align}
   f = f_0 + \beta \, y , \label{eqn:beta_plane}
 \end{align}
-where $f$ is the Coriolis parameter and $f_0$ is the reference Coriolis parameter (see, e.g., the
-discussion on page 84 in \cite{Cushman94} or Section 2.3.2 in \cite{Vallis06}).
+where $f$ is the Coriolis parameter and $f_0$ is the reference Coriolis
+parameter (see, e.g., the discussion on page 84 in \cite{Cushman94} or Section
+2.3.2 in \cite{Vallis06}).
 
-As noted in Chapter 10.7.2 in \cite{Vallis06} (see also \cite{San12}), the eddy viscosity parameter
-$A$ in \eqref{qge_q_psi_dim_1} is usually several orders of magnitude higher than the molecular
-viscosity. This choice allows the use of a coarse mesh in numerical simulations. The horizontal
-velocity $\mathbf{u}$ can be recovered from $\psi$ and $q$ by using the following formula:
+As noted in Chapter 10.7.2 in \cite{Vallis06} (see also \cite{San12}), the eddy
+viscosity parameter $A$ in \eqref{qge_q_psi_dim_1} is usually several orders of
+magnitude higher than the molecular viscosity. This choice allows the use of a
+coarse mesh in numerical simulations. The horizontal velocity $\mathbf{u}$ can
+be recovered from $\psi$ and $q$ by using the following formula:
 \begin{align}
-  \mathbf{u} := \nabla^{\perp} \psi = 
+  \mathbf{u} := \nabla^{\perp} \psi =
     \begin{pmatrix} - \frac{\partial \psi}{\partial y} \\
     \frac{\partial \psi}{\partial x}
   \end{pmatrix} .
 \label{eqn:u_psi}
 \end{align}
 
-The computational domain is standard \cite{Greatbatch00}, a rectangular, closed basin on a
-$\beta$-plane with the $y$ coordinate increasing northward and the $x$ coordinate eastward. The
-center of the basin is at $y=0$, the northern and southern boundaries are at $y = \pm \, L$,
-respectively, and the western and eastern boundaries are at $x = 0$ and $x = L$ (see Figure 1 in
+The computational domain is standard \cite{Greatbatch00}, a rectangular, closed
+basin on a $\beta$-plane with the $y$ coordinate increasing northward and the
+$x$ coordinate eastward. The center of the basin is at $y=0$, the northern and
+southern boundaries are at $y = \pm \, L$, respectively, and the western and
+eastern boundaries are at $x = 0$ and $x = L$ (see Figure 1 in
 \cite{Greatbatch00}).
 
-We are now ready to nondimensionalize the QGE \eqref{qge_q_psi_dim_1}-\eqref{qge_q_psi_dim_2}.
-There are several ways of nondimensionalizing the QGE, based on different scalings and involving
-different parameters (see standard textbooks, such as \cite{Cushman11,Majda,Pedlosky92,Vallis06}).
-Since the FEM error analysis in this report is based on a precise relationship among the
-nondimensional parameters of the QGE (see, e.g., \eqref{eqn:small_data_condition}), we present below
-a careful nondimensionalization of the QGE.
+We are now ready to nondimensionalize the QGE
+\eqref{qge_q_psi_dim_1}-\eqref{qge_q_psi_dim_2}.  There are several ways of
+nondimensionalizing the QGE, based on different scalings and involving different
+parameters (see standard textbooks, such as
+\cite{Cushman11,Majda,Pedlosky92,Vallis06}).  Since the FEM error analysis in
+this report is based on a precise relationship among the nondimensional
+parameters of the QGE (see, e.g., \eqref{eqn:small_data_condition}), we present
+below a careful nondimensionalization of the QGE.
 
-We first need to choose a length scale and a velocity scale. The length scale we choose is $L$, the
-width of the computational domain. The velocity scale is the Sverdrup velocity
+We first need to choose a length scale and a velocity scale. The length scale we
+choose is $L$, the width of the computational domain. The velocity scale is the
+Sverdrup velocity
 \begin{align}
   U := \frac{\pi \, \tau_0}{\rho \, H \, \beta \, L} , \label{eqn:velocity_scale}
 \end{align}
-where $\tau_0$ is the amplitude of the wind stress, $\rho$ is the density of the fluid, and $H$ is
-the height of the fluid. The Sverdrup balance, which was used in the derivation of
-\eqref{eqn:velocity_scale}, expresses the balance between the two dominant effects in the system:
-the $\beta$-effect and the curl of the divergence of the wind stress (see, e.g., Section 14.1.3 in
-\cite{Vallis06}). Once the length and velocity scales are chosen, the variables in the QGE
-\eqref{qge_q_psi_dim_1}-\eqref{qge_q_psi_dim_2} can be nondimensionalized as follows:
+where $\tau_0$ is the amplitude of the wind stress, $\rho$ is the density of the
+fluid, and $H$ is the height of the fluid. The Sverdrup balance, which was used
+in the derivation of \eqref{eqn:velocity_scale}, expresses the balance between
+the two dominant effects in the system: the $\beta$-effect and the curl of the
+divergence of the wind stress (see, e.g., Section 14.1.3 in \cite{Vallis06}).
+Once the length and velocity scales are chosen, the variables in the QGE
+\eqref{qge_q_psi_dim_1}-\eqref{qge_q_psi_dim_2} can be nondimensionalized as
+follows:
 \begin{align}
-  x^* = \frac{x}{L}, \quad 
-  y^* = \frac{y}{L}, \quad 
-  t^* = \frac{t}{L / U}, \quad 
+  x^* = \frac{x}{L}, \quad
+  y^* = \frac{y}{L}, \quad
+  t^* = \frac{t}{L / U}, \quad
   q^* = \frac{q}{\beta \, L}, \quad
   \psi^* = \frac{\psi}{U \, L} ,
 \label{eqn:nondimensional_variables}
 \end{align}
-where a $^*$ superscript denotes the nondimensional variable. We first nondimensionalize
-\eqref{qge_q_psi_dim_2}. Using \eqref{eqn:nondimensional_variables}, \eqref{qge_q_psi_dim_2}
-becomes
+where a $^*$ superscript denotes the nondimensional variable. We first
+nondimensionalize \eqref{qge_q_psi_dim_2}. Using
+\eqref{eqn:nondimensional_variables}, \eqref{qge_q_psi_dim_2} becomes
 \begin{align}
   \beta \, L \, q^* = \frac{1}{L^2} \, \Delta^* (U \, L \, \psi^*) + \beta \, (L \, y^*) .
   \label{qge_q_psi_nondim_1}
@@ -107,20 +121,24 @@ equation \eqref{qge_q_psi_nondim_2} becomes
   \label{qge_q_psi_nondim_3}
 \end{align}
 
-We note that all the nondimensionalizations in \eqref{eqn:nondimensional_variables} are naturally
-based on the velocity scale $U$ and the length scale $L$, except $q^*$. Indeed, a
-nondimensionalization of the form
+We note that all the nondimensionalizations in
+\eqref{eqn:nondimensional_variables} are naturally based on the velocity scale
+$U$ and the length scale $L$, except $q^*$. Indeed, a nondimensionalization of
+the form
 \begin{align}
   {\tilde q} = \frac{U}{L},
   \label{eqn:qge_q_psi_nondim_4}
 \end{align}
-would probably be more natural. Note that the alternative nondimensionalization in
-\eqref{eqn:qge_q_psi_nondim_4} is indeed correct, i.e., the variable ${\tilde q}$ is nondimensional.
-The main reason for which the nondimensionalization in \eqref{eqn:nondimensional_variables} is used
-instead the one in \eqref{eqn:qge_q_psi_nondim_4} is that the former yields just one constant (the
-Rossby number $Ro$) in \eqref{qge_q_psi_nondim_3}, whereas the latter would yield two constants.
+would probably be more natural. Note that the alternative nondimensionalization
+in \eqref{eqn:qge_q_psi_nondim_4} is indeed correct, i.e., the variable ${\tilde
+q}$ is nondimensional.  The main reason for which the nondimensionalization in
+\eqref{eqn:nondimensional_variables} is used instead the one in
+\eqref{eqn:qge_q_psi_nondim_4} is that the former yields just one constant (the
+Rossby number $Ro$) in \eqref{qge_q_psi_nondim_3}, whereas the latter would
+yield two constants.
 
-Next, we nondimensionalize \eqref{qge_q_psi_dim_1}. We start with the left-hand side:
+Next, we nondimensionalize \eqref{qge_q_psi_dim_1}. We start with the left-hand
+side:
 \begin{align}
   \frac{\partial q}{\partial t} &= ( \beta \, U) \, \frac{\partial q^*}{\partial t^*} ,
     \label{eqn:qge_q_psi_nondim_5} \\[0.2cm]
@@ -133,13 +151,13 @@ Next, we nondimensionalize \eqref{qge_q_psi_dim_1}. We start with the left-hand 
   \label{eqn:qge_q_psi_nondim_6}
 \end{align}
 
-Next, we nondimensionalize the right-hand side of \eqref{qge_q_psi_dim_1}. The first term can be
-nondimensionalized as follows:
+Next, we nondimensionalize the right-hand side of \eqref{qge_q_psi_dim_1}. The
+first term can be nondimensionalized as follows:
 \begin{align}
   \frac{\partial q}{\partial t} A \, \Delta q &= A \, \left( \frac{\partial^2 q}{\partial x^2} +
     \frac{\partial^2 q}{\partial y^2} \right)
 %\nonumber \\[0.2cm]
-%&= 
+%&=
     = A \,  \left( \frac{1}{L^2} \, \frac{\partial^2}{\partial {x^*}^2} \, (\beta \, L \, q^*) +
       \frac{1}{L^2} \, \frac{\partial^2}{\partial {y^*}^2} \, (\beta \, L \, q^*) \right) \nonumber
       \\[0.2cm]
@@ -167,56 +185,64 @@ Re
 \end{align}
 equation \eqref{eqn:qge_q_psi_nondim_9} becomes
 \begin{align}
-  \frac{\partial q^*}{\partial t^*} + J^*(\psi^*,q^*) &= Re^{-1} \, \Delta^* q^* 
+  \frac{\partial q^*}{\partial t^*} + J^*(\psi^*,q^*) &= Re^{-1} \, \Delta^* q^*
     + \frac{F}{\beta\, U} .
   \label{eqn:qge_q_psi_nondim_10}
 \end{align}
-As noted above, the Sverdrup balance expresses the balance between the two dominant effects in the
-system: the $\beta$-effect and the curl of the divergence of the wind stress (see, e.g., Section
-14.1.3 in \cite{Vallis06}).  The velocity scale $U$ in \eqref{eqn:velocity_scale} was chosen
-according to the Sverdrup balance.  Thus, the last term on the right-hand side of
+As noted above, the Sverdrup balance expresses the balance between the two
+dominant effects in the system: the $\beta$-effect and the curl of the
+divergence of the wind stress (see, e.g., Section 14.1.3 in \cite{Vallis06}).
+The velocity scale $U$ in \eqref{eqn:velocity_scale} was chosen according to the
+Sverdrup balance.  Thus, the last term on the right-hand side of
 \eqref{eqn:qge_q_psi_nondim_10} has the following units:
 \begin{align}
 \left[ \frac{F}{\beta \, U} \right]
 \sim \left[ \frac{\frac{\nabla \times (\nabla \cdot \tau_0)}{\rho}}{\beta \, U}  \right]
-\stackrel{\eqref{eqn:velocity_scale}}{\sim} 
+\stackrel{\eqref{eqn:velocity_scale}}{\sim}
 \left[ \frac{\frac{\nabla \times (\nabla \cdot \tau_0)}{\rho}}{\frac{\pi \, \tau_0}{\rho \, H \, L}}  \right] ,
 \label{eqn:qge_q_psi_nondim_11}
 \end{align}
-which, after the obvious simplification, is clearly nondimensional.
-Thus, \eqref{eqn:qge_q_psi_nondim_11} clearly shows that the last term on the right-hand side of \eqref{eqn:qge_q_psi_nondim_10} is nondimensional, so \eqref{eqn:qge_q_psi_nondim_10} becomes:
+which, after the obvious simplification, is clearly nondimensional.  Thus,
+\eqref{eqn:qge_q_psi_nondim_11} clearly shows that the last term on the
+right-hand side of \eqref{eqn:qge_q_psi_nondim_10} is nondimensional, so
+\eqref{eqn:qge_q_psi_nondim_10} becomes:
 \begin{align}
   \frac{\partial q^*}{\partial t^*} + J^*(\psi^*,q^*)
   &= Re^{-1} \, \Delta^* q^* + F^* .
 \label{eqn:qge_q_psi_nondim_12}
 \end{align}
 
-Dropping the $^*$ superscript in \eqref{eqn:qge_q_psi_nondim_12}, we obtain the nondimensional {\it
-vorticity-streamfunction formulation} of the \emph{one-layer quasigeostrophic equations}
+Dropping the $^*$ superscript in \eqref{eqn:qge_q_psi_nondim_12}, we obtain the
+nondimensional {\it vorticity-streamfunction formulation} of the \emph{one-layer
+quasi-geostrophic equations}
 \begin{align}
   \frac{\partial q}{\partial t} + J(\psi , q) &= Re^{-1} \, \Delta q + F \label{qge_q_psi_1} \\
   q &= Ro \, \Delta \psi + y, \label{qge_q_psi_2}
 \end{align}
 where $Re$ and $Ro$ are the Reynolds and Rossby numbers, respectively.
-%\textcolor{blue}{Traian: Make sure you define $Re$ and $Ro$.}
 
-Substituting \eqref{qge_q_psi_2} in \eqref{qge_q_psi_1} and dividing by $Ro$, we get the {\it
-streamfunction formulation} of the \emph{one-layer quasigeostrophic equations}
+Substituting \eqref{qge_q_psi_2} in \eqref{qge_q_psi_1} and dividing by $Ro$, we
+get the {\it streamfunction formulation} of the \emph{one-layer quasi-geostrophic
+equations}
 \begin{align}
   \frac{\partial \left[ \Delta \psi \right]}{\partial t} - Re^{-1} \, \Delta^2 \psi + J(\psi
     , \Delta \psi) + Ro^{-1} \, \frac{\partial \psi}{\partial x} = Ro^{-1} \, F. \label{qge_psi_1}
 \end{align}
-Equations \eqref{qge_q_psi_1}-\eqref{qge_q_psi_2} and \eqref{qge_psi_1} are the usual formulations
-of the one-layer QGE in streamfunction-vorticity and streamfunction formulations, respectively. We
-note that the streamfunction-vorticity formulation has two unknowns ($q$ and $\psi$), whereas the
-streamfunction formulation has only one unknown ($\psi$). The streamfunction-vorticity formulation,
-however, is more popular than the streamfunction formulation, since the former is a second-order
-PDE, whereas the latter is a fourth-order PDE.
+Equations \eqref{qge_q_psi_1}-\eqref{qge_q_psi_2} and \eqref{qge_psi_1} are the
+usual formulations of the one-layer QGE in streamfunction-vorticity and
+streamfunction formulations, respectively. We note that the
+streamfunction-vorticity formulation has two unknowns ($q$ and $\psi$), whereas
+the streamfunction formulation has only one unknown ($\psi$). The
+streamfunction-vorticity formulation, however, is more popular than the
+streamfunction formulation, since the former is a second-order PDE, whereas the
+latter is a fourth-order PDE.
 
-We also note that \eqref{qge_q_psi_2}-\eqref{qge_q_psi_1} and \eqref{qge_psi_1} are similar in form
-to the 2D NSE written in the streamfunction-vorticity and streamfunction formulations, respectively.
-Indeed, \eqref{qge_q_psi_1}-\eqref{qge_q_psi_2} and \eqref{qge_psi_1} are almost the same as
-(11.3)-(11.4) and (13.1) in \cite{Gunzburger89}, which are obtained by first writing 
+We also note that \eqref{qge_q_psi_2}-\eqref{qge_q_psi_1} and \eqref{qge_psi_1}
+are similar in form to the 2D NSE written in the streamfunction-vorticity and
+streamfunction formulations, respectively.  Indeed,
+\eqref{qge_q_psi_1}-\eqref{qge_q_psi_2} and \eqref{qge_psi_1} are almost the
+same as (11.3)-(11.4) and (13.1) in \cite{Gunzburger89}, which are obtained by
+first writing
 \begin{align}
   \mathbf{u} = \begin{pmatrix} \frac{\partial \psi}{\partial y} \\[0.2cm]
       - \frac{\partial \psi}{\partial x}
@@ -224,50 +250,58 @@ Indeed, \eqref{qge_q_psi_1}-\eqref{qge_q_psi_2} and \eqref{qge_psi_1} are almost
 \end{align}
 and then taking the curl of the 2D NSE.
 
-There are, however, several significant differences between the QGE and the 2D NSE. First, we note
-that the term $y$ in \eqref{qge_q_psi_2} and the corresponding term $\dfrac{\partial \psi}{\partial
-x}$ in \eqref{qge_psi_1}, which model the \emph{rotation effects} in the QGE, do not have
-counterparts in the 2D NSE.  Furthermore, the Rossby number, $Ro$, in the QGE, which is a measure of
-the rotation effects, does not appear in the 2D NSE.  However, apart from these two significant
-differences, the streamfunction-vorticity and streamfunction formulations of the QGE and the 2D NSE
-are quite similar.
+There are, however, several significant differences between the QGE and the 2D
+NSE. First, we note that the term $y$ in \eqref{qge_q_psi_2} and the
+corresponding term $\dfrac{\partial \psi}{\partial x}$ in \eqref{qge_psi_1},
+which model the \emph{rotation effects} in the QGE, do not have counterparts in
+the 2D NSE.  Furthermore, the Rossby number, $Ro$, in the QGE, which is a
+measure of the rotation effects, does not appear in the 2D NSE.  However, apart
+from these two significant differences, the streamfunction-vorticity and
+streamfunction formulations of the QGE and the 2D NSE are quite similar.
 
-Thus, for notation consistency (i.e., to ensure that the velocity and the streamfunction are related
-by \eqref{qge_psi_2}), we will consider the QGE \eqref{qge_psi_1} with $\psi$ replaced with $-\psi$:
+Thus, for notation consistency (i.e., to ensure that the velocity and the
+streamfunction are related by \eqref{qge_psi_2}), we will consider the QGE
+\eqref{qge_psi_1} with $\psi$ replaced with $-\psi$:
 \begin{align}
   -\frac{\partial \left[ \Delta \psi \right]}{\partial t} + Re^{-1} \, \Delta^2 \psi + J(\psi , \Delta \psi)
     - Ro^{-1} \, \frac{\partial \psi}{\partial x} = Ro^{-1} \, F .  \label{qge_psi_3}
 \end{align}
 
-At this point, let us comment on the significance of the two parameters in \eqref{qge_psi_3}, the
-Reynolds number $Re$ and the Rossby number $Ro$.  As in the 2D NSE case, $Re$ is the coefficient of
-the diffusion term $- \Delta q = \Delta^2 \psi$.  The higher $Re$, the smaller the magnitude of the
-diffusion term as compared with the nonlinear convective term $- J(\psi, \Delta \psi) = ( \nabla
-\psi^{\perp} \cdot \nabla ) q = (\mathbf{u} \cdot \nabla ) q$.  Since $Ro$, quantifying the rotation
-effects in the QGE, does not appear in the 2D NSE, its significance deserves a special attention.
-We first note that, for small $Ro$, which corresponds to large rotation effects, the forcing term
-$Ro^{-1} \, F$ becomes large as compared with the other terms.  But probably the most interesting
-term in \eqref{qge_psi_3} is $\displaystyle Ro^{-1} \, \frac{\partial \psi}{\partial x}$, which
-could be interpreted as a convection type term with respect to $\psi$, not to $q = -\Delta \psi$.
-When $Ro$ is small, $\displaystyle Ro^{-1} \, \frac{\partial \psi}{\partial x}$ becomes large.  In
-conclusion, the physically relevant cases for large scale oceanic flows, in which $Re$ is large and
-$Ro$ is small (i.e., small diffusion and high rotation, respectively) translate mathematically into
-a \emph{convection-dominated} PDE with \emph{large forcing}.  Thus, from a mathematical point of
-view, we expect the restrictive conditions used to prove the well-posedness of the 2D NSE
-\cite{Girault79,Girault86,Gunzburger89} will be even more restrictive in the QGE setting, due to the
-rotation effects.  We will later see that this is indeed the case.
+At this point, let us comment on the significance of the two parameters in
+\eqref{qge_psi_3}, the Reynolds number $Re$ and the Rossby number $Ro$.  As in
+the 2D NSE case, $Re$ is the coefficient of the diffusion term $- \Delta q =
+\Delta^2 \psi$.  The higher $Re$, the smaller the magnitude of the diffusion
+term as compared with the nonlinear convective term $- J(\psi, \Delta \psi) = (
+\nabla \psi^{\perp} \cdot \nabla ) q = (\mathbf{u} \cdot \nabla ) q$.  Since
+$Ro$, quantifying the rotation effects in the QGE, does not appear in the 2D
+NSE, its significance deserves a special attention.  We first note that, for
+small $Ro$, which corresponds to large rotation effects, the forcing term
+$Ro^{-1} \, F$ becomes large as compared with the other terms.  But probably the
+most interesting term in \eqref{qge_psi_3} is $\displaystyle Ro^{-1} \,
+\frac{\partial \psi}{\partial x}$, which could be interpreted as a convection
+type term with respect to $\psi$, not to $q = -\Delta \psi$.  When $Ro$ is
+small, $\displaystyle Ro^{-1} \, \frac{\partial \psi}{\partial x}$ becomes
+large.  In conclusion, the physically relevant cases for large scale oceanic
+flows, in which $Re$ is large and $Ro$ is small (i.e., small diffusion and high
+rotation, respectively) translate mathematically into a
+\emph{convection-dominated} PDE with \emph{large forcing}.  Thus, from a
+mathematical point of view, we expect the restrictive conditions used to prove
+the well-posedness of the 2D NSE \cite{Girault79,Girault86,Gunzburger89} will be
+even more restrictive in the QGE setting, due to the rotation effects.  We will
+later see that this is indeed the case.
 
-To completely specify the equations in \eqref{qge_psi_3}, we need to impose boundary conditions.
-The question of appropriate boundary conditions for the QGE is a thorny one, especially for the
-vorticity-streamfunction formulation (see \cite{Vallis06,Cummins} for a careful discussion of this
-issue).  In this report, we consider 
+To completely specify the equations in \eqref{qge_psi_3}, we need to impose
+boundary conditions.  The question of appropriate boundary conditions for the
+QGE is a thorny one, especially for the vorticity-streamfunction formulation
+(see \cite{Vallis06,Cummins} for a careful discussion of this issue).  In this
+report, we consider
 \begin{equation}
   \begin{split}
     \psi = \frac{\partial \psi}{\partial \mathbf{n}} = 0 \qquad \text{on } \partial \Omega, \\
-    \psi = \psi_0 \qquad \text{when } t = 0 
+    \psi = \psi_0 \qquad \text{when } t = 0
   \end{split}
 \label{qge_psi_4}
 \end{equation}
-which are also the boundary conditions used in \cite{Gunzburger89} for the streamfunction
-formulation of the 2D NSE.
+which are also the boundary conditions used in \cite{Gunzburger89} for the
+streamfunction formulation of the 2D NSE.
 
