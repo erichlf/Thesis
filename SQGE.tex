@@ -1,30 +1,34 @@
-When testing Finite Element code it is useful to simplify the problem and so even though in the
-``real'' world stationary ``flows'' don't exist the stationary QGE (SQGE) are useful in testing code.  Additionally,
-the time dependence of the QGE (\eqref{qge_psi_1}) adds aditional complexity to the finite element
-error analysis. Finite error analysis for time dependent problems usualy can be split into two
-parts; analysis of the spatial discretization that arizes through the application of finite
-elements, and the discretization error in time that arizes from the application of the method of
-lines. Thus, a FE error analysis of the SQGE is a good push off point for analysis of the
+When testing Finite Element code it is useful to simplify the problem and so
+even though in the ``real'' world stationary ``flows'' don't exist the
+stationary QGE (SQGE) are useful in testing code.  Additionally, the time
+dependence of the QGE (\eqref{qge_psi_1}) adds aditional complexity to the
+finite element error analysis. Finite error analysis for time dependent problems
+usualy can be split into two parts; analysis of the spatial discretization that
+arizes through the application of finite elements, and the discretization error
+in time that arizes from the application of the method of lines. Thus, a FE
+error analysis of the SQGE is a good push off point for analysis of the
 time-dependent QGE and is therefore the main motivation for presenting the SQGE.
 
-The SQGE are obtained by setting $\dfrac{\partial q}{\partial t}$ to $0$ in \eqref{qge_q_psi_1} and
-therefore we get the \emph{streamfunction formulation} of the \emph{one-layer stationary
-quasi-geostrophic equations}
+The SQGE are obtained by setting $\dfrac{\partial q}{\partial t}$ to $0$ in
+\eqref{qge_q_psi_1} and therefore we get the \emph{streamfunction formulation}
+of the \emph{one-layer stationary quasi-geostrophic equations}
 \begin{eqnarray}
-  Re^{-1} \, \Delta^2 \psi + J(\psi , \Delta \psi) - Ro^{-1} \, \frac{\partial \psi}{\partial x} =
-    Ro^{-1} \, F .
-  \label{sqge_psi_1}
+  Re^{-1} \, \Delta^2 \psi + J(\psi , \Delta \psi) - Ro^{-1} \, \frac{\partial
+    \psi}{\partial x} = Ro^{-1} \, F .
+  \label{eqn:SQGE_Psi}
 \end{eqnarray}
-Equations \eqref{qge_q_psi_1}-\eqref{qge_q_psi_2}, \eqref{qge_psi_1}, and \eqref{sqge_psi_1} are the
-usual formulations of the one-layer QGE in streamfunction-vorticity formulation, the one-layer QGE
-in streamfunction formulation, and the steady one-layer QGE in streamfunction formulation,
-respectively. 
+Equations \eqref{qge_q_psi_1}-\eqref{qge_q_psi_2}, \eqref{qge_psi_1}, and
+\eqref{eqn:SQGE_Psi} are the usual formulations of the one-layer QGE in
+streamfunction-vorticity formulation, the one-layer QGE in streamfunction
+formulation, and the steady one-layer QGE in streamfunction formulation,
+respectively.
 
-To completely specify the equations in \eqref{sqge_psi_1}, need to impose boundary conditions. For
-consistency and with the QGE (\eqref{qge_psi_1})  we consider 
+To completely specify the equations in \eqref{eqn:SQGE_Psi}, we need to impose
+boundary conditions. For consistency and with the QGE (\eqref{qge_psi_1})  we
+consider
 \begin{equation*}
   \psi = \frac{\partial \psi}{\partial \mathbf{n}} = 0 \qquad \text{on } \partial \Omega,
 \end{equation*}
-which, as stated previously, are also the boundary conditions used in \cite{Gunzburger89} for the
-streamfunction formulation of the 2D NSE.
+which, as stated previously, are also the boundary conditions used in
+\cite{Gunzburger89} for the streamfunction formulation of the 2D NSE.
 

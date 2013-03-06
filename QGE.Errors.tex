@@ -1,2 +1,310 @@
-In this section the finite error analysis for the QGE will be presented. We will rely heavily on the
-previous section containing the finite error analysis for the SQGE (\autoref{sec:SQGEErrors}).
+In this section we present the convergence of strong solutions, and the error
+analysis associated with the semi-discretization. We will rely heavily on the
+previous section containing the finite error analysis for the SQGE
+(\autoref{sec:SQGEErrors}).
+
+\begin{prop} \label{prop:Stability}
+  The solution to \eqref{eqn:SemiDiscretization}, $\psi^h$, is stable and for any $t>0$
+  \begin{equation}
+    \frac{1}{2}\|\nabla \psi^h(t)\|^2 + \frac{Re^{-1}}{2}\int_{0}^{t}\! \|\Delta
+      \psi^h(t')\|^2 \, dt' \le \frac{1}{2} \|\nabla \psi^h_0\|^2
+      + \frac{Re\, Ro^{-2}}{2} \int_{0}^{t}\! \|F(t')\|^2_{-1}\, dt'.
+    \label{eqn:Stability}
+  \end{equation}
+\end{prop}
+\begin{proof}
+  Take $\chi^h = \psi^h$ in \eqref{eqn:SemiDiscretization} and note $b(\psi^h;\psi^h,\psi^h)
+  = 0$ while since $(\psi^h_x,\psi^h) = -(\psi^h,\psi^h_x)$ then $(\psi^h_x,
+  \psi^h) = 0$. Thus, we have
+  \begin{equation*}
+    \frac{1}{2} \frac{d}{dt} \|\nabla \psi^h\|^2 + Re^{-1} \|\Delta \psi^h\|^2 =
+      Ro^{-1} (F,\psi^h).
+  \end{equation*}
+  Using H\"older's, Poincar\'e, and Young's inequalities gives
+  \begin{equation*}
+    \frac{1}{2} \frac{d}{dt} \|\nabla \psi^h\|^2 + Re^{-1} \|\Delta \psi^h\|^2 =
+      \frac{Ro^{-2} C_p}{2\epsilon} \|F\|_{-1}^2 + \frac{\epsilon}{2}\|\nabla
+      \psi^h\|^2.
+  \end{equation*}
+  Now taking $\epsilon = Re^{-1}$ results in
+  \begin{equation*}
+    \frac{1}{2} \frac{d}{dt} \|\nabla \psi^h\|^2 + \frac{Re^{-1}}{2} \|\Delta
+      \psi^h\|^2 = \frac{Re\,Ro^{-2} C_p}{2} \|F\|_{-1}^2.
+  \end{equation*}
+  Assuming $\|\nabla \psi^h\| \in L^1(0,T)$ and integrating over $(0,t)$ gives
+  the final result.
+\end{proof}
+
+\begin{lemma} \label{lma:BH2Bounds}
+  There is a finite constant $\Gamma_1$ such that for all $\psi,\, \varphi,\,
+  \chi \in X$,
+  \begin{equation}
+    b(\psi;\varphi,\chi) \le \Gamma_1 \|\Delta \psi\|\, \|\Delta \varphi\|\,
+      \|\Delta \chi\|
+    \label{eqn:BH2Bounds}
+  \end{equation}
+\end{lemma}
+\begin{proof}
+  By H\"older's inequality
+  \begin{equation}
+    b(\psi;\varphi,\chi) \le \|\Delta \psi\|_{L^p} \|\nabla \varphi\|_{L^q}
+      \|\nabla \chi\|_{L^r},\quad \frac{1}{p}+\frac{1}{q}+\frac{1}{r}=1,
+    \label{eqn:HolderB}
+  \end{equation}
+  where $1\le p,\,q,\,r\le \infty$. Thus, setting $p = 2$, and $q = r = 4$ gives
+  \begin{equation*}
+    b(\psi;\varphi,\chi) \le \|\Delta \psi\| \|\nabla \varphi\|_{L^4} \|\nabla
+      \chi\|_{L^4}.
+  \end{equation*}
+  Then applying the Ladyzhenskaya inequality results in
+  \begin{equation*}
+    b(\psi;\varphi,\chi) \le \Gamma \|\Delta \psi\|
+      \|\nabla \varphi\|^{\nicefrac{1}{2}} \|\Delta \varphi\|^{\nicefrac{1}{2}}
+      \|\nabla \chi\|^{\nicefrac{1}{2}} \|\Delta \chi\|^{\nicefrac{1}{2}}.
+  \end{equation*}
+  Finally, using the Poincar\'e inequality give
+  \begin{equation*}
+    b(\psi;\varphi,\chi) \le \Gamma_1 \|\Delta \psi\|\, \|\Delta \varphi\|\,
+      \|\Delta \chi\|.
+  \end{equation*}
+\end{proof}
+\begin{lemma} \label{lma:BH1Bound}
+  There is a finite constant $C$ such hat for all $\psi,\, \varphi,\, \chi \in
+  X$
+  \begin{equation}
+    b(\psi;\varphi,\chi) \le C \|\Delta \psi\|\, \|\Delta \varphi\|\,
+      \|\nabla \chi\|^{\nicefrac{1}{2}} \|\Delta \chi\|^{\nicefrac{1}{2}}
+    \label{eqn:BH1Bound}
+  \end{equation}
+\end{lemma}
+\begin{proof}
+  The proof is almost identical to \autoref{lma:BH2Bounds} except we do not
+  use the Poincar\'e inequality on $\|\nabla \chi\|$ after the Ladyzhenskaya
+  inequality.
+\end{proof}
+
+\begin{thm} \label{thm:StrongConvergence}
+  Let $\psi$ be a strong solution to the QGE, then there exists a \\ $C(T, F,
+  \psi_0, \Gamma_1, \Gamma_2, Re, Ro,\int_0^T\! |\Delta u|^4\, dt)$ such that
+  \begin{equation}
+    \begin{split}
+      \sup_{0\le t \le T} \|\nabla (\psi &- \psi^h) \|^2 + Re^{-1}
+        \int_{0}^{T}\! \|\Delta (\psi - \psi^h)\|^2 \, dt \le C\biggl\{
+          \|\nabla(\psi_0 - \psi^h(0))\|^2 \\
+        & + \inf_{\chi^h(t) \in X^h} \biggl[\|\nabla(\psi - \chi^h)_t\|^2_{-1} +
+          Re^{-1} \|\Delta(\psi - \chi^h)\|^2\, dt \\
+        & \qquad + \|\Delta(\psi - \chi^h)\|_{L^4(0,T;L^2)} + \max_{0 \le t \le T}
+          \|\nabla (\psi - \chi^h)\|^2\biggr] \biggr\}
+    \end{split}
+    \label{eqn:StrongConvergence}
+  \end{equation}
+
+\end{thm}
+\begin{proof}
+  Let $\chi = \chi^h \in X^h$ and subtract \eqref{eqn:SemiDiscretization} from
+  \eqref{eqn:QGEWF} then let $e:=\psi - \psi^h$ and we obtain
+  \begin{equation*}
+    (\nabla e_t, \nabla \chi^h) + \left[b(\psi;\psi,\chi^h) - b(\psi^h;\psi^h,\chi^h)\right]
+      + Re^{-1}(\Delta e, \Delta \chi^h) - Ro^{-1} (e_x, \chi^h) = 0\quad
+      \forall \chi^h \in X^h \subset X.
+  \end{equation*}
+  Now adding and subtracting $b(\psi^h;\psi,\chi^h$ gives
+  \begin{equation*}
+    (\nabla e_t, \nabla \chi^h) + \left[b(e;\psi,\chi^h) + b(\psi^h;e,\chi^h)\right]
+      + Re^{-1}(\Delta e, \Delta \chi^h) - Ro^{-1} (e_x, \chi^h) = 0\quad
+      \forall \chi^h \in X^h \subset X.
+  \end{equation*}
+  Take $\omega:[0,T] \to X^h$ arbitrary and decomposing the error $e = \eta -
+  \Phi^h$, where $\eta := \psi - \omega$ and $\Phi^h := \psi^h - \omega$,
+  results in
+  \begin{align*}
+    (\nabla \Phi^h_t, \nabla \chi^h) + Re^{-1}(\Delta \Phi^h, \Delta \chi^h)
+      & = (\nabla \eta_t, \nabla \chi^h) + Re^{-1}(\Delta \eta, \Delta \chi^h)
+      - Ro^{-1} \Gamma_2 \left[(\eta_x, \chi^h) - (\Phi^h_x, \chi^h)\right] \\
+    & + \left[ b(\eta;\psi,\chi^h) - b(\Phi^h;\psi,\chi^h)
+      + b(\psi^h;\eta,\chi^h) - b(\psi^h;\Phi^h,\chi^h)\right].
+  \end{align*}
+  Let $\chi^h = \Phi^h$ and noting $b(\psi^h;\Phi^h,\Phi^h) = 0$ and $(\Phi^h_x,
+  \Phi^h) = -(\Phi^h,\Phi^h_x) \Rightarrow (\Phi^h_x,\Phi^h) = 0$
+  \begin{align*}
+    \frac{1}{2} \frac{d}{dt} \|\nabla \Phi^h\|^2 + Re^{-1}\|\Delta \Phi^h\|^2
+       = (\nabla \eta_t, \nabla \Phi^h) &+ Re^{-1}(\Delta \eta, \Delta \Phi^h)
+      - Ro^{-1} \Gamma_2 (\eta_x, \Phi^h) \\
+    & + \left[ b(\eta;\psi,\Phi^h) - b(\Phi^h;\psi,\Phi^h)
+      + b(\psi^h;\eta,\Phi^h)\right].
+  \end{align*}
+  Using H\"older, bounds for $(\psi_x,\chi)$ given in \cite{Foster},
+  \autoref{lma:BH2Bounds}, and \autoref{lma:BH1Bound} we have
+  \begin{equation}
+    \begin{split}
+      \frac{1}{2} \frac{d}{dt} \|\nabla \Phi^h\|^2 + Re^{-1}\|\Delta \Phi^h\|^2
+        &= {\color{red} C_p} \|\nabla \eta_t\|_{-1} \|\Delta \Phi^h\|
+        + Re^{-1}\|\Delta \eta\|\, \|\Delta \Phi^h\|
+        - Ro^{-1} \Gamma_2 \|\Delta \eta\|, \|\Delta \Phi^h\| \\
+      & + \left[ b(\eta;\psi,\Phi^h) - b(\Phi^h;\psi,\Phi^h)
+        + b(\psi^h;\eta,\Phi^h)\right].
+    \end{split}
+    \label{eqn:HolderError}
+  \end{equation}
+  Then using Young's inequality we have
+  \begin{align}
+    \|\nabla \eta_t\|_{-1} \|\Delta \Phi^h\|
+      &\le \frac{\epsilon}{2} \|\Delta \Phi^h\|^2
+      + \frac{1}{2 \epsilon} \|\eta_t\|_{-1}^2 \label{eqn:YoungT} \\
+    Re^{-1} \|\Delta \eta\| \|\Delta \Phi^h\|
+      &\le \frac{\epsilon}{2} \|\Delta \Phi^h\|^2
+      + \frac{Re^{-2}}{2 \epsilon} \|\Delta \eta\|^2 \label{eqn:YoungLaplace} \\
+    Ro^{-1} \Gamma_2 \|\Delta \eta\| \|\Delta \Phi^h\|
+      &\le \frac{\epsilon}{2} \|\Delta \Phi^h\|^2
+      + \frac{Ro^{-2} \Gamma_2^2}{2 \epsilon} \|\Delta \eta\|^2 \label{eqn:YoungBeta}
+  \end{align}
+  while using Young's inequality with $\varepsilon = 2 \epsilon$ and
+  \autoref{lma:BH2Bounds}
+  \begin{equation}
+    b(\eta;\psi,\Phi^h)
+      \le \epsilon \|\Delta \Phi^h\|^2
+      + \frac{\Gamma_1^2}{4 \epsilon} \|\Delta \eta\|^2 \|\Delta \psi\|^2.
+      \label{eqn:YoungBH2}
+  \end{equation}
+  Combing \eqref{eqn:YoungT} - \eqref{eqn:YoungBH2} and \eqref{eqn:HolderError}
+  we obtain
+  \begin{equation}
+    \begin{split}
+    \frac{1}{2} \frac{d}{dt} \|\nabla \Phi^h\|^2 + \frac{1}{2}\left(2Re^{-1} -
+      5 \epsilon \right)\|\Delta \Phi^h\|^2
+      &\le \frac{1}{2 \epsilon}\left[\|\nabla \eta_t\|_{-1}^2
+      + \left( Re^{-2} - Ro^{-2} \Gamma_2^2 \right) \|\Delta \eta\|^2\right] \\
+     & + \frac{\Gamma_1^2}{4 \epsilon}\|\Delta \eta\|^2 \|\Delta \psi\|^2  -
+     \left[b(\Phi^h;\psi,\Phi^h) - b(\psi^h;\eta,\Phi^h)\right].
+    \end{split}
+    \label{eqn:B1Inequality}
+  \end{equation}
+  For the term $b(\Phi^h; \psi, \Phi^h)$ we use \autoref{lma:BH1Bound} and the
+  following inequality: given $a,\,b>0,$ for any $\epsilon > 0,\, 1\le p \le
+  \infty,\, \frac{1}{p} + \frac{1}{q} = 1$,
+  \begin{equation*}
+    ab \le \epsilon\, a^p + C(\epsilon,p)\, b^q
+  \end{equation*}
+  with $p=\nicefrac{4}{3},\, q = 4$ to obtain
+  \begin{align}
+    b(\Phi^h; \psi, \Phi^h) &\le \|\Delta \Phi^h\|^{\nicefrac{3}{2}}\left(C
+      \|\Delta \psi\| \|\nabla \Phi^h\|^{\nicefrac{1}{2}}\right) \nonumber \\
+    &\le \epsilon \|\Delta \Phi^h\|^2 + C(\epsilon,p) \|\Delta \psi\|^4
+      \|\nabla \Phi^h\|^2.
+    \label{eqn:EpsYoungH1}
+  \end{align}
+  Combining \eqref{eqn:B1Inequality} and \eqref{eqn:EpsYoungH1} gives
+  \begin{align*}
+    \frac{1}{2} \frac{d}{dt} \|\nabla \Phi^h\|^2 + \frac{1}{2}\left(2Re^{-1} -
+      7 \epsilon \right)\|\Delta \Phi^h\|^2
+      &\le \frac{1}{2 \epsilon}\left[\|\nabla \eta_t\|_{-1}^2
+      + \left( Re^{-2} - Ro^{-2} \Gamma_2^2 \right) \|\Delta \eta\|^2\right] \\
+    & + \frac{\Gamma_1^2}{2}\|\Delta \eta\|^2 \|\Delta \psi\|^2
+      + C(\epsilon, p) \|\Delta \psi\|^4 \|\nabla \Phi^h\|^2
+      + b(\psi^h;\eta,\Phi^h).
+  \end{align*}
+  For the final term involving $b(\psi^h; \eta, \Phi^h)$ we use
+  \eqref{eqn:YoungBH2}, which gives
+  \begin{align*}
+    \frac{1}{2} \frac{d}{dt} \|\nabla \Phi^h\|^2 + \frac{1}{2}\left(2Re^{-1} -
+      9 \epsilon \right)\|\Delta \Phi^h\|^2
+      &\le \frac{1}{2 \epsilon}\left[\|\nabla \eta_t\|_{-1}^2
+      + \left( Re^{-2} - Ro^{-2} \Gamma_2^2 \right) \|\Delta \eta\|^2\right] \\
+    & + \frac{\Gamma_1^2}{4 \epsilon}
+      \left( \|\Delta \psi\|^2 +  \|\Delta \psi^h\|^2\right) \|\Delta \eta\|^2
+      + C(\epsilon, p) \|\Delta \psi\|^4 \|\nabla \Phi^h\|^2.
+  \end{align*}
+  Take $\epsilon = \nicefrac{Re^{-1}}{9}$ and we have
+  \begin{equation}
+    \begin{split}
+      \frac{1}{2} \frac{d}{dt} \|\nabla \Phi^h\|^2
+        + \frac{Re^{-1}}{2} \|\Delta \Phi^h\|^2
+        & \le C_1(Re) \biggl[\|\nabla \eta_t\|_{-1}^2
+         + C(Ro) \|\Delta \eta\|^2 \\
+      & + \frac{\Gamma_1^2}{2}
+        \left( \|\Delta \psi\|^2 +  \|\Delta \psi^h\|^2\right)
+        \|\Delta \eta\|^2\biggr] + C_2(Re) \|\Delta \psi\|^4 \|\nabla \Phi^h\|^2.
+    \end{split}
+    \label{eqn:NoEps}
+  \end{equation}
+  Let $a(t):= C_2(Re) \|\Delta \psi\|^4$. Then if $a(t) \in L^1(0,T)$ then
+  \begin{equation}
+    A(t) = \int_{0}^{t}\! a(t')\, dt' < \infty \text{ for } \|\Delta \psi\| \in
+      L^4(0,T).
+    \label{eqn:L4Bound}
+  \end{equation}
+  Multiplying \eqref{eqn:NoEps} by the integrating factor $e^{-A(t)}$
+  \begin{align*}
+    \biggl\{ \frac{d}{dt}\left[\|\nabla \Phi^h\|^2\right]
+      &- C_2(Re) \|\Delta \psi\|^4 \|\nabla \Phi^h\|^2\biggr\} e^{-A(t)}
+       + Re^{-1} \|\Delta \Phi^h\|^2 e^{-A(t)} \\
+    & \le C_1(Re) \biggl[\|\nabla \eta_t\|_{-1}^2
+       + C(Ro) \|\Delta \eta\|^2 + \frac{\Gamma_1^2}{2}
+      \left( \|\Delta \psi\|^2 +  \|\Delta \psi^h\|^2\right)
+      \|\Delta \eta\|^2\biggr] e^{-A(t)},
+  \end{align*}
+  which can also be written as
+  \begin{align*}
+    \biggl\{ e^{-A(t)}\frac{d}{dt}
+      & \left[\|\nabla \Phi^h\|^2\right]
+      - \frac{d}{dt}\bigl[ A(t)\bigr] e^{-A(t)} \|\nabla \Phi^h\|^2\biggr\}
+      + Re^{-1} \|\Delta \Phi^h\|^2 e^{-A(t)} \\
+    & \le C_1(Re) \biggl[\|\nabla \eta_t\|_{-1}^2
+      + C(Ro) \|\Delta \eta\|^2 + \frac{\Gamma_1^2}{2}
+      \left( \|\Delta \psi\|^2 +  \|\Delta \psi^h\|^2\right)
+      \|\Delta \eta\|^2\biggr] e^{-A(t)},
+  \end{align*}
+  and simplifies to
+  \begin{align*}
+    \frac{d}{dt}\left[e^{-A(t)} \|\nabla \Phi^h\|^2\right]
+      &+ Re^{-1} \|\Delta \Phi^h\|^2 e^{-A(t)} \\
+    & \le C_1(Re) \biggl[\|\nabla \eta_t\|_{-1}^2
+      + C(Ro) \|\Delta \eta\|^2 + \frac{\Gamma_1^2}{2}
+      \left( \|\Delta \psi\|^2 +  \|\Delta \psi^h\|^2\right)
+      \|\Delta \eta\|^2\biggr] e^{-A(t)}.
+  \end{align*}
+  Now, integrating over $(0,t)$ and multiplying by $e^{A(t)}$ gives
+  \begin{align*}
+    \|\nabla \Phi^h\|^2 + Re^{-1} \int_0^t\! \|\Delta \Phi^h\|^2\, dt'
+      & \le C(T,Re) \|\nabla \Phi^h(0)\|^2 + C(T,Re) \int_0^t\! \|\nabla
+      \eta_t\|_{-1}^2 + C(Ro) \|\Delta \eta\|^2\, dt' \\
+    & + C \int_0^t\!  \left( \|\Delta \psi\|^2 +  \|\Delta \psi^h\|^2\right)
+      \|\Delta \eta\|^2\, dt'.
+  \end{align*}
+  By H\"older's inequality we have
+  \begin{equation}
+    \int_0^t\! \|\Delta \psi^h\|^2 \|\Delta \eta\|^2\, dt' \le \|\Delta
+      \psi^h\|^2_{L^2(0,T;L^2)} \|\Delta \eta\|^2_{L^4(0,T;L^2)},
+    \label{eqn:HolderPsih}
+  \end{equation}
+  and note that $\|\Delta \psi^h\|_{L^2(0,T;L^2)}$ can be bounded by problem
+  data from the stability bound.
+\end{proof}
+
+\begin{lemma} \label{lma:Interpolation}
+
+\end{lemma}
+
+\begin{thm} \label{thm:SemiInterp}
+  Let $X^h$ be the FE space associated with the Argyris element and let $I^h$
+  denote the interpolant in the space of $C^1$ piecewise polynomials of order
+  five. Suppose the interpolation estimates \autoref{lma:Interpolation}
+  in $H^{-1}(\Omega)$ hold and that $\psi, \psi_t \in C^1(\Omega\times [0,T])$.
+  Suppose also that the assumption of \autoref{thm:StrongConvergence} hold.
+  Then,
+  \begin{equation}
+    \begin{split}
+      \sup_{0\le t \le T} \|\nabla (\psi &- \psi^h) \|^2 + Re^{-1}
+        \int_{0}^{T}\! \|\Delta (\psi - \psi^h)\|^2 \, dt \le C\biggl\{
+          \|\nabla(\psi_0 - \psi^h(0))\|^2 \\
+        & + \inf_{\chi^h(t) \in X^h} \biggl[\|\nabla(\psi - \chi^h)_t\|^2_{-1} +
+          Re^{-1} \|\Delta(\psi - \chi^h)\|^2\, dt \\
+        & \qquad + \|\Delta(\psi - \chi^h)\|_{L^4(0,T;L^2)} + \max_{0 \le t \le T}
+          \|\nabla (\psi - \chi^h)\|^2\biggr] \biggr\}
+    \end{split}
+    \label{eqn:SemiInterp}
+  \end{equation}
+\end{thm}
+\begin{proof}
+
+\end{proof}

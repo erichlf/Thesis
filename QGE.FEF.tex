@@ -1,61 +1,70 @@
-In this section, we present the functional setting and some auxiliary results for the FEM
-discretization of the streamfunction formulation of the QGE \eqref{eqn:QGEWF}. Let
-$\mathcal{T}^h$ denote a finite element triangulation of $\Omega$ with meshsize (maximum triangle
-diameter) $h$. We consider a \emph{conforming} FEM discretization of \eqref{eqn:QGEWF}, i.e., $X^h
-\subset X = H_0^2(\Omega)$.
+In this section, we present the functional setting and some auxiliary results
+for the FEM discretization of the streamfunction formulation of the QGE
+\eqref{eqn:QGEWF}. Let $\mathcal{T}^h$ denote a finite element triangulation of
+$\Omega$ with meshsize (maximum triangle diameter) $h$. We consider a
+\emph{conforming} FEM discretization of \eqref{eqn:QGEWF}, i.e., $X^h \subset X
+= H_0^2(\Omega)$.
 
-The FEM discretization of the streamfunction formulation of the QGE \eqref{eqn:QGEWF} reads: 
+The FEM discretization of the streamfunction formulation of the QGE
+\eqref{eqn:QGEWF} reads:
 \begin{equation}
   \begin{split}
-    &\text{Find } \psi^h \in X^h \text{ such that} \\ 
+    &\text{Find } \psi^h \in X^h \text{ such that} \\
     \frac{\partial}{\partial t} a_0(\psi^h,\chi^h) + a_1(\psi^h,\chi^h) + a_2&(\psi^h,\psi^h,\chi^h)
       + a_3(\psi^h,\chi^h) = \ell(\chi^h),\quad \forall \, \chi^h \in X^h.
-    \label{eqn:QGEFE}
+    \label{eqn:SemiDiscretization}
   \end{split}
 \end{equation}
-Using standard arguments \cite{Girault79,Girault86}, one can prove that, if the small data condition
-used in proving the well-posedness result for the continuous case holds, then \eqref{eqn:QGEFE} has
-a unique solution $\psi^h$ (see Theorem 2.1 in \cite{Cayco86}). 
-%Furthermore, one can prove the
-%following stability result for $\psi^h$ using the same arguments as those used in the proof of
-%\eqref{thm:stability} for the continuous setting.
+Using standard arguments \cite{Girault79,Girault86}, one can prove that, if the
+small data condition used in proving the well-posedness result for the
+continuous case holds, then \eqref{eqn:SemiDiscretization} has a unique solution
+$\psi^h$ (see Theorem 2.1 in \cite{Cayco86}).
+%Furthermore, one can prove the following stability result for $\psi^h$ using
+%the same arguments as those used in the proof of \eqref{thm:stability} for the
+%continuous setting.
 %\begin{theorem} \label{thm:stability_fem}
-%The solution $\psi^h$ of \eqref{eqn:FEForm} satisfies the following stability estimate:
-% \begin{equation}
-%   |\psi^h|_2 
-%   \le Re \, Ro^{-1} \, \| F \|_{-2} . 
-%   \label{eqn:stability_fem_1}
-% \end{equation}
+%The solution $\psi^h$ of \eqref{eqn:FEForm} satisfies the following stability
+%estimate:
+%\begin{equation}
+%  |\psi^h|_2 \le Re \, Ro^{-1} \, \| F \|_{-2} .
+%\label{eqn:stability_fem_1}
+%\end{equation}
 %\end{theorem}
 
-As noted in Section 6.1 in \cite{Ciarlet} (see also Section 13.2 in \cite{Gunzburger89}, Section 3.1
-in \cite{Johnson}, and Theorem 5.2 in \cite{Braess}, in order to develop a conforming FEM for the
-QGE \eqref{eqn:QGEWF}, we are faced with the problem of constructing subspaces of the space
-$H^2_0(\Omega)$. Since the standard, piecewise polynomial FEM spaces are locally regular, this
-construction amounts in practice to finding FEM spaces $X^h$ that satisfy the inclusion $X^h \subset
-C^1({\bar \Omega})$, i.e., finding $C^1$ finite elements.
+As noted in Section 6.1 in \cite{Ciarlet} (see also Section 13.2 in
+\cite{Gunzburger89}, Section 3.1 in \cite{Johnson}, and Theorem 5.2 in
+\cite{Braess}, in order to develop a conforming FEM for the QGE
+\eqref{eqn:QGEWF}, we are faced with the problem of constructing subspaces of
+the space $H^2_0(\Omega)$. Since the standard, piecewise polynomial FEM spaces
+are locally regular, this construction amounts in practice to finding FEM spaces
+$X^h$ that satisfy the inclusion $X^h \subset C^1({\bar \Omega})$, i.e., finding
+$C^1$ finite elements.
 
-Several finite elements meet this requirement (see, e.g., Section 6.1 in \cite{Ciarlet}, Section
-13.2 in \cite{Gunzburger89}, and Section 5 in \cite{Braess}): the Argyris triangular element, the
-Bell triangular element, the Hsieh-Clough-Tocher triangular element (a macroelement), and the
+Several finite elements meet this requirement (see, e.g., Section 6.1 in
+\cite{Ciarlet}, Section 13.2 in \cite{Gunzburger89}, and Section 5 in
+\cite{Braess}): the Argyris triangular element, the Bell triangular element, the
+Hsieh-Clough-Tocher triangular element (a macroelement), and the
 Bogner-Fox-Schmit rectangular element).
 
-A description of the particular finite element we are using (the Argyris triangle
-\autoref{fig:Argyris}) and its tranformation will be thouroughly discussed in
-\autoref{sec:Argyris}). Additionaly, \eqref{eqn:QGEFE} is only a semi-discretization, since the
-formulation is still continuous in time, but discretized in space. Since there is no geometry in the
-time domain it makes sense to apply what has been called the \emph{method of lines (MoL)} in the time
-domain, i.e. use a \emph{finite difference} approximation for the time derivative. The MoL will be
-discussed further in \autoref{sec:MoL}.
+A description of the particular finite element we are using (the Argyris
+triangle \autoref{fig:Argyris}) and its tranformation will be thouroughly
+discussed in \autoref{sec:Argyris}). Additionaly, \eqref{eqn:SemiDiscretization}
+is only a semi-discretization, since the formulation is still continuous in
+time, but discretized in space. Since there is no geometry in the time domain it
+makes sense to apply what has been called the \emph{method of lines (MoL)} in
+the time domain, i.e. use a \emph{finite difference} approximation for the time
+derivative. The MoL will be discussed further in \autoref{sec:MoL}.
 
-%In what follows, we will use the Argyris triangular element, depicted in \autoref{fig:Argyris}.
-%  Finite elements of class $C^1$ are of particular interest when employing conforming finite elements
-%  for the Steam function formulation of the QGE. If we are to require conforming finite elements,
-%  Lagrange finite elements are not enough to guarantee continuity in the first derivative, and so to
-%  ensure continuity in the first derivative \cite{Johnson} the Argyris Element (depicted in
-%  \autoref{fig:Argyris}) was implemented in our numerical tests. The Argyris element is probably the
-%  best known of all $C^1$ finite elements \cite{Argyris,Dominguez06}, but appear to be rarely
-%  implemented. 
+%In what follows, we will use the Argyris triangular element, depicted in
+%\autoref{fig:Argyris}.  Finite elements of class $C^1$ are of particular
+%interest when employing conforming finite elements for the Steam function
+%formulation of the QGE. If we are to require conforming finite elements,
+%Lagrange finite elements are not enough to guarantee continuity in the first
+%derivative, and so to ensure continuity in the first derivative \cite{Johnson}
+%the Argyris Element (depicted in \autoref{fig:Argyris}) was implemented in our
+%numerical tests. The Argyris element is probably the best known of all $C^1$
+%finite elements \cite{Argyris,Dominguez06}, but appear to be rarely
+%implemented.
 
   %\input{Argyris.Triangle.tex}
   %\input{Argyris.tex}

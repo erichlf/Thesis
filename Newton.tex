@@ -1,13 +1,16 @@
-In this section, we briefly outline the implementation details of the Newton method used to solve the nonlinear system of equations resulting from the FEM discretization of the streamfunction formulation of the QGE \eqref{eqn:FEForm}.
+In this section, we briefly outline the implementation details of the Newton
+method used to solve the nonlinear system of equations resulting from the FEM
+discretization of the streamfunction formulation of the QGE
+\eqref{eqn:SemiDiscretization}.
 
 The Newton method is an iterative process that, at each iteration $n$, with $n=1, 2, \dots$ yields an approximation $\psi^h_n$ to the FEM approximation $\psi^h$.
-We start the iterative process by making an initial guess $\psi^h_0$.  
+We start the iterative process by making an initial guess $\psi^h_0$.
 Given $\psi^h_{n-1}$, the Newton iteration at the previous step, the Newton method computes the current step iteration $\psi^h_n$ according to the following formula:
 \begin{eqnarray}
   \left(
   \mathcal{J}(\psi^h_{n-1}) \, \Delta_n \psi^h , \chi^h
   \right)
-  &=& - 
+  &=& -
   \left(
   F(\psi^h_{n-1}) , \chi^h
   \right)
@@ -17,7 +20,7 @@ Given $\psi^h_{n-1}$, the Newton iteration at the previous step, the Newton meth
   \psi^h_n &=& \Delta_n \psi^h + \psi^h_{n-1},
   \label{eqn:NewPsi}
 \end{eqnarray}
-where 
+where
 \begin{eqnarray*}
   \left(
   F(\psi^h_{n-1}) , \chi^h
@@ -26,10 +29,10 @@ where
   \left(
   \mathcal{J}(\psi^h_{n-1}) \, \Delta_n \psi^h , \chi^h
   \right)
-  &=& a_0(\Delta_n \psi^h,\chi^h) 
-  + a_1(\Delta_n \psi^h,\psi^h_{n-1},\chi^h) 
+  &=& a_0(\Delta_n \psi^h,\chi^h)
+  + a_1(\Delta_n \psi^h,\psi^h_{n-1},\chi^h)
   \nonumber \\[0.2cm]
-  && + a_1(\psi^h_{n-1},\Delta_n \psi^h,\chi^h) 
+  && + a_1(\psi^h_{n-1},\Delta_n \psi^h,\chi^h)
   + a_2(\Delta_n \psi^h,\chi^h)
 \end{eqnarray*}
 is the Jacobian, and

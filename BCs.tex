@@ -19,7 +19,7 @@ The weak form of \eqref{eqn:Poisson} is given by
 Thus, for conforming FEs the FE formulation is given by
 \begin{equation}
   \begin{split}
-    &\text{Find }u^H \in X^h \subset X \text{ such that} \\
+    &\text{Find }u^h \in X^h \subset X \text{ such that} \\
     (\nabla &u^h, \nabla v^h) = (f, v^h) \quad \forall v^h \in X^h.
   \end{split}
   \label{eqn:PoissonFE}
@@ -51,21 +51,42 @@ implementation, which is problematic when one wants to implement a generalized
 code. To avoid this one can implement a Lagrange Multiplier scheme.
 \input{SplitBoundary}
 
-Let $\Lambda$ be the matrix of constraints implied by the BCs and $\lambda$ be
-the Lagrange multipliers, then one can enforce BCs in \eqref{eqn:PoissonFE} in
-the following way
+Rewrite the FE formulation, \eqref{eqn:PoissonFE}, in the following way
 \begin{equation}
   \begin{split}
-    A u^h + \Lambda^T \lambda &= \ell \\
-    \Lambda u^h + \varepsilon \lambda &= \mathbf{0},
+    A u &= \ell \\
+    \Lambda u &= b,
   \end{split}
+  \label{eqn:ConstrainedPoisson}
+\end{equation}
+where is $\Lambda u = b$ is the constraint equation descibing the boundary
+conditions and $A u = \ell$ is the FE formulation of the Poisson equation.
+Then the \emph{variational form} of \eqref{eqn:ConstrainedPoisson} is
+\begin{equation}
+  L(u,\lambda) = \frac{1}{2}u^T A u - u^T \ell + \lambda^T (\Lambda u - b),
+  \label{eqn:Variational}
+\end{equation}
+where $\lambda$ is the Lagrange multiplier. Using the first derivative condition
+results in
+\begin{equation}
+  \begin{split}
+    \frac{d L}{du} &= Au - \ell + \Lambda^t \lambda = 0 \\
+    \frac{d L}{d\lambda} &= \Lambda u - b = 0.
+  \end{split}
+  \label{eqn:Condition}
+\end{equation}
+Thus, given $b = \mathbf{0}$ the new system of equations using Lagrange
+multipliers for boundary constraints is given by
+\begin{equation}
+  \begin{bmatrix}
+    A & \Lambda^T \\
+    \Lambda &  \mathbf{0} \\
+  \end{bmatrix} \begin{bmatrix}
+    u \\ \lambda
+  \end{bmatrix} = \begin{bmatrix}
+    \ell \\ \mathbf{0}
+  \end{bmatrix}.
   \label{eqn:Lagrange}
 \end{equation}
-where
-\begin{equation*}
-  A = (\nabla v^h, \nabla v^h)
-\end{equation*}
-and $\varepsilon$ is a matrix consisting of ``small'' values along its
-diagonal. This $\epsilon$ is introduced to prevent a singular system from
-occurring.
-
+To avoid zeros on the main diagonal we add a small perturbation, $\varepsilon$,
+in the lower right.

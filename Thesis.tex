@@ -2,7 +2,7 @@
 \usepackage{elf}
 
 \title{
-  Finite Elements for the Ocean
+  Finite Elements for the Quasi-Geostrophic Equations of the Ocean
 }
 
 \keywords{Quasi-geostrophic equations, finite element method, Argyris element.}
@@ -67,18 +67,18 @@
     \section{Stationary QGE} \label{sec:SQGE}
     \input{SQGE.tex}
 
-  \chapter{Weak Solutions and Well Posedness} \label{ch:WellPosed}
-    \section{QGE Weak Formulation} \label{sec:QGEWeak}
-    \input{QGE.WF.tex}
+  \chapter{Mathematical Framework} \label{ch:WellPosed}
+    \section{QGE Strong Formulation} \label{sec:QGEWeak}
+    \input{QGE.SF.tex}
     \section{SQGE Weak Formulation} \label{sec:SQGEWeak}
     \input{SQGE.WF.tex}
       \subsection{Well-Posedness of SQGE}
       \input{SQGE.WP.tex}
 
-  \chapter{Finite Element Formulation} \label{ch:FEM}
-    \section{QGE Finite Element Formulation} \label{sec:QGEFEM}
+    \chapter{Finite Element Discretization}\label{ch:FEM}
+    \section{QGE Finite Element Discretization} \label{sec:QGEFEM}
     \input{QGE.FEF.tex}
-    \section{SQGE Finite Element Formulation} \label{sec:SQGEFEM}
+    \section{SQGE Finite Element Discretization} \label{sec:SQGEFEM}
     \input{SQGE.FEF.tex}
     \section{Argyris Element} \label{sec:Argyris}
     \input{Argyris.tex}
@@ -90,6 +90,8 @@
       \input{Normal.Derivs.tex}
       \subsection{Interpolation Error} \label{sse:IntErr}
       \input{Interpolation.tex}
+    \section{Boundary Conditions} \label{sse:BCs}
+    \input{BCs.tex}
     \section{Two Level Method} \label{sec:TwoLevel}
     \input{TwoLevel.tex}
       \subsection{Two Level Algorithm} \label{sse:Algorithm}
@@ -100,12 +102,12 @@
   \chapter{Error Analysis} \label{ch:Errors}
     \section{SQGE} \label{sec:SQGEErrors}
     \input{SQGE.Error.tex}
-      \subsection{Two Level Method} \label{sse:SQGE2LE}
-      \input{TwoLevelErrors.tex}
+    \section{Two Level Method} \label{sse:SQGE2LE}
+    \input{TwoLevelErrors.tex}
     \section{QGE} \label{sec:QGEError}
     \input{QGE.Errors.tex}
 
-  \chapter{Numerical Tests} \label{ch:Tests}
+  \chapter{Numerical Experiments} \label{ch:Tests}
   \section{SQGE} \label{sec:SQGETests}
   \input{SQGE.Tests.tex}
   \section{SQGE Two-Level} \label{sec:SQGE2LTests}
@@ -122,7 +124,5 @@
   \appendix
   \chapter{Newton Method} \label{sec:Newton}
   \input{Newton.tex}
-  \chapter{Boundary Conditions} \label{sse:BCs}
-  \input{BCs.tex}
 \end{document}
 

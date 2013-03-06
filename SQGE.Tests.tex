@@ -1,5 +1,5 @@
 The main goal of this section is twofold. First, we show that the FE
-discretization of the streamfunction formulation of the SQGE \eqref{sqge_psi_1}
+discretization of the streamfunction formulation of the SQGE \eqref{eqn:SQGE_Psi}
 with the Argyris element produces accurate numerical approximations. To this
 end, we benchmark our numerical results against those in the published
 literature \cite{Vallis06, Cascon, Myers}. The second goal is to show that the
@@ -9,7 +9,7 @@ rates of convergence to the theoretical rates of convergence developed in
 \autoref{sec:SQGEErrors}.
 
 Although the pure streamfunction formulation of the steady SQGE
-\eqref{sqge_psi_1} is our main concern, we also test our Argyris FE
+\eqref{eqn:SQGE_Psi} is our main concern, we also test our Argyris FE
 discretization on two simplified settings: \begin{inparaenum}[(i)] \item the
 \emph{Linear Stommel} model; and \item \emph{Linear Stommel-Munk} model.
 \end{inparaenum} The reason for using these two additional numerical tests is
@@ -19,7 +19,7 @@ reports of Myers \emph{et al.} \cite{Myers}, and Cascon \emph{et al.}
 \cite{Cascon}). This allows us to benchmark our numerical results against
 those in the published literature. Since both the Linear Stommel and the
 Linear Stommel-Munk models lack the nonlinearity present in the SQGE
-\eqref{sqge_psi_1}, the represent good stepping stones to verifying our FE
+\eqref{eqn:SQGE_Psi}, the represent good stepping stones to verifying our FE
 discretization.
 
 The \emph{Linear Stommel-Munk} model (see p. 587 in \cite{Vallis06} and problem
@@ -40,7 +40,7 @@ rate, respectively. The model is supplemented with appropriate boundary
 conditions, which will be described for each of the subsequent numerical tests.
 
 We note that the Linear Stommel-Munk model \eqref{eqn:Stommel-Munk} is similar
-in form to the SQGE \eqref{sqge_psi_1}. Indeed, both models contain the
+in form to the SQGE \eqref{eqn:SQGE_Psi}. Indeed, both models contain the
 biharmonic operator $\Delta^2 \psi$, the rotation term $\dfrac{\partial
 \psi}{\partial x}$, and the forcing term $F$. The two main differences between
 the two models are the following: First, the SQGE are nonlinear, since they
@@ -50,7 +50,7 @@ Stommel-Munk model contains a Laplacian term $\Delta \psi$, whereas the SQGE
 does not.
 
 We also note that the two models use different parameters: the Reynolds number
-$Re$ and the Rossby number $Ro$ in \eqref{sqge_psi_1} and the Stommel number
+$Re$ and the Rossby number $Ro$ in \eqref{eqn:SQGE_Psi} and the Stommel number
 $\epsilon_s$ and the Munk scale $\epsilon_m$ in the Linear Stommel-Munk model.
 These two sets of parameters, however, are related by the following relations:
 \begin{align}
@@ -75,7 +75,7 @@ The rest of the subsection is organized as follows: In \autoref{sse:LSM} we
 present results for the Linear Stommel model \eqref{eqn:Stommel}. In
 \autoref{sse:SMM} we present results for the Linear Stommel-Munk model
 \eqref{eqn:Stommel-Munk}. Finally, in \autoref{sse:SQGE} we present results for
-the nonlinear SQGE \eqref{sqge_psi_1}.
+the nonlinear SQGE \eqref{eqn:SQGE_Psi}.
 
 \subsection{Linear Stommel Model} \label{sse:LSM} This subsection presents the
 results for the FE discretization of the Linear Stommel model
@@ -417,7 +417,7 @@ is captured and the better the numerical accuracy becomes.
 
 \subsection{Stationary Quasigeostrophic Equations}\label{sse:SQGE}
 This subsection presents results for the FE discretization of the streamfunction formulation of the
-SQGE \eqref{sqge_psi_1} by using the Argyris element. Our computational domain is
+SQGE \eqref{eqn:SQGE_Psi} by using the Argyris element. Our computational domain is
 $\Omega=[0,3]\times[0,1]$, the Reynolds number is $Re=1.667$, and the Rossby number is $Ro=10^{-4}$.
 For completeness, we present results for two numerical tests, denoted by Test 5 and Test 6, both
 corresponding to the exact solutions given in Test 1 and Test 2 of \cite{Cascon}, respectively.
@@ -454,16 +454,16 @@ the $L^2,\, H^1, \text{ and } H^2$ errors, respectively) for various values of t
 \end{tabular}
 %}
 \end{center}
-\caption{Errors and Rate of Convergence for the Full SQGE \eqref{sqge_psi_1}, Test 5}
+\caption{Errors and Rate of Convergence for the Full SQGE \eqref{eqn:SQGE_Psi}, Test 5}
 \label{tab:SQGEsinErrors}
 \end{table}
 
 \begin{figure}%[H]
   \begin{center}
     \includegraphics[trim=0 200 20 215, clip=true, scale=0.5]{SQGEsin.pdf}
-    \label{fig:SQGEsin}
-    \caption{Full SQGE \eqref{sqge_psi_1}, Test 5: Streamlines of the approximation,
+    \caption{Full SQGE \eqref{eqn:SQGE_Psi}, Test 5: Streamlines of the approximation,
     $\psi^h$, $h=\frac{1}{32}$, and $28550$ DoFs.}
+    \label{fig:SQGEsin}
   \end{center}
 \end{figure}
 
@@ -505,14 +505,14 @@ the $L^2,\, H^1, \text{ and } H^2$ errors, respectively) for various values of t
 \end{tabular}
 %}
 \end{center}
-\caption{Errors and Rate of Convergence for the Full SQGE \eqref{sqge_psi_1}, Test 6}
+\caption{Errors and Rate of Convergence for the Full SQGE \eqref{eqn:SQGE_Psi}, Test 6}
 \label{tab:SQGEeErrors}
 \end{table}
 
 \begin{figure}%[H]
   \begin{center}
     \includegraphics[trim=0 200 20 215, clip=true, scale=0.5]{SQGEe.pdf}
-    \caption{Full SQGE \eqref{sqge_psi_1}, Test 6: Streamlines of the approximation,
+    \caption{Full SQGE \eqref{eqn:SQGE_Psi}, Test 6: Streamlines of the approximation,
     $\psi^h$, $h=\frac{1}{32}$, and $28550$ DoFs.}
     \label{fig:SQGEe}
   \end{center}
