@@ -30,13 +30,13 @@ Now using the divergence theorem on the left side gives
 Therefore, let 
 \begin{align*}
 	a(u,v) &= \int_{\Omega}\! \Delta u \Delta v \,dA \\
-	\ell(v) &= \int_{\Omega}\! fv \,dA
+	(F,v) &= \int_{\Omega}\! fv \,dA
 \end{align*}
 and so the problem can be reformulated to 
 \begin{equation}
 	\begin{split}
 	\text{\emph{Find $u \in H^2_0(\Omega)$ such that}}\quad \\ 
-	a(u,v) = \ell(v) \quad \forall v \in H^2_0(\Omega).
+	a(u,v) = (F,v) \quad \forall v \in H^2_0(\Omega).
 	\end{split}
 \end{equation}
 Now let $\mathcal{T}_h$ be the set of non overlapping triangles $K$, and let
@@ -46,7 +46,7 @@ our problem can be reformulated to
 \begin{equation}
 	\begin{split}
 	\text{\emph{Find $u_h \in H^2_0(\Omega)$ such that}}\quad \\ 
-	a(u_h,v_h) = \ell(v_h) \quad \forall v_h \in H^2_0(\Omega).
+	a(u_h,v_h) = (F,v_h) \quad \forall v_h \in H^2_0(\Omega).
 	\end{split}
 \end{equation}
 

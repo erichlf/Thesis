@@ -10,44 +10,19 @@ lack of time derivative in the SQGE. However, in the spacial domain everything
 remains the same.
 
 Thus, the derivation of the weak formulation for the SQGE follows imediately
-from the weak formulation for the QGE with the exception that we set the
-bilinear form \eqref{eqn:a0} to zero. Therefore, using the forms presented for
-the QGE weak form, i.e.  \eqref{eqn:a1}, \eqref{eqn:a2}, \eqref{eqn:a3}, and
-\eqref{eqn:l}, the weak form of the SQGE in streamfunction formulation is:
+from the strong formulation for the QGE with the exception that we set the
+bilinear form $(\nabla \psi, \nabla \chi)$ to zero. Therefore, using the
+notation presented in \autoref{sec:QGEStrong}, the weak form of the SQGE in streamfunction
+formulation is:
 \begin{equation}
   \begin{split}
     \text{Find }\psi &\in X \text{ such that} \\
-    a_1(\psi,\chi) + a_2(\psi,\psi,&\chi) + a_3(\psi,\chi)
-    = \ell(\chi),\quad \forall \chi \in X.
-  \end{split}
-  \label{eqn:SQGEWF}
+    Re^{-1} (\Delta \psi, \Delta \chi) + b(\psi,\psi,&\chi) - Ro^{-1} (\psi_x,\chi) =
+      Ro^{-1} (F,\chi),\quad \forall \chi \in X.  \end{split} \label{eqn:SQGEWF}
 \end{equation}
-The linear form $\ell$, the bilinear forms $a_1$, $a_3$ and the trilinear form
-$a_2$ are still continuous \cite{Cayco86} and have the some bounds as those for
-the QGE, i.e.  \eqref{eqn:a1Cont}, \eqref{eqn:a2Cont}, \eqref{eqn:a3Cont}, and
+The linear form $(F, \chi)$, the bilinear forms $(\Delta \psi, \Delta \chi)$,
+$(\psi_x, \chi)$ and the trilinear form $b(\psi;\psi,\chi)$ are still continuous
+\cite{Cayco86} and have the same bounds as those for the QGE, i.e.
+\eqref{eqn:a1Cont}, \eqref{eqn:bCont}, \eqref{eqn:a3Cont}, and
 \eqref{eqn:lCont}.
 
-
-%In addition to the bounds on the
-%forms we also have the following theorem on stability bounds
-%\begin{theorem} \label{thm:stability_sqge}
-%  The solution $\psi$ of \eqref{eqn:SQGE_Psi} satisifies the following stability estimate:
-%  \begin{equation}
-%    \|\psi\|_2 \le Re\, Ro^{-1}\, \|F\|_{-2}.
-%    \label{eqn:stability_sqge}
-%  \end{equation}
-%\end{theorem}
-%\begin{proof}
-%  Let $\chi = \psi$ in \eqref{eqn:SQGEWF} which gives
-%  \begin{equation*}
-%    a_1(\psi,\psi) + a_2(\psi,\psi,\psi) + a_3(\psi,\psi) = \ell(\psi)\qquad \forall \psi \in X.
-%  \end{equation*}
-%  Since, $a_2(\psi, \psi, \psi) =0$ and $a_3(\psi,\psi)=0$ we have
-%  \begin{align*}
-%    a_1(\psi,\psi) &= \ell(\psi) \\
-%    Re^{-1}\, \|\psi\|_2^2 &= Ro^{-1}\, (F,\psi) \\
-%    \|\psi\|_2 &\le Re\, Ro^{-1}\,\sup_{\psi \in X} \frac{(F,\psi)}{|\psi|_2} \\
-%    \|\psi\|_2 &\le Re\, Ro^{-1}\, \|F\|_{-2}.
-%  \end{align*}
-%  Thus, we have completed the proof.
-%\end{proof}

@@ -19,23 +19,23 @@ prove the following stability estimate:
 \begin{proof}
 Setting $\chi = \psi$ in \eqref{eqn:SQGEWF}, we get:
 \begin{align}
-  a_1(\psi, \psi) + a_2(\psi,\psi, \psi) + a_3(\psi, \psi)
-= \ell(\psi) .
+  Re^{-1} (\Delta \psi, \Delta \psi) + b(\psi,\psi, \psi) - Ro^{-1}(\psi_x, \psi)
+    = Ro^{-1} (F,\psi) .
 \label{eqn:stability_sqge_2}
 \end{align}
 Since the trilinear form $a_2$ is skew-symmetric in the last two arguments
 \cite{Girault79,Girault86,Gunzburger89}, we have
 \begin{align}
-  a_2(\psi,\psi, \psi) = 0 .
+  b(\psi,\psi, \psi) = 0 .
   \label{eqn:stability_sqge_3}
 \end{align}
 We also note that, applying Green's theorem, we have
 \begin{align}
-  a_3(\psi,\psi) &= Ro^{-1} \, \iint_{\Omega} \frac{\partial \psi}{\partial x} \, dx \, dy
-    \, = \, \frac{Ro^{-1}}{2} \, \iint_{\Omega} \frac{\partial}{\partial x} (\psi^2) \, dx \, dy \nonumber \\
-  &= \frac{Ro^{-1}}{2} \, \iint_{\Omega} \left( \frac{\partial}{\partial x} (\psi^2)
+  (\psi_x,\psi) &= \iint_{\Omega} \frac{\partial \psi}{\partial x} \, dx \, dy
+    \, = \, \frac{1}{2} \, \iint_{\Omega} \frac{\partial}{\partial x} (\psi^2) \, dx \, dy \nonumber \\
+  &= \frac{1}{2} \, \iint_{\Omega} \left( \frac{\partial}{\partial x} (\psi^2)
     - \frac{\partial}{\partial x} (0) \right) \, dx \, dy
-    \, = \,  \frac{Ro^{-1}}{2} \, \int_{\partial \Omega} 0 \, dx + \psi^2 \, dy \nonumber \\
+    \, = \,  \frac{1}{2} \, \int_{\partial \Omega} 0 \, dx + \psi^2 \, dy \nonumber \\
   &= 0 ,
 \label{eqn:stability_sqge_4}
 \end{align}
@@ -43,14 +43,8 @@ where in the last equality in \eqref{eqn:stability_sqge_4} we used that $\psi =
 0$ on $\partial \Omega$ (since $\psi \in H_0^2(\Omega)$).  Substituting
 \eqref{eqn:stability_sqge_4} and \eqref{eqn:stability_sqge_3} in
 \eqref{eqn:stability_sqge_2} and using the Cauchy-Schwarz inequality, we get:
-%\begin{align}
-%  | \psi |_{2}^2 = \int_{\Omega} \Delta \psi \, \Delta \psi \, d\mathbf{x}
-%    = Re \, Ro^{-1} \, \int_{\Omega} F \, \psi \, d\mathbf{x}
-%    \leq Re \, Ro^{-1} \, \| F \|_{-2} \, | \psi |_{2} ,
-%    \label{eqn:stability_sqge_5}
-%\end{align}
 \begin{align}
-  a_1(\psi,\psi) &= \ell(\psi) \nonumber \\
+  Re^{-1} (\Delta \psi, \Delta \psi) &= Ro^{-1} (F,\psi) \nonumber \\
   Re^{-1}\, |\psi|_2^2 &= Ro^{-1}\, (F,\psi) \\
   |\psi|_2 &\le Re\, Ro^{-1}\,\sup_{\psi \in X} \frac{(F,\psi)}{|\psi|_2} \nonumber \\
   |\psi|_2 &\le Re\, Ro^{-1}\, \|F\|_{-2}.

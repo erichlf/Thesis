@@ -9,13 +9,13 @@ In particular, we may apply a a \emph{backward Euler} finite difference scheme
 to \eqref{eqn:SemiDiscretization} which would produce the following
 discretization of the streamfunction form of the QGE
 \begin{equation}
-  a_0(\psi_h^{n+1} - \psi_h^n, \chi_h) + k\, \left[a_1(\psi_h^n,\chi_h) + a_2(\psi_h^n,\psi_h^n,\chi_h)
-      + a_3(\psi_h^n,\chi_h)\right] = k\, \ell^n(\chi_h),\quad \forall \, \chi_h \in X^h.
+  a_0(\psi_h^{n+1} - \psi_h^n, \chi_h) + k\, \left[a_1(\psi_h^n,\chi_h) + b(\psi_h^n,\psi_h^n,\chi_h)
+      + (\psi_x_h^n,\chi_h)\right] = k\, \ell^n(\chi_h),\quad \forall \, \chi_h \in X^h.
   \label{eqn:BEQGE}
 \end{equation}
 where $k$ is the time step, subscripts represent the discretization in spatial
 domains, and superscripts represent the discretization in time domain.
-Additionally, fince the linear form $\ell(\chi_h)$ is, in fact, time dependent
+Additionally, fince the linear form $(F,\chi_h)$ is, in fact, time dependent
 we place a superscript to indicate the discretization of the $\ell$ in the time
 domain.  The attractiveness of using this backward Euler scheme is that it is
 explicit and therefore one need not solve the non-linear system that would arize

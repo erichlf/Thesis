@@ -10,8 +10,11 @@ The FEM discretization of the streamfunction formulation of the QGE
 \begin{equation}
   \begin{split}
     &\text{Find } \psi^h \in X^h \text{ such that} \\
-    \frac{\partial}{\partial t} a_0(\psi^h,\chi^h) + a_1(\psi^h,\chi^h) + a_2&(\psi^h,\psi^h,\chi^h)
-      + a_3(\psi^h,\chi^h) = \ell(\chi^h),\quad \forall \, \chi^h \in X^h.
+    \frac{\partial}{\partial t} (\nabla \psi^h, \nabla \chi^h)
+      + Re^{-1} (\Delta \psi^h, \Delta \chi^h)
+      &+ b(\psi^h,\psi^h,\chi^h)
+      - Ro^{-1} (\psi_x^h,\chi^h)
+      = Ro^{-1}(F,\chi^h),\quad \forall \, \chi^h \in X^h.
     \label{eqn:SemiDiscretization}
   \end{split}
 \end{equation}
@@ -19,17 +22,6 @@ Using standard arguments \cite{Girault79,Girault86}, one can prove that, if the
 small data condition used in proving the well-posedness result for the
 continuous case holds, then \eqref{eqn:SemiDiscretization} has a unique solution
 $\psi^h$ (see Theorem 2.1 in \cite{Cayco86}).
-%Furthermore, one can prove the following stability result for $\psi^h$ using
-%the same arguments as those used in the proof of \eqref{thm:stability} for the
-%continuous setting.
-%\begin{theorem} \label{thm:stability_fem}
-%The solution $\psi^h$ of \eqref{eqn:FEForm} satisfies the following stability
-%estimate:
-%\begin{equation}
-%  |\psi^h|_2 \le Re \, Ro^{-1} \, \| F \|_{-2} .
-%\label{eqn:stability_fem_1}
-%\end{equation}
-%\end{theorem}
 
 As noted in Section 6.1 in \cite{Ciarlet} (see also Section 13.2 in
 \cite{Gunzburger89}, Section 3.1 in \cite{Johnson}, and Theorem 5.2 in
@@ -53,7 +45,7 @@ is only a semi-discretization, since the formulation is still continuous in
 time, but discretized in space. Since there is no geometry in the time domain it
 makes sense to apply what has been called the \emph{method of lines (MoL)} in
 the time domain, i.e. use a \emph{finite difference} approximation for the time
-derivative. The MoL will be discussed further in \autoref{sec:MoL}.
+derivative. %The MoL will be discussed further in \autoref{sec:MoL}.
 
 %In what follows, we will use the Argyris triangular element, depicted in
 %\autoref{fig:Argyris}.  Finite elements of class $C^1$ are of particular

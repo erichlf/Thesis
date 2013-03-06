@@ -14,14 +14,18 @@ the linear system. This procedure is as follows
   \begin{enumerate}[Step 1:]
     \item Solve the nonlinear system on a coarse mesh for $\psi^H\in X^H$:
     \begin{equation}
-      a_1(\psi^H,\chi^H) + a_2(\psi^H; \psi^H,\chi^H) + a_3(\psi^H,\chi^H) = \ell(\chi^H), \quad \text{for all }
-        \chi^H \in X^H.
+      Re^{-1} (\Delta \psi^H, \Delta \chi^H)
+        + b(\psi^H; \psi^H,\chi^H)
+        - Ro^{-1} (\psi_x^H,\chi^H)
+        = Ro^{-1} (F,\chi^H), \quad \text{for all } \chi^H \in X^H.
       \label{eqn:Coarse}
     \end{equation}
     \item Solve the linear system on a fine mesh for $\psi^h\in X^h$:
     \begin{equation}
-      a_1(\psi^h,\chi^h) + a_2(\psi^H; \psi^h,\chi^h) + a_3(\psi^h,\chi^h) = \ell(\chi^h), \quad \text{for all }
-        \chi^h \in X^h.
+      Re^{-1} (\Delta \psi^h, \Delta \chi^h)
+        + b(\psi^H; \psi^h,\chi^h)
+        - Ro^{-1} (\psi_x^h,\chi^h)
+        = Ro^{-1} (F,\chi^h), \quad \text{for all } \chi^h \in X^h.
       \label{eqn:Fine}
     \end{equation}
   \end{enumerate}
@@ -31,8 +35,12 @@ the linear system. This procedure is as follows
   following problem exists uniquely
     \begin{equation}
       \begin{split}
-        \text{find } &\hat{\psi} \in H^2_0(\Omega) \text{ such that, for all } \chi\in H^2_0(\Omega), \\
-        &a_1(\hat{\psi}, \chi) + a_2(\psi^H; \hat{\psi}, \chi) + a_3(\hat{\psi},\chi) = \ell(\chi),
+        &\text{Find } \hat{\psi} \in H^2_0(\Omega) \text{ such that, for all }
+          \chi\in H^2_0(\Omega), \\
+        Re^{-1}&(\Delta \hat{\psi}, \Delta \chi)
+          + b(\psi^H; \hat{\psi}, \chi)
+          - Ro^{-1} (\hat{\psi}_x,\chi)
+          = Ro^{-1} (F,\chi),
       \end{split}
       \label{eqn:FineProb}
     \end{equation}
@@ -42,16 +50,18 @@ the linear system. This procedure is as follows
   First we introduce a new continuous bilinear form $B:\, H^2_0(\Omega) \times
   H^2_0(\Omega) \to \R$ given by
   \begin{equation*}
-    B(\psi,\chi) = a_1(\psi,\chi) + a_2(\psi^H;\psi,\chi) + a_3(\psi,\chi).
+    B(\psi,\chi) = Re^{-1} (\Delta \psi, \Delta \chi)
+      + b(\psi^H;\psi,\chi)
+      - Ro^{-1} (\psi_x,\chi).
   \end{equation*}
   B is continuous and coercive and therefore $\hat{\psi}$ exists and is unique.
   Now setting $\chi=\hat{\psi}$ in \eqref{eqn:FineProb} and noting that
-  $a_3(\psi,\chi) = -a_3(\chi,\psi)$ which implies that
-  $a_3(\hat{\psi},\hat{\psi}) = 0$ gives
+  $(\psi_x,\chi) = -(\chi_x,\psi)$ which implies that
+  $(\hat{\psi}_x,\hat{\psi}) = 0$ gives
   \begin{align*}
-    Re^{-1} \|\hat{\psi}\|_2^2 &= \ell(\hat{\psi}) \\
-    \|\hat{\psi}\|_2 &= Re \frac{\ell(\hat{\psi})}{\|\hat{\psi}\|_2} \\
-    &\le Re Ro^{-1} \|F\|_{-2}\|\hat{\psi}\|_2 \\
+    Re^{-1} \|\hat{\psi}\|_2^2 &= Ro^{-1} (F,\hat{\psi}) \\
+    \|\hat{\psi}\|_2 &= Re\, Ro^{-1} \frac{(F,\hat{\psi})}{\|\hat{\psi}\|_2} \\
+    &\le Re\, Ro^{-1} \|F\|_{-2}\|\hat{\psi}\|_2 \\
   \end{align*}
   Therefore, it follows that $\|\hat{\psi}\|_2 \le Re\, Ro^{-1} \|F\|_{-2}$.
 \end{proof}
@@ -64,10 +74,10 @@ the linear system. This procedure is as follows
 \begin{proof}
   The bilinear form $B$ is continuous and coercive on $X^h$ and so $\psi^h$
   exists and is unique. Setting, $\chi^h=\psi^h$ in \eqref{eqn:Fine} and again
-  noting that $a_3(\psi^h,\psi^h)=0$ and using \eqref{eqn:lCont} gives
+  noting that $(\psi_x^h,\psi^h)=0$ and using \eqref{eqn:lCont} gives
   \begin{align*}
-    Re^{-1} \|\psi^h\|_2^2 &= \ell(\psi^h) \\
-    \|\psi^h\|_2 &= Re \frac{\ell(\psi^h)}{\|\psi^h\|_2} \\
+    Re^{-1} \|\psi^h\|_2^2 &= Ro^{-1} (F,\psi^h) \\
+    \|\psi^h\|_2 &= Re Ro^{-1} \frac{(F,\psi^h)}{\|\psi^h\|_2} \\
     &\le Re\, Ro^{-1} \|F\|_{-2}.
   \end{align*}
 \end{proof}

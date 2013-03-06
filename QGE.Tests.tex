@@ -1,4 +1,173 @@
-In this section we will present numerical tests to verify the theoretical error bounds derived in
-\autoref{sec:QGEError}. The numerical tests will be very similar to those used in
-\autoref{sse:SQGE}, except that the exact solution will have time dependence added to it. This will
-allow us to verify the rates of convergence in both the spatial domain and in the time domain.
+\subsection{Verification of Rates of Convergence}
+In this subsection we verify the theoretical error estimates developed in
+\autoref{sec:Errors}. To this end, we apply the Argyris FE in space while
+applying implicit Euler in time to \eqref{eqn:QGE}. To solve the resulting
+nonlinear system at each time step we apply Newton's method where the Newton's
+method is considered to have converged when the $L^2$-norm of the difference in
+the current Newton iterate and the previous Newton iterate is less than
+$10^{-7}$. Additionally, in each of the following computational tests we take
+$Re = 1$, $Ro = 1$, and $h = \nicefrac{1}{20}$ unless otherwise stated.
+
+\subsubsection*{Test 1}
+For this test we take the exact solution to be
+\begin{equation}
+  \psi(t;x,y) = \left(\sin \pi x \sin \pi y\right)^2 \sin t
+  \label{eqn:Test1}
+\end{equation}
+which is very similar to \textbf{Test 6} in \cite{Foster}. Here we add the time
+dependence in the sine term and let $\Omega = [0,1]^2$. The time interval for
+integration is $t = [0,\frac{\pi}{2}]$. This test will have an intensifying
+western boundary layer as time increases.
+
+\begin{table}
+  \begin{center}
+    \begin{tabular}{|c|c|c|c|c|}
+      \hline
+      $k$ & $h$ & DoFs & $e_{L^2}$ & $L^2$ order \\% & $e_{H^1}$ & $H^1$ order & $e_{H^2}$ & $H^2$ order \\
+      \hline
+$0.125$ & $105$ & $1158$ & $4.47\times 10^{-4}$ & $-$ \\%& $0.002315$ & $-$ & $0.01565$ & $-$ \\
+$0.0625$ & $105$ & $1158$ & $2.25\times 10^{-4}$ & $0.9878$ \\%& $0.001167$ & $0.9877$ & $0.008004$ & $0.9674$ \\
+$0.03125$ & $105$ & $1158$ & $1.13\times 10^{-4}$ & $0.9988$ \\%& $0.0005843$ & $0.9983$ & $0.004223$ & $0.9225$ \\
+$0.01562$ & $105$ & $1158$ & $5.64\times 10^{-5}$ & $0.9994$ \\%& $0.0002927$ & $0.9976$ & $0.002501$ & $0.756$ \\
+$0.007812$ & $105$ & $1158$ & $2.82\times 10^{-5}$ & $0.9993$ \\%& $0.0001471$ & $0.9924$ & $0.001832$ & $0.449$ \\
+$0.003906$ & $105$ & $1158$ & $1.41\times 10^{-5}$ & $0.9995$ \\%& $7.491\times 10^{-5}$ & $0.9734$ & $0.001622$ & $0.1756$ \\
+$0.001953$ & $105$ & $1158$ & $7.06\times 10^{-6}$ & $0.9989$ \\%& $4.002\times 10^{-5}$ & $0.9046$ & $0.001565$ & $0.05154$ \\
+
+      \hline
+
+    \end{tabular}
+  \end{center}
+  \caption{Observed order of convergence for Implicit-Euler applied to
+    \eqref{eqn:QGE} with the exact solution \eqref{eqn:Test2}. Note the observed
+    order of convergence matches the theoretical error estimates developed in
+    \autoref{sec:Errors}.}
+  \label{tab:Test1}
+\end{table}
+
+\begin{figure}
+  \begin{center}
+%    \includegraphics[scale=0.4]{Matlab/Test1Order1.pdf}
+    \caption{Observed order of convergence for Implicit-Euler applied to
+      \eqref{eqn:QGE} with the exact solution \eqref{eqn:Test1}.}
+  \label{fig:Test1}
+  \end{center}
+\end{figure}
+
+\subsubsection*{Test 2}
+For this test we take the exact solution to be
+\begin{equation}
+  \psi(t;x,y) = \left[(1-x)\left(1-e^{-0.1\,x\,t}\right) \sin \pi y\right]^2
+  \label{eqn:Test2}
+\end{equation}
+which is very similar to \textbf{Test 4} in \cite{Foster}. Here we add the time
+dependence in the exponential term and let $\Omega = [0,1]^2$. The time interval
+for integration is $t = [0,1]$. This test will have an intensifying western
+boundary layer as time increases.
+\begin{table}
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    $k$ & $h$ & DoFs & $e_{L^2}$ & $L^2$ order \\% & $e_{H^1}$ & $H^1$ order & $e_{H^2}$ &         $H^2$ order \\
+    \hline
+$0.125$ & $0.05$ & $1158$ & $5.00\times 10^{-7}$ & $-$ \\% & $2.576\times 10^{-6}$ & $-$ & $1.738\times 10^{-5}$ & $-$ \\
+$0.0625$ & $0.05$ & $1158$ & $2.49\times 10^{-7}$ & $1.005$ \\% & $1.284\times 10^{-6}$ & $1.005$ & $8.691\times 10^{-6}$ & $1$ \\
+$0.03125$ & $0.05$ & $1158$ & $1.24\times 10^{-7}$ & $1.002$ \\% & $6.409\times 10^{-7}$ & $1.002$ & $4.392\times 10^{-6}$ & $0.9846$ \\
+$0.01562$ & $0.05$ & $1158$ & $6.21\times 10^{-8}$ & $1.001$ \\% & $3.203\times 10^{-7}$ & $1.001$ & $2.299\times 10^{-6}$ & $0.9342$ \\
+$0.007812$ & $0.05$ & $1158$ & $3.11\times 10^{-8}$ & $1.001$ \\% & $1.602\times 10^{-7}$ & $0.9995$ & $1.337\times 10^{-6}$ & $0.7817$ \\
+$0.003906$ & $0.05$ & $1158$ & $1.55\times 10^{-8}$ & $1.000$ \\% & $8.034\times 10^{-8}$ & $0.9957$ & $9.564\times 10^{-7}$ & $0.4834$ \\
+$0.001953$ & $0.05$ & $1158$ & $7.76\times 10^{-9}$ & $1.000$ \\% & $4.068\times 10^{-8}$ & $0.9818$ & $8.346\times 10^{-7}$ & $0.1966$ \\
+    \hline
+  \end{tabular}
+\end{center}
+  \caption{Observed order of convergence for Implicit-Euler applied to
+    \eqref{eqn:QGE} with the exact solution \eqref{eqn:Test2}. Note the observed
+    order of convergence matches the theoretical error estimates developed in
+    \autoref{sec:Errors}.}
+  \label{tab:Test2}
+\end{table}
+
+\subsection{North Atlantic}
+The North Atlantic Ocean is intensely studied and therefore makes a good test
+problem for evaluating the performance of our model \cite{Myers}. Hence, we have
+created a FE mesh of the North Atlantic which extend from $15^\circ N$ to $65^\circ
+N$ using GMSH \cite{GMSH}. The coastline data was obtain from GSHHS \cite{GSHHS}.
+The finite element spacing was specified to be {\color{red} $15km$}.  Major
+islands such as Cuba, Hispaniola Greenland, Great Britain, and Ireland were
+connected to the nearest continent and hard boundaries were created at the
+northern and southern most extents of the North Atlantic. The resultant FE mesh
+can be seen in \autoref{fig:AtlanticMesh}.
+
+\begin{figure}
+  \caption{Mesh of the North Atlantic created using GMSH \cite{GMSH}.}
+  \label{fig:AtlanticMesh}
+\end{figure}
+
+The experiment used annual mean wind forcing obtained from Hellerman and
+Rosenstein (1983). We choose similar similar parameters as those used in
+\cite{delSastre04} and are summarized in \autoref{tab:AtlanticParameters}.
+
+\begin{table}
+  \begin{center}
+  \begin{tabular}{|l|l|}
+    \hline
+    $A$ & $2000m^2s^{-1}$\\
+    \hline
+    $\theta_0$ & $40^\circ$ \\
+    \hline
+    $\omega$ & $7.2526\times 10^{-5}s^{-1}$ \\
+    \hline
+    $H$ & $1000m$ \\
+    \hline
+    $L$ & $1000km$ \\
+    \hline
+    $r_e$ & $6378.1km$ \\
+    \hline
+    $\rho$ & $1027 \nicefrac{kg}{m^3}$ \\
+    \hline
+  \end{tabular}
+  \end{center}
+  \caption{Table of parameter values used for the simulations of the North
+    Atlantic. \cite{delSastre04}}
+  \label{tab:AtlanticParameters}
+\end{table}
+
+Using the relation
+\begin{equation}
+  \beta = \frac{2\omega}{r_e}\cos \theta_0
+  \label{eqn:Beta}
+\end{equation}
+and the parameters given in \autoref{tab:AtlanticParameters} we see that
+\begin{equation*}
+  \beta \approx 1.742\times 10^{-11}\, m^{-1}\,s^{-1}.
+\end{equation*}
+Using this approximation for $\beta$ and \eqref{eqn:Velocity_scale} with
+{\color{red}$\tau_0 = 0.6\, dyne\, cm^{-2}$ \cite{Hellerman} gives the following
+approximation for the characteristic velocity
+\begin{equation*}
+%  \begin{split}
+%    U &= \frac{3.1415 \cdot 0.6 dyne\, cm^{-2}}{1027 \nicefrac{kg}{m^3} \cdot
+%      1000\, m \cdot 1.742 \times 10^{-11}\,m^{-1}\,s^{-1} \cdot 1000\, km} \\
+    U = 1.054\times 10^{-2} \nicefrac{m}{s}.
+%  \end{split}
+\end{equation*}
+Therefore, the Rossby number is
+\begin{equation*}
+%  Ro = \frac{1.054\times 10^{-2} \nicefrac{m}{s}}{1.742\times 10^{-11} m^{-1}
+%    s^{-1} (1000 km)^2}
+  Ro = 6.051\times 10^{-4}
+\end{equation*}
+and the Reynolds number is
+\begin{equation*}
+  Re = 5.27.
+\end{equation*}}
+
+From the length scale $L$ and the velocity scale $U$ we see that the time scale
+is approximately $T = 3\, years$. Thus, a nondimensional time interval of
+$[0,120]$, which was also used by Bermejo et al \cite{delSastre04}, corresponds
+to a total of $360$ years. We use the same dimensional time step used in
+\cite{delSastre04}, which was $\Delta t = 2\, hours$. This time step corresponds
+to nondimensional time step of $k = 7.6053 \times 10^{-5}$. {\color{red} This
+may be unrealistic.}
+
+\subsection{Mediterranean}
+

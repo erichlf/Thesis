@@ -25,7 +25,7 @@ where
   \left(
   F(\psi^h_{n-1}) , \chi^h
   \right)
-  &=&  a_0(\psi^h_{n-1},\chi^h) + a_1(\psi^h_{n-1},\psi^h_{n-1},\chi^h) + a_2(\psi^h_{n-1},\chi^h) - \ell(\chi^h), \\[0.2cm]
+  &=&  a_0(\psi^h_{n-1},\chi^h) + a_1(\psi^h_{n-1},\psi^h_{n-1},\chi^h) + b(\psi^h_{n-1},\chi^h) - (F,\chi^h), \\[0.2cm]
   \left(
   \mathcal{J}(\psi^h_{n-1}) \, \Delta_n \psi^h , \chi^h
   \right)
@@ -33,7 +33,7 @@ where
   + a_1(\Delta_n \psi^h,\psi^h_{n-1},\chi^h)
   \nonumber \\[0.2cm]
   && + a_1(\psi^h_{n-1},\Delta_n \psi^h,\chi^h)
-  + a_2(\Delta_n \psi^h,\chi^h)
+  + b(\Delta_n \psi^h,\chi^h)
 \end{eqnarray*}
 is the Jacobian, and
 $\Delta_n \psi^h : = \psi^h_n - \psi^h_{n-1}$ is the iteration increment.

@@ -9,51 +9,53 @@ the $L^2$ and $H^1$ norms by using a duality argument.
   Let $\psi$ be the solution of \eqref{eqn:SQGEWF} and $\psi^h$ be the solution
   of \eqref{eqn:SQGEFEF}.
   Furthermore, assume that the following small data condition is satisfied:
-  \begin{eqnarray}
-  Re^{-2} \, Ro
-  \geq \Gamma_1 \, \| F \|_{-2} ,
-  \label{eqn:small_data_condition}
-  \end{eqnarray}
-where
-$Re$ is the Reynolds number defined in \eqref{eqn:reynolds_number},
-$Ro$  is the Rossby number defined in \eqref{eqn:rossby_number},
- $\Gamma_1$ is the continuity constant of the trilinear form $a_2$ in \eqref{eqn:a2Cont}, and
- $F$ is the forcing term.
-Then the following error estimate holds:
   \begin{equation}
-    |\psi - \psi^h|_2
-    \le C(Re, Ro, \Gamma_1, F) \, \inf_{\chi^h \in X^h} |\psi - \chi^h|_2 ,
+    Re^{-2} \, Ro \geq \Gamma_1 \, \| F \|_{-2} ,
+    \label{eqn:small_data_condition}
+  \end{equation}
+  where $Re$ is the Reynolds number defined in \eqref{eqn:reynolds_number}, $Ro$
+  is the Rossby number defined in \eqref{eqn:rossby_number}, $\Gamma_1$ is the
+  continuity constant of the trilinear form $a_2$ in \eqref{eqn:bCont}, and $F$
+  is the forcing term. Then the following error estimate holds:
+  \begin{equation}
+    |\psi - \psi^h|_2 \le C(Re, Ro, \Gamma_1, \Gamma_2, F) \,
+      \inf_{\chi^h \in X^h} |\psi - \chi^h|_2 ,
     \label{eqn:EnergyNorm}
   \end{equation}
   where
-  \begin{eqnarray}
-  C(Re, Ro, \Gamma_1, F)
-  := \left[
-  \frac{
-  Ro^{-1}
-  + 2 \, Re^{-1}
-  + \Gamma_1 \, Re \, Ro^{-1} \, \| F \|_{-2}
-  }
-  {
-  Re^{-1}
-  - \Gamma_1 \, Re \, Ro^{-1} \, \| F \|_{-2}
-  }
-  \right]
-  \label{eqn:constant_definition}
-  \end{eqnarray}
-is a generic constant that can depend on $Re$, $Ro$, $\Gamma_1$, $F$, but \emph{not} on the meshsize $h$.
+  \begin{equation}
+    C(Re, Ro, \Gamma_1, \Gamma_2, F)
+      := \frac{ Ro^{-1} \Gamma_2 + 2 \, Re^{-1} + \Gamma_1 \, Re \, Ro^{-1} \,
+        \| F \|_{-2} }
+        { Re^{-1} - \Gamma_1 \, Re \, Ro^{-1} \, \| F \|_{-2} }
+    \label{eqn:constant_definition}
+  \end{equation}
+  is a generic constant that can depend on $Re$, $Ro$, $\Gamma_1$, $F$, but
+  \emph{not} on the meshsize $h$.
 \end{thm}
 
 \begin{remark}
-Note that the small data condition in Theorem~\ref{thm:EnergyNorm} involves \emph{both} the Reynolds number and the Rossby number, the latter quantifying the rotation effects in the QGE.
+  Note that the small data condition in Theorem~\ref{thm:EnergyNorm} involves
+  \emph{both} the Reynolds number and the Rossby number, the latter quantifying
+  the rotation effects in the QGE.
 
-Furthermore, note that the standard small data condition $Re^{-2} \geq \Gamma_1 \, \| F \|_{-2}$ used to prove the uniqueness for the steady-state 2D NSE \cite{Girault79,Girault86,Layton08} is significantly more restrictive for the QGE, since \eqref{eqn:small_data_condition} has the Rossby number (which is small when rotation effects are significant) on the left-hand side.
-This is somewhat counterintuitive, since in general rotation effects are expected to help in proving the well-posedness of the system.
-We think that the explanation for this puzzling situation is the following:
-Rotation effects do make the mathematical analysis of 3D flows more amenable by giving them a 2D character.
-We, however, are concerned with 2D flows (the QGE).
-In this case, the small data condition \eqref{eqn:small_data_condition} (needed in proving the uniqueness of the solution) indicates that rotation effects make the mathematical analysis of the (2D) QGE more complicated than that of the 2D NSE.
-%We emphasize that there is no contradiction, since, although the rotation effects do help in the three-dimensional case, they seem to complicate the situation if one compare the QGE with the two-dimensional (not the three-dimensional) NSE.
+  Furthermore, note that the standard small data condition $Re^{-2} \geq
+  \Gamma_1 \, \| F \|_{-2}$ used to prove the uniqueness for the steady-state 2D
+  NSE \cite{Girault79,Girault86,Layton08} is significantly more restrictive for
+  the QGE, since \eqref{eqn:small_data_condition} has the Rossby number (which
+  is small when rotation effects are significant) on the left-hand side.  This
+  is somewhat counterintuitive, since in general rotation effects are expected
+  to help in proving the well-posedness of the system.  We think that the
+  explanation for this puzzling situation is the following: Rotation effects do
+  make the mathematical analysis of 3D flows more amenable by giving them a 2D
+  character.  We, however, are concerned with 2D flows (the QGE).  In this case,
+  the small data condition \eqref{eqn:small_data_condition} (needed in proving
+  the uniqueness of the solution) indicates that rotation effects make the
+  mathematical analysis of the (2D) QGE more complicated than that of the 2D
+  NSE. %We emphasize that there is no contradiction, since, although the
+  %rotation effects do help in the three-dimensional case, they seem to
+  %complicate the situation if one compare the QGE with the two-dimensional (not
+  %the three-dimensional) NSEi.
 \end{remark}
 \begin{proof}
   Since $X^h \subset X$, \eqref{eqn:SQGEWF} holds for all $\chi = \chi^h\in X^h$.
@@ -61,22 +63,25 @@ In this case, the small data condition \eqref{eqn:small_data_condition} (needed 
   X^h$ gives
   \begin{equation}
     \begin{split}
-      a_1(\psi - \psi^h,\chi^h) + a_2(\psi,\psi,\chi^h) -
-      a_2(\psi^h,\psi^h,\chi^h) \\
-      + a_3(\psi-\psi^h,\chi^h) = 0 \qquad \forall \chi^h \in
+      Re^{-1}(\Delta \left[\psi - \psi^h\right],\Delta \chi^h)
+        + b(\psi,\psi,\chi^h) - b(\psi^h,\psi^h,\chi^h) \\
+        - Ro^{-1} (\left[\psi-\psi^h\right]_x,\chi^h) = 0 \qquad \forall \chi^h \in
     X^h.
   \end{split}
     \label{eqn:ErrorEq}
   \end{equation}
-  Next, adding and subtracting $a_2(\psi^h,\psi,\chi^h)$ to \eqref{eqn:ErrorEq}, we get:
-  \begin{eqnarray}
-    %\begin{split}
-      && a_1(\psi - \psi^h,\chi^h) + a_2(\psi,\psi,\chi^h) - a_2(\psi^h,\psi,\chi^h) %\\
-      + a_2(\psi^h,\psi,\chi^h) - a_2(\psi^h,\psi^h,\chi^h) \nonumber \\
-      && \hspace*{3.0cm} + a_3(\psi-\psi^h,\chi^h) = 0 \qquad \forall \chi^h \in X^h.
-    %\end{split}
+  Next, adding and subtracting $b(\psi^h,\psi,\chi^h)$ to \eqref{eqn:ErrorEq},
+  we get:
+  \begin{equation}
+    \begin{split}
+      & Re^{-1} (\Delta \left[\psi - \psi^h\right], \Delta \chi^h)
+        + b(\psi,\psi,\chi^h) - b(\psi^h,\psi,\chi^h) %\\
+        + b(\psi^h,\psi,\chi^h) - b(\psi^h,\psi^h,\chi^h) \\
+      & \hspace*{3.0cm} - Ro^{-1} (\left[\psi-\psi^h\right]_x,\chi^h) = 0
+        \qquad \forall \chi^h \in X^h.
+    \end{split}
     \label{eqn:interError}
-  \end{eqnarray}
+  \end{equation}
   The error $e$ can be decomposed as
   \begin{equation}
     e:= \psi-\psi^h = (\psi-\lambda^h)+(\lambda^h-\psi^h):= \eta + \Phi^h,
@@ -87,245 +92,195 @@ In this case, the small data condition \eqref{eqn:small_data_condition} (needed 
   rewritten as
   \begin{equation}
     \begin{split}
-      a_1(\eta+\Phi^h,\chi^h)+a_2(\eta+\Phi^h,\psi,\chi^h)+a_2(\psi^h,\eta+\Phi^h,\chi^h) \\
-      + a_3(\eta+\Phi^h,\chi^h)=0 \qquad \forall \chi^h \in X^h.
+      Re^{-1}(\Delta \eta + \Delta \Phi^h, \Delta \chi^h)
+        + b(\eta+\Phi^h,\psi,\chi^h) + b(\psi^h,\eta+\Phi^h,\chi^h) \\
+      + Ro^{-1} (\eta_x+\Phi^h_x,\chi^h) = 0 \qquad \forall \chi^h \in X^h.
     \end{split}
     \label{eqn:ErrorEta}
   \end{equation}
   Letting $\chi^h := \Phi^h$ in \eqref{eqn:ErrorEta}, we obtain
   \begin{equation}
     \begin{split}
-      a_1(\Phi^h,\Phi^h) + a_3(\Phi^h,\Phi^h) = -a_1(\eta,\Phi^h)
-      - a_2(\eta;\psi,\Phi^h) - a_2(\psi^h;\psi,\Phi^h) \\
-      - a_2(\psi^h;\eta,\Phi^h) - a_2(\psi^h;\Phi^h,\Phi^h)
-      -a_3(\eta,\Phi^h).
+      Re^{-1} (\Delta \Phi^h, \Delta \Phi^h) - Ro^{-1} (\Phi^h_x,\Phi^h)
+        = -Re^{-1} (\Delta \eta, \Delta \Phi^h)
+        - b(\eta;\psi,\Phi^h) - b(\psi^h;\psi,\Phi^h) \\
+      - b(\psi^h;\eta,\Phi^h) - b(\psi^h;\Phi^h,\Phi^h)
+        + Ro^{-1} (\eta,\Phi^h).
     \end{split}
     \label{eqn:ErrorVarphi}
   \end{equation}
-  Note that, since $a_3(\Phi^h,\Phi^h)=-a_3(\Phi^h,\Phi^h)\; \forall
+  Note that, since $(\Phi^h_x,\Phi^h)=-(\Phi^h,\Phi^h_x)\; \forall
   \Phi^h \in X^h \subset X = H^2_0$, it follows that
   \begin{equation}
-    a_3(\Phi^h,\Phi^h)=0 .
+    (\Phi^h_x,\Phi^h)=0 .
     \label{eqn:a30}
   \end{equation}
-  Also, it follows immediately from \eqref{eqn:a2} that
+  Also, it follows immediately from \eqref{eqn:b} that
   \begin{equation}
-    a_2(\psi^h,\Phi^h,\Phi^h)=0 .
-    \label{eqn:a20}
+    b(\psi^h,\Phi^h,\Phi^h)=0 .
+    \label{eqn:b0}
   \end{equation}
-  Combining \eqref{eqn:a20}, \eqref{eqn:a30}, and \eqref{eqn:ErrorVarphi}, we get:
+  Combining \eqref{eqn:b0}, \eqref{eqn:a30}, and \eqref{eqn:ErrorVarphi}, we get:
   \begin{equation}
     \begin{split}
-      a_1(\Phi^h,\Phi^h) = -a_1(\eta,\Phi^h)
-      - a_2(\Phi^h;\psi,\Phi^h) - a_2(\eta;\psi,\Phi^h) \\
-      - a_2(\psi^h;\eta,\Phi^h) - a_3(\eta,\Phi^h).
+      Re^{-1} (\Delta \Phi^h, \Delta \Phi^h) = -Re^{-1} (\Delta \eta, \Delta \Phi^h)
+        - b(\Phi^h;\psi,\Phi^h) - b(\eta;\psi,\Phi^h) \\
+      - b(\psi^h;\eta,\Phi^h) + R)^{-1} (\eta_x,\Phi^h).
     \end{split}
     \label{eqn:ErrorZeroed}
   \end{equation}
   Using
   \begin{equation*}
-    a_1(\Phi^h,\Phi^h) = Re^{-1} \, |\Phi^h|^2_2
+    (\Delta \Phi^h, \Delta \Phi^h) = |\Phi^h|^2_2
   \end{equation*}
   and inequalities \eqref{eqn:a1Cont} -- \eqref{eqn:a3Cont} in equation
   \eqref{eqn:ErrorZeroed} gives
   \begin{equation}
     \begin{split}
       Re^{-1} \, |\Phi^h|^2_2 \le Re^{-1} \,  |\eta|_2 \, |\Phi^h|_2 + \Gamma_1
-      \biggl( |\eta|_2 \, |\psi|_2 \, |\Phi^h|_2 + |\psi^h|_2 \, |\eta|_2 \, |\Phi^h|_2 \biggr) \\
+        \biggl( |\eta|_2 \, |\psi|_2 \, |\Phi^h|_2 + |\psi^h|_2 \, |\eta|_2 \,
+          |\Phi^h|_2 \biggr) \\
       + \Gamma_1 \, |\Phi^h|^2_2 \, |\psi|_2 + Ro^{-1} \, |\eta|_2 \, |\Phi^h|_2 .
     \end{split}
     \label{eqn:varphiIneq}
   \end{equation}
   Simplifying and rearranging terms in \eqref{eqn:varphiIneq} gives
   \begin{equation}
-      |\Phi^h|_2
-      \le
-      \left(
-      Re^{-1}
-      - \Gamma_1 \, | \psi |_2
-      \right)^{-1} \,
-      \left(
-      Re^{-1}
-      + \Gamma_1 \, |\psi|_2
-      + \Gamma_1 \, |\psi^h|_2
-      + Ro^{-1}
-      \right) \,
-      |\eta|_2 .
+      |\Phi^h|_2 \le \left( Re^{-1} - \Gamma_1 \, | \psi |_2 \right)^{-1} \,
+        \left( Re^{-1} + \Gamma_1 \, |\psi|_2 + \Gamma_1 \, |\psi^h|_2 + Ro^{-1}
+          \right) \, |\eta|_2 .
     \label{eqn:phihIneq}
   \end{equation}
-  Using \eqref{eqn:phihIneq} and the triangle inequality along with the stability estimates \eqref{eqn:stability_sqge} and \eqref{eqn:stability_fem_sqge} gives
+  Using \eqref{eqn:phihIneq} and the triangle inequality along with the
+  stability estimates \eqref{eqn:stability_sqge} and
+  \eqref{eqn:stability_fem_sqge} gives
   \begin{align}
-    |e|_2
-    &\le |\eta|_2
-    + |\Phi^h|_2 \nonumber \\[0.2cm]
-    &\le \left[
-    1
-    + \frac{Re^{-1}
-      + \Gamma_1 \, |\psi|_2
-      + \Gamma_1 \, |\psi^h|_2
-      + Ro^{-1}} {Re^{-1}
-      - \Gamma_1 \, |\psi|_2}
-      \right] \, |\eta|_2 \nonumber \\[0.2cm]
-    &\le \left[
-    1
-    + \frac{Re^{-1}
-      + \Gamma_1 \, \left( Re \, Ro^{-1} \, \| F \|_{-2} \right)
-      + \Gamma_1 \, \left( Re \, Ro^{-1} \, \| F \|_{-2} \right)
-      + Ro^{-1}} {Re^{-1}
-      - \Gamma_1 \, \left( Re \, Ro^{-1} \, \| F \|_{-2} \right) }
-      \right] \, |\eta|_2 \nonumber \\
-  &=
-  \left[
-  \frac{
-  Ro^{-1}
-  + 2 \, Re^{-1}
-  + \Gamma_1 \, Re \, Ro^{-1} \, \| F \|_{-2}
-  }
-  {
-  Re^{-1}
-  - \Gamma_1 \, Re \, Ro^{-1} \, \| F \|_{-2}
-  }
-  \right] \, | \psi-\lambda^h |_2 ,
+    |e|_2 &\le |\eta|_2 + |\Phi^h|_2 \nonumber \\[0.2cm]
+    &\le \left[ 1 + \frac{Re^{-1} + \Gamma_1 \, |\psi|_2 + \Gamma_1 \,
+      |\psi^h|_2 + Ro^{-1}} {Re^{-1} - \Gamma_1 \, |\psi|_2} \right] \, |\eta|_2
+      \nonumber \\[0.2cm]
+    &\le \left[ 1 + \frac{Re^{-1} + \Gamma_1 \, \left( Re \, Ro^{-1} \, \| F
+      \|_{-2} \right) + \Gamma_1 \, \left( Re \, Ro^{-1} \, \| F \|_{-2} \right)
+      + Ro^{-1}} {Re^{-1} - \Gamma_1 \, \left( Re \, Ro^{-1} \, \| F \|_{-2}
+      \right) } \right] \, |\eta|_2 \nonumber \\
+    &= \left[ \frac{ Ro^{-1} + 2 \, Re^{-1} + \Gamma_1 \, Re \, Ro^{-1} \,
+      \| F \|_{-2} } { Re^{-1} - \Gamma_1 \, Re \, Ro^{-1} \, \| F \|_{-2} }
+        \right] \, | \psi-\lambda^h |_2 ,
     \label{eqn:EnergyError}
   \end{align}
-where $\lambda^h \in X^h$ is arbitrary.
-Taking the infimum over $\lambda^h \in X^h$ in \eqref{eqn:EnergyError} proves the error estimate \eqref{eqn:EnergyNorm}.
-\hfill
+  where $\lambda^h \in X^h$ is arbitrary.  Taking the infimum over $\lambda^h \in
+  X^h$ in \eqref{eqn:EnergyError} proves the error estimate
+  \eqref{eqn:EnergyNorm}.
 \end{proof}
 
-In Theorem~\ref{thm:EnergyNorm}, we proved an error estimate in the $H^2$ norm.
-In Theorem~\ref{thm:Errors}, we will prove error estimates in the $L^2$ and $H^1$ norms by using a duality argument.
-To this end, we first notice that the QGE \eqref{eqn:QGE_psi} can be written as
-\begin{eqnarray}
-\mathcal{N} \, \psi
-= Ro^{-1} \, F ,
-\label{eqn:qge_operator_formulation}
-\end{eqnarray}
+In \autoref{thm:EnergyNorm}, we proved an error estimate in the $H^2$ norm.
+In \autoref{thm:Errors}, we will prove error estimates in the $L^2$ and $H^1$
+norms by using a duality argument. To this end, we first notice that the QGE
+\eqref{eqn:QGE_psi} can be written as
+\begin{equation}
+  \mathcal{N} \, \psi = Ro^{-1} \, F ,
+  \label{eqn:qge_operator_formulation}
+\end{equation}
 where the nonlinear operator $\mathcal{N}$ is defined as
-\begin{eqnarray}
-\mathcal{N} \, \psi
-:= Re^{-1} \, \Delta^2 \psi
-+ J(\psi , \Delta \psi)
-- Ro^{-1} \, \frac{\partial \psi}{\partial x} .
-\label{eqn:nonlinear_operator}
-\end{eqnarray}
-The linearization of $\mathcal{N}$ around $\psi$, a solution of \eqref{eqn:QGE_psi}, yields the following \emph{linear} operator:
-\begin{eqnarray}
-\mathcal{L} \, \chi
-:= Re^{-1} \, \Delta^2 \chi
-+ J(\chi , \Delta \psi)
-+ J(\psi, \Delta \chi)
-- Ro^{-1} \, \frac{\partial \chi}{\partial x} .
-\label{eqn:linear_operator}
-\end{eqnarray}
-To find the dual problem associated with the QGE \eqref{eqn:qge_operator_formulation}, we first define the \emph{dual operator} $\mathcal{L}^*$ of $\mathcal{L}$:
-\begin{eqnarray}
-(\mathcal{L} \, \chi , \psi^*)
-= ( \chi , \mathcal{L}^* \, \psi^*)
-\qquad
-\forall \, \psi^* \in X .
-\label{eqn:dual_operator}
-\end{eqnarray}
+\begin{equation}
+  \mathcal{N} \, \psi := Re^{-1} \, \Delta^2 \psi + J(\psi , \Delta \psi)
+    - Ro^{-1} \, \frac{\partial \psi}{\partial x} .
+  \label{eqn:nonlinear_operator}
+\end{equation}
+The linearization of $\mathcal{N}$ around $\psi$, a solution of
+\eqref{eqn:QGE_psi}, yields the following \emph{linear} operator:
+\begin{equation}
+  \mathcal{L} \, \chi := Re^{-1} \, \Delta^2 \chi + J(\chi , \Delta \psi) +
+    J(\psi, \Delta \chi) - Ro^{-1} \, \frac{\partial \chi}{\partial x} .
+  \label{eqn:linear_operator}
+\end{equation}
+To find the dual problem associated with the QGE
+\eqref{eqn:qge_operator_formulation}, we first define the \emph{dual operator}
+$\mathcal{L}^*$ of $\mathcal{L}$:
+\begin{equation}
+  (\mathcal{L} \, \chi , \psi^*) = ( \chi , \mathcal{L}^* \, \psi^*)
+    \qquad \forall \, \psi^* \in X .
+  \label{eqn:dual_operator}
+\end{equation}
 To find $\mathcal{L}^*$, we use the standard procedure:
 In \eqref{eqn:dual_operator}, we use the definition of $\mathcal{L}$ given in \eqref{eqn:linear_operator} and we ``integrate by parts" (i.e., use Green's theorem):
-\begin{eqnarray}
-\hspace*{-0.4cm}
-(\mathcal{L} \, \chi , \psi^*)
-&=& \left(
-Re^{-1} \, \Delta^2 \chi
-+ J(\chi , \Delta \psi)
-+ J(\psi, \Delta \chi)
-- Ro^{-1} \, \frac{\partial \chi}{\partial x}
-\, , \, \psi^*
-\right)
-\nonumber \\
-&=& \left(
-\chi \, , \,
-Re^{-1} \, \Delta^2 \, \psi^*
-- J(\psi , \Delta \psi^* )
-+ Ro^{-1} \, \frac{\partial \psi^*}{\partial x}
-\right)
-+ \biggl( J(\chi , \Delta \psi) , \psi^* \biggr) ,
-\label{eqn:dual_operator_1}
-\end{eqnarray}
-where to get the first term on the right-hand side of \eqref{eqn:dual_operator_1} we used the skew-symmetry of the trilinear form $a_2$ in the last two variables and Green's theorem (just as we did in the proof of Theorem \ref{thm:stability_sqge}).
-Next, we apply Green's theorem to the second term on the right-hand side of \eqref{eqn:dual_operator_1}:
-\begin{eqnarray}
-\biggl( J(\chi , \Delta \psi) , \psi^* \biggr)
-&=& \chi_x \, \Delta \psi_y \, \psi^*
-   -    \chi_y \, \Delta \psi_x \, \psi^*
-\nonumber \\
-&\stackrel{Green}{=}&
-- \chi \, \Delta \psi_{y x} \, \psi^*
-- \chi \, \Delta \psi_y \, \psi^*_x
-+ \chi \, \Delta \psi_{x y} \, \psi^*
-+ \chi \, \Delta \psi_x \, \psi^*_y
-\nonumber \\
-&=& \biggl( \chi , J(\Delta \psi , \psi^*) \biggr) .
-\label{eqn:dual_operator_2}
-\end{eqnarray}
+\begin{align}
+  (\mathcal{L} \, \chi , \psi^*) =& \left( Re^{-1} \, \Delta^2 \chi
+    + J(\chi , \Delta \psi) + J(\psi, \Delta \chi)
+    - Ro^{-1} \, \frac{\partial \chi}{\partial x} \, , \, \psi^* \right) \nonumber \\
+  =& \left( \chi \, , \, Re^{-1} \, \Delta^2 \, \psi^* - J(\psi , \Delta \psi^* )
+    + Ro^{-1} \, \frac{\partial \psi^*}{\partial x} \right)
+    + \biggl( J(\chi , \Delta \psi) , \psi^* \biggr) ,
+  \label{eqn:dual_operator_1}
+\end{align}
+where to get the first term on the right-hand side of
+\eqref{eqn:dual_operator_1} we used the skew-symmetry of the trilinear form
+$a_2$ in the last two variables and Green's theorem (just as we did in the proof
+of Theorem \ref{thm:stability_sqge}).
+Next, we apply Green's theorem to the second term on the right-hand side of
+\eqref{eqn:dual_operator_1}:
+\begin{align}
+  \biggl( J(\chi , \Delta \psi) , \psi^* \biggr) =& \chi_x \, \Delta \psi_y \, \psi^*
+     - \chi_y \, \Delta \psi_x \, \psi^* \nonumber \\
+  \stackrel{Green}{=}& - \chi \, \Delta \psi_{y x} \, \psi^* - \chi \, \Delta
+    \psi_y \, \psi^*_x + \chi \, \Delta \psi_{x y} \, \psi^* + \chi \, \Delta
+    \psi_x \, \psi^*_y \nonumber \\
+  =& \biggl( \chi , J(\Delta \psi , \psi^*) \biggr) .
+  \label{eqn:dual_operator_2}
+\end{align}
 Equations \eqref{eqn:dual_operator_1}-\eqref{eqn:dual_operator_2} imply:
-\begin{eqnarray}
-(\mathcal{L} \, \chi , \psi^*)
-&=& \left(
-\chi \, , \,
-Re^{-1} \, \Delta^2 \, \psi^*
-- J(\psi , \Delta \psi^* )
-+ Ro^{-1} \, \frac{\partial \psi^*}{\partial x}
-\right)
-+ \biggl( \chi , J(\Delta \psi , \psi^*) \biggr)
-\nonumber \\
-&=& ( \chi , \mathcal{L}^* \, \psi^*) .
-\label{eqn:dual_operator_3}
-\end{eqnarray}
+\begin{align}
+  (\mathcal{L} \, \chi , \psi^*) =& \left( \chi \, , \, Re^{-1} \, \Delta^2 \, \psi^*
+    - J(\psi , \Delta \psi^* ) + Ro^{-1} \, \frac{\partial \psi^*}{\partial x} \right)
+    + \biggl( \chi , J(\Delta \psi , \psi^*) \biggr) \nonumber \\
+  =& ( \chi , \mathcal{L}^* \, \psi^*) .
+  \label{eqn:dual_operator_3}
+\end{align}
 Thus, the \emph{dual operator} $\mathcal{L}^*$ is given by
-\begin{eqnarray}
-\mathcal{L}^* \, \psi^*
-= Re^{-1} \, \Delta^2 \, \psi^*
-- J(\psi , \Delta \psi^* )
-+ J(\Delta \psi , \psi^* )
-+ Ro^{-1} \, \frac{\partial \psi^*}{\partial x} .
-\label{eqn:dual_operator_4}
-\end{eqnarray}
-For any given $g \in L^2(\Omega)$, the weak formulation of the \emph{dual problem} is:
-\begin{eqnarray}
-( \mathcal{L}^* \, \psi^* , \chi )
-= (g , \chi)
-\qquad
-\forall \, \chi \in X = H_0^2(\Omega) .
-\label{eqn:dual_operator_5}
-\end{eqnarray}
-We assume that $\psi^*$, the solution of \eqref{eqn:dual_operator_5}, satisfies the following elliptic regularity estimates:
-\begin{eqnarray}
-&& \psi^* \in H^4(\Omega) \cap H^2_0(\Omega),
-\label{eqn:dual_operator_6a} \\[0.2cm]
-&& \| \psi^* \|_4
-\le C \, \|g\|_{0},
-\label{eqn:dual_operator_6b} \\[0.2cm]
-&& \| \psi^* \|_3
-\le C \, \|g\|_{-1},
-\label{eqn:dual_operator_6c}
-\end{eqnarray}
-where $C$ is a generic constant that can depend on the data, but not on the meshsize $h$.
+\begin{equation}
+  \mathcal{L}^* \, \psi^* = Re^{-1} \, \Delta^2 \, \psi^* - J(\psi , \Delta \psi^* )
+    + J(\Delta \psi , \psi^* ) + Ro^{-1} \, \frac{\partial \psi^*}{\partial x} .
+  \label{eqn:dual_operator_4}
+\end{equation}
+For any given $g \in L^2(\Omega)$, the weak formulation of the \emph{dual
+problem} is:
+\begin{equation}
+  ( \mathcal{L}^* \, \psi^* , \chi ) = (g , \chi)
+    \qquad \forall \, \chi \in X = H_0^2(\Omega) .
+  \label{eqn:dual_operator_5}
+\end{equation}
+We assume that $\psi^*$, the solution of \eqref{eqn:dual_operator_5}, satisfies
+the following elliptic regularity estimates:
+\begin{align}
+  & \psi^* \in H^4(\Omega) \cap H^2_0(\Omega), \label{eqn:dual_operator_6a} \\[0.2cm]
+  & \| \psi^* \|_4 \le C \, \|g\|_{0}, \label{eqn:dual_operator_6b} \\[0.2cm]
+  & \| \psi^* \|_3 \le C \, \|g\|_{-1}, \label{eqn:dual_operator_6c}
+\end{align}
+where $C$ is a generic constant that can depend on the data, but not on the
+meshsize $h$.
 \begin{remark}
-We note that this type of elliptic regularity was also assumed in \cite{Cayco86} for the streamfunction formulation of the 2D NSE.
-In that report, it was also noted that for a polygonal domain satisfying a minimum angle condition, Rannacher et al. \cite{} had actually proved this elliptic regularity.
+  We note that this type of elliptic regularity was also assumed in
+  \cite{Cayco86} for the streamfunction formulation of the 2D NSE.  In that
+  report, it was also noted that for a polygonal domain satisfying a minimum
+  angle condition, Rannacher et al. \cite{} had actually proved this elliptic
+  regularity.
 \end{remark}
 
-The error estimates in the $L^2$ and $H^1$ norms that we prove in Theorem~\ref{thm:Errors} are
-derived for the particular space $X^h\subset H^2_0(\Omega)$ consisting of Argyris elements, although
-the same results can be derived for other conforming $C^1$ finite element spaces.
+The error estimates in the $L^2$ and $H^1$ norms that we prove in
+Theorem~\ref{thm:Errors} are derived for the particular space $X^h\subset
+H^2_0(\Omega)$ consisting of Argyris elements, although the same results can be
+derived for other conforming $C^1$ finite element spaces.
 \begin{thm} \label{thm:Errors}
   Let $\psi$ be the solution of \eqref{eqn:SQGEWF} and $\psi^h$ be the solution
-  of \eqref{eqn:SQGEFEF}.
-  Assume that the same small data condition as in Theorem \ref{thm:EnergyNorm} is satisfied:
-  \begin{eqnarray}
-  Re^{-2} \, Ro
-  \geq \Gamma_1 \, \| F \|_{-2} .
-  \label{eqn:small_data_condition_dual}
-  \end{eqnarray}
-  Furthermore, assume that $\psi\in H^6(\Omega) \cap H^2_0(\Omega)$.
-  Then there exist positive constants $C_0, \, C_1 \text{ and } C_2$ that can depend on $Re$, $Ro$, $\Gamma_1$, $F$, but \emph{not} on the meshsize $h$, such that
+  of \eqref{eqn:SQGEFEF}.  Assume that the same small data condition as in
+  Theorem \ref{thm:EnergyNorm} is satisfied:
+  \begin{equation}
+    Re^{-2} \, Ro \geq \Gamma_1 \, \| F \|_{-2} .
+    \label{eqn:small_data_condition_dual}
+  \end{equation}
+  Furthermore, assume that $\psi\in H^6(\Omega) \cap H^2_0(\Omega)$.  Then there
+  exist positive constants $C_0, \, C_1 \text{ and } C_2$ that can depend on
+  $Re$, $Ro$, $\Gamma_1$, $F$, but \emph{not} on the meshsize $h$, such that
   \begin{align}
     |\psi - \psi^h|_2 &\le C_2 \, h^4 , \label{eqn:H2Error} \\
     |\psi - \psi^h|_1 &\le C_1 \, h^5 , \label{eqn:H1Error} \\
@@ -333,283 +288,196 @@ the same results can be derived for other conforming $C^1$ finite element spaces
   \end{align}
 \end{thm}
 \begin{proof}
-Estimate \eqref{eqn:H2Error} follows immediately from \eqref{eqn:argyris_approximation_0} and Theorem \ref{thm:EnergyNorm}.
-Estimates \eqref{eqn:L2Error} and \eqref{eqn:H1Error} follow from a duality argument.
+  Estimate \eqref{eqn:H2Error} follows immediately from
+  \eqref{eqn:argyris_approximation_0} and Theorem \ref{thm:EnergyNorm}.
+  Estimates \eqref{eqn:L2Error} and \eqref{eqn:H1Error} follow from a duality
+  argument.
 
-The error in the primal problem \eqref{eqn:SQGEWF} and the interpolation error in the dual problem  \eqref{eqn:dual_operator_5} are denoted as
-\begin{eqnarray}
-e
-:= \psi
-- \psi^h
-\qquad
-e^*
-: = \psi^*
-- {\psi^*}^h ,
-\label{eqn:theorem_dual_1}
-\end{eqnarray}
-respectively.
+  The error in the primal problem \eqref{eqn:SQGEWF} and the interpolation error
+  in the dual problem  \eqref{eqn:dual_operator_5} are denoted as
+  \begin{equation}
+    e := \psi - \psi^h \qquad e^* : = \psi^* - {\psi^*}^h ,
+    \label{eqn:theorem_dual_1}
+  \end{equation}
+  respectively.
 
-We start proving the $L^2$ norm estimate \eqref{eqn:L2Error}.
-\begin{eqnarray}
-|e|^2
-= (e , e)
-&=& (\mathcal{L} \, e , \psi^*)
-= (e , \mathcal{L}^* \, \psi^*)
-\nonumber \\
-&=& (e , \mathcal{L}^* \, e^*)
-+ (e , \mathcal{L}^* \, {\psi^*}^h)
-= (\mathcal{L} \, e , e^*)
-+ (\mathcal{L} \, e , {\psi^*}^h) .
-\label{eqn:theorem_dual_2}
-\end{eqnarray}
-The last term on the right-hand side of \eqref{eqn:theorem_dual_2} is given by
-\begin{eqnarray}
-(\mathcal{L} \, e , {\psi^*}^h)
-= \left(
-Re^{-1} \, \Delta^2 e
-+ J(e , \Delta \, \psi)
-+ J(\psi , \Delta \, e)
-- Ro^{-1} \, \frac{\partial e}{\partial x}
- \, , \,
-{\psi^*}^h
-\right) .
-\label{eqn:theorem_dual_3}
-\end{eqnarray}
-To estimate this term, we consider the error equation obtained by subtracting \eqref{eqn:SQGEFEF} (with $\psi^h= {\psi^*}^h$) from \eqref{eqn:SQGEWF} (with $\chi = {\psi^*}^h$):
-\begin{eqnarray}
-\left(
-Re^{-1} \, \Delta^2 e
-- Ro^{-1} \, \frac{\partial e}{\partial x}
- \, , \,
-{\psi^*}^h
-\right)
-+ \left(
- J(\psi , \Delta \, \psi)
-- J(\psi^h , \Delta \, \psi^h)
- \, , \,
-{\psi^*}^h
-\right)
-= 0 .
-\label{eqn:theorem_dual_4}
-\end{eqnarray}
-Using \eqref{eqn:theorem_dual_4}, equation \eqref{eqn:theorem_dual_3} can be written as follows:
-\begin{eqnarray}
-(\mathcal{L} \, e , {\psi^*}^h)
-= \left(
- J(e , \Delta \, \psi)
-+ J(\psi , \Delta \, e)
-- J(\psi , \Delta \, \psi)
-+ J(\psi^h , \Delta \, \psi^h)
- \, , \,
-{\psi^*}^h
-\right) .
-\label{eqn:theorem_dual_5}
-\end{eqnarray}
-Thus, by using \eqref{eqn:theorem_dual_5} equation \eqref{eqn:theorem_dual_2} becomes:
-\begin{eqnarray}
-|e|^2
-&=& (\mathcal{L} \, e , e^*)
-+ (\mathcal{L} \, e , {\psi^*}^h)
-\nonumber \\
-&=& Re^{-1} \, (\Delta e , \Delta e^*)
-- Ro^{-1} \, \left( \frac{\partial e}{\partial x} , e^* \right)
-+ \left(
-J(e , \Delta \psi)
-+ J(\psi , \Delta e)
-, e^*
-\right)
-\nonumber \\
-&+& \left(
- J(e , \Delta \, \psi)
-+ J(\psi , \Delta \, e)
-- J(\psi , \Delta \, \psi)
-+ J(\psi^h , \Delta \, \psi^h)
- \, , \,
-{\psi^*}^h
-\right)
-\nonumber \\
-&=& a_1(e , e^*)
-+ a_3(e , e^*)
-+ a_2(e , \psi , e^*)
-+ a_2(\psi , e, e^*)
-+ a_2(e , \psi , {\psi^*}^h)
-\nonumber \\
-&& - a_2(\psi , \psi , e^*)
-+ a_2(\psi^h , \psi^h , e^*)
-\nonumber \\
-&=& a_1(e , e^*)
-+ a_3(e , e^*)
-+ a_2(e , \psi , e^*)
-+ a_2(\psi , e, e^*)
-\nonumber \\
-&& - a_2(e , \psi , e^*)
-+ a_2(e , \psi^h , e^*)
-+ a_2(e , e , \psi^*)
-\label{eqn:theorem_dual_6}
-\end{eqnarray}
-Using the bounds in \eqref{eqn:a1Cont}-\eqref{eqn:a3Cont}, \eqref{eqn:theorem_dual_6} yields:
-\begin{eqnarray}
-|e|^2
-&=& a_1(e , e^*)
-+ a_3(e , e^*)
-+ a_2(e , \psi , e^*)
-+ a_2(\psi , e, e^*)
-\nonumber \\
-&& - a_2(e , \psi , e^*)
-+ a_2(e , \psi^h , e^*)
-+ a_2(e , e , \psi^*)
-\nonumber \\
-&\leq& Re^{-1} \, | e |_2 \, |e^* |_2
-+ Ro^{-1} \, | e |_2 \, |e^* |_2
-+ \Gamma_1 \, | e |_2 \, | \psi |_2 \, | e^* |_2
-+ \Gamma_1 \, | \psi |_2 \, | e |_2 \, | e^* |_2
-\nonumber \\
-&& + \Gamma_1 \, | e |_2 \, | \psi |_2 \, | e^* |_2
-+ \Gamma_1 \, | e |_2 \, | \psi^h |_2 \, | e^* |_2
-+ \Gamma_1 \, | e |_2 \, | e |_2 \, | \psi^* |_2
-\nonumber \\
-&=& | e |_2 \, |e^* |_2 \,
-\left(
-Re^{-1}
-+ Ro^{-1}
-+ \Gamma_1 \, | \psi |_2
-+ \Gamma_1 \, | \psi |_2
-+ \Gamma_1 \, | \psi |_2
-+ \Gamma_1 \, | \psi^h |_2
-\right)
-\nonumber \\
-&& + | e |_2^2 \,
-\left(
-\Gamma_1 \, | \psi^* |_2
-\right) .
-\label{eqn:theorem_dual_7}
-\end{eqnarray}
-We start bounding the terms on the right-hand side of \eqref{eqn:theorem_dual_7}.
-First, we note that using the stability estimates \eqref{eqn:stability_sqge} for $\psi$ and \eqref{eqn:stability_fem_sqge} for $\psi^h$, the right-hand side of \eqref{eqn:theorem_dual_7} can be bounded as follows:
-\begin{eqnarray}
-|e|^2
-\leq C \, | e |_2 \, |e^* |_2
-+ | e |_2^2 \,
-\left(
-\Gamma_1 \, | \psi^* |_2
-\right) ,
-\label{eqn:theorem_dual_8}
-\end{eqnarray}
-where $C$ is a generic constant that can depend on $Re$, $Ro$, $\Gamma_1$, $F$, but \emph{not} on the meshsize $h$.
-By using the approximation results \eqref{eqn:argyris_approximation_1}, we get:
-\begin{eqnarray}
-|e^* |_2
-\leq C \, h^2 \, | \psi^* |_4 .
-\label{eqn:theorem_dual_9}
-\end{eqnarray}
-By using \eqref{eqn:dual_operator_6a} and \eqref{eqn:dual_operator_6b}, the elliptic regularity results of the dual problem \eqref{eqn:dual_operator_5} with $g := e$, we also get:
-\begin{eqnarray}
-| \psi^* |_4
-\leq C \, | e | ,
-\label{eqn:theorem_dual_10}
-\end{eqnarray}
-which obviously implies
-\begin{eqnarray}
-| \psi^* |_2
-\leq C \, | e | .
-\label{eqn:theorem_dual_11}
-\end{eqnarray}
-Inequalities \eqref{eqn:theorem_dual_9}-\eqref{eqn:theorem_dual_10} imply:
-\begin{eqnarray}
-|e^* |_2
-\leq C \, h^2 \, | e | .
-\label{eqn:theorem_dual_12}
-\end{eqnarray}
-Inserting \eqref{eqn:theorem_dual_11} and \eqref{eqn:theorem_dual_12}  in \eqref{eqn:theorem_dual_8}, we get:
-\begin{eqnarray}
-|e|^2
-\leq C \, h^2 \, | e |_2 \, | e |
-+ C \, | e |_2^2 \, | e | .
-\label{eqn:theorem_dual_13}
-\end{eqnarray}
-Using the obvious simplifications and the $H^2$ error estimate \eqref{eqn:H2Error} in \eqref{eqn:theorem_dual_13} yields:
-\begin{eqnarray}
-|e|
-\leq C \, h^2 \, | e |_2
-+ C \, | e |_2^2
-\leq C \, h^6 + C \, h^8
-= C_0 \, h^6 ,
-\label{eqn:theorem_dual_14}
-\end{eqnarray}
-which proves the $L^2$ error estimate \eqref{eqn:L2Error}.
+  We start by proving the $L^2$ norm estimate \eqref{eqn:L2Error}.
+  \begin{align}
+    |e|^2 = (e , e) =& (\mathcal{L} \, e , \psi^*)
+      = (e , \mathcal{L}^* \, \psi^*) \nonumber \\
+    =& (e , \mathcal{L}^* \, e^*) + (e , \mathcal{L}^* \, {\psi^*}^h)
+      = (\mathcal{L} \, e , e^*) + (\mathcal{L} \, e , {\psi^*}^h) .
+    \label{eqn:theorem_dual_2}
+  \end{align}
+  The last term on the right-hand side of \eqref{eqn:theorem_dual_2} is given by
+  \begin{equation}
+    (\mathcal{L} \, e , {\psi^*}^h) = \left( Re^{-1} \, \Delta^2 e
+      + J(e , \Delta \, \psi) + J(\psi , \Delta \, e)
+      - Ro^{-1} \, \frac{\partial e}{\partial x} \, , \, {\psi^*}^h \right) .
+    \label{eqn:theorem_dual_3}
+  \end{equation}
+  To estimate this term, we consider the error equation obtained by subtracting
+  \eqref{eqn:SQGEFEF} (with $\psi^h= {\psi^*}^h$) from \eqref{eqn:SQGEWF} (with
+  $\chi = {\psi^*}^h$):
+  \begin{equation}
+    \left( Re^{-1} \, \Delta^2 e - Ro^{-1} \, \frac{\partial e}{\partial x} \, ,
+      \, {\psi^*}^h \right) + \left( J(\psi , \Delta \, \psi)
+      - J(\psi^h , \Delta \, \psi^h) \, , \, {\psi^*}^h \right) = 0 .
+    \label{eqn:theorem_dual_4}
+  \end{equation}
+  Using \eqref{eqn:theorem_dual_4}, equation \eqref{eqn:theorem_dual_3} can be
+  written as follows:
+  \begin{equation}
+    (\mathcal{L} \, e , {\psi^*}^h) = \left( J(e , \Delta \, \psi)
+      + J(\psi , \Delta \, e) - J(\psi , \Delta \, \psi)
+      + J(\psi^h , \Delta \, \psi^h) \, , \, {\psi^*}^h \right) .
+    \label{eqn:theorem_dual_5}
+  \end{equation}
+  Thus, by using \eqref{eqn:theorem_dual_5} equation \eqref{eqn:theorem_dual_2}
+  becomes:
+  \begin{align}
+    |e|^2 =& (\mathcal{L} \, e , e^*) + (\mathcal{L} \, e , {\psi^*}^h) \nonumber \\
+    =& Re^{-1} \, (\Delta e , \Delta e^*)
+      - Ro^{-1} \, \left( \frac{\partial e}{\partial x} , e^* \right)
+      + \left( J(e , \Delta \psi) + J(\psi , \Delta e) , e^* \right) \nonumber \\
+    +& \left( J(e , \Delta \, \psi) + J(\psi , \Delta \, e)
+      - J(\psi , \Delta \, \psi) + J(\psi^h , \Delta \, \psi^h)
+      \, , \, {\psi^*}^h \right) \nonumber \\
+    =& Re^{-1} (\Delta e ,\Delta e^*) - Ro^{-1}(e_x , e^*)
+      + b(e , \psi , e^*) + b(\psi , e, e^*) + b(e , \psi , {\psi^*}^h) \nonumber \\
+    & - b(\psi , \psi , e^*) + b(\psi^h , \psi^h , e^*) \nonumber \\
+    =& Re^{-1} (\Delta , \Delta e^*) - Ro^{-1}(e_x , e^*)
+      + b(e , \psi , e^*) + b(\psi , e, e^*) \nonumber \\
+    & - b(e , \psi , e^*) + b(e , \psi^h , e^*) + b(e , e , \psi^*)
+    \label{eqn:theorem_dual_6}
+  \end{align}
+  Using the bounds in \eqref{eqn:a1Cont}-\eqref{eqn:a3Cont},
+  \eqref{eqn:theorem_dual_6} yields:
+  \begin{align}
+    |e|^2 =& Re^{-1} (\Delta e ,\Delta e^*) - Ro^{-1} (e_x , e^*)
+      + b(e , \psi , e^*) + b(\psi , e, e^*) \nonumber \\
+    & - b(e , \psi , e^*) + b(e , \psi^h , e^*) + b(e , e , \psi^*) \nonumber \\
+    \leq& Re^{-1} \, | e |_2 \, |e^* |_2 + Ro^{-1} \, | e |_2 \, |e^* |_2
+      + \Gamma_1 \, | e |_2 \, | \psi |_2 \, | e^* |_2
+      + \Gamma_1 \, | \psi |_2 \, | e |_2 \, | e^* |_2 \nonumber \\
+    & + \Gamma_1 \, | e |_2 \, | \psi |_2 \, | e^* |_2
+      + \Gamma_1 \, | e |_2 \, | \psi^h |_2 \, | e^* |_2
+      + \Gamma_1 \, | e |_2 \, | e |_2 \, | \psi^* |_2 \nonumber \\
+    =& | e |_2 \, |e^* |_2 \, \left( Re^{-1} + Ro^{-1} + \Gamma_1 \, | \psi |_2
+      + \Gamma_1 \, | \psi |_2
+      + \Gamma_1 \, | \psi |_2
+      + \Gamma_1 \, | \psi^h |_2 \right) \nonumber \\
+    & + | e |_2^2 \, \left( \Gamma_1 \, | \psi^* |_2 \right) .
+    \label{eqn:theorem_dual_7}
+  \end{align}
+  We start bounding the terms on the right-hand side of
+  \eqref{eqn:theorem_dual_7}.  First, we note that using the stability estimates
+  \eqref{eqn:stability_sqge} for $\psi$ and \eqref{eqn:stability_fem_sqge} for
+  $\psi^h$, the right-hand side of \eqref{eqn:theorem_dual_7} can be bounded as
+  follows:
+  \begin{equation}
+    |e|^2 \leq C \, | e |_2 \, |e^* |_2 + | e |_2^2 \,
+      \left( \Gamma_1 \, | \psi^* |_2 \right) ,
+    \label{eqn:theorem_dual_8}
+  \end{equation}
+  where $C$ is a generic constant that can depend on $Re$, $Ro$, $\Gamma_1$,
+  $F$, but \emph{not} on the meshsize $h$.  By using the approximation results
+  \eqref{eqn:argyris_approximation_1}, we get:
+  \begin{equation}
+    |e^* |_2 \leq C \, h^2 \, | \psi^* |_4 .
+    \label{eqn:theorem_dual_9}
+  \end{equation}
+  By using \eqref{eqn:dual_operator_6a} and \eqref{eqn:dual_operator_6b}, the
+  elliptic regularity results of the dual problem \eqref{eqn:dual_operator_5}
+  with $g := e$, we also get:
+  \begin{equation}
+    | \psi^* |_4 \leq C \, | e | ,
+    \label{eqn:theorem_dual_10}
+  \end{equation}
+  which obviously implies
+  \begin{equation}
+    | \psi^* |_2 \leq C \, | e | .
+    \label{eqn:theorem_dual_11}
+  \end{equation}
+  Inequalities \eqref{eqn:theorem_dual_9}-\eqref{eqn:theorem_dual_10} imply:
+  \begin{equation}
+    |e^* |_2 \leq C \, h^2 \, | e | .
+    \label{eqn:theorem_dual_12}
+  \end{equation}
+  Inserting \eqref{eqn:theorem_dual_11} and \eqref{eqn:theorem_dual_12}  in
+  \eqref{eqn:theorem_dual_8}, we get:
+  \begin{equation}
+    |e|^2 \leq C \, h^2 \, | e |_2 \, | e | + C \, | e |_2^2 \, | e | .
+    \label{eqn:theorem_dual_13}
+  \end{equation}
+  Using the obvious simplifications and the $H^2$ error estimate
+  \eqref{eqn:H2Error} in \eqref{eqn:theorem_dual_13} yields:
+  \begin{equation}
+    |e| \leq C \, h^2 \, | e |_2 + C \, | e |_2^2 \leq C \, h^6 + C \, h^8
+      = C_0 \, h^6 ,
+    \label{eqn:theorem_dual_14}
+  \end{equation}
+  which proves the $L^2$ error estimate \eqref{eqn:L2Error}.
 
-%\textcolor{blue}{Traian: Check the rest of the proof!!!}
-
-Next, we prove the $H^1$ norm estimate \eqref{eqn:H1Error}.
-Since the duality approach we use is similar to that we used in proving the  $L^2$ norm estimate \eqref{eqn:L2Error}, we only highlight the main differences.
-We start again by writing the $H^1$ norm of the error in terms of the dual operator $\mathcal{L}^*$:
-\begin{eqnarray}
-|e|_1^2
-&=& (\nabla e , \nabla e)
-= ( e , - \Delta e)
-= (\mathcal{L} \, e , \psi^*)
-= (e , \mathcal{L}^* \, \psi^*)
-\nonumber \\
-&=& (e , \mathcal{L}^* \, e^*)
-+ (e , \mathcal{L}^* \, {\psi^*}^h)
-= (\mathcal{L} \, e , e^*)
-+ (\mathcal{L} \, e , {\psi^*}^h) .
-\label{eqn:theorem_dual_15}
-\end{eqnarray}
-Thus, the second and fourth equalities in \eqref{eqn:theorem_dual_15} clearly indicate that in the dual problem \eqref{eqn:dual_operator_5}, one should choose $g = - \Delta e$, and not $g = e$, as we did in \eqref{eqn:theorem_dual_10}, when we proved the $L^2$ error estimate \eqref{eqn:L2Error}.
-Using \eqref{eqn:dual_operator_6a} and \eqref{eqn:dual_operator_6c}, the elliptic regularity results of the dual problem \eqref{eqn:dual_operator_5} with $g :=  - \Delta e$, we also get:
-\begin{eqnarray}
-| \psi^* |_3
-\leq C \, | - \Delta e |_{-1}
-\leq C \, | e |_1 ,
-\label{eqn:theorem_dual_16}
-\end{eqnarray}
-where in the last inequality we used the fact that $e \in H_0^2(\Omega)$.
-Inequality \eqref{eqn:theorem_dual_16} obviously implies
-\begin{eqnarray}
-| \psi^* |_2
-\leq C \, | e |_1 .
-\label{eqn:theorem_dual_17}
-\end{eqnarray}
-All the results in \eqref{eqn:theorem_dual_3}-\eqref{eqn:theorem_dual_7} carry over to our setting.
-%\textcolor{blue}{Traian: Check !!!}
-Thus, we get:
-\begin{eqnarray}
-|e|_1^2
-\leq C \, | e |_2 \, |e^* |_2
-+ C \, | e |_2^2 \, | \psi^* |_2 ,
-\label{eqn:theorem_dual_18}
-\end{eqnarray}
-where $C$ is a generic constant that can depend on $Re$, $Ro$, $\Gamma_1$, $F$, but \emph{not} on the meshsize $h$.
-By using the approximation result \eqref{eqn:argyris_approximation_2}, we get:
-\begin{eqnarray}
-|e^* |_2
-\leq C \, h \, | \psi^* |_3 .
-\label{eqn:theorem_dual_19}
-\end{eqnarray}
-Inequalities \eqref{eqn:theorem_dual_19}-\eqref{eqn:theorem_dual_16} imply:
-\begin{eqnarray}
-|e^* |_2
-\leq C \, h \, | e |_1 .
-\label{eqn:theorem_dual_20}
-\end{eqnarray}
-Inserting \eqref{eqn:theorem_dual_17} and \eqref{eqn:theorem_dual_20}  in \eqref{eqn:theorem_dual_18}, we get:
-\begin{eqnarray}
-|e|_1^2
-\leq C \, h \, | e |_2 \, | e |_1
-+ C \, | e |_2^2 \, | e |_1 .
-\label{eqn:theorem_dual_21}
-\end{eqnarray}
-Using the obvious simplifications and the $H^2$ error estimate \eqref{eqn:H2Error} in \eqref{eqn:theorem_dual_21} yields:
-\begin{eqnarray}
-|e|_1
-\leq C \, h \, | e |_2
-+ C \, | e |_2^2
-\leq C \, h^5 + C \, h^8
-= C_1 \, h^5 ,
-\label{eqn:theorem_dual_22}
-\end{eqnarray}
-which proves the $H^1$ error estimate \eqref{eqn:H1Error}.
-%\vspace*{4.0cm}
-\hfill
+  Next, we prove the $H^1$ norm estimate \eqref{eqn:H1Error}.  Since the duality
+  approach we use is similar to that we used in proving the  $L^2$ norm estimate
+  \eqref{eqn:L2Error}, we only highlight the main differences.  We start again
+  by writing the $H^1$ norm of the error in terms of the dual operator
+  $\mathcal{L}^*$:
+  \begin{align}
+    |e|_1^2 =& (\nabla e , \nabla e) = ( e , - \Delta e) =
+      (\mathcal{L} \, e , \psi^*) = (e , \mathcal{L}^* \, \psi^*) \nonumber \\
+    =& (e , \mathcal{L}^* \, e^*) + (e , \mathcal{L}^* \, {\psi^*}^h)
+      = (\mathcal{L} \, e , e^*) + (\mathcal{L} \, e , {\psi^*}^h) .
+    \label{eqn:theorem_dual_15}
+  \end{align}
+  Thus, the second and fourth equalities in \eqref{eqn:theorem_dual_15} clearly
+  indicate that in the dual problem \eqref{eqn:dual_operator_5}, one should
+  choose $g = - \Delta e$, and not $g = e$, as we did in
+  \eqref{eqn:theorem_dual_10}, when we proved the $L^2$ error estimate
+  \eqref{eqn:L2Error}.  Using \eqref{eqn:dual_operator_6a} and
+  \eqref{eqn:dual_operator_6c}, the elliptic regularity results of the dual
+  problem \eqref{eqn:dual_operator_5} with $g :=  - \Delta e$, we also get:
+  \begin{equation}
+    | \psi^* |_3 \leq C \, | - \Delta e |_{-1} \leq C \, | e |_1 ,
+    \label{eqn:theorem_dual_16}
+  \end{equation}
+  where in the last inequality we used the fact that $e \in H_0^2(\Omega)$.
+  Inequality \eqref{eqn:theorem_dual_16} obviously implies
+  \begin{equation}
+    | \psi^* |_2 \leq C \, | e |_1 .
+    \label{eqn:theorem_dual_17}
+  \end{equation}
+  All the results in \eqref{eqn:theorem_dual_3}-\eqref{eqn:theorem_dual_7} carry
+  over to our setting.  Thus, we get:
+  \begin{equation}
+    |e|_1^2 \leq C \, | e |_2 \, |e^* |_2 + C \, | e |_2^2 \, | \psi^* |_2 ,
+    \label{eqn:theorem_dual_18}
+  \end{equation}
+  where $C$ is a generic constant that can depend on $Re$, $Ro$, $\Gamma_1$,
+  $F$, but \emph{not} on the meshsize $h$.  By using the approximation result
+  \eqref{eqn:argyris_approximation_2}, we get:
+  \begin{equation}
+    |e^* |_2 \leq C \, h \, | \psi^* |_3 .
+    \label{eqn:theorem_dual_19}
+  \end{equation}
+  Inequalities \eqref{eqn:theorem_dual_19}-\eqref{eqn:theorem_dual_16} imply:
+  \begin{equation}
+    |e^* |_2 \leq C \, h \, | e |_1 .
+    \label{eqn:theorem_dual_20}
+  \end{equation}
+  Inserting \eqref{eqn:theorem_dual_17} and \eqref{eqn:theorem_dual_20}  in
+  \eqref{eqn:theorem_dual_18}, we get:
+  \begin{equation}
+    |e|_1^2 \leq C \, h \, | e |_2 \, | e |_1 + C \, | e |_2^2 \, | e |_1 .
+    \label{eqn:theorem_dual_21}
+  \end{equation}
+  Using the obvious simplifications and the $H^2$ error estimate
+  \eqref{eqn:H2Error} in \eqref{eqn:theorem_dual_21} yields:
+  \begin{equation}
+    |e|_1 \leq C \, h \, | e |_2 + C \, | e |_2^2 \leq C \, h^5 + C \, h^8
+      = C_1 \, h^5 ,
+    \label{eqn:theorem_dual_22}
+  \end{equation}
+  which proves the $H^1$ error estimate \eqref{eqn:H1Error}.
 \end{proof}

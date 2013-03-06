@@ -89,29 +89,38 @@ Thus, the weak form of the QGE in streamfunction form is
   && \hspace*{3.0cm} = Ro^{-1}\, \int_{\Omega}\! F \, \chi \, d{\bf x} \qquad \forall \, \chi \in X .
 \label{eqn:qge_psi_weak}
 \end{eqnarray}
-Therefore, letting
-\begin{align}
-  a_0(\psi,\chi) &= \int_{\Omega}\! \nabla \psi \nabla \chi \, d\mathbf{x} \label{eqn:a0} \\
-  a_1(\psi,\chi) &= Re^{-1} \, \int_{\Omega}\! \Delta \psi \, \Delta \chi \, d{\bf x} , \label{eqn:a1} \\
-  a_2(\zeta;\psi,\chi) &= \int_{\Omega}\! \Delta \zeta \, \left( \psi_y \, \chi_x - \psi_x \, \chi_y \right) \, d{\bf x} , \label{eqn:a2} \\
-  a_3(\psi,\chi) &= - Ro^{-1} \, \int_{\Omega}\! \psi_x \, \chi \, d{\bf x} , \label{eqn:a3} \\
-  \ell(\chi) &= Ro^{-1} \, \int_{\Omega}\! F \, \chi \, d{\bf x} , \label{eqn:l}
-\end{align}
-gives the following weak formulation of the QGE in streamfunction formulation:
+Therefore, taking $(\cdot,\cdot)$ to be the inner product and letting
+\begin{equation}
+  b(\psi; \psi, \chi) = \int_{\Omega}\! \Delta \psi\, (\psi_y \chi_x - \psi_x
+  \chi_y)\, d\mathbf{x}
+  \label{eqn:b}
+\end{equation}
+gives the following weak
+formulation of the QGE in streamfunction formulation:
 \begin{equation}
   \begin{split}
     \text{Find } \psi &\in X \text{ such that} \\
-    \frac{\partial}{\partial t} a_0(\psi,\chi) + a_1(\psi,\chi) +& a_2(\psi,\psi,\chi) + a_3(\psi,\chi)
-    = \ell(\chi),\quad \forall \chi \in X.
+    \frac{\partial}{\partial t} (\nabla \psi, \nabla \chi) + Re^{-1} (\Delta
+      \psi, \Delta \chi) +& b(\psi,\psi,\chi) - Ro^{-1}(\psi_x,\chi)
+      = Ro^{-1} (F,\chi),\quad \forall \chi \in X.
   \end{split}
   \label{eqn:QGEWF}
 \end{equation}
-The linear form $\ell$, the bilinear forms $a_0$, $a_1$, $a_3$ and the trilinear
-form $a_2$ are continuous \cite{Cayco86}: There exists $\Gamma_1 > 0$ such that
-\begin{align}
-  |a_0(\psi,\chi)| &\le |\psi|_2 |\chi|_2 \quad \forall \, \psi,\chi\in X, \label{eqn:a0cont} \\
-  |a_1(\psi,\chi)| &\le Re^{-1} \,  |\psi|_2 \, |\chi|_2 \quad \forall \, \psi,\chi\in X , \label{eqn:a1Cont} \\
-  |a_2(\zeta,\psi,\chi)| &\le \Gamma_1 \, |\zeta|_2 \, |\psi|_2 \, |\chi|_2 \quad \forall \, \zeta,\psi,\chi\in X , \label{eqn:a2Cont} \\
-  |a_3(\psi,\chi)| &\le Ro^{-1} \, |\psi|_2 \, |\chi|_2 \quad \forall \, \psi, \, \chi \in X , \label{eqn:a3Cont} \\
-  |\ell(\chi)| &\le Ro^{-1} \,\|F\|_{-2} \, |\chi|_2 \quad \forall \, \chi \in X . \label{eqn:lCont}
-\end{align}
+\begin{lemma} \label{lma:ContinuousForms}
+  The linear form $(F,\chi)$, the bilinear forms $(\nabla \psi, \nabla \chi)$,
+  $(\Delta \psi, \Delta \chi)$, $(\psi_x, \chi)$ and the trilinear form $b(\psi;
+  \psi, \chi)$ are continuous \cite{Cayco86}: There exists a $\Gamma_0,\,
+  \Gamma_1,\, \Gamma_2 > 0$ such that
+  \begin{align}
+    (\nabla \psi, \nabla \chi) &\le \Gamma_0\, |\psi|_2 |\chi|_2 \quad \forall
+      \, \psi,\chi\in X, \label{eqn:a0cont} \\
+    (\Delta \psi, \Delta \chi) &\le |\psi|_2 \, |\chi|_2 \quad \forall \,
+      \psi,\chi\in X , \label{eqn:a1Cont} \\
+    b(\zeta,\psi,\chi) &\le \Gamma_1 \, |\zeta|_2 \, |\psi|_2 \, |\chi|_2
+      \quad \forall \, \zeta,\psi,\chi\in X , \label{eqn:bCont} \\
+    (\psi_x,\chi) &\le \Gamma_1 \, |\psi|_2 \, |\chi|_2 \quad \forall \, \psi,
+      \, \chi \in X , \label{eqn:a3Cont} \\
+    (F,\chi) &\le \|F\|_{-2} \, |\chi|_2 \quad \forall \, \chi \in X .
+      \label{eqn:lCont}
+  \end{align}
+\end{lemma}
