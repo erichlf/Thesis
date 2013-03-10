@@ -81,7 +81,8 @@ We first need to choose a length scale and a velocity scale. The length scale we
 choose is $L$, the width of the computational domain. The velocity scale is the
 Sverdrup velocity
 \begin{align}
-  U := \frac{\pi \, \tau_0}{\rho \, H \, \beta \, L} , \label{eqn:velocity_scale}
+  U := \frac{\pi \, \tau_0}{\rho \, H \, \beta \, L} ,
+  \label{eqn:velocity_scale}
 \end{align}
 where $\tau_0$ is the amplitude of the wind stress, $\rho$ is the density of the
 fluid, and $H$ is the height of the fluid. The Sverdrup balance, which was used
@@ -263,8 +264,10 @@ Thus, for notation consistency (i.e., to ensure that the velocity and the
 streamfunction are related by \eqref{qge_psi_2}), we will consider the QGE
 \eqref{qge_psi_1} with $\psi$ replaced with $-\psi$:
 \begin{align}
-  -\frac{\partial \left[ \Delta \psi \right]}{\partial t} + Re^{-1} \, \Delta^2 \psi + J(\psi , \Delta \psi)
-    - Ro^{-1} \, \frac{\partial \psi}{\partial x} = Ro^{-1} \, F .  \label{eqn:QGE_psi}
+  -\frac{\partial \left[ \Delta \psi \right]}{\partial t}
+    + Re^{-1} \, \Delta^2 \psi + J(\psi , \Delta \psi)
+    - Ro^{-1} \, \frac{\partial \psi}{\partial x} = Ro^{-1} \, F .
+    \label{eqn:QGE_psi}
 \end{align}
 
 At this point, let us comment on the significance of the two parameters in

@@ -91,9 +91,10 @@ previous section containing the finite error analysis for the SQGE
       \sup_{0\le t \le T} \|\nabla (\psi &- \psi^h) \|^2 + Re^{-1}
         \int_{0}^{T}\! \|\Delta (\psi - \psi^h)\|^2 \, dt \le C\biggl\{
           \|\nabla(\psi_0 - \psi^h(0))\|^2 \\
-        & + \inf_{\chi^h(t) \in X^h} \biggl[\|\nabla(\psi - \chi^h)_t\|^2_{-1} +
-          Re^{-1} \|\Delta(\psi - \chi^h)\|^2\, dt \\
-        & \qquad + \|\Delta(\psi - \chi^h)\|_{L^4(0,T;L^2)} + \max_{0 \le t \le T}
+        & + \inf_{\chi^h(t) \in X^h} \biggl[
+          \int_0^T\! \|\nabla(\psi - \chi^h)_t\|^2_{-1}
+          + Re^{-1} \|\Delta(\psi - \chi^h)\|^2\, dt \\
+        & \qquad + \|\Delta(\psi - \chi^h)\|_{L^4(0,T;L^2)} + \sup_{0 \le t \le T}
           \|\nabla (\psi - \chi^h)\|^2\biggr] \biggr\}
     \end{split}
     \label{eqn:StrongConvergence}
@@ -158,6 +159,7 @@ previous section containing the finite error analysis for the SQGE
       &\le \frac{\epsilon}{2} \|\Delta \Phi^h\|^2
       + \frac{Ro^{-2} \Gamma_2^2}{2 \epsilon} \|\Delta \eta\|^2 \label{eqn:YoungBeta}
   \end{align}
+  {\color{red} Should we have a Poincar\'e constant?}
   while using Young's inequality with $\varepsilon = 2 \epsilon$ and
   \autoref{lma:BH2Bounds}
   \begin{equation}
@@ -266,8 +268,9 @@ previous section containing the finite error analysis for the SQGE
   Now, integrating over $(0,t)$ and multiplying by $e^{A(t)}$ gives
   \begin{align*}
     \|\nabla \Phi^h\|^2 + Re^{-1} \int_0^t\! \|\Delta \Phi^h\|^2\, dt'
-      & \le C(T,Re) \|\nabla \Phi^h(0)\|^2 + C(T,Re) \int_0^t\! \|\nabla
-      \eta_t\|_{-1}^2 + C(Ro) \|\Delta \eta\|^2\, dt' \\
+      & \le C(T,Re) \|\nabla \Phi^h(0)\|^2
+      + C(T,Re) \int_0^t\! \|\nabla \eta_t\|_{-1}^2
+      + C(Ro) \|\Delta \eta\|^2\, dt' \\
     & + C \int_0^t\!  \left( \|\Delta \psi\|^2 +  \|\Delta \psi^h\|^2\right)
       \|\Delta \eta\|^2\, dt'.
   \end{align*}
@@ -277,8 +280,31 @@ previous section containing the finite error analysis for the SQGE
       \psi^h\|^2_{L^2(0,T;L^2)} \|\Delta \eta\|^2_{L^4(0,T;L^2)},
     \label{eqn:HolderPsih}
   \end{equation}
-  and note that $\|\Delta \psi^h\|_{L^2(0,T;L^2)}$ can be bounded by problem
-  data from the stability bound.
+  and note that $\|\Delta \psi^h\|_{L^2(0,T;L^2)}$ and $\|\Delta
+  \psi\|_{L^2(0,T;L^2)}$ can be bounded by problem data from the stability
+  bound.
+  \begin{align*}
+    \|\nabla \Phi^h\|^2 + Re^{-1} \int_0^t\! \|\Delta \Phi^h\|^2\, dt'
+      & \le C(T,Re) \|\nabla \Phi^h(0)\|^2
+      + C(T,Re) \int_0^t\! \|\nabla \eta_t\|_{-1}^2
+      + C(Ro) \|\Delta \eta\|^2\, dt' \\
+    & + C(Re,Ro,\Gamma_1,F) \|\Delta \eta\|^2_{L^4(0,T;L^2)}.
+  \end{align*}
+  Now adding $\|\nabla \eta\|^2$ and $Re^{-1} \int_0^t\! \|\Delta \eta\|^2\, dt'$ to
+  both sides and using the triangle inequality gives
+  \begin{align*}
+    \|\nabla \left( \psi - \psi^h\right) \|^2
+      &+ Re^{-1} \int_0^t\! \|\Delta \left(\psi - \psi^h\right)\|^2\, dt'
+      \le {\color{red} C(T,Re) \|\nabla \Phi^h(0)\|^2} \\
+    & + C(T,Re) \int_0^t\! \|\nabla \left( \psi - \chi^h\right)_t\|_{-1}^2
+      + C(Re,Ro) \|\Delta \left(\psi - \chi^h\right)\|^2\, dt' \\
+    & + C(Re,Ro,\Gamma_1,F) \|\Delta \left(\psi - \chi^h\right)\|^2_{L^4(0,T;L^2)}
+      + \|\nabla \left(\psi - \chi^h\right)\|^2.
+  \end{align*}
+  {\color{red} How does this become $\|\nabla\left(\psi_0 -
+  \psi^h(0)\right)\|^2$?}
+  Finally, taking $\sup_{0\le t \le T}$ and $\inf_{\chi^h \in X^h}$ of both
+  sidde gives the desired result.
 \end{proof}
 
 \begin{lemma} \label{lma:Interpolation}
