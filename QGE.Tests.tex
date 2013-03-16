@@ -71,7 +71,7 @@ western boundary layer as time increases.
     \end{tabular}
   \end{center}
   \caption{Observed spatial orders of convergence for Argyris applied to
-    \eqref{eqn:QGE_psi} with the exact solution \eqref{eqn:Test2} using implicit
+    \eqref{eqn:QGE_psi} with the exact solution \eqref{eqn:Test1} using implicit
     Euler for time discretization. Note the observed orders of convergence
     nearly matches the theoretical error estimates developed in
     \autoref{sec:QGEError}. The $L^2$ order, however, drops off for the last
@@ -126,6 +126,15 @@ boundary layer as time increases.
   \label{tab:Test2Time}
 \end{table}
 
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.6]{expsinTimeConvergence.pdf}
+    \caption{Observed orders of convergence in time for Implicit-Euler applied to
+      \eqref{eqn:QGE_psi} with the exact solution \eqref{eqn:Test2}.}
+  \label{fig:Test2Time}
+  \end{center}
+\end{figure}
+
 \begin{table}
 \begin{center}
   \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
@@ -141,7 +150,7 @@ boundary layer as time increases.
     \hline
   \end{tabular}
 \end{center}
-  \caption{Observed order of convergence for Implicit-Euler applied to
+  \caption{Observed order of convergence for Argyris applied to
     \eqref{eqn:QGE_psi} with the exact solution \eqref{eqn:Test2}. Note the observed
     order of convergence matches the theoretical error estimates developed in
     \autoref{sec:QGEError}.}
@@ -152,9 +161,9 @@ boundary layer as time increases.
   \begin{center}
     \includegraphics[scale=0.6]{expsinSpaceConvergence.pdf}
     \caption{Observed orders of convergence in space for Argyris applied to
-      \eqref{eqn:QGE_psi} with the exact solution \eqref{eqn:Test1} using
+      \eqref{eqn:QGE_psi} with the exact solution \eqref{eqn:Test2} using
       implicit Euler for the time discretization.}
-  \label{fig:Test1Space}
+  \label{fig:Test2Space}
   \end{center}
 \end{figure}
 

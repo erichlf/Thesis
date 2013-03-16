@@ -88,7 +88,7 @@ SF to later.} There is a finite constant $\Gamma_1>0$ such that for all $\psi,\,
   We will begin with the proof of Equations \eqref{eqn:BH1BoundChi} -
   \eqref{eqn:BH1BoundPhi} and then prove \autoref{eqn:BH1BoundPsi} last. For
   Equations \eqref{eqn:BH1BoundChi} and \eqref{eqn:BH1BoundPhi} we begin in
-  the same way as we did for \autoref{lma:BH2Bound}. That is, we apply
+  the same way as we did for \autoref{lma:BH2Bounds}. That is, we apply
   H\"older's inequality to $b(\psi; \varphi, \chi)$ and set $p=2$, while setting
   $q=r=4$, giving
   \begin{equation*}
@@ -115,7 +115,7 @@ SF to later.} There is a finite constant $\Gamma_1>0$ such that for all $\psi,\,
     b(\psi;\varphi,\chi) \le \Gamma_5 \|\Delta \psi\|\,
       \left(\|\nabla \varphi\|^{\nicefrac{1}{2}}
       \|\Delta \varphi\|^{\nicefrac{1}{2}}\right)\, \|\Delta \chi\|.
-    \label{eqn:b0}
+    \label{eqn:b0def}
   \end{equation}
   For \autoref{eqn:BH1BoundPsi} we apply Lemma 5.6 from \cite{Fairag98}, i.e.
   \begin{equation*}
@@ -127,7 +127,7 @@ SF to later.} There is a finite constant $\Gamma_1>0$ such that for all $\psi,\,
       (\varphi_{xy} \chi_y - \varphi_{yy} \chi_x) \psi_y
       - (\varphi_{xy} \chi_x - \varphi_{xx} \chi_y) \psi_x \, d\vec{x}.
   \end{equation*}
-  Therefore using \eqref{eqn:b0}, H\"older inequality reads
+  Therefore using \eqref{eqn:b0def}, H\"older inequality reads
   \begin{equation}
     b(\psi; \varphi, \chi) \le \|\nabla \psi\|_{L^p} \|\Delta \varphi\|_{L^q}
     \|\nabla \chi\|_{L^r},\quad \frac{1}{p} + \frac{1}{q} + \frac{1}{r} = 1.
@@ -486,18 +486,6 @@ SF to later.} There is a finite constant $\Gamma_1>0$ such that for all $\psi,\,
   in $H^{-1}(\Omega)$ hold and that $\psi, \psi_t \in C^1(\Omega\times [0,T])$.
   Suppose also that the assumption of \autoref{thm:StrongConvergence} hold.
   Then,
-  \begin{equation}
-    \begin{split}
-      \sup_{0\le t \le T} \|\nabla (\psi &- \psi^h) \|^2 + Re^{-1}
-        \int_{0}^{T}\! \|\Delta (\psi - \psi^h)\|^2 \, dt \le C\biggl\{
-          \|\nabla(\psi_0 - \psi^h(0))\|^2 \\
-        & + \inf_{\chi^h(t) \in X^h} \biggl[\|\nabla(\psi - \chi^h)_t\|^2_{-1} +
-          Re^{-1} \|\Delta(\psi - \chi^h)\|^2\, dt \\
-        & \qquad + \|\Delta(\psi - \chi^h)\|_{L^4(0,T;L^2)} + \max_{0 \le t \le T}
-          \|\nabla (\psi - \chi^h)\|^2\biggr] \biggr\}
-    \end{split}
-    \label{eqn:SemiInterp}
-  \end{equation}
 \end{thm}
 \begin{proof}
 
