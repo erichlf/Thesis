@@ -1,11 +1,11 @@
 In this section, we present the functional setting and some auxiliary results
-for the FEM discretization of the streamfunction formulation of the QGE
+for the FE discretization of the streamfunction formulation of the QGE
 \eqref{eqn:QGEWF}. Let $\mathcal{T}^h$ denote a finite element triangulation of
 $\Omega$ with meshsize (maximum triangle diameter) $h$. We consider a
-\emph{conforming} FEM discretization of \eqref{eqn:QGEWF}, i.e., $X^h \subset X
+\emph{conforming} FE discretization of \eqref{eqn:QGEWF}, i.e., $X^h \subset X
 = H_0^2(\Omega)$.
 
-The FEM discretization of the streamfunction formulation of the QGE
+The FE discretization of the streamfunction formulation of the QGE
 \eqref{eqn:QGEWF} reads:
 \begin{equation}
   \begin{split}
@@ -25,10 +25,10 @@ $\psi^h$ (see Theorem 2.1 in \cite{Cayco86}).
 
 As noted in Section 6.1 in \cite{Ciarlet} (see also Section 13.2 in
 \cite{Gunzburger89}, Section 3.1 in \cite{Johnson}, and Theorem 5.2 in
-\cite{Braess}, in order to develop a conforming FEM for the QGE
+\cite{Braess}, in order to develop a conforming FE discretization for the QGE
 \eqref{eqn:QGEWF}, we are faced with the problem of constructing subspaces of
-the space $H^2_0(\Omega)$. Since the standard, piecewise polynomial FEM spaces
-are locally regular, this construction amounts in practice to finding FEM spaces
+the space $H^2_0(\Omega)$. Since the standard, piecewise polynomial FE spaces
+are locally regular, this construction amounts in practice to finding FE spaces
 $X^h$ that satisfy the inclusion $X^h \subset C^1({\bar \Omega})$, i.e., finding
 $C^1$ finite elements.
 
@@ -40,12 +40,11 @@ Bogner-Fox-Schmit rectangular element).
 
 A description of the particular finite element we are using (the Argyris
 triangle \autoref{fig:Argyris}) and its tranformation will be thouroughly
-discussed in \autoref{sec:Argyris}). Additionaly, \eqref{eqn:SemiDiscretization}
-is only a semi-discretization, since the formulation is still continuous in
-time, but discretized in space. Since there is no geometry in the time domain it
-makes sense to apply what has been called the \emph{method of lines (MoL)} in
-the time domain, i.e. use a \emph{finite difference} approximation for the time
-derivative. %The MoL will be discussed further in \autoref{sec:MoL}.
+discussed in \autoref{sec:Argyris}). Additionaly, we note that
+\eqref{eqn:SemiDiscretization} is only a semi-discretization, since the
+formulation is still continuous in time, but discretized in space.  We apply the
+the \emph{method of lines} (MoL) in the time domain, i.e. use a \emph{finite
+difference} approximation for the time derivative.
 
 %In what follows, we will use the Argyris triangular element, depicted in
 %\autoref{fig:Argyris}.  Finite elements of class $C^1$ are of particular
