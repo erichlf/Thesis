@@ -23,8 +23,12 @@ Setting $\chi = \psi$ in \eqref{eqn:SQGEWF}, we get:
     = Ro^{-1} (F,\psi) .
 \label{eqn:stability_sqge_2}
 \end{align}
-Since the trilinear form $a_2$ is skew-symmetric in the last two arguments
-\cite{Girault79,Girault86,Gunzburger89}, we have
+Since the trilinear form
+\begin{align*}
+  b(\zeta; \psi, \chi) = \int_{\Omega}\! \Delta \zeta \left(\psi_y \chi_x -
+  \psi_x \chi_y\right)\, d\mathbf{x},
+\end{align*}
+we see that $b(\zeta; \psi, \psi) = 0$ for all $\psi \in X$. Therefore, we have
 \begin{align}
   b(\psi,\psi, \psi) = 0 .
   \label{eqn:stability_sqge_3}
@@ -45,10 +49,13 @@ where in the last equality in \eqref{eqn:stability_sqge_4} we used that $\psi =
 \eqref{eqn:stability_sqge_2} and using the Cauchy-Schwarz inequality, we get:
 \begin{align}
   Re^{-1} (\Delta \psi, \Delta \psi) &= Ro^{-1} (F,\psi) \nonumber \\
-  Re^{-1}\, |\psi|_2^2 &= Ro^{-1}\, (F,\psi) \\
+  Re^{-1}\, |\psi|_2^2 &= Ro^{-1}\, (F,\psi),
+\end{align}
+which is equivalent to
+\begin{align}
   |\psi|_2 &\le Re\, Ro^{-1}\,\sup_{\psi \in X} \frac{(F,\psi)}{|\psi|_2} \nonumber \\
   |\psi|_2 &\le Re\, Ro^{-1}\, \|F\|_{-2}.
   \label{eqn:stability_sqge_5}
 \end{align}
-which proves \eqref{eqn:stability_sqge_2}.
+and thus we have proven \eqref{eqn:stability_sqge_2}.
 \end{proof}
