@@ -61,18 +61,18 @@ be recovered from $\psi$ and $q$ by using the following formula:
 \label{eqn:u_psi}
 \end{align}
 
-The computational domain is standard \cite{Greatbatch00}, a rectangular, closed
-basin on a $\beta$-plane with the $y$ coordinate increasing northward and the
-$x$ coordinate eastward. The center of the basin is at $y=0$, the northern and
-southern boundaries are at $y = \pm \, L$, respectively, and the western and
-eastern boundaries are at $x = 0$ and $x = L$ (see Figure 1 in
-\cite{Greatbatch00}).
+The computational domain considered in this section (and in most of this thesis)
+is standard \cite{Greatbatch00}, a rectangular, closed basin on a $\beta$-plane
+with the $y$ coordinate increasing northward and the $x$ coordinate eastward.
+The center of the basin is at $y=0$, the northern and southern boundaries are at
+$y = \pm \, L$, respectively, and the western and eastern boundaries are at $x =
+0$ and $x = L$ (see Figure 1 in \cite{Greatbatch00}).
 
 We are now ready to nondimensionalize the QGE
 \eqref{qge_q_psi_dim_1}-\eqref{qge_q_psi_dim_2}.  There are several ways of
 nondimensionalizing the QGE, based on different scalings and involving different
-parameters (see standard textbooks, such as
-\cite{Cushman11,Majda,Pedlosky92,Vallis06}).  Since the FEM error analysis in
+parameters (see standard textbooks on geophysical fluid dynamics, such as
+\cite{Cushman11,Majda,Pedlosky92,Vallis06}).  Since the FE error analysis in
 this report is based on a precise relationship among the nondimensional
 parameters of the QGE (see, e.g., \eqref{eqn:small_data_condition}), we present
 below a careful nondimensionalization of the QGE.
@@ -258,7 +258,8 @@ which model the \emph{rotation effects} in the QGE, do not have counterparts in
 the 2D NSE.  Furthermore, the Rossby number, $Ro$, in the QGE, which is a
 measure of the rotation effects, does not appear in the 2D NSE.  However, apart
 from these two significant differences, the streamfunction-vorticity and
-streamfunction formulations of the QGE and the 2D NSE are quite similar.
+streamfunction formulations of the QGE and the 2D NSE in the streamfunction form
+are quite similar.
 
 Thus, for notation consistency (i.e., to ensure that the velocity and the
 streamfunction are related by \eqref{qge_psi_2}), we will consider the QGE
@@ -299,11 +300,12 @@ QGE is a thorny one, especially for the vorticity-streamfunction formulation
 (see \cite{Vallis06,Cummins} for a careful discussion of this issue).  In this
 report, we consider
 \begin{equation}
-  \begin{split}
-    \psi = \frac{\partial \psi}{\partial \mathbf{n}} = 0 \qquad \text{on } \partial \Omega, \\
-    \psi = \psi_0 \qquad \text{when } t = 0
-  \end{split}
-\label{qge_psi_4}
+  \psi = \frac{\partial \psi}{\partial \mathbf{n}} = 0 \qquad \text{on } \partial \Omega
+  \label{eqn:QGEBCs}
+\end{equation}
+\begin{equation}
+  \psi(0) = \psi_0 \qquad \text{when } t = 0
+  \label{eqn:QGEICs}
 \end{equation}
 which are also the boundary conditions used in \cite{Gunzburger89} for the
 streamfunction formulation of the 2D NSE.
