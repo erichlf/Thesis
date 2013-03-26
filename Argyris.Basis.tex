@@ -6,14 +6,17 @@
 %functions on $\hat{K}$ and the transformation.
 \input{Ref.Triangle.tex}
 
-The Argyris triangle has 21 degrees of freedom and therefore has 21 basis
-functions per triangle.  Additionally, the basis for Argyris in reference
+In most references, which present the Argyris element, only the constraints
+found in \autoref{tab:Constraints} are presented. Thus, for completeness, we
+derive and explicitly state the the basis functions for the Argyris FE in this
+subsection. The Argyris triangle has 21 degrees of freedom and therefore has 21
+basis functions per triangle.  Additionally, the basis for Argyris in reference
 coordinates (depicted in \autoref{fig:RefTriangle}) belong to the space
 $\mathbb{P}_5$, which has the standard monomial basis
 \begin{equation*}
 	\left\{
     1, x, y, x^2, xy, y^2, x^3, x^2y, xy^2, y^3, x^4, x^3y,
-    x^2y^2, xy^3, y^4, x^5, x^4y, x^3y^2, x^2y^3, xy^4, y^5
+    x^2y^2, xy^3, y^4, x^5, x^4y, x^3y^2, x^2y^3, xy^4, y^5.
   \right\}
 \end{equation*}
 Thus, the $i^{th}$ basis function for the Argyris triangle can be written as
@@ -23,13 +26,13 @@ Thus, the $i^{th}$ basis function for the Argyris triangle can be written as
  	\hat{y}^2 + m^i_9 \hat{y}^3 \\
  + m^i_{10} \hat{y}^4 + m^i_{11} \hat{y}^5 + m^i_{12}  \hat{x} \hat{y} + m^i_{13} \hat{x} \hat{y}^2 + m^i_{14} \hat{x} \hat{y}^3 + m^i_{15}
  	\hat{x} \hat{y}^4 + m^i_{16} \hat{x}^2 \hat{y} \\
- + m^i_{17} \hat{x}^2 \hat{y}^2 + m^i_{18}\hat{x}^2 \hat{y}^3 + m^i_{19} \hat{x}^3 \hat{y} + m^i_{20}\hat{x}^3 \hat{y}^2 + m^i_{21} \hat{x}^4 \hat{y}
+ + m^i_{17} \hat{x}^2 \hat{y}^2 + m^i_{18}\hat{x}^2 \hat{y}^3 + m^i_{19} \hat{x}^3 \hat{y} + m^i_{20}\hat{x}^3 \hat{y}^2 + m^i_{21} \hat{x}^4 \hat{y}.
  \end{split}
 	\label{eqn:Basis}
 \end{equation}
 
 Now, consider the reference triangle $\hat{K}$ in Figure \ref{fig:RefTriangle} with
-vertices numbered counter clockwise $1,\, 2,\text{ and } 3$, i.e.
+vertices numbered counterclockwise $1,\, 2,\text{ and } 3$, i.e.
 $(\hat{x}_1,\hat{y}_1)=(0,0),\, (\hat{x}_2,\hat{y}_2)=(1,0),\text{ and } (\hat{x}_3,\hat{y}_3)=(0,1)$.
 Additionally, let the vector $v_i$ represent the $i^{th}$ edge with
 \begin{equation*}

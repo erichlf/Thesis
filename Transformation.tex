@@ -1,9 +1,11 @@
-Now that we have the Argyris basis functions on the reference triangle we need
-to relate those to the Argyris basis functions on a general triangle. So let's
-first consider the affine transformation from $\hat{K}$ to $K$, i.e. $F: \hat{K}
-\to K$ such that
+In this subsection we present the transformation developed by Dominguez et. al.
+For the original derivation one should see \cite{Dominguez06} and
+\cite{Dominguez08}. Now that we have the Argyris basis functions on the
+reference triangle we need to relate those to the Argyris basis functions on a
+general triangle. So let's first consider the affine transformation from
+$\hat{K}$ to $K$, i.e. $F: \hat{K} \to K$ such that
 \begin{equation}
-  F(\hat{\mathbf{x}}) = B\hat{\mathbf{x}} + \mathbf{b} := 
+  F(\hat{\mathbf{x}}) = B\hat{\mathbf{x}} + \mathbf{b} :=
   \begin{bmatrix}
     x_2 - x_1 & x_3 - x_1 \\ y_2 - y_1 & y_3 - y_1
   \end{bmatrix} \begin{bmatrix}
@@ -41,7 +43,7 @@ $j\in\{1,\dots,21\}$ as they are listed below
 \begin{align*}
   &\mathcal{L}_1, \mathcal{L}_2, \mathcal{L}_3, \\
   &\mathcal{L}_1^x, \mathcal{L}_1^y, \mathcal{L}_2^x, \mathcal{L}_2^y,
-    \mathcal{L}_3^x, \mathcal{L}_3^y, \\ 
+    \mathcal{L}_3^x, \mathcal{L}_3^y, \\
   &\mathcal{L}_1^{xx}, \mathcal{L}_1^{xy}, \mathcal{L}_1^{yy},
     \mathcal{L}_2^{xx}, \mathcal{L}_2^{xy}, \mathcal{L}_2^{yy},
     \mathcal{L}_3^{xx}, \mathcal{L}_3^{xy}, \mathcal{L}_3^{yy}, \\
@@ -60,23 +62,23 @@ and similarly on the reference triangle
   \hat{\mathcal{L}}_i(\hat{\varphi}_j) = \delta_{ij} \quad
   i,j\in\{1,\dots,21\}.
 \end{equation*}
-Now define a new set of functionals such that 
+Now define a new set of functionals such that
 \begin{equation}
   \tilde{\mathcal{L}}_i(\varphi) := \hat{\mathcal{L}}_i(\varphi\circ F).
   \label{eqn:Functional}
 \end{equation}
 Since $\{\tilde{\mathcal{L}}_i\}$ and $\{\hat{\mathcal{L}}_i\}$ are both basis
 for the dual space of $\mathbb{P}_5(K)$ there is a nonsingular matrix $C$ such
-that 
+that
 \begin{equation}
   \tilde{\mathcal{L}}_i = \sum_{j=1}^{21} c_{ij} \mathcal{L}_j \quad i\in
-  \{1,\dots,21\}. 
+  \{1,\dots,21\}.
   \label{eqn:FunctionalsC}
 \end{equation}
 and therefore it follows
 \begin{equation}
   \varphi_i\circ F = \sum_{j=1}^{21} c_{ij}\hat{\varphi}_j \quad i\in
-  \{1,\dots,21\}. 
+  \{1,\dots,21\}.
   \label{eqn:PolyC}
 \end{equation} \cite{Dominguez08}
 Now, we must determine a simple expression for this $C$.
@@ -93,28 +95,28 @@ i=\{1,\dots,18\}$ and then introduce the new functionals
 by the following relationship
 \begin{equation*}
   \mathcal{L}_i^{\perp}(\varphi) := \nabla_{\mathbf{x}} \varphi(\mathbf{m}_i)
-  \cdot R\mathbf{v}_i, \quad 
+  \cdot R\mathbf{v}_i, \quad
   \mathcal{L}^{||}_i (\varphi) := \nabla_{\mathbf{x}} \varphi(\mathbf{m}_i)
   \cdot \mathbf{v}_i
 \end{equation*}
-where 
+where
 \begin{equation*}
   R = \begin{bmatrix}
     0 & -1 \\ 1 & 0
   \end{bmatrix}
-\end{equation*} 
+\end{equation*}
 is the matrix that rotates a vector $\nicefrac{\pi}{2}$ counter-clockwise. Now
 order the linear functionals as
 $\mathcal{L}^{\perp}_1,\mathcal{L}^{\perp}_2,\mathcal{L}^{\perp}_3,
 \mathcal{L}^{||}_1,\mathcal{L}^{||}_2,\mathcal{L}^{||}_3$.
-Therefore, we have the relationship 
+Therefore, we have the relationship
 \begin{equation}
   \tilde{\mathcal{L}}_i = \sum_{j=1}^{24} d_{ij} \mathcal{L}^*_j, \quad
     i\in\{1,\dots,21\}.
   \label{eqn:FunctionalsD}
 \end{equation}
 
-Now from \eqref{eqn:Affine} we see that 
+Now from \eqref{eqn:Affine} we see that
 \begin{align*}
   &\frac{\partial x}{\partial \hat{x}} = B_{11}   &\frac{\partial x}{\partial \hat{y}} = B_{12} \\
   &\frac{\partial y}{\partial \hat{x}} = B_{21}   &\frac{\partial y}{\partial \hat{y}} = B_{22}
@@ -126,17 +128,17 @@ triangle $\hat{K}$ to the gradient of $\varphi$ on the triangle $K$
     \dfrac{\partial \varphi\circ F}{\partial \hat{x}} \\[1em]
     \dfrac{\partial \varphi\circ F}{\partial \hat{y}}
   \end{bmatrix} \\
-  &=\begin{bmatrix} 
+  &=\begin{bmatrix}
     \dfrac{\partial \varphi\circ F}{\partial x} \cdot \dfrac{\partial x}{\partial \hat{x}} +
       \dfrac{\partial \varphi\circ F}{\partial y} \cdot \dfrac{\partial y}{\partial \hat{x}} \\[1em]
     \dfrac{\partial \varphi\circ F}{\partial x} \cdot \dfrac{\partial x}{\partial \hat{y}} +
-      \dfrac{\partial \varphi\circ F}{\partial y} \cdot \dfrac{\partial y}{\partial \hat{y}} 
+      \dfrac{\partial \varphi\circ F}{\partial y} \cdot \dfrac{\partial y}{\partial \hat{y}}
   \end{bmatrix} \\
   &= \begin{bmatrix}
     \dfrac{\partial x}{\partial \hat{x}} & \dfrac{\partial y}{\partial \hat{x}} \\[1em]
-    \dfrac{\partial x}{\partial \hat{y}} & \dfrac{\partial y}{\partial \hat{y}} 
+    \dfrac{\partial x}{\partial \hat{y}} & \dfrac{\partial y}{\partial \hat{y}}
   \end{bmatrix}\cdot \begin{bmatrix}
-    \dfrac{\partial \varphi\circ F}{\partial x} \\[1em] \dfrac{\partial \varphi\circ F}{\partial y} 
+    \dfrac{\partial \varphi\circ F}{\partial x} \\[1em] \dfrac{\partial \varphi\circ F}{\partial y}
   \end{bmatrix}
 \end{align*}
 and so
@@ -150,25 +152,25 @@ If we defined the Hessian as $H_x(\varphi) = \left[ \varphi_{xx},\,
 determine the relationship between the hessian of $\hat{\varphi}$ on the
 triangle $\hat{K}$ to the hessian of $\varphi$ on the triangle $K$
 \begin{align*}
-  H_{\mathbf{\hat{x}}}(\varphi\circ F) &= \begin{bmatrix} 
+  H_{\mathbf{\hat{x}}}(\varphi\circ F) &= \begin{bmatrix}
     \dfrac{\partial^2 \varphi\circ F}{\partial \hat{x}^2} \\[1em]
     \dfrac{\partial^2 \varphi\circ F}{\partial \hat{x} \partial\hat{y}} \\[1em]
-    \dfrac{\partial^2 \varphi\circ F}{\partial \hat{y}^2} 
+    \dfrac{\partial^2 \varphi\circ F}{\partial \hat{y}^2}
   \end{bmatrix} \\
-  &= \begin{bmatrix} 
+  &= \begin{bmatrix}
     \dfrac{\partial}{\partial \hat{x}}\left( \dfrac{\partial \varphi\circ
       F}{\partial x}\cdot \dfrac{\partial x}{\partial \hat{x}} + \dfrac{\partial
       \varphi\circ F}{\partial y}\cdot \dfrac{\partial y}{\partial
-      \hat{x}} \right) \\[1em] 
+      \hat{x}} \right) \\[1em]
     \dfrac{\partial}{\partial \hat{y}}\left( \dfrac{\partial \varphi\circ
       F}{\partial x}\cdot \dfrac{\partial x}{\partial \hat{x}} + \dfrac{\partial
       \varphi\circ F}{\partial y}\cdot \dfrac{\partial y}{\partial
-      \hat{x}} \right) \\[1em] 
+      \hat{x}} \right) \\[1em]
     \dfrac{\partial}{\partial \hat{y}}\left( \dfrac{\partial \varphi\circ
       F}{\partial x}\cdot \dfrac{\partial x}{\partial \hat{y}} + \dfrac{\partial
       \varphi\circ F}{\partial y}\cdot \dfrac{\partial y}{\partial
-      \hat{y}} \right) 
-  \end{bmatrix} \\ 
+      \hat{y}} \right)
+  \end{bmatrix} \\
   &= \begin{bmatrix}
     \dfrac{\partial^2 \varphi\circ F}{\partial x^2}\cdot \left(\dfrac{\partial
       x}{\partial \hat{x}}\right)^2 + 2 \dfrac{\partial^2 \varphi\circ F}{\partial x
@@ -187,31 +189,31 @@ triangle $\hat{K}$ to the hessian of $\varphi$ on the triangle $K$
       x}{\partial \hat{y}}\right)^2 + 2 \dfrac{\partial^2 \varphi\circ F}{\partial x
       \partial \hat{y}} \cdot \dfrac{\partial x}{\partial \hat{y}} \cdot
       \dfrac{\partial y}{\partial \hat{y}} + \dfrac{\partial \varphi\circ
-      F}{\partial y^2}\cdot \left(\dfrac{\partial y}{\partial \hat{y}}\right)^2 
+      F}{\partial y^2}\cdot \left(\dfrac{\partial y}{\partial \hat{y}}\right)^2
   \end{bmatrix} \\
 \end{align*}
 \begin{align*}
   &= \begin{bmatrix}
-    \left(\dfrac{\partial x}{\partial \hat{x}}\right)^2 
-      & 2 \dfrac{\partial x}{\partial \hat{x}}\cdot \dfrac{\partial y}{\partial \hat{x}} 
+    \left(\dfrac{\partial x}{\partial \hat{x}}\right)^2
+      & 2 \dfrac{\partial x}{\partial \hat{x}}\cdot \dfrac{\partial y}{\partial \hat{x}}
       & \left(\dfrac{\partial y}{\partial \hat{x}}\right)^2 \\[1em]
     \dfrac{\partial x}{\partial \hat{x}}\cdot \dfrac{\partial x}{\partial \hat{y}}
       & \left(\dfrac{\partial x}{\partial \hat{x}}\cdot \dfrac{\partial y}{\partial
       \hat{y}} + \dfrac{\partial x}{\partial \hat{y}}\cdot
       \dfrac{\partial y}{\partial \hat{x}} \right)
       & \dfrac{\partial y}{\partial \hat{x}} \cdot \dfrac{\partial y}{\partial \hat{y}} \\[1em]
-    \left(\dfrac{\partial x}{\partial \hat{y}}\right)^2 
-      & 2 \dfrac{\partial x}{\partial \hat{y}}\cdot \dfrac{\partial y}{\partial \hat{y}} 
+    \left(\dfrac{\partial x}{\partial \hat{y}}\right)^2
+      & 2 \dfrac{\partial x}{\partial \hat{y}}\cdot \dfrac{\partial y}{\partial \hat{y}}
       & \left(\dfrac{\partial y}{\partial \hat{y}}\right)^2 \\[1em]
   \end{bmatrix}\cdot \begin{bmatrix}
     \dfrac{\partial^2 \varphi\circ F}{\partial x^2} \\[1em]
     \dfrac{\partial^2 \varphi\circ F}{\partial x \partial y} \\[1em]
-    \dfrac{\partial^2 \varphi\circ F}{\partial y^2} 
+    \dfrac{\partial^2 \varphi\circ F}{\partial y^2}
   \end{bmatrix}
 \end{align*}
-and so 
+and so
 \begin{equation}
-  H_{\mathbf{\hat{x}}}(\varphi\circ F) = \Theta H_{\mathbf{x}}(\varphi)\circ F 
+  H_{\mathbf{\hat{x}}}(\varphi\circ F) = \Theta H_{\mathbf{x}}(\varphi)\circ F
   \label{eqn:Hessian}
 \end{equation}
 where
@@ -219,27 +221,27 @@ where
   \Theta = \begin{bmatrix}
     B_{11}^2 & 2B_{11}B_{21} & B_{21}^2 \\[0.5em]
     B_{12}B_{11} & B_{12}B_{21} + B_{11}B_{22} & B_{21}B_{22} \\[0.5em]
-    B_{12}^2 & 2B_{22}B_{12} & B_{22}^2 
+    B_{12}^2 & 2B_{22}B_{12} & B_{22}^2
   \end{bmatrix}.
 \end{equation*}
 
-Therefore we see that 
+Therefore we see that
 \begin{equation*}
-  \tilde{\mathcal{L}}_i = \mathcal{L}_i, \quad 
+  \tilde{\mathcal{L}}_i = \mathcal{L}_i, \quad
   \begin{bmatrix}
-    \tilde{\mathcal{L}}^x_i \\ \tilde{\mathcal{L}}^y_i 
-  \end{bmatrix} = B^T \begin{bmatrix} 
-    \mathcal{L}^x_i \\ \mathcal{L}^y_i 
+    \tilde{\mathcal{L}}^x_i \\ \tilde{\mathcal{L}}^y_i
+  \end{bmatrix} = B^T \begin{bmatrix}
+    \mathcal{L}^x_i \\ \mathcal{L}^y_i
   \end{bmatrix}, \quad
   \begin{bmatrix}
-    \tilde{\mathcal{L}}^{xx}_i \\ \tilde{\mathcal{L}}^{xy}_i \\ \tilde{\mathcal{L}}^{yy}_i 
-  \end{bmatrix} = \Theta \begin{bmatrix} 
-    \mathcal{L}^{xx}_i \\ \mathcal{L}^{xy}_i \\ \mathcal{L}^{yy}_i  
+    \tilde{\mathcal{L}}^{xx}_i \\ \tilde{\mathcal{L}}^{xy}_i \\ \tilde{\mathcal{L}}^{yy}_i
+  \end{bmatrix} = \Theta \begin{bmatrix}
+    \mathcal{L}^{xx}_i \\ \mathcal{L}^{xy}_i \\ \mathcal{L}^{yy}_i
   \end{bmatrix} \quad
 \end{equation*}
 Additionally, notice $\mathbf{v}_i = B\hat{\mathbf{v}}_i$ for
 $i=\{1,2,3\}$ where $\hat{\mathbf{v}}_i$ are defined on the reference triangle
-$\hat{K}$. It should also be noted that 
+$\hat{K}$. It should also be noted that
 \begin{equation*}
   \begin{bmatrix}
     \mathcal{L}^{\perp}_i \\ \mathcal{L}^{||}_i
@@ -248,17 +250,17 @@ $\hat{K}$. It should also be noted that
     \mathcal{L}^x_i \\ \mathcal{L}^y_i
   \end{bmatrix}
 \end{equation*}
-and therefore 
+and therefore
 \begin{equation*}
   \begin{bmatrix}
     \mathcal{L}^{x}_i \\ \mathcal{L}^{y}_i
-  \end{bmatrix} = \frac{1}{|v_i|^2} 
+  \end{bmatrix} = \frac{1}{|v_i|^2}
   \begin{bmatrix} -v^y_i & v^x_i \\ v^x_i & v^y_i \end{bmatrix}
   \begin{bmatrix}
     \mathcal{L}^{\perp}_i \\ \mathcal{L}^{||}_i
   \end{bmatrix}.
 \end{equation*}
-Then 
+Then
 \begin{align*}
   \tilde{\mathcal{L}}^n_i(\varphi) &= \hat{\mathcal{L}}^n_i(\varphi\circ F) \\
   &= \frac{1}{|\hat{\mathbf{v}}_i|}R \hat{\mathbf{v}}_i \cdot
@@ -288,7 +290,7 @@ form in the following way
 \begin{equation*}
   D = \text{diag}[I_3, B^T, B^T, B^T, \Theta, \Theta, \Theta, Q]
 \end{equation*}
-where 
+where
 \begin{equation*}
   Q = \left[\begin{array}{ccc|ccc}
     f_1 & & & g_1 & & \\
@@ -328,31 +330,31 @@ Taking $\gamma$ to be the index corresponding to $\mathbf{v}_{\gamma} =
   \psi'(1) &= v^x_{\gamma}\mathcal{L}^x_{\beta}(\varphi) +
     v^y_{\gamma}\mathcal{L}^y_{\beta}(\varphi) \\
   \psi''(0) &= (v^x_{\gamma})^2\mathcal{L}^{xx}_{\alpha}(\varphi) +
-    2 v^x_{\gamma}v^y_{\gamma}\mathcal{L}^{xy}_{\alpha}(\varphi) + 
+    2 v^x_{\gamma}v^y_{\gamma}\mathcal{L}^{xy}_{\alpha}(\varphi) +
     (v^y_{\gamma})^2\mathcal{L}^{yy}_{\alpha}(\varphi) \\
   \psi''(1) &= (v^x_{\gamma})^2\mathcal{L}^{xx}_{\beta}(\varphi) +
-    2 v^x_{\gamma}v^y_{\gamma}\mathcal{L}^{xy}_{\beta}(\varphi) + 
+    2 v^x_{\gamma}v^y_{\gamma}\mathcal{L}^{xy}_{\beta}(\varphi) +
     (v^y_{\gamma})^2\mathcal{L}^{yy}_{\beta}(\varphi).
 \end{align*}
 Applying this to \eqref{eqn:Psi} gives the following expression
 \begin{equation*}
   \begin{split}
     \mathcal{L}^{||}_{\gamma} = \frac{15}{8}(-\mathcal{L}_{\alpha} +
-      \mathcal{L}_{\beta}) 
+      \mathcal{L}_{\beta})
     - \frac{7}{16} ( v^x_{\gamma}\mathcal{L}^x_{\alpha}(\varphi) +
-      v^y_{\gamma}\mathcal{L}^y_{\alpha}(\varphi) + 
+      v^y_{\gamma}\mathcal{L}^y_{\alpha}(\varphi) +
       v^x_{\gamma}\mathcal{L}^x_{\beta}(\varphi) +
-      v^y_{\gamma}\mathcal{L}^y_{\beta}(\varphi)) 
-      \\ 
+      v^y_{\gamma}\mathcal{L}^y_{\beta}(\varphi))
+      \\
     + \frac{1}{32}(-(v^x_{\gamma})^2\mathcal{L}^{xx}_{\alpha}(\varphi) -
-      2 v^x_{\gamma}v^y_{\gamma}\mathcal{L}^{xy}_{\alpha}(\varphi) - 
+      2 v^x_{\gamma}v^y_{\gamma}\mathcal{L}^{xy}_{\alpha}(\varphi) -
       (v^y_{\gamma})^2\mathcal{L}^{yy}_{\alpha}(\varphi) \\
       + (v^x_{\gamma})^2\mathcal{L}^{xx}_{\beta}(\varphi) +
-      2 v^x_{\gamma}v^y_{\gamma}\mathcal{L}^{xy}_{\beta}(\varphi) + 
+      2 v^x_{\gamma}v^y_{\gamma}\mathcal{L}^{xy}_{\beta}(\varphi) +
       (v^y_{\gamma})^2\mathcal{L}^{yy}_{\beta}(\varphi)).
   \end{split}
 \end{equation*}
-Therefore, we have the $24\times 21$ matrix 
+Therefore, we have the $24\times 21$ matrix
 \begin{equation*}
   E = \begin{bmatrix} I_{18} & \mathbf{0} \\
     \mathbf{0} & L \\
@@ -362,16 +364,16 @@ Therefore, we have the $24\times 21$ matrix
 where the last block ($3\times 18$), $T$, is composed of three sub blocks ($3\times 3,\, 3\times
 6,\text{ and } 3\times 9$ respectively)
 \begin{equation*}
-  \frac{15}{8} \begin{bmatrix} -1 & 1 & 0\\ -1 & 0 & 1\\ 0 & -1 & 1\end{bmatrix}, \quad 
+  \frac{15}{8} \begin{bmatrix} -1 & 1 & 0\\ -1 & 0 & 1\\ 0 & -1 & 1\end{bmatrix}, \quad
   -\frac{7}{16} \begin{bmatrix} \mathbf{v}_1^T & \mathbf{v}_1^T & \mathbf{0}\\
-    \mathbf{v}_2^T & \mathbf{0} & \mathbf{v}_2^T\\ \mathbf{0} & \mathbf{v}_3^2 & \mathbf{v}_3^T\end{bmatrix}, \quad 
+    \mathbf{v}_2^T & \mathbf{0} & \mathbf{v}_2^T\\ \mathbf{0} & \mathbf{v}_3^2 & \mathbf{v}_3^T\end{bmatrix}, \quad
   \frac{1}{32} \begin{bmatrix} -\mathbf{w}_1^T & \mathbf{w}_1^T & \mathbf{0}\\
-    -\mathbf{w}_2^T & \mathbf{0} & \mathbf{w}_2^T\\ \mathbf{0} & -\mathbf{w}_3^2 & \mathbf{w}_3^T\end{bmatrix}, 
+    -\mathbf{w}_2^T & \mathbf{0} & \mathbf{w}_2^T\\ \mathbf{0} & -\mathbf{w}_3^2 & \mathbf{w}_3^T\end{bmatrix},
 \end{equation*}
-where $\mathbf{w}_i^T = \left[ (v^x_i)^2, 2v^x_i v^y_i, (v^y_i)^2\right]$. 
+where $\mathbf{w}_i^T = \left[ (v^x_i)^2, 2v^x_i v^y_i, (v^y_i)^2\right]$.
 
 Finally, notice that by combining \eqref{eqn:FunctionalsD} and \eqref{eqn:FunctionalsE}
-we get the matrix in \eqref{eqn:FunctionalsC} and 
+we get the matrix in \eqref{eqn:FunctionalsC} and
 \begin{equation}
   C=DE
   \label{eqn:Transformation}
