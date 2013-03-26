@@ -48,7 +48,7 @@ western boundary layer as time increases.
 
 \begin{figure}
   \begin{center}
-    \includegraphics[scale=0.6]{sin2sin2sinTimeConvergence.pdf}
+    \includegraphics[scale=0.6]{Figures/sin2sin2sinTimeConvergence.pdf}
     \caption{Observed order of convergence for Implicit-Euler applied to
       \eqref{eqn:QGE_psi} with the exact solution \eqref{eqn:Test1}.}
   \label{fig:Test1Time}
@@ -81,7 +81,7 @@ western boundary layer as time increases.
 
 \begin{figure}
   \begin{center}
-    \includegraphics[scale=0.6]{sin2sin2sinSpaceConvergence.pdf}
+    \includegraphics[scale=0.6]{Figures/sin2sin2sinSpaceConvergence.pdf}
     \caption{Observed orders of convergence in space for Argyris applied to
       \eqref{eqn:QGE_psi} with the exact solution \eqref{eqn:Test1} using
       implicit Euler for the time discretization.}
@@ -98,7 +98,7 @@ For this test we take the exact solution to be
 \end{equation}
 which is very similar to \textbf{Test 6} in \cite{Foster}. Here we add the time
 dependence in the exponential term and let $\Omega = [0,3]^2$. The time interval
-for integration is $t = [0,0.0625]$. This test will have an intensifying western
+for integration is $t = [0,0.5]$. This test will have an intensifying western
 boundary layer as time increases.
 \begin{table}
 \begin{center}
@@ -128,7 +128,7 @@ boundary layer as time increases.
 
 \begin{figure}
   \begin{center}
-    \includegraphics[scale=0.6]{expsinTimeConvergence.pdf}
+    \includegraphics[scale=0.6]{Figures/expsinTimeConvergence.pdf}
     \caption{Observed orders of convergence in time for Implicit-Euler applied to
       \eqref{eqn:QGE_psi} with the exact solution \eqref{eqn:Test2}.}
   \label{fig:Test2Time}
@@ -159,7 +159,7 @@ boundary layer as time increases.
 
 \begin{figure}
   \begin{center}
-    \includegraphics[scale=0.6]{expsinSpaceConvergence.pdf}
+    \includegraphics[scale=0.6]{Figures/expsinSpaceConvergence.pdf}
     \caption{Observed orders of convergence in space for Argyris applied to
       \eqref{eqn:QGE_psi} with the exact solution \eqref{eqn:Test2} using
       implicit Euler for the time discretization.}
@@ -167,109 +167,109 @@ boundary layer as time increases.
   \end{center}
 \end{figure}
 
-\subsection{North Atlantic}
-The North Atlantic Ocean is intensely studied and therefore makes a good test
-problem for evaluating the performance of our model \cite{Myers}. Hence, we have
-created a FE mesh of the North Atlantic which extend from $15^\circ N$ to $65^\circ
-N$ using GMSH \cite{GMSH}. The coastline data was obtain from GSHHS \cite{GSHHS}.
-The finite element spacing was specified to be {\color{red} $50km$}.  Major
-islands such as Cuba, Hispaniola Greenland, Great Britain, Ireland, Prince
-Edward Island, and Newfoundland were connected to the nearest continent and hard
-boundaries were created at the northern and southern most extents of the North
-Atlantic. Additionally, the Atlantic was closed off from the Mediterranean at
-the Straits of Gibraltar, the Mediterranean was closed off from the Black
-Sea at the entrance to the Sea of Marmara, and finally the Mediterranean was
-closed off from the Red Sea at the Suez Canal. The resultant FE mesh can be seen in
-\autoref{fig:AtlanticMesh}.
-
-\begin{figure}
-  \begin{center}
-    \includegraphics[scale=0.5]{NAMesh.png}
-    \caption{Mesh of the North Atlantic created using GMSH \cite{GMSH}.}
-    \label{fig:AtlanticMesh}
-  \end{center}
-\end{figure}
-
-The experiment used annual mean wind forcing obtained from Hellerman and
-Rosenstein (1983). We choose similar similar parameters as those used in
-\cite{delSastre04} and are summarized in \autoref{tab:AtlanticParameters}.
-
-\begin{table}
-  \begin{center}
-  \begin{tabular}{|l|l|}
-    \hline
-    $A$ & $2000m^2s^{-1}$\\
-    \hline
-    $\theta_0$ & $40^\circ$ \\
-    \hline
-    $\omega$ & $7.2526\times 10^{-5}s^{-1}$ \\
-    \hline
-    $H$ & $1000m$ \\
-    \hline
-    $L$ & $1000km$ \\
-    \hline
-    $r_e$ & $6378.1km$ \\
-    \hline
-    $\rho$ & $1027 \nicefrac{kg}{m^3}$ \\
-    \hline
-  \end{tabular}
-  \end{center}
-  \caption{Table of parameter values used for the simulations of the North
-    Atlantic. \cite{delSastre04}}
-  \label{tab:AtlanticParameters}
-\end{table}
-
-Using the relation
-\begin{equation}
-  \beta = \frac{2\omega}{r_e}\cos \theta_0
-  \label{eqn:Beta}
-\end{equation}
-and the parameters given in \autoref{tab:AtlanticParameters} we see that
-\begin{equation*}
-  \beta \approx 1.742\times 10^{-11}\, m^{-1}\,s^{-1}.
-\end{equation*}
-Using this approximation for $\beta$ and \eqref{eqn:velocity_scale} with
-{\color{red}$\tau_0 = 0.6\, dyne\, cm^{-2}$ \cite{Hellerman} gives the following
-approximation for the characteristic velocity
-\begin{equation*}
-%  \begin{split}
-%    U &= \frac{3.1415 \cdot 0.6 dyne\, cm^{-2}}{1027 \nicefrac{kg}{m^3} \cdot
-%      1000\, m \cdot 1.742 \times 10^{-11}\,m^{-1}\,s^{-1} \cdot 1000\, km} \\
-    U = 1.054\times 10^{-2} \nicefrac{m}{s}.
-%  \end{split}
-\end{equation*}
-Therefore, the Rossby number is
-\begin{equation*}
-%  Ro = \frac{1.054\times 10^{-2} \nicefrac{m}{s}}{1.742\times 10^{-11} m^{-1}
-%    s^{-1} (1000 km)^2}
-  Ro = 6.051\times 10^{-4}
-\end{equation*}
-and the Reynolds number is
-\begin{equation*}
-  Re = 5.27.
-\end{equation*}}
-
-From the length scale $L$ and the velocity scale $U$ we see that the time scale
-is approximately $T = 3\, years$. Thus, a nondimensional time interval of
-$[0,120]$, which was also used by Bermejo et al \cite{delSastre04}, corresponds
-to a total of $360$ years. We use the same dimensional time step used in
-\cite{delSastre04}, which was $\Delta t = 2\, hours$. This time step corresponds
-to nondimensional time step of $k = 7.6053 \times 10^{-5}$. {\color{red} This
-may be unrealistic.}
-
-\subsection{Mediterranean}
-We have created a FE mesh of the the Mediterranean Sea using GMSH \cite{GMSH}. The coastline data was obtain from GSHHS \cite{GSHHS}.
-The finite element spacing was specified to be {\color{red} $15km$}.  Major
-islands such as Corsica, Sardinia, and Sicily were connected to the nearest land
-mass. Additionally, the Atlantic was closed off from the Mediterranean at
-the Straits of Gibraltar, while the Gulf of Corinth was treated as land. The
-resultant FE mesh can be seen in \autoref{fig:AtlanticMesh}.
-
-\begin{figure}
-  \begin{center}
-    \includegraphics[scale=0.5]{MediterraneanMesh.png}
-    \caption{Mesh of the Mediterranean created using GMSH \cite{GMSH}.}
-    \label{fig:MedMesh}
-  \end{center}
-\end{figure}
-
+%\subsection{North Atlantic}
+%The North Atlantic Ocean is intensely studied and therefore makes a good test
+%problem for evaluating the performance of our model \cite{Myers}. Hence, we have
+%created a FE mesh of the North Atlantic which extend from $15^\circ N$ to $65^\circ
+%N$ using GMSH \cite{GMSH}. The coastline data was obtain from GSHHS \cite{GSHHS}.
+%The finite element spacing was specified to be {\color{red} $50km$}.  Major
+%islands such as Cuba, Hispaniola Greenland, Great Britain, Ireland, Prince
+%Edward Island, and Newfoundland were connected to the nearest continent and hard
+%boundaries were created at the northern and southern most extents of the North
+%Atlantic. Additionally, the Atlantic was closed off from the Mediterranean at
+%the Straits of Gibraltar, the Mediterranean was closed off from the Black
+%Sea at the entrance to the Sea of Marmara, and finally the Mediterranean was
+%closed off from the Red Sea at the Suez Canal. The resultant FE mesh can be seen in
+%\autoref{fig:AtlanticMesh}.
+%
+%\begin{figure}
+%  \begin{center}
+%    \includegraphics[scale=0.5]{NAMesh.png}
+%    \caption{Mesh of the North Atlantic created using GMSH \cite{GMSH}.}
+%    \label{fig:AtlanticMesh}
+%  \end{center}
+%\end{figure}
+%
+%The experiment used annual mean wind forcing obtained from Hellerman and
+%Rosenstein (1983). We choose similar similar parameters as those used in
+%\cite{delSastre04} and are summarized in \autoref{tab:AtlanticParameters}.
+%
+%\begin{table}
+%  \begin{center}
+%  \begin{tabular}{|l|l|}
+%    \hline
+%    $A$ & $2000m^2s^{-1}$\\
+%    \hline
+%    $\theta_0$ & $40^\circ$ \\
+%    \hline
+%    $\omega$ & $7.2526\times 10^{-5}s^{-1}$ \\
+%    \hline
+%    $H$ & $1000m$ \\
+%    \hline
+%    $L$ & $1000km$ \\
+%    \hline
+%    $r_e$ & $6378.1km$ \\
+%    \hline
+%    $\rho$ & $1027 \nicefrac{kg}{m^3}$ \\
+%    \hline
+%  \end{tabular}
+%  \end{center}
+%  \caption{Table of parameter values used for the simulations of the North
+%    Atlantic. \cite{delSastre04}}
+%  \label{tab:AtlanticParameters}
+%\end{table}
+%
+%Using the relation
+%\begin{equation}
+%  \beta = \frac{2\omega}{r_e}\cos \theta_0
+%  \label{eqn:Beta}
+%\end{equation}
+%and the parameters given in \autoref{tab:AtlanticParameters} we see that
+%\begin{equation*}
+%  \beta \approx 1.742\times 10^{-11}\, m^{-1}\,s^{-1}.
+%\end{equation*}
+%Using this approximation for $\beta$ and \eqref{eqn:velocity_scale} with
+%{\color{red}$\tau_0 = 0.6\, dyne\, cm^{-2}$ \cite{Hellerman} gives the following
+%approximation for the characteristic velocity
+%\begin{equation*}
+%%  \begin{split}
+%%    U &= \frac{3.1415 \cdot 0.6 dyne\, cm^{-2}}{1027 \nicefrac{kg}{m^3} \cdot
+%%      1000\, m \cdot 1.742 \times 10^{-11}\,m^{-1}\,s^{-1} \cdot 1000\, km} \\
+%    U = 1.054\times 10^{-2} \nicefrac{m}{s}.
+%%  \end{split}
+%\end{equation*}
+%Therefore, the Rossby number is
+%\begin{equation*}
+%%  Ro = \frac{1.054\times 10^{-2} \nicefrac{m}{s}}{1.742\times 10^{-11} m^{-1}
+%%    s^{-1} (1000 km)^2}
+%  Ro = 6.051\times 10^{-4}
+%\end{equation*}
+%and the Reynolds number is
+%\begin{equation*}
+%  Re = 5.27.
+%\end{equation*}}
+%
+%From the length scale $L$ and the velocity scale $U$ we see that the time scale
+%is approximately $T = 3\, years$. Thus, a nondimensional time interval of
+%$[0,120]$, which was also used by Bermejo et al \cite{delSastre04}, corresponds
+%to a total of $360$ years. We use the same dimensional time step used in
+%\cite{delSastre04}, which was $\Delta t = 2\, hours$. This time step corresponds
+%to nondimensional time step of $k = 7.6053 \times 10^{-5}$. {\color{red} This
+%may be unrealistic.}
+%
+%\subsection{Mediterranean}
+%We have created a FE mesh of the the Mediterranean Sea using GMSH \cite{GMSH}. The coastline data was obtain from GSHHS \cite{GSHHS}.
+%The finite element spacing was specified to be {\color{red} $15km$}.  Major
+%islands such as Corsica, Sardinia, and Sicily were connected to the nearest land
+%mass. Additionally, the Atlantic was closed off from the Mediterranean at
+%the Straits of Gibraltar, while the Gulf of Corinth was treated as land. The
+%resultant FE mesh can be seen in \autoref{fig:AtlanticMesh}.
+%
+%\begin{figure}
+%  \begin{center}
+%    \includegraphics[scale=0.5]{MediterraneanMesh.png}
+%    \caption{Mesh of the Mediterranean created using GMSH \cite{GMSH}.}
+%    \label{fig:MedMesh}
+%  \end{center}
+%\end{figure}
+%

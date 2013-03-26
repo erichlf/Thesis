@@ -21,9 +21,9 @@ Now using the divergence theorem on the left side gives
 \begin{align*}
 	\int_{\Omega}\! \Delta^2 u v \,dA & = \int_{\Omega}\! \nabla \cdot
 		\left( \nabla^3 u v \right) - \nabla^3 u \nabla v \,dA \\
-  &= \cancelto{0}{\int_{\Delta\Omega}\! \left(\nabla^3 u \cdot \vec{n}\right) v \,dS} -
+  &= \cancelto{0}{\int_{\Delta\Omega}\! \left(\nabla^3 u \cdot \mathbf{n}\right) v \,dS} -
     \int_{\Omega} \nabla \cdot \left(\Delta u \nabla v\right) - \Delta u \Delta v \,dA \\
-  &= \cancelto{0}{\int_{\Delta\Omega}\! \Delta u \frac{dv}{d\vec{n}} \,dS} +
+  &= \cancelto{0}{\int_{\Delta\Omega}\! \Delta u \frac{dv}{d\mathbf{n}} \,dS} +
     \int_{\Omega} \Delta u \Delta v \,dA \\
   &= \int_{\Omega} \Delta u \Delta v \,dA.
 \end{align*}
@@ -54,15 +54,15 @@ our problem can be reformulated to
 Since the Argyris Element is of type Hermite, we must be careful to satisfy the
 boundary conditions. That is, we not only need to force $u=0$ on $\partial
 \Omega$, but we me must also force $\nicefrac{\partial u}{\partial
-\vec{n}} = 0$ on $\partial \Omega$. 
+\mathbf{n}} = 0$ on $\partial \Omega$. 
 
 For the given domain $\Omega=[0,1]\times[0,1]$, we see that along both the lines
 $x=0$ and $x=0$ the condition $u=0$ and $\nicefrac{\partial u}{\partial
-\vec{n}} = \nicefrac{\partial u}{\partial x}$ implies $\nicefrac{\partial
+\mathbf{n}} = \nicefrac{\partial u}{\partial x}$ implies $\nicefrac{\partial
 u}{\partial y} = 0,\; \nicefrac{\partial^2 u}{\partial x \partial y}$ and 
 $\nicefrac{\partial^2 u}{\partial y^2}=0$ since $u$ is constant in the $y$
 direction on these lines.  Similarly, along the lines $y=0$ and
-$y=1$ the conditions $u=0$ and $\nicefrac{\partial u}{\partial \vec{n}} =
+$y=1$ the conditions $u=0$ and $\nicefrac{\partial u}{\partial \mathbf{n}} =
 \nicefrac{\partial u}{\partial y} = 0$ implies $\nicefrac{\partial
 u}{\partial x} = 0,\; \nicefrac{\partial^2 u}{\partial x \partial y}$ and
 $\nicefrac{\partial^2 u}{\partial x^2}=0$ since $u$ is constant in the $x$
@@ -73,7 +73,7 @@ zero and only the system containing interior nodes will be considered for the
 linear system. For non-rectangular domains things are a bit more complicated,
 since linear combinations of $\nicefrac{du}{dx}$ and $\nicefrac{du}{dy}$ will
 have to be zero. The linear combination will depend on the direction of the
-normal vector $\vec{n}$ corresponding the side of the domain. This more
+normal vector $\mathbf{n}$ corresponding the side of the domain. This more
 complicated Neumann boundary condition has not been implemented as of yet, and
 so is not considered in the current numerical study.
 

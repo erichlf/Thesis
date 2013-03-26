@@ -48,7 +48,9 @@ necessarily being set to zero. Thus, one must force these DoFs to be zero too or
 another scheme must be implemented to deal with this case. However, setting the
 appropriate DoFs to zero requires some analysis of the problem domain before
 implementation, which is problematic when one wants to implement a generalized
-code. To avoid this one can implement a Lagrange Multiplier scheme.
+code. To read more about implementation of boundary conditions for Hermite type
+FEs see Remark 2.3.8 in Ciarlet\cite{Ciarlet}. To avoid this one can implement a
+Lagrange Multiplier scheme.
 \input{SplitBoundary}
 
 Rewrite the FE formulation, \eqref{eqn:PoissonFE}, in the following way

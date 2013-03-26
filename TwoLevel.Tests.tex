@@ -16,7 +16,7 @@ with $Re=Ro=1$ and exact solution
   \label{eqn:2LExact}
 \end{equation}
 Additionally, the homogeneous boundary conditions are $\psi=\dfrac{\partial
-\psi}{\partial \vec{n}}=0$ and the forcing function $F$ corresponds to the exact
+\psi}{\partial \mathbf{n}}=0$ and the forcing function $F$ corresponds to the exact
 solution \eqref{eqn:2LExact}. These boundary conditions and exact solution will
 be used in all the two-level tests that follow.
 
@@ -137,7 +137,7 @@ computational efficiency of the two-level method increases as well.
 \begin{center}
   \begin{figure}
     \begin{center}
-    \includegraphics[width=4in,natwidth=610,natheight=642]{performanceplot.pdf}
+    \includegraphics[width=4in,natwidth=610,natheight=642]{Figures/performanceplot.pdf}
     \caption{The simulation times of the one-level method (green) and of the
       two-level method (blue) are displayed for all the pairs $(h,H)$ in
       \autoref{tab:Efficiency}.}
@@ -186,7 +186,7 @@ occurs because, for small values of $H$, the total error in
 
 \begin{figure}
   \begin{center}
-    \includegraphics[scale=0.6]{CoarseConvergence.pdf}
+    \includegraphics[scale=0.6]{Figures/CoarseConvergence.pdf}
     \caption{Observed order of convergence in the $H^2$ norm for the coarse
       mesh, $H$, in the Two-Level method applied to \eqref{eqn:QGE_psi} with the
       exact solution \eqref{eqn:2LExact}.}
@@ -258,7 +258,7 @@ rate predicted in \eqref{eqn:TwoLevelError} (i.e. fourth-order).
 
 \begin{figure}
   \begin{center}
-    \includegraphics[scale=0.6]{fineConvergence.pdf}
+    \includegraphics[scale=0.6]{Figures/fineConvergence.pdf}
     \caption{Observed order of convergence in the $H^2$ norm for the fine mesh,
       $h$, in the Two-Level method applied to \eqref{eqn:QGE_psi} with the exact
       solution \eqref{eqn:2LExact}.}

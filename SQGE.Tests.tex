@@ -19,8 +19,27 @@ reports of Myers \emph{et al.} \cite{Myers}, and Cascon \emph{et al.}
 \cite{Cascon}). This allows us to benchmark our numerical results against
 those in the published literature. Since both the Linear Stommel and the
 Linear Stommel-Munk models lack the nonlinearity present in the SQGE
-\eqref{eqn:SQGE_Psi}, the represent good stepping stones to verifying our FE
+\eqref{eqn:SQGE_Psi}, they represent good stepping stones to verifying our FE
 discretization.
+
+The first simplified model used in our numerical investigation is the
+\emph{Linear Stommel} model (Equation 14.22 in \cite{Vallis06} and Equation 11
+in \cite{Myers})
+\begin{equation}
+  \epsilon_s \Delta \psi + \frac{\partial \psi}{\partial x} = f,
+  \label{eqn:Stommel}
+\end{equation}
+where $\epsilon_s$ is the Stommel Number. The Stommel Number is given by
+(Equation 10 in \cite{Myers})
+\begin{equation*}
+  \epsilon_s = \frac{\gamma}{\beta L},
+\end{equation*}
+where $\gamma,\, \beta, \text{ and } L$ are the bottom fricition decay, the
+measure of the $\beta$-plane effect, and characteristic length scale,
+respectively. We note that the Linear Stommel Model \eqref{eqn:Stommel} is just
+the Linear Stommel-Munk model \eqref{eqn:Stommel-Munk} in which the biharmonic
+term is dropped (i.e. $\epsilon_m=0$). Thus it is a good starting point, since
+is less complex than both the SQGE and the Linear Stommel-Munk model.
 
 The \emph{Linear Stommel-Munk} model (see p. 587 in \cite{Vallis06} and problem
 2 in \cite{Cascon}) is given by
@@ -32,12 +51,11 @@ where $\epsilon_s \text{ and } \epsilon_m$ are the Stommel Number and Munk
 Scale, respectively. The Stommel Number and Munk Scale are given by (Equation 10
 in \cite{Myers})
 \begin{equation*}
-  \epsilon_m = \frac{A}{\beta L^3} \qquad \epsilon_s = \frac{\gamma}{\beta L}
+  \epsilon_m = \frac{A}{\beta L^3},
 \end{equation*}
-where $A,\, \beta,\, L, \text{ and } \gamma$ are the eddy visosity, the
-$\beta$-plane effect, characteristic length scale, and the bottom friction decay
-rate, respectively. The model is supplemented with appropriate boundary
-conditions, which will be described for each of the subsequent numerical tests.
+where $A$ is the eddy visosity.  The model is supplemented with appropriate
+boundary conditions, which will be described for each of the subsequent
+numerical tests.
 
 We note that the Linear Stommel-Munk model \eqref{eqn:Stommel-Munk} is similar
 in form to the SQGE \eqref{eqn:SQGE_Psi}. Indeed, both models contain the
@@ -59,17 +77,6 @@ These two sets of parameters, however, are related by the following relations:
 \end{align}
 %\textcolor{red}{If $\gamma \sim T$ then $\epsilon = Ro$. However, I am unsure this is a valid
 %assumption and so I am having trouble relating the Stommel Number to Reynolds and Rosby.}
-
-The second simplified model used in our numerical investigation is the
-\emph{Linear Stommel} model (Equation 14.22 in \cite{Vallis06} and Equation 11
-in \cite{Myers})
-\begin{equation}
-  \epsilon_s \Delta \psi + \frac{\partial \psi}{\partial x} = f.
-  \label{eqn:Stommel}
-\end{equation}
-We note that the Linear Stommel Model \eqref{eqn:Stommel} is just the Linear
-Stommel-Munk model \eqref{eqn:Stommel-Munk} in which the biharmonic term is
-dropped (i.e. $\epsilon_m=0$).
 
 The rest of the subsection is organized as follows: In \autoref{sse:LSM} we
 present results for the Linear Stommel model \eqref{eqn:Stommel}. In
@@ -158,9 +165,18 @@ values of the mesh sizes, $h$ (the DoFs are also included).
 \label{tab:StommelErrorsVallis}
 \end{table}
 
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.5]{figures/StommelAConvergence.pdf}
+    \caption{Linear Stommel Model \eqref{eqn:Stommel}, Test 1a \cite{Vallis06}:
+      Observeed errors versus expected rate of convergence.}
+    \label{fig:StommelErrorsVallis}
+  \end{center}
+\end{figure}
+
 \begin{figure}%[H]
   \begin{center}
-    \includegraphics[trim=0 200 20 220, clip=true, scale=0.5]{LinearStommelVallis.pdf}
+    \includegraphics[scale=0.5]{Figures/LinearStommelVallis.pdf}
     \caption{Linear Stommel Model \eqref{eqn:Stommel}, Test 1a \cite{Vallis06}: Streamlines of the approximation,
     $\psi^h$, $h=\frac{1}{32}$, and $9670$ DoFs.}
     \label{fig:StommelVallis}
@@ -195,7 +211,7 @@ thin western boundary layer.
   $h$ & $DoFs$ & $e_0$ & $L_2$ order & $e_1$ & $H^1$ order & $e_2$ & $H^2$ order \\[0.2em] % & $e_{\infty}$ & $L_{\infty}$ order \\
   \hline
   $\nicefrac{1}{2}$ & $70$ & $1.69\times 10^{-5}$ & $-$ & $3.43\times 10^{-4}$ & $-$ & $8.72\times 10^{-3}$ & $-$ \\[0.2em] % & $4.306\times 10^{-6}$ & $-$ \\
-  $\nicefrac{1}{4}$ & $206$ & $3.72\times 10^{-7}$ & $5.50$ & $1.341\times 10^{-5}$ & $4.68$ & $5.62\times 10^{-4}$ & $3.96$ \\[0.2em] % & $5.542\times 10^{-7}$ & $2.958$ \\
+  $\nicefrac{1}{4}$ & $206$ & $3.72\times 10^{-7}$ & $5.50$ & $1.34\times 10^{-5}$ & $4.68$ & $5.62\times 10^{-4}$ & $3.96$ \\[0.2em] % & $5.542\times 10^{-7}$ & $2.958$ \\
   $\nicefrac{1}{8}$ & $694$ & $4.89\times 10^{-9}$ & $6.25$ & $3.76\times 10^{-7}$ & $5.16$ & $3.25\times 10^{-5}$ & $4.11$ \\[0.2em] % & $9.043\times 10^{-9}$ & $5.937$ \\
   $\nicefrac{1}{16}$ & $2534$ & $7.08\times 10^{-11}$ & $6.11$ & $1.12\times 10^{-8}$ & $5.07$ & $1.96\times 10^{-6}$ & $4.05$ \\[0.2em] % & $1.355\times 10^{-10}$ & $6.06$ \\
   $\nicefrac{1}{32}$ & $9670$ & $1.08\times 10^{-12}$ & $6.04$ & $3.44\times 10^{-10}$ & $5.02$ & $1.21\times 10^{-7}$ & $4.02$ \\[0.2em] % & $2.169\times 10^{-12}$ & $5.965$ \\
@@ -207,9 +223,18 @@ thin western boundary layer.
 \label{tab:StommelErrorsVallise1}
 \end{table}
 
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.5]{figures/StommelBConvergence.pdf}
+    \caption{Linear Stommel Model \eqref{eqn:Stommel}, Test 1b \cite{Vallis06}:
+      Observeed errors versus expected rate of convergence.}
+    \label{fig:StommelErrorsVallis1}
+  \end{center}
+\end{figure}
+
 \begin{figure}%[H]
   \begin{center}
-    \includegraphics[trim=0 200 20 220, clip=true, scale=0.5]{StommelVallise1.pdf}
+    \includegraphics[scale=0.5]{Figures/StommelVallise1.pdf}
     \caption{Linear Stommel Model \eqref{eqn:Stommel}, Test 1b \cite{Vallis06}: Streamlines of the approximation,
     $\psi^h$, $h=\frac{1}{32}$, and $9670$ DoFs with $\epsilon_s=1$.}
     \label{fig:StommelVallise1}
@@ -263,9 +288,18 @@ various values of the mesh sizes, $h$.
 \label{tab:StommelErrorsMyers}
 \end{table}
 
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.5]{Figures/StommelMyersConvergence.pdf}
+    \caption{Linear Stommel Model \eqref{eqn:Stommel}, Test 2 \cite{Myers}:
+      Observeed errors versus expected rate of convergence.}
+    \label{fig:StommelErrorsMeyers}
+  \end{center}
+\end{figure}
+
 \begin{figure}%[H]
   \begin{center}
-    \includegraphics[trim=0 200 20 220, clip=true, scale=0.5]{LinearStommelMyers.pdf}
+    \includegraphics[scale=0.5]{Figures/LinearStommelMyers.pdf}
     \caption{Linear Stommel Model \eqref{eqn:Stommel}, Test 2 \cite{Myers}: Streamlines of the approximation,
     $\psi^h$, $h=\frac{1}{32}$, and $9670$ DoFs.}
     \label{fig:StommelMyers}
@@ -338,9 +372,18 @@ respectively) for various values of the mesh sizes, $h$.
 \label{tab:SMsinErrors}
 \end{table}
 
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.5]{Figures/SMsinConvergence.pdf}
+    \caption{Linear Stommel-Munk Model \eqref{eqn:SMProb}, Test 3 \cite{Cascon}:
+      Observeed errors versus expected rate of convergence.}
+    \label{fig:SMSinErrors}
+  \end{center}
+\end{figure}
+
 \begin{figure}%[H]
   \begin{center}
-    \includegraphics[trim=0 200 20 220, clip=true, scale=0.5]{StommelMunk1.pdf}
+    \includegraphics[scale=0.5]{Figures/StommelMunk1.pdf}
     \caption{Linear Stommel-Munk Model \eqref{eqn:SMProb}, Test 3 \cite{Cascon}: Streamlines of the approximation,
     $\psi^h$, on a mesh size, $h=\frac{1}{32}$, and $28550$ DoFs.}
     \label{fig:StommelMunkSin}
@@ -386,9 +429,9 @@ $h$.
   \hline
   $\nicefrac{1}{2}$ & $170$ & $6.04\times 10^{-2}$ & $-$ & $1.16\times 10^0$ & $-$ & $3.90\times 10^1$ & $-$ \\[0.2em] % & $2.907\times 10^{-2}$ & $-$ \\
   $\nicefrac{1}{4}$ & $550$ & $1.13\times 10^{-2}$ & $2.41$ & $4.00\times 10^{-1}$ & $1.54$ & $2.14\times 10^1$ & $0.866$ \\[0.2em] % & $5.678\times 10^{-3}$ & $2.356$ \\
-  $\nicefrac{1}{8}$ & $1958$ & $8.40\times 10^{-4}$ & $3.75$ & $5.91\times 10^{-2}$ & $2.76$ & $5.66\times 10^1$ & $1.92$ \\[0.2em] % & $0.5.973\times 10^{-2}$ & $3.249$ \\
-  $\nicefrac{1}{16}$ & $7366$ & $2.82\times 10^{-5}$ & $4.898$ & $4.008\times 10^{-3}$ & $3.88$ & $7.38\times 10^{-1}$ & $2.94$ \\[0.2em] % & $2.979\times 10^{-5}$ & $4.326$ \\
-  $\nicefrac{1}{32}$ & $28550$ & $5.59\times 10^{-7}$ & $5.66$ & $1.607\times 10^{-4}$ & $4.64$ & $5.97\times 10^{-2}$ & $3.63$ \\[0.2em] % & $8.632\times 10^{-7}$ & $5.109$ \\
+  $\nicefrac{1}{8}$ & $1958$ & $8.40\times 10^{-4}$ & $3.75$ & $5.91\times 10^{-2}$ & $2.76$ & $5.66\times 10^0$ & $1.92$ \\[0.2em] % & $0.5.973\times 10^{-2}$ & $3.249$ \\
+  $\nicefrac{1}{16}$ & $7366$ & $2.82\times 10^{-5}$ & $4.90$ & $4.01\times 10^{-3}$ & $3.88$ & $7.38\times 10^{-1}$ & $2.94$ \\[0.2em] % & $2.979\times 10^{-5}$ & $4.326$ \\
+  $\nicefrac{1}{32}$ & $28550$ & $5.59\times 10^{-7}$ & $5.66$ & $1.61\times 10^{-4}$ & $4.64$ & $5.97\times 10^{-2}$ & $3.63$ \\[0.2em] % & $8.632\times 10^{-7}$ & $5.109$ \\
  \hline
 \end{tabular}
 %}
@@ -397,9 +440,18 @@ $h$.
 \label{tab:SMeErrors}
 \end{table}
 
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.5]{Figures/SMeConvergence.pdf}
+    \caption{Linear Stommel-Munk Model \eqref{eqn:SMProb}, Test 4 \cite{Cascon}:
+      Observeed errors versus expected rate of convergence.}
+    \label{fig:SMeErrors}
+  \end{center}
+\end{figure}
+
 \begin{figure}%[H]
   \begin{center}
-    \includegraphics[trim=0 200 20 220, clip=true, scale=0.5]{StommelMunk2.pdf}
+    \includegraphics[scale=0.5]{Figures/StommelMunk2.pdf}
     \caption{Linear Stommel-Munk Model \eqref{eqn:SMProb}, Test 4 \cite{Cascon}: Streamlines of the approximation,
     $\psi^h$, $h=\frac{1}{32}$, and $28550$ DoFs.}
     \label{fig:SMe}
@@ -449,7 +501,7 @@ values of the mesh sizes, $h$.
   \hline
   $h$ & $DoFs$ & $e_0$ & $L_2$ order & $e_1$ & $H^1$ order & $e_2$ & $H^2$ order \\[0.2em] % & $e_{\infty}$ & $L_{\infty}$ order \\
   \hline
-  $\nicefrac{1}{2}$ & $138$ & $4.10\times 10^{-3}$ & $-$ & $4.91\times 10^{-2}$ & $NaN$ & $8.61\times 10^{-1}$ & $NaN$\\
+  $\nicefrac{1}{2}$ & $138$ & $4.10\times 10^{-3}$ & $-$ & $4.91\times 10^{-2}$ & $-$ & $8.61\times 10^{-1}$ & $-$\\
   $\nicefrac{1}{4}$ & $536$ & $2.23\times 10^{-5}$ & $7.52$ & $7.66\times 10^{-4}$ & $6.00$ & $2.96\times 10^{-2}$ & $4.86$\\
   $\nicefrac{1}{8}$ & $2349$ & $2.35\times 10^{-7}$ & $6.57$ & $1.60\times 10^{-5}$ & $5.58$ & $1.31\times 10^{-3}$ & $4.50$\\
   $\nicefrac{1}{16}$ & $9152$ & $3.03\times 10^{-9}$ & $6.28$ & $4.33\times 10^{-7}$ & $5.21$ & $7.53\times 10^{-5}$ & $4.12$\\
@@ -460,14 +512,23 @@ values of the mesh sizes, $h$.
 \end{tabular}
 %}
 \end{center}
-\caption{Errors and Rate of Convergence for the Full SQGE \eqref{eqn:SQGE_Psi}, Test 5}
+\caption{Errors and Rate of Convergence for the SQGE \eqref{eqn:SQGE_Psi}, Test 5}
 \label{tab:SQGEsinErrors}
 \end{table}
 
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.5]{Figures/SQGEsin2Convergence.pdf}
+    \caption{SQGE \eqref{eqn:SQGE_Psi}, Test 5: Observeed errors versus expected
+      rate of convergence.}
+    \label{fig:SQGEsinErrors}
+  \end{center}
+\end{figure}
+
 \begin{figure}%[H]
   \begin{center}
-    \includegraphics[trim=0 200 20 215, clip=true, scale=0.5]{SQGEsin.pdf}
-    \caption{Full SQGE \eqref{eqn:SQGE_Psi}, Test 5: Streamlines of the approximation,
+    \includegraphics[scale=0.5]{Figures/SQGEsin.pdf}
+    \caption{SQGE \eqref{eqn:SQGE_Psi}, Test 5: Streamlines of the approximation,
     $\psi^h$, $h=\frac{1}{32}$, and $36150$ DoFs.}
     \label{fig:SQGEsin}
   \end{center}
@@ -520,14 +581,23 @@ values of the mesh sizes, $h$.
 \end{tabular}
 %}
 \end{center}
-\caption{Errors and Rate of Convergence for the Full SQGE \eqref{eqn:SQGE_Psi}, Test 6}
+\caption{Errors and Rate of Convergence for the SQGE \eqref{eqn:SQGE_Psi}, Test 6}
 \label{tab:SQGEeErrors}
 \end{table}
 
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.5]{Figures/SQGEeConvergence.pdf}
+    \caption{SQGE \eqref{eqn:SQGE_Psi}, Test 6: Observeed errors versus expected
+      rate of convergence.}
+    \label{fig:SQGEeErrors}
+  \end{center}
+\end{figure}
+
 \begin{figure}%[H]
   \begin{center}
-    \includegraphics[trim=0 200 20 215, clip=true, scale=0.5]{SQGEe.pdf}
-    \caption{Full SQGE \eqref{eqn:SQGE_Psi}, Test 6: Streamlines of the approximation,
+    \includegraphics[scale=0.5]{Figures/SQGEe.pdf}
+    \caption{SQGE \eqref{eqn:SQGE_Psi}, Test 6: Streamlines of the approximation,
     $\psi^h$, $h=\frac{1}{32}$, and $36150$ DoFs.}
     \label{fig:SQGEe}
   \end{center}
@@ -542,3 +612,104 @@ but not as close for the coarse meshes. We attribute this to the inaccuracies at
 the thin boundary layer on the left-hand side (i.e., at $x=0$). The finer the
 mesh gets, the better this boundary layer is captured and the better the
 numerical accuracy becomes.
+
+\subsection{North Atlantic}
+The North Atlantic Ocean is intensely studied\cite{Myers} and therefore makes a
+good test problem for our FE discretization of SQGE. Hence, we have created a FE
+mesh of the North Atlantic which extends from $15^\circ N$ to $65^\circ N$ using
+GMSH \cite{GMSH}. The coastline data was obtain from GSHHS \cite{GSHHS}.  Major
+islands such as Cuba, Hispaniola Greenland, Great Britain, Ireland, Prince
+Edward Island, and Newfoundland were connected to a continent which was nearby
+and hard boundaries were created at the northern and southern most extents of
+the North Atlantic. Additionally, the Atlantic was closed off from the
+Mediterranean at the Straits of Gibraltar The resultant FE mesh can be seen in
+\autoref{fig:AtlanticMesh}.
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.5]{Figures/NAMesh.png}
+    \caption{Mesh of the North Atlantic created using GMSH \cite{GMSH}.}
+    \label{fig:AtlanticMesh}
+  \end{center}
+\end{figure}
+
+The following experiments used a forcing function given by $F =
+\sin(\nicefrac{\pi}{2} y)$ which is the same forcing function given by Bryan
+\cite{Bryan1963}. We choose similar similar parameters as those used in
+\cite{delSastre04} and are summarized in \autoref{tab:AtlanticParameters}.
+
+\begin{table}
+  \begin{center}
+  \begin{tabular}{|l|l|}
+    \hline
+    $A$ & $2000m^2s^{-1}$\\
+    \hline
+    $\theta_0$ & $40^\circ$ \\
+    \hline
+    $\omega$ & $7.2526\times 10^{-5}s^{-1}$ \\
+    \hline
+    $H$ & $1000m$ \\
+    \hline
+    $L$ & $1000km$ \\
+    \hline
+    $r_e$ & $6378.1km$ \\
+    \hline
+    $\rho$ & $1027 \nicefrac{kg}{m^3}$ \\
+    \hline
+  \end{tabular}
+  \end{center}
+  \caption{Table of parameter values used for the simulations of the North
+    Atlantic. \cite{delSastre04}}
+  \label{tab:AtlanticParameters}
+\end{table}
+
+Using the relation
+\begin{equation}
+  \beta = \frac{2\omega}{r_e}\cos \theta_0
+  \label{eqn:Beta}
+\end{equation}
+and the parameters given in \autoref{tab:AtlanticParameters} we see that
+\begin{equation*}
+  \beta \approx 1.742\times 10^{-11}\, m^{-1}\,s^{-1}.
+\end{equation*}
+Using this approximation for $\beta$ and \eqref{eqn:velocity_scale} with
+$\tau_0 = 0.6\, dyne\, cm^{-2}$ \cite{Hellerman} gives the following
+approximation for the characteristic velocity
+\begin{equation*}
+%  \begin{split}
+%    U &= \frac{3.1415 \cdot 0.6 dyne\, cm^{-2}}{1027 \nicefrac{kg}{m^3} \cdot
+%      1000\, m \cdot 1.742 \times 10^{-11}\,m^{-1}\,s^{-1} \cdot 1000\, km} \\
+    U = 1.054\times 10^{-2} \nicefrac{m}{s}.
+%  \end{split}
+\end{equation*}
+Therefore, the Rossby number is
+\begin{equation*}
+%  Ro = \frac{1.054\times 10^{-2} \nicefrac{m}{s}}{1.742\times 10^{-11} m^{-1}
+%    s^{-1} (1000 km)^2}
+  Ro = 6.051\times 10^{-4}
+\end{equation*}
+and the Reynolds number is
+\begin{equation*}
+  Re = 5.27.
+\end{equation*}
+
+From the length scale $L$ and the velocity scale $U$ we see that the time scale
+is approximately $T = 3\, years$.
+
+\subsection{Mediterranean}
+We have created a FE mesh of the the Mediterranean Sea using GMSH \cite{GMSH}.
+The coastline data was obtain from GSHHS \cite{GSHHS}. Major islands such as
+Corsica, Sardinia, and Sicily were connected to the nearest land mass.
+Additionally, the Atlantic was closed off from the Mediterranean at the Straits
+of Gibraltar, from the Red Sea at the Suez Canal, and the Sea of Marmara at the
+Dardanelles Strait, while the Gulf of Corinth was treated as land. The resultant FE
+mesh can be seen in \autoref{fig:MedMesh}.
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.5]{Figures/MediterraneanMesh.png}
+    \caption{Mesh of the Mediterranean created using GMSH \cite{GMSH}.}
+    \label{fig:MedMesh}
+  \end{center}
+\end{figure}
+

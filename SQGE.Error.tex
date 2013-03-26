@@ -1,8 +1,90 @@
-The main goal of this section is to develop a rigorous numerical analysis for the FEM discretization
-of the QGE \eqref{eqn:SQGEFEF} by using the conforming Argyris element.  First, in
-Theorem~\ref{thm:EnergyNorm} we prove error estimates in the $H^2$ norm by using an approach similar
-to that used in \cite{Cayco86}.  Second, in Theorem~\ref{thm:Errors}, we prove error estimates in
-the $L^2$ and $H^1$ norms by using a duality argument.
+The main goal of this section is to develop a rigorous numerical analysis for
+the FEM discretization of the QGE \eqref{eqn:SQGEFEF} by using the conforming
+Argyris element.  First, in Theorem~\ref{thm:EnergyNorm} we prove error
+estimates in the $H^2$ norm by using an approach similar to that used in
+\cite{Cayco86}.  Second, in Theorem~\ref{thm:Errors}, we prove error estimates
+in the $L^2$ and $H^1$ norms by using a duality argument.
+
+First, we must introduce some bounds of the forms introduced in
+\autoref{sec:QGEStrong}.
+\begin{lemma} \label{lma:ContinuousForms}
+  The linear form $(F,\chi)$, the bilinear forms $(\nabla \psi, \nabla \chi)$,
+  $(\Delta \psi, \Delta \chi)$, $(\psi_x, \chi)$ and the trilinear form $b(\psi;
+  \psi, \chi)$ are continuous \cite{Cayco86}: There exists a $\Gamma_0,\,
+   \Gamma_2 > 0$ such that forall $\psi, \chi, \varphi\in X$
+  \begin{align}
+    (\nabla \psi, \nabla \chi) &\le \Gamma_0\, |\psi|_2 |\chi|_2,
+      \label{eqn:a0cont} \\
+    (\Delta \psi, \Delta \chi) &\le |\psi|_2\, |\chi|_2, \label{eqn:a1Cont} \\
+    b(\psi;\varphi,\chi) &\le \Gamma_1 \|\psi\|_2\, \|\varphi\|_2\, \|\chi\|_2,
+      \label{eqn:BH2Bounds} \\
+    (\psi_x,\chi) &\le \Gamma_2 \, |\psi|_2 \, |\chi|_2, \label{eqn:a3Cont} \\
+    (F,\chi) &\le \|F\|_{-2} \, |\chi|_2.
+      \label{eqn:lCont}
+  \end{align}
+\end{lemma}
+\begin{proof}
+  We first start with the simplest proof, that being the proof for
+  \eqref{eqn:a1Cont}. This follows directly from the H\"older inequality, i.e.
+  \begin{equation*}
+    (\Delta \psi, \Delta \chi) \le \|\Delta \psi\|_{L^p}\,\|\Delta \chi\|_{L^r},
+    \quad \frac{1}{p} + \frac{1}{r} = 1
+  \end{equation*}
+  with $p=r=2$. \\
+  The bound \eqref{eqn:lCont} can be proven by first noting that
+  \begin{equation*}
+    \frac{(F,\chi)}{|\chi|_2} \le \sup_{\chi \in X} \frac{(F,\chi)}{|\chi|_2}.
+  \end{equation*}
+  Multiplying both sides by $|\chi|_2$ gives the desired result.
+  \begin{equation*}
+    (F,\chi) \le \|F\|_{-2}|\chi|_2.
+  \end{equation*}
+  Next, we prove \eqref{eqn:a0cont} by first applying H\"older inequality with
+  $p=r=2$ and therefore
+  \begin{equation*}
+    (\nabla \psi, \nabla \chi) \le \|\nabla \psi\|\, \|\nabla \chi\|.
+  \end{equation*}
+  Now, we apply the Poincar\'e inequality to get the desired result
+  \begin{equation*}
+    (\nabla \psi, \nabla \chi) \le \Gamma_0 |\psi|_2, |\chi|_2,
+  \end{equation*}
+  where $\Gamma_0$ is the Poincar\'e constant. \\
+  Next, we will prove \eqref{eqn:a3Cont} by first applying the H\"older
+  inequality to get
+  \begin{equation*}
+    (\psi_x, \chi) \le \|\psi_x\|\, \|\chi\|.
+  \end{equation*}
+  Noting that $\|\psi_x\| \le \|\nabla \psi\|$ and the applying the Poincar\'e
+  inequality once to the term involving $\psi$ and twice to the term involving
+  $\chi$ gives the desired result
+  \begin{equation*}
+    (\psi_x, \chi) \le \Gamma_2\,|\psi|_2\, |\chi|_2,
+  \end{equation*}
+  where $\Gamma_2$ is a multiplication of three Poincar\'e constants. \\
+  Finally, for \eqref{eqn:BH2Bounds} we start by applying the H\"older inequality
+  \begin{equation}
+    b(\psi;\varphi,\chi) \le \|\Delta \psi\|_{L^p} \|\nabla \varphi\|_{L^q}
+      \|\nabla \chi\|_{L^r},\quad \frac{1}{p}+\frac{1}{q}+\frac{1}{r}=1,
+    \label{eqn:HolderB}
+  \end{equation}
+  where $1\le p,\,q,\,r\le \infty$. Thus, setting $p = 2$, and $q = r = 4$ gives
+  \begin{equation*}
+    b(\psi;\varphi,\chi) \le \|\Delta \psi\| \|\nabla \varphi\|_{L^4} \|\nabla
+      \chi\|_{L^4}.
+  \end{equation*}
+  Then applying the Ladyzhenskaya inequality results in
+  \begin{equation*}
+    b(\psi;\varphi,\chi) \le \Gamma \|\Delta \psi\|
+      \|\nabla \varphi\|^{\nicefrac{1}{2}} \|\Delta \varphi\|^{\nicefrac{1}{2}}
+      \|\nabla \chi\|^{\nicefrac{1}{2}} \|\Delta \chi\|^{\nicefrac{1}{2}}.
+  \end{equation*}
+  Using the Poincar\'e inequality gives
+  \begin{equation*}
+    b(\psi;\varphi,\chi) \le \Gamma_1 \|\Delta \psi\|\, \|\Delta \varphi\|\,
+      \|\Delta \chi\|.
+  \end{equation*}
+  where $\Gamma_1$ is the Poincar\'e constant.
+\end{proof}
 
 \begin{thm}
 \label{thm:EnergyNorm}
@@ -15,7 +97,7 @@ the $L^2$ and $H^1$ norms by using a duality argument.
   \end{equation}
   where $Re$ is the Reynolds number defined in \eqref{eqn:reynolds_number}, $Ro$
   is the Rossby number defined in \eqref{eqn:rossby_number}, $\Gamma_1$ is the
-  continuity constant of the trilinear form $a_2$ in \eqref{eqn:bCont}, and $F$
+  continuity constant of the trilinear form $a_2$ in \eqref{eqn:BH2Bounds}, and $F$
   is the forcing term. Then the following error estimate holds:
   \begin{equation}
     |\psi - \psi^h|_2 \le C(Re, Ro, \Gamma_1, \Gamma_2, F) \,
