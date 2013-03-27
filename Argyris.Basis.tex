@@ -39,9 +39,11 @@ Additionally, let the vector $v_i$ represent the $i^{th}$ edge with
   v_1 = [\hat{x}_2-\hat{x}_1,\hat{y}_2-\hat{y}_1]^T, \quad v_2=[\hat{x}_3-\hat{x}_1,\hat{y}_3-\hat{y}_1]^T \text{ and } v_3=[\hat{x}_3
   -\hat{x}_2,\hat{y}_3-\hat{y}_2]^T.
 \end{equation*}
-Also, we will use the convention that the $i^{th}$ normal vector is the rotation
-of the $v_i$ counter-clockwise $90^\circ$. Therefore, the $i^{th}$ basis
-function can be found using the restriction in Table \ref{tab:Constraints}.
+For book keeping purposes, we will use the convention that the $i^{th}$ normal
+vector is the rotation of the $v_i$ counter-clockwise $90^\circ$. This is the
+same convention used by Dominguez et. al. \cite{Dominguez08}. Therefore, the
+$i^{th}$ basis function can be found using the restriction in Table
+\ref{tab:Constraints}.
 
 \input{Basis.Table.tex}
 
@@ -67,7 +69,7 @@ To determine the matrix $M$ we must solve the linear system
 \begin{equation*}
   ZM^T=I_{21}
 \end{equation*}
-that result from the constraints in Table \ref{tab:Constraints}. Here
+that results from the constraints in Table \ref{tab:Constraints}. Here
 \begin{equation*}
   \begin{split}Z=[z(0,0), z(0,1), z(1,0),
   z_{\hat{x}}(0,0), z_{\hat{y}}(0,0),
@@ -78,7 +80,7 @@ that result from the constraints in Table \ref{tab:Constraints}. Here
   z_{\hat{x}\hat{x}}(0,1), z_{\hat{x}\hat{y}}(0,1), z_{\hat{y}\hat{y}}(0,1),
   z_{\hat{y}}(\nicefrac{1}{2},0), -z_{\hat{x}}(0,\nicefrac{1}{2}), \\
   -\frac{1}{\sqrt{2}}(z_{\hat{x}}(\nicefrac{1}{2},\nicefrac{1}{2}) +
-  z_{\hat{y}}(\nicefrac{1}{2},\nicefrac{1}{2}))]^T\end{split}
+  z_{\hat{y}}(\nicefrac{1}{2},\nicefrac{1}{2}))]^T.\end{split}
 \end{equation*}
 $I_{21}$ is a $21\times 21$ identity matrix and $M$ is the matrix containing the
 coefficients for all 21 basis functions. Therefore solving this system will
@@ -88,4 +90,11 @@ $M$ is \\
 \input{Coefficients.tex}
 Therefore, the Argyris basis functions are
 \input{Basis.Functions.tex}
+\begin{remark}
+  Throughout our search for an explicit statement of the Argyris basis functions
+  we only came across two reference, \cite{Wiki} and \cite{FEM++}, both of which are
+  online references. However, this is not to mean that a reference containining
+  the explicit statement of the Argyris basis functions doesn't exist, but it
+  certainly eluded the author of this thesis.
+\end{remark}
 

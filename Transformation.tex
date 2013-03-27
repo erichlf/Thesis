@@ -1,9 +1,12 @@
-In this subsection we present the transformation developed by Dominguez et. al.
-For the original derivation one should see \cite{Dominguez06} and
-\cite{Dominguez08}. Now that we have the Argyris basis functions on the
-reference triangle we need to relate those to the Argyris basis functions on a
-general triangle. So let's first consider the affine transformation from
-$\hat{K}$ to $K$, i.e. $F: \hat{K} \to K$ such that
+For completeness we present the transformation developed by Dominguez et. al. in
+this section. All notations and conventions are the same as those developed by
+Dominguez, but we present the derivation of the transformation here, because of
+the novelty and importance of this transformation to this thesis. For the
+original derivation one should see \cite{Dominguez06} and \cite{Dominguez08}.
+Now that we have the Argyris basis functions on the reference triangle we need
+to relate those to the Argyris basis functions on a general triangle. First,
+consider the affine transformation from $\hat{K}$ to $K$, i.e. $F: \hat{K} \to
+K$ such that
 \begin{equation}
   F(\hat{\mathbf{x}}) = B\hat{\mathbf{x}} + \mathbf{b} :=
   \begin{bmatrix}
@@ -15,30 +18,31 @@ $\hat{K}$ to $K$, i.e. $F: \hat{K} \to K$ such that
   \end{bmatrix}.
   \label{eqn:Affine}
 \end{equation}
-Also number the vectors representing the edge of the triangle as
+Also denote the vectors representing the edge of the triangle as
 \begin{equation*}
   \mathbf{v}_1 = \mathbf{x}_2 - \mathbf{x}_1\quad \mathbf{v}_2 = \mathbf{x}_3 -
   \mathbf{x}_1\quad \mathbf{v}_3 = \mathbf{x}_3 - \mathbf{x}_2
 \end{equation*}
-Let $\mathbf{n}_i$ be the unit normal vector corresponding to the $i^{th}$ side obtained by
-rotating the vector $\mathbf{v}_i$ by $\nicefrac{\pi}{2}$ in the positive
-direction. Additionally, let $\mathbf{m}_i$ be the midpoint to the $i^{th}$
-side.
-Now consider the linear functionals corresponding to the vertices of the
-triangle $K$ numbered as
+Let $\mathbf{n}_i$ be the unit normal vector corresponding to the $i^{th}$ side
+obtained by rotating the vector $\mathbf{v}_i$ by $\nicefrac{\pi}{2}$ in the
+positive direction. Additionally, let $\mathbf{m}_i$ be the midpoint to the
+$i^{th}$ side.  Now consider the linear functionals corresponding to the
+vertices of the triangle $K$ denoted as
 \begin{align*}
   \mathcal{L}_i(\varphi) &:= \varphi(\mathbf{x}_i), \\
-  \mathcal{L}_i^\circ(\varphi) &:= \partial_\circ \varphi(\mathbf{x}_i) \quad \circ \in
+  \mathcal{L}_i^\circ(\varphi) &:= \partial_\circ \varphi(\mathbf{x}_i) \quad
+  \text{if }\circ \in
     \{x,y\}, \\
-  \mathcal{L}_i^\circ(\varphi) &:= \partial_\circ \varphi(\mathbf{x}_i) \quad \circ \in
+  \mathcal{L}_i^\circ(\varphi) &:= \partial_\circ \varphi(\mathbf{x}_i) \quad
+  \text{if }\circ \in
     \{xx,xy,yy\}
 \end{align*}
-for $i\in \{1,2,3\}$. For the functionals corresponding to the sides
+for $i\in \{1,2,3\}$. For the functionals corresponding to the sides define
 \begin{equation*}
   \mathcal{L}_i^n(\varphi) := \nabla_{\mathbf{x}} \phi(\mathbf{m}_i) \cdot
   \mathbf{n}_i \quad i\in\{1,2,3\}.
 \end{equation*}
-Now let's renumber the linear functionals as $\mathcal{L}_j$ for
+Now renumber the linear functionals as $\mathcal{L}_j$ for
 $j\in\{1,\dots,21\}$ as they are listed below
 \begin{align*}
   &\mathcal{L}_1, \mathcal{L}_2, \mathcal{L}_3, \\
@@ -75,29 +79,32 @@ that
   \{1,\dots,21\}.
   \label{eqn:FunctionalsC}
 \end{equation}
-and therefore it follows
+Therefore, it follows \cite{Dominguez08}
 \begin{equation}
   \varphi_i\circ F = \sum_{j=1}^{21} c_{ij}\hat{\varphi}_j \quad i\in
   \{1,\dots,21\}.
   \label{eqn:PolyC}
-\end{equation} \cite{Dominguez08}
-Now, we must determine a simple expression for this $C$.
+\end{equation}
+Thus we have shown there exists a $C$ which transforms any triangle $K$ to a
+reference triangle $\hat{K}$.
 
-Let's introduce a new set of linear functionals
+Now, we must determine a simple expression for matrix $C$. To do this we
+introduce a new set of linear functionals
 \begin{equation*}
-  \mathcal{L}^*_i \quad i\in\{1,\dots,24\}
+  \mathcal{L}^*_i \quad i\in\{1,\dots,24\}.
 \end{equation*}
-in the following way; first we let $\mathcal{L}^*_i:=\mathcal{L}_i\;
-i=\{1,\dots,18\}$ and then introduce the new functionals
+We definie these functionals in the following way: first we let
+$\mathcal{L}^*_i:=\mathcal{L}_i\; i=\{1,\dots,18\}$, and then introduce the new
+functionals
 \begin{equation*}
-  \mathcal{L}^\circ_i \quad \circ \in \{\perp,||\}\quad i\in \{1,2,3\}
+  \mathcal{L}^\circ_i \quad \circ \in \{\perp,||\}\quad i\in \{1,2,3\}.
 \end{equation*}
-by the following relationship
+These functionals will be defined using the following relationship:
 \begin{equation*}
   \mathcal{L}_i^{\perp}(\varphi) := \nabla_{\mathbf{x}} \varphi(\mathbf{m}_i)
-  \cdot R\mathbf{v}_i, \quad
+    \cdot R\mathbf{v}_i, \quad
   \mathcal{L}^{||}_i (\varphi) := \nabla_{\mathbf{x}} \varphi(\mathbf{m}_i)
-  \cdot \mathbf{v}_i
+    \cdot \mathbf{v}_i,
 \end{equation*}
 where
 \begin{equation*}
@@ -105,16 +112,22 @@ where
     0 & -1 \\ 1 & 0
   \end{bmatrix}
 \end{equation*}
-is the matrix that rotates a vector $\nicefrac{\pi}{2}$ counter-clockwise. Now
-order the linear functionals as
+is the matrix that rotates a vector $\nicefrac{\pi}{2}$ counter-clockwise. These
+relationships will define a relationship of the edge and firsts derivatives at a
+midpoint to the directional derivatives, i.e. the normal derivative and the
+derivative pointing in the direction of the corresponding edge.
+
+Now, order the linear functionals as
 $\mathcal{L}^{\perp}_1,\mathcal{L}^{\perp}_2,\mathcal{L}^{\perp}_3,
 \mathcal{L}^{||}_1,\mathcal{L}^{||}_2,\mathcal{L}^{||}_3$.
-Therefore, we have the relationship
+We can write each $\tilde{\mathcal{L}}_i$ as a linear combination of
+$\mathcal{L}_j^*$ and therefore we have the relationship
 \begin{equation}
   \tilde{\mathcal{L}}_i = \sum_{j=1}^{24} d_{ij} \mathcal{L}^*_j, \quad
-    i\in\{1,\dots,21\}.
+    i\in\{1,\dots,21\},
   \label{eqn:FunctionalsD}
 \end{equation}
+where $d_{ij}$ are constants.
 
 Now from \eqref{eqn:Affine} we see that
 \begin{align*}
@@ -147,10 +160,11 @@ and so
   \label{eqn:Gradient}
 \end{equation}
 
-If we defined the Hessian as $H_x(\varphi) = \left[ \varphi_{xx},\,
-\varphi_{xy},\, \varphi_{yy}\right]^T$ then using \eqref{eqn:Affine} we can
-determine the relationship between the hessian of $\hat{\varphi}$ on the
-triangle $\hat{K}$ to the hessian of $\varphi$ on the triangle $K$
+If we define the condensed Hessian, in the same way as Dominguez et. al.
+\cite{Dominguez08}, as $H_x(\varphi) = \left[ \varphi_{xx},\, \varphi_{xy},\,
+\varphi_{yy}\right]^T$ then using \eqref{eqn:Affine} we can determine the
+relationship between the Hessian of $\hat{\varphi}$ on the triangle $\hat{K}$
+to the Hessian of $\varphi$ on the triangle $K$
 \begin{align*}
   H_{\mathbf{\hat{x}}}(\varphi\circ F) &= \begin{bmatrix}
     \dfrac{\partial^2 \varphi\circ F}{\partial \hat{x}^2} \\[1em]
@@ -213,7 +227,7 @@ triangle $\hat{K}$ to the hessian of $\varphi$ on the triangle $K$
 \end{align*}
 and so
 \begin{equation}
-  H_{\mathbf{\hat{x}}}(\varphi\circ F) = \Theta H_{\mathbf{x}}(\varphi)\circ F
+  H_{\mathbf{\hat{x}}}(\varphi\circ F) = \Theta H_{\mathbf{x}}(\varphi)\circ F,
   \label{eqn:Hessian}
 \end{equation}
 where
@@ -271,9 +285,9 @@ Then
   \begin{bmatrix} -v^y_i & v^x_i \\ v^x_i & v^y_i \end{bmatrix}
   \begin{bmatrix}
     \mathcal{L}^{\perp}_i \\ \mathcal{L}^{||}_i
-  \end{bmatrix}
+  \end{bmatrix},
 \end{align*}
-where $\ell_i$ is the length of the $i^{th}$ side. This can be written in the form
+where $\ell_i$ is the length of the $i^{th}$ side of the triangle $K$. This can be written in the form
 \begin{equation*}
   \tilde{\mathcal{L}}_i^n = f_i \mathcal{L}^{\perp}_i + g_i \mathcal{L}^{||}_i,
 \end{equation*}
@@ -286,9 +300,9 @@ where
 \end{equation*}
 
 Therefore, we can construct a $21\times 24$ the matrix $D$ in block diagonal
-form in the following way
+form in the following way:
 \begin{equation*}
-  D = \text{diag}[I_3, B^T, B^T, B^T, \Theta, \Theta, \Theta, Q]
+  D = \text{diag}[I_3, B^T, B^T, B^T, \Theta, \Theta, \Theta, Q],
 \end{equation*}
 where
 \begin{equation*}
@@ -296,7 +310,7 @@ where
     f_1 & & & g_1 & & \\
     & f_2 & & & g_2 &\\
     & & f_3 & & & g_3
-  \end{array}\right]
+  \end{array}\right].
 \end{equation*}
 
 It also holds that
@@ -305,21 +319,24 @@ It also holds that
   \{1,\dots,24\}.
   \label{eqn:FunctionalsE}
 \end{equation}
-It should be clear that $\mathcal{L}^*_i = \mathcal{L}_i$ for $i=1,\dots,18$
-and since $\ell_i \mathbf{n}_i = R \mathbf{v}_i$ we see that $\mathcal{L}^{\perp}_i =
-\ell_i \mathcal{L}^n_i$. Now let $\phi$ be an arbitrary polynomial in
+For the degrees of freedom corresponding to the vertices, i.e. function values,
+first derivative values, and second/mixed derivative values, it should be clear
+that $\mathcal{L}^*_i = \mathcal{L}_i$ for $i=1,\dots,18$. For the degrees of
+freedom corresponding to the normal derivatives at the midpoints we see that
+since $\ell_i \mathbf{n}_i = R \mathbf{v}_i$ we see that $\mathcal{L}^{\perp}_i
+= \ell_i \mathcal{L}^n_i$. Now let $\phi$ be an arbitrary polynomial in
 $\mathbb{P}_5(K)$ and define
 \begin{equation*}
   \psi(t) := \varphi(t\mathbf{x}_{\beta} + (1-t)\mathbf{x}_{\alpha}) \in
-  \mathbb{P}_5(t) \; \alpha<\beta
+  \mathbb{P}_5(t) \; \alpha<\beta \text{ and} \alpha,\,\beta \in \{1,2,3\}.
 \end{equation*}
-then
+Then, we get
 \begin{equation}
   \psi'(\nicefrac{1}{2}) = \frac{15}{8} (\psi(1)-\psi(0)) -
   \frac{7}{16} (\psi'(1)+\psi'(0)) + \frac{1}{32} (\psi''(1)-\psi''(0))
   \label{eqn:Psi}
 \end{equation}
-Taking $\gamma$ to be the index corresponding to $\mathbf{v}_{\gamma} =
+Now take $\gamma$ to be the index corresponding to $\mathbf{v}_{\gamma} =
 \mathbf{x}_{\beta} - \mathbf{x}_{\alpha}$ and since
 \begin{align*}
   \psi'(\nicefrac{1}{2}) &= \mathcal{L}_{\gamma}(\varphi) \\
@@ -334,9 +351,9 @@ Taking $\gamma$ to be the index corresponding to $\mathbf{v}_{\gamma} =
     (v^y_{\gamma})^2\mathcal{L}^{yy}_{\alpha}(\varphi) \\
   \psi''(1) &= (v^x_{\gamma})^2\mathcal{L}^{xx}_{\beta}(\varphi) +
     2 v^x_{\gamma}v^y_{\gamma}\mathcal{L}^{xy}_{\beta}(\varphi) +
-    (v^y_{\gamma})^2\mathcal{L}^{yy}_{\beta}(\varphi).
+    (v^y_{\gamma})^2\mathcal{L}^{yy}_{\beta}(\varphi),
 \end{align*}
-Applying this to \eqref{eqn:Psi} gives the following expression
+we see that by applying this to \eqref{eqn:Psi} we get the following expression
 \begin{equation*}
   \begin{split}
     \mathcal{L}^{||}_{\gamma} = \frac{15}{8}(-\mathcal{L}_{\alpha} +
@@ -359,10 +376,14 @@ Therefore, we have the $24\times 21$ matrix
   E = \begin{bmatrix} I_{18} & \mathbf{0} \\
     \mathbf{0} & L \\
     T & \mathbf{0}
-  \end{bmatrix} \quad L = \text{diag}[\ell_1,\ell_2,\ell_3]
+  \end{bmatrix}.
 \end{equation*}
-where the last block ($3\times 18$), $T$, is composed of three sub blocks ($3\times 3,\, 3\times
-6,\text{ and } 3\times 9$ respectively)
+We then can define
+\begin{equation*}
+  \quad L = \text{diag}[\ell_1,\ell_2,\ell_3]
+\end{equation*}
+and the $(3\times 18)$ block matrix T as being composed of three sub blocks
+($3\times 3,\, 3\times 6,\text{ and } 3\times 9$ respectively)
 \begin{equation*}
   \frac{15}{8} \begin{bmatrix} -1 & 1 & 0\\ -1 & 0 & 1\\ 0 & -1 & 1\end{bmatrix}, \quad
   -\frac{7}{16} \begin{bmatrix} \mathbf{v}_1^T & \mathbf{v}_1^T & \mathbf{0}\\
@@ -375,7 +396,9 @@ where $\mathbf{w}_i^T = \left[ (v^x_i)^2, 2v^x_i v^y_i, (v^y_i)^2\right]$.
 Finally, notice that by combining \eqref{eqn:FunctionalsD} and \eqref{eqn:FunctionalsE}
 we get the matrix in \eqref{eqn:FunctionalsC} and
 \begin{equation}
-  C=DE
+  C=DE.
   \label{eqn:Transformation}
 \end{equation}
+Thus, we have the transforation for the Argyris triangle $K$ into a reference
+triangle $\hat{K}$.
 
