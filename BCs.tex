@@ -1,10 +1,10 @@
-Unlike Lagrange FEs \emph{boundary conditions} (BCs) for $C^1$ FEs can be a bit
-tricky to implement. We will demonstrate the difficulty of implementing BCs for
+Unlike Lagrange FEs \emph{boundary conditions} (BCs) for $C^1$ FEs can be
+challenging to develop. We will demonstrate the difficulty of implementing BCs for
 $C^1$ FEs through an example. Consider the \emph{Poisson problem}
 \begin{equation}
   \begin{split}
     -\Delta &u = f \quad \text{on } \Omega \\
-    &u = 0 \quad \text{on } \partial \Omega
+    &u = 0 \quad \text{on } \partial \Omega.
   \end{split}
   \label{eqn:Poisson}
 \end{equation}
@@ -25,32 +25,35 @@ Thus, for conforming FEs the FE formulation is given by
   \label{eqn:PoissonFE}
 \end{equation}
 Since $u \in H^1_0(\Omega)$ and $u^h \in X^h \subset H^1_0(\Omega)$ only $C^0$
-Lagrange FEs need be used. However, for demonstration purposes lets assume $u^h
-\in X^h \subset C^1(\Omega) \subset X$ and therefore Lagrange FEs are no longer
+Lagrange FEs need be used. However, for demonstration purposes we assume $u^h
+\in X^h \subset C^1(\Omega) \subset X$. Therefore, Lagrange FEs are no longer
 an appropriate choice for our FE discretization.
 
-With Lagrange FEs the most straight forward and usual way to deal with BCs is to
-enforce them by explicitly setting the degrees of freedom (DoFs) on the boundary
-to zero and reduce the linear system to contain only the internal nodes. This
-can be seen graphically in \autoref{fig:ReducedBCs}. One major benefit to
-treating BCs in this way is in reducing the size of the linear system that must
-be solved, and therefore reducing computational time.
+With Lagrange FEs the most common way to deal with BCs is to enforce them by
+explicitly setting the degrees of freedom (DoFs) on the boundary to zero and
+reduce the linear system to contain only the internal nodes. This can be seen
+graphically in \autoref{fig:ReducedBCs}. One significant benefit to treating BCs in
+this way is in reducing the size of the linear system that must be solved, and
+therefore reducing computational time.
+
 \input{ReducedBC}
 
-This method can be problematic when using $C^1$ FEs. Consider the boundary
-$\partial \Omega = \Gamma_1 \bigcup \Gamma_2$, where $\Gamma_1$ and $\Gamma_2$
-correspond to the vertical and horizontal boundaries, respectively (see
-\autoref{fig:SplitBoundary}).  On $\Gamma_1$ we know $u=0$ which implies $u_y =
-u_{yy} = 0$ on $\Gamma_1$.  While on $\Gamma_2$ we know $u=0$ which implies $u_x
-= u_{xx} = 0$ on $\Gamma_2$. Thus, simply setting $u^h = 0$ on the boundary
+This method, however, can be problematic when using $C^1$ FEs. Consider the
+boundary $\partial \Omega = \Gamma_1 \bigcup \Gamma_2$, where $\Gamma_1$ and
+$\Gamma_2$ correspond to the vertical and horizontal boundaries, respectively
+(see \autoref{fig:SplitBoundary}).  On $\Gamma_1$ we know $u=0$ which implies
+$u_y = u_{yy} = 0$ on $\Gamma_1$.  On $\Gamma_2$ we know $u=0$ which implies
+$u_x = u_{xx} = 0$ on $\Gamma_2$. Thus, simply setting $u^h = 0$ on the boundary
 results in the DoFs corresponding to $u_x,\,u_y,\,u_{xx}$, and $u_{yy}$ not
-necessarily being set to zero. Thus, one must force these DoFs to be zero too or
-another scheme must be implemented to deal with this case. However, setting the
-appropriate DoFs to zero requires some analysis of the problem domain before
-implementation, which is problematic when one wants to implement a generalized
-code. To read more about implementation of boundary conditions for Hermite type
-FEs see Remark 2.3.8 in Ciarlet\cite{Ciarlet}. To avoid this one can implement a
-Lagrange Multiplier scheme.
+necessarily being set to zero. Therefore, one must force these DoFs to be zero
+too or another scheme must be implemented to deal with this case. However,
+setting the appropriate DoFs to zero in this manner requires some analysis of
+the problem domain before implementation, which is problematic when one wants to
+implement a generalized code. To read more about implementation of boundary
+conditions for Hermite type FEs see Remark 2.3.8 in Ciarlet\cite{Ciarlet}. To
+avoid this one can implement a Lagrange Multiplier scheme
+\cite{Babuska1973,Barbosa1991,Barbosa1992,Bramble1981,Pitkaranta1981}.
+
 \input{SplitBoundary}
 
 Rewrite the FE formulation, \eqref{eqn:PoissonFE}, in the following way
@@ -68,8 +71,8 @@ Then the \emph{variational form} of \eqref{eqn:ConstrainedPoisson} is
   L(u,\lambda) = \frac{1}{2}u^T A u - u^T \ell + \lambda^T (\Lambda u - b),
   \label{eqn:Variational}
 \end{equation}
-where $\lambda$ is the Lagrange multiplier. Using the first derivative condition
-results in
+where $\lambda$ is the Lagrange multiplier. Using the first-order optimality
+condition results in
 \begin{equation}
   \begin{split}
     \frac{d L}{du} &= Au - \ell + \Lambda^t \lambda = 0 \\
@@ -90,5 +93,6 @@ multipliers for boundary constraints is given by
   \end{bmatrix}.
   \label{eqn:Lagrange}
 \end{equation}
-To avoid zeros on the main diagonal we add a small perturbation, $\varepsilon$,
-in the lower right.
+To avoid zeros on the main diagonal, and avoid poor condition of the system
+\eqref{eqn:Lagrange}, we add a small perturbation, $\varepsilon$, in the lower
+right.
