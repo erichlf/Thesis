@@ -1,12 +1,12 @@
 We consider an approximate solution to \eqref{eqn:SQGEWF} by a two-level finite
-element procedure as described by \cite{Fairag98,Layton93}. If we let $X^h,\,
-X^H \subset H^2_0(\Omega)$ denote two conforming finite element meshes with $H
-\gg h$. We compute an approximate solution $\psi^h$ in the finite element space
-$X^h$ by solving a linear system consisting of the degrees of freedom in $X^h$.
-This linear system requires us to first compute the approximate solution
-$\psi^H$ to the nonlinear system in the finite element space $X^H$ where the
-mesh is very coarse, i.e. $H \gg h$ and then using this solution, $\psi^H$, in
-the linear system. This procedure is as follows
+element procedure \cite{Fairag98,Layton93}. Let $X^h,\, X^H \subset
+H^2_0(\Omega)$ denote two conforming finite element spaces with $H \gg h$. We
+compute an approximate solution $\psi^h$ in the finite element space $X^h$ by
+solving a linear system consisting of the degrees of freedom in $X^h$.  This
+linear system requires us to first compute the approximate solution $\psi^H$ to
+the nonlinear system in the finite element space $X^H$ where the mesh is very
+coarse, i.e. $H \gg h$ and then using this solution, $\psi^H$, in the linear
+system. This procedure is as follows
 
 \begin{algorithm}%[H]
   \caption{}%Two-Level algorithm for the Streamfunction formulation of QGE}
