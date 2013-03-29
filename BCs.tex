@@ -1,6 +1,10 @@
 Unlike Lagrange FEs \emph{boundary conditions} (BCs) for $C^1$ FEs can be
 challenging to develop. We will demonstrate the difficulty of implementing BCs for
-$C^1$ FEs through an example. Consider the \emph{Poisson problem}
+$C^1$ FEs through an example. The example we will use is the \emph{Poisson
+problem}, which would normally have a $C^0$ FE discretization. The motivation
+for using this problem is that it should be a very familiar implementation in
+the $C^0$ and thus a useful demonstration of the difficulties in implementing
+$C^1$ FEs. Therefore, consider the following \emph{Poisson problem}
 \begin{equation}
   \begin{split}
     -\Delta &u = f \quad \text{on } \Omega \\
@@ -52,7 +56,7 @@ the problem domain before implementation, which is problematic when one wants to
 implement a generalized code. To read more about implementation of boundary
 conditions for Hermite type FEs see Remark 2.3.8 in Ciarlet\cite{Ciarlet}. To
 avoid this one can implement a Lagrange Multiplier scheme
-\cite{Babuska1973,Barbosa1991,Barbosa1992,Bramble1981,Pitkaranta1981}.
+\cite{Babuska1973,Barbosa1991,Barbosa1992,Bramble1981,Pitkaranta1980,Pitkaranta1981}.
 
 \input{SplitBoundary}
 
@@ -93,6 +97,8 @@ multipliers for boundary constraints is given by
   \end{bmatrix}.
   \label{eqn:Lagrange}
 \end{equation}
-To avoid zeros on the main diagonal, and avoid poor condition of the system
-\eqref{eqn:Lagrange}, we add a small perturbation, $\varepsilon$, in the lower
-right.
+{\color{red}
+Since $A$ has not had any implementation of the BCs inherent to it we see that
+it is infact singular.  To avoid zeros on the main diagonal, and avoid poor
+conditioning of the system \eqref{eqn:Lagrange}, we add a small perturbation,
+$\varepsilon$, in the lower right.}

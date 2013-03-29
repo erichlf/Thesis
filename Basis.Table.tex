@@ -1,10 +1,12 @@
-\begin{table}%[H]
+\begin{sidewaystable}%[H]
 \begin{center}
-  {\tiny\begin{tabular}{|p{1.2in}|p{1.2in}|p{1.2in}|}
+  {\small\begin{tabular}{|p{2in}|p{2in}|p{2in}|p{2in}|}
 	\hline
-	$i,j,k=1,2,3$ & $i=4,5,6$ and $j,k=1,2,3$ &
-	$i=7,8,9$ and $j,k=1,2,3$ \\
-	\hline
+  $i,j,k=1,2,3$ &
+  $i=4,5,6$ and $j,k=1,2,3$ &
+	$i=7,8,9$ and $j,k=1,2,3$ &
+  $i=10,11,12$ and $j,k=1,2,3$ \\
+  \hline
 	\begin{equation*}
 		\begin{split}
 		\varphi_i (x_j,y_j) = \delta_{i,j} \\
@@ -37,13 +39,7 @@
 		\dfrac{\partial^2 \varphi_i}{\partial y^2} (x_j,y_j) = 0 \\
 		\dfrac{\partial\varphi_i}{\partial n_k} = 0
 		\end{split}
-	\end{equation*} \\
-	\hline
-	\hline
-	$i=10,11,12$ and $j,k=1,2,3$
-	& $i=13,14,15$ and $j,k=1,2,3$ &
-	$i=16,17,18$ and $j,k=1,2,3$ \\
-	\hline
+	\end{equation*} &
 	\begin{equation*}
 		\begin{split}
 		\varphi_i (x_j,y_j) = 0 \\
@@ -54,7 +50,12 @@
 		\dfrac{\partial^2 \varphi_i}{\partial y^2} (x_j,y_j) = 0 \\
 		\dfrac{\partial\varphi_i}{\partial n_k} = 0
 		\end{split}
-	\end{equation*} &
+	\end{equation*} \\
+	\hline
+	\hline
+	$i=13,14,15$ and $j,k=1,2,3$ &
+	$i=16,17,18$ and $j,k=1,2,3$ &
+	$i=19,20,21$ and $k=1,2,3$ & \\ \hline
 	\begin{equation*}
 		\begin{split}
 		\varphi_i (x_j,y_j) = 0 \\
@@ -76,11 +77,7 @@
 		\dfrac{\partial^2 \varphi_i}{\partial y^2} (x_j,y_j) = 0 \\
 		\dfrac{\partial\varphi_i}{\partial n_k} = 0
 		\end{split}
-	\end{equation*} \\
-	\hline
-	\hline
-	& $i=19,20,21$ and $k=1,2,3$ & \\
-	\hline
+	\end{equation*}
 	& \begin{equation*}
 		\begin{split}
 		\varphi_i (x_j,y_j) = 0 \\
@@ -98,4 +95,4 @@
   \cite{Argyris,Brenner,Ciarlet,Dominguez08}}
 \label{tab:Constraints}
 \end{center}
-\end{table}
+\end{sidewaystable}

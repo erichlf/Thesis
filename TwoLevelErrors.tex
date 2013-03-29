@@ -33,6 +33,63 @@ The following lemma will prove useful for proving the error bounds for
 \end{lemma}
 For a proof see \cite{Fairag98}.
 
+Before proving any error bounds we first prove that the continuous problem
+linearized about $\psi^H$ has a unique solution.
+\begin{lemma}\label{lma:Fine}
+  Given a solution $\psi^H$ of \eqref{eqn:Coarse}, then the solution to the
+  following problem exists uniquely:
+    \begin{equation}
+      \begin{split}
+        &\text{Find } \hat{\psi} \in H^2_0(\Omega) \text{ such that, for all }
+          \chi\in H^2_0(\Omega), \\
+        Re^{-1}&(\Delta \hat{\psi}, \Delta \chi)
+          + b(\psi^H; \hat{\psi}, \chi)
+          - Ro^{-1} (\hat{\psi}_x,\chi)
+          = Ro^{-1} (F,\chi),
+      \end{split}
+      \label{eqn:FineProb}
+    \end{equation}
+    and satisfies $\|\hat{\psi}\|_2 \le Re\, Ro^{-1} \|F\|_{-2}$.
+\end{lemma}
+\begin{proof}
+  First we introduce a new continuous bilinear form $B:\, H^2_0(\Omega) \times
+  H^2_0(\Omega) \to \R$ given by
+  \begin{equation*}
+    B(\psi,\chi) = Re^{-1} (\Delta \psi, \Delta \chi)
+      + b(\psi^H;\psi,\chi)
+      - Ro^{-1} (\psi_x,\chi).
+  \end{equation*}
+  B is continuous and coercive and therefore $\hat{\psi}$ exists and is unique.
+  Now setting $\chi=\hat{\psi}$ in \eqref{eqn:FineProb} and noting that
+  $(\psi_x,\chi) = -(\chi_x,\psi)$ which implies that
+  $(\hat{\psi}_x,\hat{\psi}) = 0$ gives
+  \begin{align*}
+    Re^{-1} \|\hat{\psi}\|_2^2 &= Ro^{-1} (F,\hat{\psi}) \\
+    \|\hat{\psi}\|_2 &= Re\, Ro^{-1} \frac{(F,\hat{\psi})}{\|\hat{\psi}\|_2} \\
+    &\le Re\, Ro^{-1} \|F\|_{-2}\|\hat{\psi}\|_2 \\
+  \end{align*}
+  Therefore, it follows that $\|\hat{\psi}\|_2 \le Re\, Ro^{-1} \|F\|_{-2}$.
+\end{proof}
+\begin{lemma} \label{lma:Fineh}
+  The solution to \eqref{eqn:Coarse} exists and satisfies
+  \begin{equation*}
+    \|\psi^H\|_2 \le Re\, Ro^{-1} \|F\|_{-2}.
+  \end{equation*}
+\end{lemma}
+\begin{proof}
+  The bilinear form $B$ is continuous and coercive on $X^h$ and so $\psi^h$
+  exists and is unique. Setting $\chi^h=\psi^h$ in \eqref{eqn:Fine} and again
+  noting that $(\psi_x^h,\psi^h)=0$ and using \eqref{eqn:lCont} gives
+  \begin{align*}
+    Re^{-1} \|\psi^h\|_2^2 &= Ro^{-1} (F,\psi^h) \\
+    \|\psi^h\|_2 &= Re Ro^{-1} \frac{(F,\psi^h)}{\|\psi^h\|_2},
+  \end{align*}
+  which implies
+  \begin{equation*}
+    \|\psi^h\| \le Re\, Ro^{-1} \|F\|_{-2}.
+  \end{equation*}
+\end{proof}
+
 The following theorem gives the error bound after Step 2 and is the main result
 of this paper. The proof of this theorem is similar to the proof for a similar
 theorem in \cite{Fairag98}.
