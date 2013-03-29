@@ -6,7 +6,7 @@
 \end{wrapfigure}
 The influence of the coriolis force on the currents of the ocean were first
 noted by Hadley, Coriolis, and Ferrel, however the the influence of these forces
-were considered to small and thereofre didn't show in the theory of the time
+were considered too small and thereofre didn't show in the theory of the time
 \cite{Ekman1905}. Ekman's adviser Bjerknes was the first to indicate the
 importance of the influence of the Earth's rotation in the thoery of motions of
 the ocean \cite{Ekman1905}. While the true importance of the influence of the
@@ -27,26 +27,81 @@ causes a deflection of the transport to the right of the surface wind stress in
 the Northern Hemisphere and to the left of the surface wind stress in the
 Southern Hemisphere \cite{Beesley2008}.
 
-The first study of wind-driven ocean circulation, where the \emph{Coriolis
-parameter} varied from north to south was, introduced by Sverdrup (1947)
-\cite{Fox-Kemper2003}. This variable Coriolis parameter introduced, for the
-first time, an asymmetry of the problem domain by distinguishing north from
-south, and thus a new term was born.  The $\nicefrac{\partial \psi}{\partial x}$
-term, which involves the streamfunction, $\psi$, usually referred to as the
-$\beta$-term, is an advection caused by the rotation of the Earth.
-
-Next, Stommel (1948) combined the dynamics of \emph{western boundary currents}
-with the $\beta$-term. The model developed by Stommel was a simple model which
-included the $\beta$-term ($\nicefrac{\partial \psi}{\partial x}$), a bottom
-friction term ($-\delta_S \nabla^2 \psi$), and a wind stress forcing term ($f$).
-The resultant equation is
+Rossby in his 1936 paper\cite{Rossby1936} introduced a force which he says had
+been ``completely disregarded by theoretical investigators although its
+existence has been admitted implicitly by practically everyone who has approaced
+physical oceanography from the descriptive side.'' The force that Rossby
+introduced was the frictional force resulting from large-scale horizontal
+mixing. According to Rossby, ``The introduction of this force permits us to see
+how motion generated in the surface layers may be diffused and finally
+dissipated without recourse to doubtful frictional forces at the bottom of the
+ocean.'' Additionally, a significant contribution of Rossby was that he noticed
+one could represent the Coriolis force by \cite{James2009}
 \begin{equation}
-  \frac{\partial \psi}{\partial x} = f - \delta_s \nabla^2 \psi.
+  f = f_0 + \beta\, y,
+  \label{eqn:CoriolisParameterization}
+\end{equation}
+where $f,\, f_0,\, \beta,\, y$ are the Coriolis parameter, reference Coriolis
+parameter, $\beta$ is the $\beta$-plane parameter, and $y$ is the $y$-coordinate
+(oriented northward), respectively.
+
+Then Sverdrup introduced the idea of a variable \emph{Coriolis parameter}
+\cite{Fox-Kemper2003}. By allowing for the variation of the Coriolis parameter
+in the north-south direction Sverdrup\cite{Sverdrup1947} introduced, for the
+first time, a north-south asymmetry of the problem domain. The term he
+introduced, $\nabla \cdot (\mathbf{x} \psi)$ is known as the $\beta$-term
+because of the typical notation for the derivative of the Coriolis parameter
+\cite{Fox-Kemper2003}. This asymmetry in the north-south direction accounted for
+the heretofore unexplained equatorial countercurrents.
+
+Ekman's theory explain the deflection of ocean currents from the direction of
+the wind stress and Sverdrup's allowed for an asymmetry in the north-south
+direction, thereby resolving the matter of equatorial contercurrents, however,
+the combination of the two was still not able to explain the existence of strong
+western boundary currents \cite{Fox-Kemper2003}.  Next,
+Stommel\cite{Stommel1948} noticed that taken the gradient of the Coriolis term
+introduced an asymetry in not only the north-south direction, but also in the
+east-west direction. This new term, $\dfrac{\partial \psi}{\partial x}$, which
+involves the streamfunction $\psi$ introduces an asymmety in the east-west
+direction. This can be seen by substituting $-x$ for $x$-- cleary the sign of
+the $\beta$-term changes. This $\beta$-term is a convective term resulting from
+the rotation of the Earth. The model developed by Stommel was a simple model
+which included the $\beta$-term, a bottom friction term ($-\delta_S \nabla^2
+\psi$), and a wind stress forcing term ($F$).  The resultant equation
+is \cite{Fox-Kemper2003,Stommel1948,Vallis06}
+\begin{equation} \frac{\partial
+  \psi}{\partial x} = F - \delta_S \nabla^2 \psi.
   \label{eqn:StommelModel}
 \end{equation}
-Stommel noted that without the $\beta$-term the solution would be symmetric in
-the west-east direction and therefore no western boundary current would exist
-\cite{Stommel1948}.
-{\color{red} Add an overview of the progress made in creating ocean models,
-including Munk, Stommel, and Charney. Maybe mention ENIAC.}
+Stommel noted that without the $\beta$-term the solution would be
+symmetric in the east-west direction and therefore no western boundary current
+would exist \cite{Stommel1948}.
 
+Soon after Stommel's 1948 paper, Munk\cite{Munk1950} published a paper on the
+westward intensification of ocean currents. In his paper, Munk explains that
+``[i]n Ekman's and Stommel's model the ocean is assumed homogeneous, a case
+which the currents extend to the very bottom.'' Munk points out that this is
+``in contrast with observations'' and resulted in ``very difficult'' analysis
+for Ekman while Stommel was forced ``to resort to a rather arbitrary frictional
+force along the bottom.'' To address this Munk introduces lateral friction with
+a constant viscosity. Thus, the Munk problem is
+\cite{Fox-Kemper2003,Munk1950,Vallis06}
+\begin{equation}
+  \frac{\partial \psi}{\partial x} = \delta_M^3\, \Delta^2 \psi + F,
+  \label{eqn:MunkProblem}
+\end{equation}
+where $\delta_m$ is the Munk scale. In addition to the introduction of lateral
+viscosity, the Munk problem introduced a fourth-order operator (the Biharmonic
+operator), which required an extra boundary condition.  In Munk's 1950
+paper\cite{Munk1950}, he used the same boundary conditions that we will
+consider, i.e. $\dfrac{\partial \psi}{\partial \mathbf{n}} = 0$.
+
+In 1948 Charney\cite{Charney1948} introduced the quasi-geostrophic
+approximation, which relied on the assumption that the Rossby number
+\begin{equation}
+  Ro = \frac{U}{f\, L},
+  \label{eqn:RossbyNumber}
+\end{equation}
+where $U,\, L$ are the characteristic velocity and length, respectively, was
+much much smaller than one.
+{\color{red} Finish discussion on Charney's contribution.}

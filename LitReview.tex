@@ -33,11 +33,63 @@ linear, whereas the QGE is nonlinear.
 
 We note that the state-of-the-art in the FEM error analysis for the QGE seems to
 reflect that for the \emph{two-dimensional Navier-Stokes equations (2D NSE)}, to
-which the QGE are similar in form. {\color{red} Include QGE is not NSE plots.} Indeed, as carefully discussed in
+which the QGE are similar in form.  Indeed, as carefully discussed in
 \cite{Gunzburger89}, the 2D NSE in streamfunction-vorticity formulation are easy
 to implement (only $C^0$ elements are needed for a conforming discretization),
 but the available error estimates are suboptimal (see Section 11.6 in
-\cite{Gunzburger89}). Next, we summarize the discussion in \cite{Gunzburger89},
+\cite{Gunzburger89}).
+\begin{remark}
+  It must be noted that althought QGE and NSE look quite similar in their
+  streamfunction forms, they are quite different. A significant difference lies
+  in the asymmetry introduced by the $\beta$-term, $\dfrac{\partial
+  \psi}{\partial x}$. This $\beta$-term introduces the effect of the Coriolis
+  force and differentiates the western boundary from the eastern boundary. A
+  fact that is significant, because the Navier-Stokes equations cannot account
+  for strong western boundary currents in ocean currents. A demonstration of the
+  effect of the $\beta$-term and the Rossby number can be seen in
+  \autoref{fig:NSEnotQGE}.
+\end{remark}
+
+\begin{figure}
+  \begin{center}
+  \begin{subfigure}{0.4\textwidth}
+    \centering
+    \includegraphics[scale=0.5]{Figures/Re200h16k1000}
+    \caption{NSE}
+    \label{sfi:NSE}
+  \end{subfigure}
+  \begin{subfigure}{0.4\textwidth}
+    \centering
+    \includegraphics[scale=0.5]{Figures/Re200Ro1h16k1000}
+    \caption{$Ro=1$}
+    \label{sfi:QGERo1}
+  \end{subfigure}
+  \begin{subfigure}{0.3\textwidth}
+    \centering
+    \includegraphics[scale=0.5]{Figures/Re200Ro1E-1h16k1000}
+    \caption{$Ro=0.1$}
+    \label{sfi:QGERo0.1}
+  \end{subfigure}
+  \begin{subfigure}{0.3\textwidth}
+    \vspace{1.3em}
+    \centering
+    \includegraphics[scale=0.5]{Figures/Re200Ro1E-2h16k1000}
+    \label{sfi:QGERo0.01}
+    \caption{$Ro=0.01$}
+  \end{subfigure}
+  \begin{subfigure}{0.3\textwidth}
+    \centering
+    \includegraphics[scale=0.5]{Figures/Re200Ro1E-3h16k1000}
+    \caption{$Ro=0.001$}
+    \label{sfi:QGERo0.001}
+  \end{subfigure}
+  \caption{QGE is not NSE: Time Averaged, $t=\lbrack 0, 10\rbrack,\, dt=1\times
+    10^{-3},\, Re= 200,\, F = \sin \pi y$}
+  \label{fig:NSEnotQGE}
+  \end{center}
+\end{figure}
+
+Next, we summarize the discussion in \cite{Gunzburger89},
 since we believe it sheds light on the QGE setting. For $C^0$ piecewise
 polynomial of degree $k$ FEM approximation for \emph{both} the vorticity
 (denoted by $\omega$) and streamfunction (denoted by $\psi$), the error
