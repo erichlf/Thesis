@@ -43,11 +43,16 @@ but the available error estimates are suboptimal (see Section 11.6 in
   streamfunction forms, they are quite different. A significant difference lies
   in the asymmetry introduced by the $\beta$-term, $\dfrac{\partial
   \psi}{\partial x}$. This $\beta$-term introduces the effect of the Coriolis
-  force and differentiates the western boundary from the eastern boundary. A
-  fact that is significant, because the Navier-Stokes equations cannot account
-  for strong western boundary currents in ocean currents. A demonstration of the
-  effect of the $\beta$-term and the Rossby number can be seen in
-  \autoref{fig:NSEnotQGE}.
+  force and differentiates the western boundary from the eastern boundary.
+  As the Rossby number, $Ro$ decreases the affect of the Coriollis becomes more
+  and more significant. As can be seen in \autoref{fig:NSEnotQGE} the stronger
+  the Coriolis force (smaller $Ro$) the narrower the western boundary layer
+  becomes. Additionally, we see that in the two gyre forcing seen in
+  \autoref{fig:NSEnotQGE} as $Ro$ decreases the distance between the gyres
+  becomes less, creating an internal boundary layer. Both these facts lend to
+  precautions that must be taken into account when implementing the QGE, which
+  isn't necessary in the implementation of the NSE. Thus, stabilization methods
+  for the NSE may not work as well for the QGE.
 \end{remark}
 
 \begin{figure}

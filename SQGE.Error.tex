@@ -12,8 +12,8 @@ in \autoref{sec:QGEStrong}.
 \begin{lemma} \label{lma:ContinuousForms}
   The linear form $(F,\chi)$, the bilinear forms $(\nabla \psi, \nabla \chi)$,
   $(\Delta \psi, \Delta \chi)$, $(\psi_x, \chi)$ and the trilinear form $b(\psi;
-  \psi, \chi)$ are continuous \cite{Cayco86}: There exists a $\Gamma_0,\,
-   \Gamma_2 > 0$ such that forall $\psi, \chi, \varphi\in X$
+  \psi, \chi)$ are continuous \cite{Cayco86}: There exist $\Gamma_0,\,
+   \Gamma_2 > 0$ such that for all $\psi, \chi, \varphi\in X$
   \begin{align}
     (\nabla \psi, \nabla \chi) &\le \Gamma_0\, |\psi|_2 |\chi|_2,
       \label{eqn:a0cont} \\
@@ -33,36 +33,39 @@ in \autoref{sec:QGEStrong}.
     \quad \frac{1}{p} + \frac{1}{r} = 1
   \end{equation*}
   with $p=r=2$. \\
-  The bound \eqref{eqn:lCont} can be proven by first noting that
+  The bound \eqref{eqn:lCont} can be proven by first noting that, $\forall \chi
+  \in X$,
   \begin{equation*}
-    \frac{(F,\chi)}{|\chi|_2} \le \sup_{\chi \in X} \frac{(F,\chi)}{|\chi|_2}.
+    \frac{(F,\chi)}{|\chi|_2} \le \sup_{\xi \in X} \frac{(F,\xi)}{|\xi|_2} =
+      \|F\|_{-2}.
   \end{equation*}
-  Multiplying both sides by $|\chi|_2$ gives the desired result.
+  Multiplying both sides by $|\chi|_2$ gives the desired result:
   \begin{equation*}
     (F,\chi) \le \|F\|_{-2}|\chi|_2.
   \end{equation*}
   Next, we prove \eqref{eqn:a0cont} by first applying H\"older inequality, \eqref{eqn:Holder} with
-  $p=r=2$ and therefore
+  $p=r=2$. Therefore
   \begin{equation*}
     (\nabla \psi, \nabla \chi) \le \|\nabla \psi\|\, \|\nabla \chi\|.
   \end{equation*}
-  Now, we apply the Poincar\'e inequality, \eqref{eqn:Poincare} to get the desired result
+  Now, we apply the Poincar\'e inequality, \eqref{eqn:Poincare} to get the
+  desired result:
   \begin{equation*}
     (\nabla \psi, \nabla \chi) \le \Gamma_0 |\psi|_2, |\chi|_2,
   \end{equation*}
-  where $\Gamma_0$ is the Poincar\'e constant. \\
+  where $\Gamma_0$ is the square of the Poincar\'e constant. \\
   Next, we will prove \eqref{eqn:a3Cont} by first applying the H\"older
   inequality to get
   \begin{equation*}
     (\psi_x, \chi) \le \|\psi_x\|\, \|\chi\|.
   \end{equation*}
-  Noting that $\|\psi_x\| \le \|\nabla \psi\|$ and the applying the Poincar\'e
+  Noting that $\|\psi_x\| \le \|\nabla \psi\|$ and applying the Poincar\'e
   inequality once to the term involving $\psi$ and twice to the term involving
   $\chi$ gives the desired result
   \begin{equation*}
     (\psi_x, \chi) \le \Gamma_2\,|\psi|_2\, |\chi|_2,
   \end{equation*}
-  where $\Gamma_2$ is a multiplication of three Poincar\'e constants. \\
+  where $\Gamma_2$ is the cube of the Poincar\'e constant. \\
   Finally, for \eqref{eqn:BH2Bounds} we start by applying the H\"older inequality, \eqref{eqn:Holder}
   \begin{equation}
     b(\psi;\varphi,\chi) \le \|\Delta \psi\|_{L^p} \|\nabla \varphi\|_{L^q}
@@ -78,12 +81,13 @@ in \autoref{sec:QGEStrong}.
   \begin{equation*}
     b(\psi;\varphi,\chi) \le \Gamma \|\Delta \psi\|
       \|\nabla \varphi\|^{\nicefrac{1}{2}} \|\Delta \varphi\|^{\nicefrac{1}{2}}
-      \|\nabla \chi\|^{\nicefrac{1}{2}} \|\Delta \chi\|^{\nicefrac{1}{2}}.
+      \|\nabla \chi\|^{\nicefrac{1}{2}} \|\Delta \chi\|^{\nicefrac{1}{2}},
   \end{equation*}
+  where $\Gamma$ is the Ladyzhenskaya constant, from \eqref{eqn:Ladyzhenskaya}.
   Using the Poincar\'e inequality, \eqref{eqn:Poincare} gives
   \begin{equation*}
     b(\psi;\varphi,\chi) \le \Gamma_1 \|\Delta \psi\|\, \|\Delta \varphi\|\,
-      \|\Delta \chi\|.
+      \|\Delta \chi\|,
   \end{equation*}
   where $\Gamma_1$ is the Poincar\'e constant.
 \end{proof}

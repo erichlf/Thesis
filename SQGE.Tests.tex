@@ -11,45 +11,45 @@ rates of convergence to the theoretical rates of convergence developed in
 Although the pure streamfunction formulation of the steady SQGE
 \eqref{eqn:SQGE_Psi} is our main concern, we also test our Argyris FE
 discretization on two simplified settings: \begin{inparaenum}[(i)] \item the
-\emph{Linear Stommel} model; and \item \emph{Linear Stommel-Munk} model.
+\emph{linear Stommel} model; and \item \emph{linear Stommel-Munk} model.
 \end{inparaenum} The reason for using these two additional numerical tests is
 that they are standard test problems in the geophysical fluid dynamics
 literature (see, e.g., Chapter 13 in Vallis \cite{Vallis06} as well as the
 reports of Myers \emph{et al.} \cite{Myers}, and Cascon \emph{et al.}
 \cite{Cascon}). This allows us to benchmark our numerical results against
-those in the published literature. Since both the Linear Stommel and the
-Linear Stommel-Munk models lack the nonlinearity present in the SQGE
+those in the published literature. Since both the linear Stommel and the
+linear Stommel-Munk models lack the nonlinearity present in the SQGE
 \eqref{eqn:SQGE_Psi}, they represent good stepping stones to verifying our FE
 discretization.
 
 The first simplified model used in our numerical investigation is the
-\emph{Linear Stommel} model (Equation 14.22 in \cite{Vallis06} and Equation 11
-in \cite{Myers})
+\emph{linear Stommel} model (equation (14.22) in \cite{Vallis06} and equation
+(11) in \cite{Myers})
 \begin{equation}
   \epsilon_s \Delta \psi + \frac{\partial \psi}{\partial x} = f,
   \label{eqn:Stommel}
 \end{equation}
-where $\epsilon_s$ is the Stommel Number. The Stommel Number is given by
-(Equation 10 in \cite{Myers})
+where $\epsilon_s$ is the Stommel number. The Stommel number is given by
+(equation (10) in \cite{Myers})
 \begin{equation*}
   \epsilon_s = \frac{\gamma}{\beta L},
 \end{equation*}
 where $\gamma,\, \beta, \text{ and } L$ are the bottom fricition decay, the
 measure of the $\beta$-plane effect, and characteristic length scale,
-respectively. We note that the Linear Stommel Model \eqref{eqn:Stommel} is just
-the Linear Stommel-Munk model \eqref{eqn:Stommel-Munk} in which the biharmonic
+respectively. We note that the linear Stommel Model \eqref{eqn:Stommel} is just
+the linear Stommel-Munk model \eqref{eqn:Stommel-Munk} in which the biharmonic
 term is dropped (i.e. $\epsilon_m=0$). Thus it is a good starting point, since
-is less complex than both the SQGE and the Linear Stommel-Munk model.
+is less complex than both the SQGE and the linear Stommel-Munk model.
 
-The \emph{Linear Stommel-Munk} model (see p. 587 in \cite{Vallis06} and problem
+The \emph{linear Stommel-Munk} model (see p. 587 in \cite{Vallis06} and problem
 2 in \cite{Cascon}) is given by
 \begin{equation}
   \epsilon_s \Delta \psi - \epsilon_m \Delta^2 \psi + \frac{\partial \psi}{\partial x} = f,
   \label{eqn:Stommel-Munk}
 \end{equation}
-where $\epsilon_s \text{ and } \epsilon_m$ are the Stommel Number and Munk
-Scale, respectively. The Stommel Number and Munk Scale are given by (Equation 10
-in \cite{Myers})
+where $\epsilon_s \text{ and } \epsilon_m$ are the Stommel number and Munk
+scale, respectively. The Stommel number and Munk scale are given by (equation
+(10) in \cite{Myers})
 \begin{equation*}
   \epsilon_m = \frac{A}{\beta L^3},
 \end{equation*}
@@ -57,48 +57,48 @@ where $A$ is the eddy visosity.  The model is supplemented with appropriate
 boundary conditions, which will be described for each of the subsequent
 numerical tests.
 
-We note that the Linear Stommel-Munk model \eqref{eqn:Stommel-Munk} is similar
+We note that the linear Stommel-Munk model \eqref{eqn:Stommel-Munk} is similar
 in form to the SQGE \eqref{eqn:SQGE_Psi}. Indeed, both models contain the
 biharmonic operator $\Delta^2 \psi$, the rotation term $\dfrac{\partial
-\psi}{\partial x}$, and the forcing term $F$. The two main differences between
-the two models are the following: First, the SQGE are nonlinear, since they
-contain the Jacobian term $J(\psi,q)$; the Stommel-Munk model is linear, since
-it doesn't contain the Jacobian term. The second difference is that the Linear
-Stommel-Munk model contains a Laplacian term $\Delta \psi$, whereas the SQGE
-does not.
+\psi}{\partial x}$, and the forcing terms $f$ and $F$, respectively. The two
+main differences between the two models are the following: First, the SQGE are
+nonlinear, since they contain the Jacobian term $J(\psi,q)$; the Stommel-Munk
+model is linear, since it doesn't contain the Jacobian term. The second
+difference is that the linear Stommel-Munk model contains a Laplacian term
+$\Delta \psi$, whereas the SQGE does not.
 
 We also note that the two models use different parameters: the Reynolds number
 $Re$ and the Rossby number $Ro$ in \eqref{eqn:SQGE_Psi} and the Stommel number
-$\epsilon_s$ and the Munk scale $\epsilon_m$ in the Linear Stommel-Munk model.
+$\epsilon_s$ and the Munk scale $\epsilon_m$ in the linear Stommel-Munk model.
 These two sets of parameters, however, are related by the following relations:
 \begin{align}
-  \epsilon_m &= Ro\, Re^{-1} \label{eqn:MunkScale}\\
-  \epsilon_s &= Ro \frac{\gamma\, L}{U} \label{eqn:StommelNumber}\\
+  \epsilon_m &= Ro\, Re^{-1}, \label{eqn:Munkscale}\\
+  \epsilon_s &= Ro \frac{\gamma\, L}{U}. \label{eqn:Stommelnumber}
 \end{align}
 %\textcolor{red}{If $\gamma \sim T$ then $\epsilon = Ro$. However, I am unsure this is a valid
-%assumption and so I am having trouble relating the Stommel Number to Reynolds and Rosby.}
+%assumption and so I am having trouble relating the Stommel number to Reynolds and Rosby.}
 
-The rest of the subsection is organized as follows: In \autoref{sse:LSM} we
-present results for the Linear Stommel model \eqref{eqn:Stommel}. In
-\autoref{sse:SMM} we present results for the Linear Stommel-Munk model
+The rest of the section is organized as follows: In \autoref{sse:LSM} we
+present results for the linear Stommel model \eqref{eqn:Stommel}. In
+\autoref{sse:SMM} we present results for the linear Stommel-Munk model
 \eqref{eqn:Stommel-Munk}. Finally, in \autoref{sse:SQGE} we present results for
 the nonlinear SQGE \eqref{eqn:SQGE_Psi}.
 
 \subsection{Linear Stommel Model} \label{sse:LSM} This subsection presents the
-results for the FE discretization of the Linear Stommel model
+results for the FE discretization of the linear Stommel model
 \eqref{eqn:Stommel} by using the Argyris element. The computational domain is
 $\Omega = [0,1]\times [0,1]$. For completeness, we present results for two
 numerical tests. The first test, denoted by Test 1, corresponds to the exact
-solution used by Vallis (Equation 14.38 in \cite{Vallis06}), while the second
+solution used by Vallis (equation (14.38) in \cite{Vallis06}), while the second
 test, denoted by Test 2, corresponds to the exact solution used by Myers
 \emph{et al.} (Equations 15 and 16 in \cite{Myers}).
 
 \tbf{Test 1a:} In this test, we choose the same setting as that used by Vallis
-(Equation 14.38 in \cite{Vallis06}).  In particular, the forcing term and the
+(equation (14.38) in \cite{Vallis06}).  In particular, the forcing term and the
 non-homogeneous Dirichlet boundary conditions are chosen to match those given by
 the exact solution
 \begin{equation}
-  \psi(x,y) = (1-x-e^{-\nicefrac{x}{\epsilon_s}}) \sin \pi y
+  \psi(x,y) = (1-x-e^{-\nicefrac{x}{\epsilon_s}}) \sin \pi y.
   \label{eqn:MyerExact}
 \end{equation}
 We choose the same Stommel number as that used by Vallis, i.e.
@@ -115,7 +115,7 @@ we reformulate it to be
   L\tilde{\psi} &= \tilde{f} \text{ on } \Omega \\
   \tilde{\psi} &= 0 \text{ on } \partial \Omega
 \end{align*}
-where $L\tilde{\psi} = Lu - LS = f - g = \tilde{f}$ and the solution $\psi$ from
+where $L\tilde{\psi} = Lu - LS = f - g = \tilde{f}$. The solution $\psi$ from
 the original problem can then be found by $\psi(x,y) =\tilde{\psi}+S$. The
 function $S(x,y)$ is assumed to have the form
 \begin{equation*}
@@ -127,9 +127,9 @@ some simple algebra we see that
   S(x,y) = -x e^{-x/\epsilon_s}\pi \sin(\pi y).
 \end{equation*}
 The function $\tilde{f}$ can be determined by applying the operator $L$
-corresponding to the \emph{Linear Stommel} problem to $u - S$
+corresponding to the \emph{linear Stommel} problem to $u - S$.
 
-Applying the finite element method to the \emph{Linear Stommel} problem with the
+Applying the finite element method to the \emph{linear Stommel} problem with the
 new modified $\tilde{f}$, corresponding to the exact solution given by Vallis,
 and homogeneous boundary conditions using Argyris Finite Elements we get a
 solution that matches the solution presented by Vallis, as can be seen in
@@ -161,14 +161,15 @@ values of the mesh sizes, $h$ (the DoFs are also included).
 \end{tabular}
 %}
 \end{center}
-\caption{Errors and Rate of Convergence for the Linear Stommel Model \eqref{eqn:Stommel}, Test 1 \cite{Vallis06}}
+\caption{Errors and rate of convergence for the linear Stommel Model
+  \eqref{eqn:Stommel}, Test 1 \cite{Vallis06}.}
 \label{tab:StommelErrorsVallis}
 \end{table}
 
 \begin{figure}
   \begin{center}
     \includegraphics[scale=0.5]{figures/StommelAConvergence.pdf}
-    \caption{Linear Stommel Model \eqref{eqn:Stommel}, Test 1a \cite{Vallis06}:
+    \caption{Linear Stommel model \eqref{eqn:Stommel}, Test 1a \cite{Vallis06}:
       Observeed errors versus expected rate of convergence.}
     \label{fig:StommelErrorsVallis}
   \end{center}
@@ -176,8 +177,8 @@ values of the mesh sizes, $h$ (the DoFs are also included).
 
 \begin{figure}%[H]
   \begin{center}
-    \includegraphics[scale=0.5]{Figures/LinearStommelVallis.pdf}
-    \caption{Linear Stommel Model \eqref{eqn:Stommel}, Test 1a \cite{Vallis06}: Streamlines of the approximation,
+    \includegraphics[scale=0.5]{Figures/linearStommelVallis.pdf}
+    \caption{Linear Stommel model \eqref{eqn:Stommel}, Test 1a \cite{Vallis06}: Streamlines of the approximation,
     $\psi^h$, $h=\frac{1}{32}$, and $9670$ DoFs.}
     \label{fig:StommelVallis}
   \end{center}
@@ -219,14 +220,15 @@ thin western boundary layer.
 \end{tabular}
 %}
 \end{center}
-\caption{Errors and Rate of Convergence for the Linear Stommel Model \eqref{eqn:Stommel}, Test 1b \cite{Vallis06}}
+\caption{Errors and rate of convergence for the linear Stommel Model
+  \eqref{eqn:Stommel}, Test 1b \cite{Vallis06}.}
 \label{tab:StommelErrorsVallise1}
 \end{table}
 
 \begin{figure}
   \begin{center}
     \includegraphics[scale=0.5]{figures/StommelBConvergence.pdf}
-    \caption{Linear Stommel Model \eqref{eqn:Stommel}, Test 1b \cite{Vallis06}:
+    \caption{Linear Stommel model \eqref{eqn:Stommel}, Test 1b \cite{Vallis06}:
       Observeed errors versus expected rate of convergence.}
     \label{fig:StommelErrorsVallis1}
   \end{center}
@@ -235,7 +237,7 @@ thin western boundary layer.
 \begin{figure}%[H]
   \begin{center}
     \includegraphics[scale=0.5]{Figures/StommelVallise1.pdf}
-    \caption{Linear Stommel Model \eqref{eqn:Stommel}, Test 1b \cite{Vallis06}: Streamlines of the approximation,
+    \caption{Linear Stommel model \eqref{eqn:Stommel}, Test 1b \cite{Vallis06}: Streamlines of the approximation,
     $\psi^h$, $h=\frac{1}{32}$, and $9670$ DoFs with $\epsilon_s=1$.}
     \label{fig:StommelVallise1}
   \end{center}
@@ -284,14 +286,15 @@ various values of the mesh sizes, $h$.
 \end{tabular}
 %}
 \end{center}
-\caption{Errors and Rate of Convergence for the Linear Stommel Model \eqref{eqn:Stommel}, Test 2 \cite{Myers}}
+\caption{Errors and rate of convergence for the linear Stommel Model
+  \eqref{eqn:Stommel}, Test 2 \cite{Myers}.}
 \label{tab:StommelErrorsMyers}
 \end{table}
 
 \begin{figure}
   \begin{center}
     \includegraphics[scale=0.5]{Figures/StommelMyersConvergence.pdf}
-    \caption{Linear Stommel Model \eqref{eqn:Stommel}, Test 2 \cite{Myers}:
+    \caption{Linear Stommel model \eqref{eqn:Stommel}, Test 2 \cite{Myers}:
       Observeed errors versus expected rate of convergence.}
     \label{fig:StommelErrorsMeyers}
   \end{center}
@@ -299,8 +302,8 @@ various values of the mesh sizes, $h$.
 
 \begin{figure}%[H]
   \begin{center}
-    \includegraphics[scale=0.5]{Figures/LinearStommelMyers.pdf}
-    \caption{Linear Stommel Model \eqref{eqn:Stommel}, Test 2 \cite{Myers}: Streamlines of the approximation,
+    \includegraphics[scale=0.5]{Figures/linearStommelMyers.pdf}
+    \caption{Linear Stommel model \eqref{eqn:Stommel}, Test 2 \cite{Myers}: Streamlines of the approximation,
     $\psi^h$, $h=\frac{1}{32}$, and $9670$ DoFs.}
     \label{fig:StommelMyers}
   \end{center}
@@ -316,7 +319,7 @@ at $x=0$). The finer the mesh gets, the better this boundary layer is captured
 and the better the numerical accuracy becomes.
 
 \subsection{Linear Stommel-Munk Model}\label{sse:SMM}
-This subsection presents results for the FE discretization of the Linear
+This subsection presents results for the FE discretization of the linear
 Stommel-Munk model \eqref{eqn:Stommel-Munk} by using the Argyris element. Our
 computational setting is the same as taht used by Cascon \emph{et al.}
 \cite{Cascon}: The computational domain is $\Omega = [0,3]\times[0,1]$, the Munk
@@ -340,7 +343,7 @@ The forcing term is chosen to match that given by the exact solution
 \eqref{eqn:CasconExact1}.
 
 For this third test we take $F$ corresponding to applying the linear operator
-$L$ associated with the \emph{Linear Stommel-Munk} model to the exact solution
+$L$ associated with the \emph{linear Stommel-Munk} model to the exact solution
 \eqref{eqn:CasconExact1}.
 
 \autoref{fig:StommelMunkSin} presents the streamlines of the approximate
@@ -368,14 +371,15 @@ respectively) for various values of the mesh sizes, $h$.
 \end{tabular}
 %}
 \end{center}
-\caption{Errors and Rate of Convergence for the Linear Stommel-Munk Model \eqref{eqn:SMProb}, Test 3 \cite{Cascon}}
+\caption{Errors and rate of convergence for the linear Stommel-Munk Model
+  \eqref{eqn:SMProb}, Test 3 \cite{Cascon}.}
 \label{tab:SMsinErrors}
 \end{table}
 
 \begin{figure}
   \begin{center}
     \includegraphics[scale=0.5]{Figures/SMsinConvergence.pdf}
-    \caption{Linear Stommel-Munk Model \eqref{eqn:SMProb}, Test 3 \cite{Cascon}:
+    \caption{Linear Stommel-Munk model \eqref{eqn:SMProb}, Test 3 \cite{Cascon}:
       Observeed errors versus expected rate of convergence.}
     \label{fig:SMSinErrors}
   \end{center}
@@ -384,8 +388,9 @@ respectively) for various values of the mesh sizes, $h$.
 \begin{figure}%[H]
   \begin{center}
     \includegraphics[scale=0.5]{Figures/StommelMunk1.pdf}
-    \caption{Linear Stommel-Munk Model \eqref{eqn:SMProb}, Test 3 \cite{Cascon}: Streamlines of the approximation,
-    $\psi^h$, on a mesh size, $h=\frac{1}{32}$, and $28550$ DoFs.}
+    \caption{Linear Stommel-Munk model \eqref{eqn:SMProb}, Test 3 \cite{Cascon}:
+    Streamlines of the approximation, $\psi^h$, on a mesh size,
+    $h=\frac{1}{32}$, and $28550$ DoFs.}
     \label{fig:StommelMunkSin}
   \end{center}
 \end{figure}
@@ -436,14 +441,15 @@ $h$.
 \end{tabular}
 %}
 \end{center}
-\caption{Errors and Rate of Convergence for the Linear Stommel-Munk Model \eqref{eqn:SMProb}, Test 4 \cite{Cascon}}
+\caption{Errors and rate of convergence for the linear Stommel-Munk Model
+  \eqref{eqn:SMProb}, Test 4 \cite{Cascon}.}
 \label{tab:SMeErrors}
 \end{table}
 
 \begin{figure}
   \begin{center}
     \includegraphics[scale=0.5]{Figures/SMeConvergence.pdf}
-    \caption{Linear Stommel-Munk Model \eqref{eqn:SMProb}, Test 4 \cite{Cascon}:
+    \caption{Linear Stommel-Munk model \eqref{eqn:SMProb}, Test 4 \cite{Cascon}:
       Observeed errors versus expected rate of convergence.}
     \label{fig:SMeErrors}
   \end{center}
@@ -452,7 +458,7 @@ $h$.
 \begin{figure}%[H]
   \begin{center}
     \includegraphics[scale=0.5]{Figures/StommelMunk2.pdf}
-    \caption{Linear Stommel-Munk Model \eqref{eqn:SMProb}, Test 4 \cite{Cascon}: Streamlines of the approximation,
+    \caption{Linear Stommel-Munk model \eqref{eqn:SMProb}, Test 4 \cite{Cascon}: Streamlines of the approximation,
     $\psi^h$, $h=\frac{1}{32}$, and $28550$ DoFs.}
     \label{fig:SMe}
   \end{center}
@@ -512,7 +518,7 @@ values of the mesh sizes, $h$.
 \end{tabular}
 %}
 \end{center}
-\caption{Errors and Rate of Convergence for the SQGE \eqref{eqn:SQGE_Psi}, Test 5}
+\caption{Errors and rate of convergence for the SQGE \eqref{eqn:SQGE_Psi}, Test 5.}
 \label{tab:SQGEsinErrors}
 \end{table}
 
@@ -581,7 +587,7 @@ values of the mesh sizes, $h$.
 \end{tabular}
 %}
 \end{center}
-\caption{Errors and Rate of Convergence for the SQGE \eqref{eqn:SQGE_Psi}, Test 6}
+\caption{Errors and rate of convergence for the SQGE \eqref{eqn:SQGE_Psi}, Test 6.}
 \label{tab:SQGEeErrors}
 \end{table}
 
@@ -614,16 +620,17 @@ mesh gets, the better this boundary layer is captured and the better the
 numerical accuracy becomes.
 
 \subsection{North Atlantic}
-The North Atlantic Ocean is intensely studied\cite{Myers} and therefore makes a
+{\color{red} {\LARGE Work on this, i.e. more references and details.}
+The North Atlantic Ocean is intensely studied \cite{Myers} and therefore makes a
 good test problem for our FE discretization of SQGE. Hence, we have created a FE
 mesh of the North Atlantic which extends from $15^\circ N$ to $65^\circ N$ using
 GMSH \cite{GMSH}. The coastline data was obtain from GSHHS \cite{GSHHS}.  Major
 islands such as Cuba, Hispaniola Greenland, Great Britain, Ireland, Prince
 Edward Island, and Newfoundland were connected to a continent which was nearby
 and hard boundaries were created at the northern and southern most extents of
-the North Atlantic. Additionally, the Atlantic was closed off from the
-Mediterranean at the Straits of Gibraltar The resultant FE mesh can be seen in
-\autoref{fig:AtlanticMesh}.
+the North Atlantic. This is needed to ensure a unique streamfunction.
+Additionally, the Atlantic was closed off from the Mediterranean at the Straits
+of Gibraltar. The resultant FE mesh can be seen in \autoref{fig:AtlanticMesh}.
 
 \begin{sidewaysfigure}
   \begin{center}
@@ -634,32 +641,35 @@ Mediterranean at the Straits of Gibraltar The resultant FE mesh can be seen in
 \end{sidewaysfigure}
 
 The following experiments used a forcing function given by $F =
-\sin(\nicefrac{\pi}{2} y)$ which is the same forcing function given by Bryan
-\cite{Bryan1963}. We choose similar similar parameters as those used in
-\cite{delSastre04} and are summarized in \autoref{tab:AtlanticParameters}.
+\sin(\frac{\pi}{2} y)$ which is the same forcing function given by Bryan
+\cite{Bryan1963}. We choose similar parameters as those used in
+\cite{delSastre04} and are summarized in \autoref{tab:AtlanticParameters}.}
 
 \begin{table}
   \begin{center}
   \begin{tabular}{|l|l|}
     \hline
-    $A$ & $2000m^2s^{-1}$\\
+    $A$ & $2000\,m^2s^{-1}$\\
     \hline
     $\theta_0$ & $40^\circ$ \\
     \hline
-    $\omega$ & $7.2526\times 10^{-5}s^{-1}$ \\
+    $\omega$ & $7.2526\times 10^{-5}\,s^{-1}$ \\
     \hline
-    $H$ & $1000m$ \\
+    $H$ & $1000\,m$ \\
     \hline
-    $L$ & $1000km$ \\
+    $L$ & $1000\,km$ \\
     \hline
-    $r_e$ & $6378.1km$ \\
+    $r_e$ & $6378.1\,km$ \\
     \hline
-    $\rho$ & $1027 \nicefrac{kg}{m^3}$ \\
+    $\rho$ & $1027\, \nicefrac{kg}{m^3}$ \\
     \hline
   \end{tabular}
   \end{center}
   \caption{Table of parameter values used for the simulations of the North
-    Atlantic. \cite{delSastre04}}
+    Atlantic \cite{delSastre04}, where $A,\theta_0,\omega,H,L,r_e,\rho$ are the
+    eddy viscosity, reference angle for the $\beta$-plane approximation, angular
+    velocity of the Earth, domain height, domain length, radius of the Earth, and
+    density of seawater, respectively.}
   \label{tab:AtlanticParameters}
 \end{table}
 
@@ -697,13 +707,14 @@ From the length scale $L$ and the velocity scale $U$ we see that the time scale
 is approximately $T = 3\, years$.
 
 \subsection{Mediterranean}
+{\color{red} {\LARGE Work on this some more, i.e. more reference and details.}
 We have created a FE mesh of the the Mediterranean Sea using GMSH \cite{GMSH}.
 The coastline data was obtain from GSHHS \cite{GSHHS}. Major islands such as
 Corsica, Sardinia, and Sicily were connected to the nearest land mass.
 Additionally, the Atlantic was closed off from the Mediterranean at the Straits
 of Gibraltar, from the Red Sea at the Suez Canal, and the Sea of Marmara at the
 Dardanelles Strait, while the Gulf of Corinth was treated as land. The resultant FE
-mesh can be seen in \autoref{fig:MedMesh}.
+mesh can be seen in \autoref{fig:MedMesh}.}
 
 \begin{sidewaysfigure}
   \begin{center}

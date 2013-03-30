@@ -156,7 +156,7 @@ for two different meshes: the fine mesh, $h$, and the coarse mesh, $H$.
 To verify, numerically, the theoretical rate of convergence with respect to $H$,
 given in \eqref{eqn:TwoLevelError}, we fix $h$ to a small value and we vary $H$.
 Thus, the total error in \eqref{eqn:TwoLevelError} will be dominated by the $H$
-term, i.e. the total error will of order $O(H^5)$. In \autoref{tab:TwoLevelH},
+term, i.e. the total error will be of order $O(H^5)$. In \autoref{tab:TwoLevelH},
 we fix $h=0.0063$ and we vary $H$. The error in the $L^2$-norm ($e_{L^2}$), the
 error in the $H^2$-norm ($e_{H^2}$), and the rate of convergence with respect to
 $H$ are listed in \autoref{tab:TwoLevelH}. The rate of convergence follows the
@@ -179,7 +179,7 @@ occurs because, for small values of $H$, the total error in
     \end{tabular}
   \end{center}
   \caption{Observed order of convergence in the $H^2$ norm for the coarse mesh,
-    $H$, in the Two-level method applied to \eqref{eqn:QGE_psi} with exact
+    $H$, in the two-level method applied to \eqref{eqn:QGE_psi} with exact
     solution \eqref{eqn:2LExact}.}
   \label{tab:TwoLevelH}
 \end{table}
@@ -188,7 +188,7 @@ occurs because, for small values of $H$, the total error in
   \begin{center}
     \includegraphics[scale=0.6]{Figures/CoarseConvergence.pdf}
     \caption{Observed order of convergence in the $H^2$ norm for the coarse
-      mesh, $H$, in the Two-Level method applied to \eqref{eqn:QGE_psi} with the
+      mesh, $H$, in the two-Level method applied to \eqref{eqn:QGE_psi} with the
       exact solution \eqref{eqn:2LExact}.}
   \label{fig:TwoLevelH}
   \end{center}
@@ -210,7 +210,7 @@ right hand side of \eqref{eqn:TwoLevelError} now scales as follows:
 \begin{equation}
   \begin{split}
     C_2 \sqrt{|\ln(h)|}\, H^5 &\approx C_2 C \sqrt{|\ln(h)|}\, h^5 \\[0.2em]
-    \approx O(h^4),
+    &\approx O(h^4),
   \end{split}
   \label{eqn:Balance}
 \end{equation}
@@ -251,7 +251,7 @@ rate predicted in \eqref{eqn:TwoLevelError} (i.e. fourth-order).
     \end{tabular}
   \end{center}
   \caption{Observed order of convergence in the $H^2$ norm for the fine mesh,
-    $h$, in the Two-Level method applied to \eqref{eqn:QGE_psi} with the exact
+    $h$, in the two-Level method applied to \eqref{eqn:QGE_psi} with the exact
     solution \eqref{eqn:2LExact}.}
   \label{tab:TwoLevelh}
 \end{table}
@@ -260,7 +260,7 @@ rate predicted in \eqref{eqn:TwoLevelError} (i.e. fourth-order).
   \begin{center}
     \includegraphics[scale=0.6]{Figures/fineConvergence.pdf}
     \caption{Observed order of convergence in the $H^2$ norm for the fine mesh,
-      $h$, in the Two-Level method applied to \eqref{eqn:QGE_psi} with the exact
+      $h$, in the two-Level method applied to \eqref{eqn:QGE_psi} with the exact
       solution \eqref{eqn:2LExact}.}
   \label{fig:TwoLevelh}
   \end{center}

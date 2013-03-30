@@ -2,26 +2,26 @@
 Initially for each numerical test a uniform mesh size of $h=\frac{1}{2}$ is created, and then the mesh
 is refined by halving the size of the triangle. The refined results correspond to a mesh size of $h=\frac{1}{4}$.  This
 process of mesh refinement is repeated a total of four times resulting in numerical solutions for mesh sizes
-corresponding to $h=\left\{\frac{1}{2},\frac{1}{4},\frac{1}{8},\frac{1}{16},\frac{1}{32}\right\}$. 
+corresponding to $h=\left\{\frac{1}{2},\frac{1}{4},\frac{1}{8},\frac{1}{16},\frac{1}{32}\right\}$.
 %\input{Mesh.tex}
 
 After the FE code is run for each $h$, the corresponding $\psi^h$ is used to calculate the errors $e_0,\, e_1,\text{
 and } e_2$, where $e_0,\, e_1,\text{ and } e_2$ are the $L^2,\, H^1,$ and $H^2$ errors respectively, and are
-given by 
+given by
 %{\small
 \begin{align*}
-  e_0 &= \left(\int_{\Omega}\!\left( \psi^h - \psi \right)^2 \,d\vec{x}\right)^{\nicefrac{1}{2}}\\
+  e_0 &= \left(\int_{\Omega}\!\left( \psi^h - \psi \right)^2 \,d\mathbf{x}\right)^{\nicefrac{1}{2}}\\
   e_1 &= \left(e_0^2 + \int_{\Omega}\!  \left( \psi^h_x - \psi_x \right)^2 + \left( \psi^h_y - \psi_y \right)^2
-    \,d\vec{x}\right)^{\nicefrac{1}{2}}\\
+    \,d\mathbf{x}\right)^{\nicefrac{1}{2}}\\
   e_2 &= \left(e_1^2 + \int_{\Omega}\!  \left( \psi^h_{xx} - \psi_{xx} \right)^2 + \left( \psi^h_{xy} - \psi_{xy}
-    \right)^2 + \left( \psi^h_{yy} - \psi_{yy} \right)^2 \,d\vec{x}\right)^{\nicefrac{1}{2}}\\
+    \right)^2 + \left( \psi^h_{yy} - \psi_{yy} \right)^2 \,d\mathbf{x}\right)^{\nicefrac{1}{2}}\\
 \end{align*}
 %}
-The order of convergence, $O$, is then determined by calculating 
+The order of convergence, $O$, is then determined by calculating
 \begin{equation*}
   O = \dfrac{\log e_{\alpha}^i - \log e_{\alpha}^{i-1}}{\log h_i - \log h_{i-1}},
 \end{equation*}
-where $e_{\alpha}^i$ is the i$^{th}$ $\alpha$-error corresponding to the i$^{th}$ mesh size, $h_i$. 
+where $e_{\alpha}^i$ is the i$^{th}$ $\alpha$-error corresponding to the i$^{th}$ mesh size, $h_i$.
 
 Additionally, in each of the convergence data tables we also present the number of degrees of freedom (DoFs) for Argyris
 Finite Elements. For the uniform mesh as described above and a rectangular domain of length, $L$, and height, $H$, the

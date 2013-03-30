@@ -1,9 +1,10 @@
 In this section we present the convergence, and the error analysis associated
-with the semi-discretization. We will rely heavily on the previous section
-containing the finite error analysis for the SQGE (\autoref{sec:SQGEErrors}).
+with the semi-discretization. We will rely heavily on the
+\autoref{sec:SQGEErrors} which contains the finite error analysis for the SQGE.
 
 \begin{prop} \label{prop:Stability}
-  The solution to \eqref{eqn:SemiDiscretization}, $\psi^h$, is stable and for any $t>0$
+  The solution to \eqref{eqn:SemiDiscretization}, $\psi^h$, is stable and for
+  any $t>0$
   \begin{equation}
     \frac{1}{2}\|\nabla \psi^h(t)\|^2 + \frac{Re^{-1}}{2}\int_{0}^{t}\! \|\Delta
       \psi^h(t')\|^2 \, dt' \le \frac{1}{2} \|\nabla \psi^h_0\|^2
@@ -12,7 +13,8 @@ containing the finite error analysis for the SQGE (\autoref{sec:SQGEErrors}).
   \end{equation}
 \end{prop}
 \begin{proof}
-  Take $\chi^h = \psi^h$ in \eqref{eqn:SemiDiscretization} and note $b(\psi^h;\psi^h,\psi^h)
+  Take $\chi^h = \psi^h$ in \eqref{eqn:SemiDiscretization} and note
+  $b(\psi^h;\psi^h,\psi^h)
   = 0$ while since $(\psi^h_x,\psi^h) = -(\psi^h,\psi^h_x)$ then $(\psi^h_x,
   \psi^h) = 0$. Thus, we have
   \begin{equation*}
@@ -35,8 +37,8 @@ containing the finite error analysis for the SQGE (\autoref{sec:SQGEErrors}).
 \end{proof}
 
 \begin{lemma} \label{lma:BH1Bound}
-  There are finite constants $\Gamma_3,\Gamma_4>0$ such hat for all
-  $\psi,\, \varphi,\, \chi \in X$
+  There are finite constants $\Gamma_3,\Gamma_4>0$ such that, for all
+  $\psi,\, \varphi,\, \chi \in X$,
   \begin{align}
     b(\psi;\varphi,\chi) &\le \Gamma_3 \|\Delta \psi\|\, \|\Delta \varphi\|\,
       \left(\|\nabla \chi\|^{\nicefrac{1}{2}}
@@ -47,15 +49,16 @@ containing the finite error analysis for the SQGE (\autoref{sec:SQGEErrors}).
   \end{align}
 \end{lemma}
 \begin{proof}
-  We will begin with the proof of \eqref{eqn:BH1BoundChi} and then prove \eqref{eqn:BH1BoundPsi} last. For \eqref{eqn:BH1BoundChi} we begin in the
-  same way as we did for \autoref{eqn:BH2Bounds} in
-  \autoref{lma:ContinuousForms}. That is, we apply the H\"older inequality, \eqref{eqn:Holder} to
-  $b(\psi; \varphi, \chi)$ and set $p=2$, while setting $q=r=4$, giving
+  We will begin with the proof of \eqref{eqn:BH1BoundChi} and then prove
+  \eqref{eqn:BH1BoundPsi} last. For \eqref{eqn:BH1BoundChi} we begin in the same
+  way as we did for equation \eqref{eqn:BH2Bounds} in \autoref{lma:ContinuousForms}.
+  That is, we apply the H\"older inequality, \eqref{eqn:Holder} to $b(\psi;
+  \varphi, \chi)$ and set $p=2$, while setting $q=r=4$, giving
   \begin{equation*}
     b(\psi;\varphi,\chi) \le \|\Delta \psi\| \|\nabla \varphi\|_{L^4} \|\nabla
       \chi\|_{L^4}.
   \end{equation*}
-  Now, applying the Ladyzhenskaya inequality, \eqref{eqn:Ladyzhenskaya} we get
+  Now, applying the Ladyzhenskaya inequality \eqref{eqn:Ladyzhenskaya}, we get
   \begin{equation*}
     b(\psi;\varphi,\chi) \le \Gamma \|\Delta \psi\|
       \|\nabla \varphi\|^{\nicefrac{1}{2}} \|\Delta \varphi\|^{\nicefrac{1}{2}}
@@ -67,7 +70,8 @@ containing the finite error analysis for the SQGE (\autoref{sec:SQGEErrors}).
       \left(\|\nabla \chi\|^{\nicefrac{1}{2}}
       \|\Delta \chi\|^{\nicefrac{1}{2}}\right),
   \end{equation*}
-  For \autoref{eqn:BH1BoundPsi} we apply Lemma 5.6 from \cite{Fairag98}, i.e.
+  For equation \eqref{eqn:BH1BoundPsi} we apply Lemma 5.6 from \cite{Fairag98},
+  i.e.,
   \begin{equation*}
     b(\psi; \varphi, \chi) = b_0(\varphi; \chi, \psi) - b_0(\chi; \varphi, \psi),
   \end{equation*}
@@ -75,7 +79,7 @@ containing the finite error analysis for the SQGE (\autoref{sec:SQGEErrors}).
   \begin{equation}
     b_0(\varphi;\chi,\psi) = \int_{\Omega}\!
       (\varphi_{xy} \chi_y - \varphi_{yy} \chi_x) \psi_y
-      - (\varphi_{xy} \chi_x - \varphi_{xx} \chi_y) \psi_x \, d\vec{x}.
+      - (\varphi_{xy} \chi_x - \varphi_{xx} \chi_y) \psi_x \, d\mathbf{x}.
     \label{eqn:b0def}
   \end{equation}
   Therefore using \eqref{eqn:b0def}, H\"older inequality, \eqref{eqn:Holder} reads
@@ -102,11 +106,14 @@ containing the finite error analysis for the SQGE (\autoref{sec:SQGEErrors}).
       \|\Delta \varphi\|\, \|\Delta \chi\|
   \end{equation*}
 \end{proof}
-
+The next theorem proves the convergence of the FE approximation $\psi^h$ to the
+exact solution, $\psi$, to QGE \eqref{eqn:QGE_psi}. The proof is similar to of
+the proof for Theorem 22 in \cite{Layton08}.
+{\color{red} {\LARGE Rewrite to match the real constants.}
 \begin{thm} \label{thm:StrongConvergence}
-  Let $\psi$ be a strong solution to the QGE, then there exists a \\ $C(T, F,
-  \psi_0, \Gamma_1, \Gamma_2, Re, Ro,\int_0^T\! |\Delta \psi|^4\, dt)$ such that
-  for all $t\in [0,T]$
+  Let $\psi$ be a strong solution to the QGE \eqref{eqn:QGE_psi}. Then there
+  exists a \\ $C(T, F, \psi_0, \Gamma_1, \Gamma_2, Re, Ro,\int_0^T\! |\Delta
+  \psi|^4\, dt)$ such that for all $t\in [0,T]$
   \begin{equation}
     \begin{split}
       \|\nabla (\psi &- \psi^h) \|^2 + Re^{-1}
@@ -120,7 +127,7 @@ containing the finite error analysis for the SQGE (\autoref{sec:SQGEErrors}).
     \end{split}
     \label{eqn:StrongConvergence}
   \end{equation}
-\end{thm}
+\end{thm}}
 \begin{proof}
   Let $\chi = \chi^h \in X^h$ and subtract \eqref{eqn:SemiDiscretization} from
   \eqref{eqn:QGEWF} then let $e:=\psi - \psi^h$ and we obtain
@@ -156,7 +163,7 @@ containing the finite error analysis for the SQGE (\autoref{sec:SQGEErrors}).
   \end{align*}
   Using the H\"older inequality, \eqref{eqn:Holder}, bounds for $(\psi_x,\chi)$ given in
   \autoref{lma:ContinuousForms}, and the bounds for $b$ from
-  \autoref{eqn:BH2Bounds} in \autoref{lma:ContinuousForms}, and \autoref{lma:BH1Bound} we have
+  equation \eqref{eqn:BH2Bounds} in \autoref{lma:ContinuousForms}, and \autoref{lma:BH1Bound} we have
   \begin{equation}
     \begin{split}
       \frac{1}{2} \frac{d}{dt} \|\nabla \Phi^h\|^2 + Re^{-1}\|\Delta \Phi^h\|^2
@@ -181,7 +188,7 @@ containing the finite error analysis for the SQGE (\autoref{sec:SQGEErrors}).
       + \frac{Ro^{-2} \Gamma_2^2}{2 \epsilon} \|\Delta \eta\|^2. \label{eqn:YoungBeta}
   \end{align}
   Using the Young inequality, \eqref{eqn:Young} with $\varepsilon = 2 > 0$ and
-  \autoref{eqn:BH2Bounds} in \autoref{lma:ContinuousForms}
+  equation \eqref{eqn:BH2Bounds} in \autoref{lma:ContinuousForms}
   \begin{align*}
     b(\eta;\psi,\Phi^h) &\le \Gamma_1 \|\Delta \eta\|\,\|\Delta \psi\|\, \|\Delta \Phi^h\| \\
     &\le \frac{\varepsilon}{2} \|\Delta \Phi^h\|^2
@@ -375,8 +382,8 @@ containing the finite error analysis for the SQGE (\autoref{sec:SQGEErrors}).
   can be written as
   \begin{align*}
     \|\nabla \Phi^h\|^2 + Re^{-1} \int_0^T\! \|\Delta \Phi^h\|^2\, dt
-      & \le C^*_8(T,Re,\Gamma_3) \|\nabla \Phi^h(0)\|^2
-      + C^*_9(T,Re,\Gamma_3)\biggl[ \int_0^T\! \|\nabla \eta_t\|_{-1}^2
+      & \le C^*_8(T,Re,\Gamma_3) \|\nabla \Phi^h(0)\|^2 \\
+    & + C^*_9(T,Re,\Gamma_3)\biggl[ \int_0^T\! \|\nabla \eta_t\|_{-1}^2
       + C^*_6(Re,Ro,\Gamma_2) \|\Delta \eta\|^2\, dt \\
     & +\left(C^*_7(\Gamma_1)\,C^*_{11}
       + C^*_3(Re,Ro,F,\Gamma_4)\,C^*_{10}(Re,Ro,F)\right)
@@ -384,7 +391,7 @@ containing the finite error analysis for the SQGE (\autoref{sec:SQGEErrors}).
   \end{align*}
   \begin{remark}
     We note that the stability bound in \autoref{prop:Stability} does not
-    provide an estimate for $\|\Delta \psi^h\|_{L^4(0,T;L^2)}$. This, was the
+    provide an estimate for $\|\Delta \psi^h\|_{L^4(0,T;L^2)}$. This was the
     reasoning for treating the nonlinear terms $b(\eta;\psi,\Phi^h)$ and
     $b(\psi^h;\eta,\Phi^h)$ in \eqref{eqn:HolderError} differently.
   \end{remark}
@@ -402,11 +409,27 @@ containing the finite error analysis for the SQGE (\autoref{sec:SQGEErrors}).
       \|\Delta \left(\psi - \omega^h\right)\|^2_{L^4(0,T;L^2)} \\
     & + \|\nabla \left(\psi - \omega^h\right)(T)\|^2.
   \end{align*}
+  By the triangle inequality we have $2\, \|\nabla e(0)\|^2 \ge \|\nabla
+  \Phi^h(0)\|^2 + \|\nabla \eta(0)\|^2$, therefore adding
+  $C_8^*(T,Re,\Gamma_3)\,\|\nabla \eta(0)\|^2$ to the right hand side and using
+  the triangle inequality gives
+  \begin{align*}
+    \frac{1}{2} \|\nabla \left( \psi - \psi^h\right)(T) \|^2
+    &+ \frac{Re^{-1}}{2} \int_0^T\! \|\Delta \left(\psi - \psi^h\right)\|^2\, dt
+      \le 2\,C^*_8(T,Re,\Gamma_3) \|\nabla e(0)\|^2 \\
+    & + C^*_9(T,Re,\Gamma_3) \int_0^T\! \|\nabla \left( \psi - \omega^h\right)_t\|_{-1}^2
+      + \left(1 + C^*_6(Re,Ro,\Gamma_2)\right)
+      \|\Delta \left(\psi - \omega^h\right)\|^2\, dt \\
+    & + \left(C^*_7(\Gamma_1)\, C^*_{11}
+      + C^*_3(Re,Ro,,F,\Gamma_4)\,C^*_{10}(Re,Ro,F)\right)
+      \|\Delta \left(\psi - \omega^h\right)\|^2_{L^4(0,T;L^2)} \\
+    & + \|\nabla \left(\psi - \omega^h\right)(T)\|^2.
+  \end{align*}
   Finally, taking $\inf_{\omega^h \in X^h}$ of both sides and letting
   \begin{align*}
-    C_1(T,Re,\Gamma_3) &= 2 C^*_8(T,Re,\Gamma_3) \\
-    C_2(T,Re,\Gamma_3) &= 2 C^*_9(T,Re,\Gamma_3) \\
-    C_3(Re,Ro,\Gamma_2) &= 1 + C^*_6(Re,Ro,\Gamma_2) \\
+    C_1(T,Re,\Gamma_3) &= 4\, C^*_8(T,Re,\Gamma_3) \\
+    C_2(T,Re,\Gamma_3) &= 2\, C^*_9(T,Re,\Gamma_3) \\
+    C_3(Re,Ro,\Gamma_2) &= 2 + 2\,C^*_6(Re,Ro,\Gamma_2) \\
     C_4(T,Re,Ro,F,\Gamma_1,\Gamma_4,\int_{0}^{T}\!\|\Delta \psi\|^4\, dt) &=
       2\, C^*_9(T,Re)\,\left(C^*_7(\Gamma_1)\, \int_{0}^{T}\!\|\Delta \psi\|^4\,dt
       + C^*_3(Re,Ro,F,\Gamma_4)\, C^*_{10}(Re,Ro,F)\right)
@@ -414,17 +437,17 @@ containing the finite error analysis for the SQGE (\autoref{sec:SQGEErrors}).
   gives
   \begin{align*}
     \|\nabla \left( \psi - \psi^h\right)(T) \|^2
-    &+ Re^{-1} \int_0^T\! \|\Delta \left(\psi - \psi^h\right)\|^2\, dt
-      \le C_1(T,Re,\Gamma_3){\color{red} \|\nabla \Phi^h(0)\|^2} \\
-      & + \inf_{\omega^h \in X^h} \biggl\{C_2(T,Re,\Gamma_3)
+      &+ Re^{-1} \int_0^T\! \|\Delta \left(\psi - \psi^h\right)\|^2\, dt
+      \le C_1(T,Re,\Gamma_3)\|\nabla\left[\psi - \psi^h\right](0)\|^2 \\
+    & + \inf_{\omega^h \in X^h} \biggl\{C_2(T,Re,\Gamma_3)
       \int_0^T\! \|\nabla \left( \psi - \omega^h\right)_t\|_{-1}^2
       + C_3(Re,Ro,\Gamma_2)\,\|\Delta \left(\psi - \omega^h\right)\|^2\, dt \\
-      & + C_4(T,Re,Ro,F,\Gamma_1,\Gamma_2,\Gamma_4,\int_{0}^{T}\!\|\Delta
-      \psi\|^4\, dt)\, \|\Delta \left(\psi - \omega^h\right)\|^2_{L^4(0,T;L^2)} \\
-    & + 2\, \|\nabla \left(\psi - \omega^h\right)(T)\|^2.
+    & + C_4(T,Re,Ro,F,\Gamma_1,\Gamma_2,\Gamma_4,\int_{0}^{T}\!\|\Delta
+      \psi\|^4\, dt)\, \|\Delta \left(\psi -
+      \omega^h\right)\|^2_{L^4(0,T;L^2)}\, dt \\
+    & + 2\, \|\nabla \left(\psi - \omega^h\right)(T)\|^2\biggr\},
   \end{align*}
-  {\color{red} How does this become $\|\nabla\left(\psi_0 - \psi^h(0)\right)\|^2$?}
-  {\color{blue} Add $\|\nabla \eta(0)\|^2$ and use triangle inequality.}
+  which is th desired result.
 \end{proof}
 
 \begin{lemma} \label{lma:Interpolation}

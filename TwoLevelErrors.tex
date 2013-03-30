@@ -9,26 +9,26 @@ $b(\zeta; \xi, \chi)$ using the discrete Sobolev inequality
 \begin{equation*}
   \|\nabla \varphi^h\|_{L^{\infty}} \le c \sqrt{|\ln(h)|}\cdot |\varphi^h|_2.
 \end{equation*}
-The following lemma follows from the above inequality and \eqref{eqn:BH2Bounds} %\cite{Fairag98}
+The following lemma follows from the above inequality and \eqref{eqn:BH2Bounds}:
 \begin{lemma} \label{lma:bImproved}
-  For any $\chi^h\in X^h$, the following inequalities hold
+  For any $\chi^h\in X^h$, the following inequalities hold:
   \begin{align*}
     |b(\psi;\chi^h,\xi)| &\le C\sqrt{|\ln(h)|} \cdot |\psi|_2 |\xi|_1 |\chi^h|_2, \\
     |b(\psi;\xi,\chi^h)| &\le C\sqrt{|\ln(h)|} \cdot |\psi|_2 |\xi|_1 |\chi^h|_2.
   \end{align*}
 \end{lemma}
 The following lemma will prove useful for proving the error bounds for
-\autoref{alg:TwoLevel}
+\autoref{alg:TwoLevel}:
 \begin{lemma} \label{lma:trilinear}
   For $\psi,\,\xi,\,\chi\in H^2_0(\Omega)$, we have
   \begin{equation}
-    b(\psi; \xi, \chi) = b^*(\xi; \chi, \psi) - b^*(\chi; \xi, \psi)
+    b(\psi; \xi, \chi) = b^*(\xi; \chi, \psi) - b^*(\chi; \xi, \psi),
     \label{eqn:eqn:trilinear}
   \end{equation}
   where
   \begin{equation}
     b^*(\xi; \chi, \psi) = \int_{\Omega}\! (\chi_y\xi_{xy}-\xi_x\chi_{yy}) \psi_y -
-    (\xi_y\chi_{yx}-\xi_y\chi_{xx}) \psi_x \,d\vec{x}.
+    (\xi_y\chi_{yx}-\xi_y\chi_{xx}) \psi_x \,d\mathbf{x}.
     \label{eqn:trilinear}
   \end{equation}
 \end{lemma}
@@ -75,7 +75,7 @@ linearized about $\psi^H$ has a unique solution.
   \end{equation*}
   Therefore, by definition it follows that $\|\hat{\psi}\|_2 \le Re\, Ro^{-1} \|F\|_{-2}$.
 \end{proof}
-{\color{red} \LARGE Look closer at the following lemma and the proof to be sure
+{\color{red} {\LARGE Look closer at the following lemma and the proof to be sure
 of proper space, i.e. should it be $X^H$ or $X^h$.}
 \begin{lemma} \label{lma:Fineh}
   The solution to \eqref{eqn:Coarse} exists and satisfies
@@ -95,17 +95,18 @@ of proper space, i.e. should it be $X^H$ or $X^h$.}
   \begin{equation*}
     \|\psi^h\| \le Re\, Ro^{-1} \|F\|_{-2}.
   \end{equation*}
-\end{proof}
+\end{proof}}
 
 The following theorem gives the error bound after Step 2 and is the main result
-of this paper. The proof of this theorem is similar to the proof for a similar
+of this section. The proof of this theorem is similar to the proof for a similar
 theorem in \cite{Fairag98}.
 \begin{thm} \label{thm:2LTwoLevel}
-  Let $X^h,\, X^H\in H^2_0(\Omega)$ be two finite element spaces. Let $\psi$ be
+  Let $X^h,\, X^H\subset H^2_0(\Omega)$ be two finite element spaces. Let $\psi$ be
   the solution to \eqref{eqn:SQGEWF} and $\psi^h$ the solution to
   \eqref{eqn:Fine}. Then $\psi^h$ satisfies
   \begin{equation}
-    |\psi-\psi^h|_2 \le C_1 \inf_{\lambda^h\in X^h} |\psi-\lambda^h|_2 + C_2 \sqrt{|\ln h|}\cdot |\psi - \psi^H|_1
+    |\psi-\psi^h|_2 \le C_1 \inf_{\lambda^h\in X^h} |\psi-\lambda^h|_2 + C_2
+      \sqrt{|\ln h|}\cdot |\psi - \psi^H|_1,
     \label{eqn:Error}
   \end{equation}
   where $C_1 = 2 + Re\,Ro^{-1} + Re^2 Ro^{-1} \Gamma_1 \|F\|_{-2}$ and $C_2= 2
@@ -144,8 +145,8 @@ theorem in \cite{Fairag98}.
       \end{split}
   \end{equation*}
   Take $\lambda^h\in H^2_0(\Omega)$ arbitrary and define $e:= \psi - \psi^h =
-  \eta - \Phi^h$ where $\Phi^h = \psi^h-\lambda^h$ and $\eta=\psi-\lambda^h$ and
-  we have
+  \eta - \Phi^h$, where $\Phi^h = \psi^h-\lambda^h$ and $\eta=\psi-\lambda^h$.
+  We have
   \begin{equation*}
     \begin{split}
       &Re^{-1}(\Delta \Phi^h, \Delta \chi^h)
@@ -158,8 +159,8 @@ theorem in \cite{Fairag98}.
       \quad \forall \chi^h \in X^h.
     \end{split}
   \end{equation*}
-  Since this holds for any $\chi^h\in H^2_0(\Omega)$ it holds in particular for
-  $\chi^h=\Phi^h\in H^2_0(\Omega)$ which implies
+  Since this holds for any $\chi^h\in H^2_0(\Omega)$, it holds in particular for
+  $\chi^h=\Phi^h\in H^2_0(\Omega)$, which implies
   \begin{equation*}
     \begin{split}
       Re^{-1} (\Delta \Phi^h, \Delta \Phi^h) - Ro^{-1} (\Phi^h_x,\Phi^h)
@@ -184,46 +185,50 @@ theorem in \cite{Fairag98}.
   \autoref{thm:stability_sqge}, \autoref{thm:stability_fem_sqge} and
   \autoref{lma:Fine} gives
   \begin{align*}
-    Re^{-1} |\Phi^h|_2^2 &\le Re^{-1} |\eta|_2\, |\Phi^h|_2 + \Gamma_1\, |\psi|_2\, |\eta|_2\, |\Phi^h|_2 \\
-      &\quad+ 2 \Gamma_1\, C\, |\psi^H|_2\, |\Phi^h|_2\, |\psi - \psi^H|_1 \sqrt{|\ln(h)|} + Ro^{-1}
-        |\eta|_2\, |\Phi^h|_2 \\
-    &= \left(Ro^{-1} + Re^{-1} + \Gamma_1\, |\psi|_2\right) |\eta|_2\, |\Phi^h|_2 + 2 \Gamma_1\, C\,
-      |\psi^H|_2\, |\Phi^h|_2 |\psi - \psi^H|_1 \sqrt{|\ln(h)|}  \\
-    |\Phi^h|_2 &\le \left(1 + Re\, Ro^{-1} + Re^2 Ro^{-1} \Gamma_1\, \|F\|_{-2}\right) |\eta|_2 \\
+    Re^{-1} |\Phi^h|_2^2 &\le Re^{-1} |\eta|_2\, |\Phi^h|_2 + \Gamma_1\,
+      |\psi|_2\, |\eta|_2\, |\Phi^h|_2 \\
+    &\quad+ 2 \Gamma_1\, C\, |\psi^H|_2\, |\Phi^h|_2\, |\psi - \psi^H|_1
+      \sqrt{|\ln(h)|} + Ro^{-1}\, \Gamma_2 |\eta|_2\, |\Phi^h|_2 \\
+    &= \left(Ro^{-1}\, \Gamma_2 + Re^{-1} + \Gamma_1\, |\psi|_2\right) |\eta|_2\,
+      |\Phi^h|_2 + 2 \Gamma_1\, C\, |\psi^H|_2\, |\Phi^h|_2 |\psi - \psi^H|_1
+      \sqrt{|\ln(h)|}  \\
+    |\Phi^h|_2 &\le \left(1 + Re\, Ro^{-1}\, \Gamma_2 + Re^2 Ro^{-1} \Gamma_1\,
+      \|F\|_{-2}\right) |\eta|_2 \\
       &\quad + 2 Re^2 Ro^{-1} \Gamma_1\, C\, \|F\|_{-2}\, |\psi - \psi^H|_1 \sqrt{|\ln(h)|} \\
   \end{align*}
   Adding $|\eta|_2$ to both sides and using the triangle inequality ($|\psi -
   \psi^h|_2 \le |\Phi^h|_2 + |\eta|_2$) gives
   \begin{align*}
-    |\Phi^h|_2 &\le \left(2 + Re\, Ro^{-1} + Re^2 Ro^{-1} \Gamma_1\, \|F\|_{-2}\right) |\eta|_2 \\
-      &\quad + 2 Re^2 Ro^{-1} \Gamma_1\, C\, \|F\|_{-2}\, |\psi - \psi^H|_1 \sqrt{|\ln(h)|} \\
+    |\Phi^h|_2 &\le \left(2 + Re\, Ro^{-1}\, \Gamma_2 + Re^2 Ro^{-1} \Gamma_1\,
+      \|F\|_{-2}\right) |\eta|_2 \\
+    &\quad + 2 Re^2 Ro^{-1} \Gamma_1\, C\, \|F\|_{-2}\, |\psi - \psi^H|_1
+      \sqrt{|\ln(h)|} \\
   \end{align*}
-  Thus, we have the following estimate for the error bounds
+  Thus, we have the following estimate for the error bounds:
   \begin{equation*}
-    |\psi-\psi^h|_2 \le C_1 \inf_{\lambda^h\in X^h} |\psi-\lambda^h|_2 + C_2 \sqrt{|\ln h|}\cdot |\psi -
-      \psi^H|_1
+    |\psi-\psi^h|_2 \le C_1 \inf_{\lambda^h\in X^h} |\psi-\lambda^h|_2 + C_2
+      \sqrt{|\ln h|}\cdot |\psi - \psi^H|_1
   \end{equation*}
-  where $C_1 = 2 + Re\,Ro^{-1} + Re^2 Ro^{-1} \Gamma_1 \|F\|_{-2}$ and $C_2= 2 Re^2 Ro^{-1} \Gamma_1
-  C\,\|F\|_{-2}$.
+  where $C_1 = 2 + Re\,Ro^{-1}\, \Gamma_2 + Re^2 Ro^{-1} \Gamma_1 \|F\|_{-2}$
+  and $C_2= 2 Re^2 Ro^{-1} \Gamma_1 C\,\|F\|_{-2}$.
 \end{proof}
 
-As an example, consider the case of the Argyris triangle; for this element we
-have the following inequalities for this particular element the following
-theorem follows from approximation theory \cite{Bernadou94} and Theorem 6.1.1
-\cite{Ciarlet}:
-\begin{align*}
-  |\psi - \psi^h|_j &\le Ch^{6-j} \\
-  |\psi - \psi^H|_j &\le CH^{6-j}
-\end{align*}
+As an example, consider the case of the Argyris triangle. For this element we
+have the following inequalities, which follow from approximation theory
+\cite{Bernadou94} and Theorem 6.1.1 \cite{Ciarlet}:
+\begin{align}
+  |\psi - \psi^h|_j &\le Ch^{6-j} \label{eqn:fineOrder} \\
+  |\psi - \psi^H|_j &\le CH^{6-j} \label{eqn:coarseOrder}
+\end{align}
 \begin{corollary} \label{crl:Argyris2L}
-  Let $X^h,\, X^H \in H^2_0(\Omega)$ be the Argyris finite elements, then
+  Let $X^h,\, X^H \in H^2_0(\Omega)$ be the Argyris finite elements. Then,
   $\psi^h$ satisfies
   \begin{equation}
-    |\psi - \psi^h|_2 \le C_1 h^4 + C_2 \sqrt{|\ln(h)|}\cdot H^5.
+    |\psi - \psi^h|_2 \le C_1 h^4 + C_2 \sqrt{|\ln(h)|}\, H^5.
     \label{eqn:TwoLevelError}
   \end{equation}
 \end{corollary}
 \begin{proof}
-  This follows directly by substituting the inequalities for the Argyris
-  triangle bounds into \eqref{eqn:Error}.
+  This follows directly by substituting \eqref{eqn:fineOrder} and
+  \eqref{eqn:coarseOrder} into \eqref{eqn:Error}.
 \end{proof}
