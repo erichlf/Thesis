@@ -66,11 +66,17 @@ linearized about $\psi^H$ has a unique solution.
   $(\hat{\psi}_x,\hat{\psi}) = 0$ gives
   \begin{align*}
     Re^{-1} \|\hat{\psi}\|_2^2 &= Ro^{-1} (F,\hat{\psi}) \\
-    \|\hat{\psi}\|_2 &= Re\, Ro^{-1} \frac{(F,\hat{\psi})}{\|\hat{\psi}\|_2} \\
-    &\le Re\, Ro^{-1} \|F\|_{-2}\|\hat{\psi}\|_2 \\
+    \|\hat{\psi}\|_2 &= Re\, Ro^{-1} \frac{(F,\hat{\psi})}{\|\hat{\psi}\|_2}.
   \end{align*}
-  Therefore, it follows that $\|\hat{\psi}\|_2 \le Re\, Ro^{-1} \|F\|_{-2}$.
+  Taking the supremum over all $\hat{\psi}\in X$ leads to
+  \begin{equation*}
+    \|\hat{\psi}\|_{2} \le Re\, Ro^{-1} \sup_{\hat{\psi}\in X} \frac{(F,
+      \hat{\psi})}{|\hat{\psi}\|_2}.
+  \end{equation*}
+  Therefore, by definition it follows that $\|\hat{\psi}\|_2 \le Re\, Ro^{-1} \|F\|_{-2}$.
 \end{proof}
+{\color{red} \LARGE Look closer at the following lemma and the proof to be sure
+of proper space, i.e. should it be $X^H$ or $X^h$.}
 \begin{lemma} \label{lma:Fineh}
   The solution to \eqref{eqn:Coarse} exists and satisfies
   \begin{equation*}
