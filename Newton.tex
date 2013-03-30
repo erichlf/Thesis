@@ -1,11 +1,14 @@
 In this section, we briefly outline the implementation details of the Newton
-method used to solve the nonlinear system of equations resulting from the FEM
+method used to solve the nonlinear system of equations resulting from the FE
 discretization of the streamfunction formulation of the QGE
 \eqref{eqn:SemiDiscretization}.
 
-The Newton method is an iterative process that, at each iteration $n$, with $n=1, 2, \dots$ yields an approximation $\psi^h_n$ to the FEM approximation $\psi^h$.
-We start the iterative process by making an initial guess $\psi^h_0$.
-Given $\psi^h_{n-1}$, the Newton iteration at the previous step, the Newton method computes the current step iteration $\psi^h_n$ according to the following formula:
+The Newton method is an iterative process that, at each iteration $n$, with
+$n=1, 2, \dots$ yields an approximation $\psi^h_n$ to the FE approximation
+$\psi^h$.  We start the iterative process by making an initial guess $\psi^h_0$.
+Given $\psi^h_{n-1}$, the Newton iteration at the previous step, the Newton
+method computes the current step iteration $\psi^h_n$ according to the following
+formula:
 \begin{eqnarray}
   \left(
   \mathcal{J}(\psi^h_{n-1}) \, \Delta_n \psi^h , \chi^h
@@ -38,4 +41,6 @@ where
 is the Jacobian, and
 $\Delta_n \psi^h : = \psi^h_n - \psi^h_{n-1}$ is the iteration increment.
 
-\textcolor{red}{Erich: Please add more details regarding the Newton method.  What is the tolerance?  What is the maximum number of steps?.... We need to add all the details so that people can reproduce our results.}
+\textcolor{red}{Erich: Please add more details regarding the Newton method.
+What is the tolerance?  What is the maximum number of steps?.... We need to add
+all the details so that people can reproduce our results.}

@@ -18,25 +18,25 @@ treatment of multiply connected domains \cite{Myers}. Despite these advantages,
 there are relatively few papers that consider the FEM applied to the QGE (see
 for example: \cite{Cascon, Fix, LeProvost94, Myers, Stevens82}).
 
-To our knowledge, \emph{all} the FEM discretizations of the QGE have been
+To our knowledge, \emph{all} the finitie element (FE) discretizations of the QGE have been
 developed for the streamfunction-vorticity formulation, none using the
 streamfunction formulation. The reason is simple: The streamfunction-vorticity
 formulation yields a second order \emph{partial differential equation (PDE)},
 whereas the streamfunction formulation yields a fourth order PDE. Thus, although
 the streamfunction-vorticity formulation has two variables ($q$ and $\psi$) and
 the streamfunction formulation has just one ($\psi$), the former is the
-preferred formulation used in practical computations, since its conforming FEM
+preferred formulation used in practical computations, since its conforming FE
 discretization requires low-order ($C^0$) elements, whereas the latter requires
 a high-order ($C^1$) FE discretization.
 
 The streamfunction formulation is, from both mathematical and computational
 points of view, completely different from the vorticity-streamfunction
-formulation. Indeed, the FEM discretization of the streamfunction formulation
+formulation. Indeed, the FE discretization of the streamfunction formulation
 generally requires the use of $C^1$ elements (for a conforming discretization),
 which makes their implementation challenging. From a mathematical point of view,
 however, the streamfunction formulation has the following significant advantage
 over the vorticity-streamfunction formulation: there are optimal error estimates
-for the FEM discretization of the streamfunction formulation (see the error
+for the FE discretization of the streamfunction formulation (see the error
 estimate (13.5) and Table 13.1 in \cite{Gunzburger89}), whereas the available
 error estimates for the vorticity-streamfunction formulation are suboptimal.
 
@@ -66,7 +66,7 @@ The goals of this paper are five-fold. First, we use a $C^1$ finite element (the
 Argyris element) to discretize the streamfunction formulation of the QGE. To the
 best of our knowledge, this is the \emph{first} time that a $C^1$ finite element
 has been used in the numerical discretization of the QGE. Second, we derive
-optimal error estimates for the FEM discretization of the QGE and present
+optimal error estimates for the FE discretization of the QGE and present
 supporting numerical experiments. To the best of our knowledge, this is the
 first time that optimal error estimates for the QGE have been derived.  Third,
 we present a Two-Level algorithm for solving the streamfunction formulation of
