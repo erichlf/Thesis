@@ -49,19 +49,19 @@ containing the finite error analysis for the SQGE (\autoref{sec:SQGEErrors}).
 \begin{proof}
   We will begin with the proof of \eqref{eqn:BH1BoundChi} and then prove \eqref{eqn:BH1BoundPsi} last. For \eqref{eqn:BH1BoundChi} we begin in the
   same way as we did for \autoref{eqn:BH2Bounds} in
-  \autoref{lma:ContinuousForms}. That is, we apply the H\"older inequality to
+  \autoref{lma:ContinuousForms}. That is, we apply the H\"older inequality, \eqref{eqn:Holder} to
   $b(\psi; \varphi, \chi)$ and set $p=2$, while setting $q=r=4$, giving
   \begin{equation*}
     b(\psi;\varphi,\chi) \le \|\Delta \psi\| \|\nabla \varphi\|_{L^4} \|\nabla
       \chi\|_{L^4}.
   \end{equation*}
-  Now, applying the Ladyzhenskaya inequality we get
+  Now, applying the Ladyzhenskaya inequality, \eqref{eqn:Ladyzhenskaya} we get
   \begin{equation*}
     b(\psi;\varphi,\chi) \le \Gamma \|\Delta \psi\|
       \|\nabla \varphi\|^{\nicefrac{1}{2}} \|\Delta \varphi\|^{\nicefrac{1}{2}}
       \|\nabla \chi\|^{\nicefrac{1}{2}} \|\Delta \chi\|^{\nicefrac{1}{2}}.
   \end{equation*}
-  Next we apply the Poincar\'e inequality to $\|\nabla \chi\|$ resulting in
+  Next we apply the Poincar\'e inequality, \eqref{eqn:Poincare} to $\|\nabla \chi\|$ resulting in
   \begin{equation*}
     b(\psi;\varphi,\chi) \le \Gamma_3 \|\Delta \psi\|\, \|\Delta \varphi\|\,
       \left(\|\nabla \chi\|^{\nicefrac{1}{2}}
@@ -78,7 +78,7 @@ containing the finite error analysis for the SQGE (\autoref{sec:SQGEErrors}).
       - (\varphi_{xy} \chi_x - \varphi_{xx} \chi_y) \psi_x \, d\vec{x}.
     \label{eqn:b0def}
   \end{equation}
-  Therefore using \eqref{eqn:b0def}, H\"older inequality reads
+  Therefore using \eqref{eqn:b0def}, H\"older inequality, \eqref{eqn:Holder} reads
   \begin{equation}
     b(\psi; \varphi, \chi) \le \|\nabla \psi\|_{L^p} \|\Delta \varphi\|_{L^q}
     \|\nabla \chi\|_{L^r},\quad \frac{1}{p} + \frac{1}{q} + \frac{1}{r} = 1.
@@ -89,13 +89,13 @@ containing the finite error analysis for the SQGE (\autoref{sec:SQGEErrors}).
     b(\psi; \varphi, \chi) \le \|\nabla \psi\|_{L^4} \|\Delta \varphi\|
     \|\nabla \chi\|_{L^4}.
   \end{equation*}
-  Then applying the Ladyzhenskaya inequality we get
+  Then applying the Ladyzhenskaya inequality, \eqref{eqn:Ladyzhenskaya} we get
   \begin{equation*}
     b(\psi;\varphi,\chi) \le \Gamma \|\Delta \varphi\|
       \|\nabla \psi\|^{\nicefrac{1}{2}} \|\Delta \psi\|^{\nicefrac{1}{2}}
       \|\nabla \chi\|^{\nicefrac{1}{2}} \|\Delta \chi\|^{\nicefrac{1}{2}}.
   \end{equation*}
-  Finally, applying the Poincar\'e inequality give the desired result
+  Finally, applying the Poincar\'e inequality, \eqref{eqn:Poincare} give the desired result
   \begin{equation*}
     b(\psi;\varphi,\chi) \le \Gamma_4 \left(\|\nabla \psi\|^{\nicefrac{1}{2}}
       \|\Delta \psi\|^{\nicefrac{1}{2}}\right)\,
@@ -154,7 +154,7 @@ containing the finite error analysis for the SQGE (\autoref{sec:SQGEErrors}).
     & + \left[ b(\eta;\psi,\Phi^h) - b(\Phi^h;\psi,\Phi^h)
       + b(\psi^h;\eta,\Phi^h)\right].
   \end{align*}
-  Using the H\"older inequality, bounds for $(\psi_x,\chi)$ given in
+  Using the H\"older inequality, \eqref{eqn:Holder}, bounds for $(\psi_x,\chi)$ given in
   \autoref{lma:ContinuousForms}, and the bounds for $b$ from
   \autoref{eqn:BH2Bounds} in \autoref{lma:ContinuousForms}, and \autoref{lma:BH1Bound} we have
   \begin{equation}
@@ -168,7 +168,7 @@ containing the finite error analysis for the SQGE (\autoref{sec:SQGEErrors}).
     \end{split}
     \label{eqn:HolderError}
   \end{equation}
-  Then using the Young inequality we have, for all $\epsilon>0$
+  Then using the Young inequality, \eqref{eqn:Young} we have, for all $\epsilon>0$
   \begin{align}
     \|\nabla \eta_t\|_{-1} \|\Delta \Phi^h\|
       &\le \frac{\epsilon}{2} \|\Delta \Phi^h\|^2
@@ -180,7 +180,7 @@ containing the finite error analysis for the SQGE (\autoref{sec:SQGEErrors}).
       &\le \frac{\epsilon}{2} \|\Delta \Phi^h\|^2
       + \frac{Ro^{-2} \Gamma_2^2}{2 \epsilon} \|\Delta \eta\|^2. \label{eqn:YoungBeta}
   \end{align}
-  Using the Young inequality with $\varepsilon = 2 > 0$ and
+  Using the Young inequality, \eqref{eqn:Young} with $\varepsilon = 2 > 0$ and
   \autoref{eqn:BH2Bounds} in \autoref{lma:ContinuousForms}
   \begin{align*}
     b(\eta;\psi,\Phi^h) &\le \Gamma_1 \|\Delta \eta\|\,\|\Delta \psi\|\, \|\Delta \Phi^h\| \\
@@ -207,7 +207,7 @@ containing the finite error analysis for the SQGE (\autoref{sec:SQGEErrors}).
     \label{eqn:B1Inequality}
   \end{equation}
   For the term $b(\Phi^h; \psi, \Phi^h)$ we use \autoref{lma:BH1Bound} and the
-  following version of the Young inequality (from \cite{Layton08} Equation (1.1.4)):
+  following version of the Young inequality, \eqref{eqn:Young} (from \cite{Layton08} Equation (1.1.4)):
   given $a,\,b>0,$ for any $\epsilon > 0,\, 1\le p \le \infty,\, \frac{1}{p} +
   \frac{1}{q} = 1$, and
   $C(\epsilon,p,q)=\dfrac{\left(p\,\epsilon\right)^{-\nicefrac{q}{p}}}{q}$
@@ -238,7 +238,7 @@ containing the finite error analysis for the SQGE (\autoref{sec:SQGEErrors}).
     \label{eqn:B2Inequality}
   \end{equation}
   For the final term involving $b(\psi^h; \eta, \Phi^h)$ we use
-  Inequality \eqref{eqn:BH1BoundPsi} and the Young inequality with $\varepsilon =
+  Inequality \eqref{eqn:BH1BoundPsi} and the Young inequality, \eqref{eqn:Young} with $\varepsilon =
   2 \epsilon$, i.e.
   \begin{align}
     b(\psi^h; \eta, \Phi^h) &\le \Gamma_4\left(\|\nabla \psi^h\|^{\nicefrac{1}{2}}
@@ -360,7 +360,7 @@ containing the finite error analysis for the SQGE (\autoref{sec:SQGEErrors}).
     C^*_9(T,Re,\Gamma_3) &= \dfrac{9}{2} Re\, \exp\!\left(\dfrac{Re^{-3}\Gamma_3^4}{432}
       \int_{0}^{T}\!\|\Delta \psi^4\|\, dt\right). \label{eqn:C2TRe}
   \end{align}
-  By the H\"older inequality we have
+  By the H\"older inequality, \eqref{eqn:Holder} we have
   \begin{align}
     \int_0^T\! \|\Delta \psi^h\| \|\Delta \eta\|^2\, dt &\le
       \|\Delta \psi^h\|^2_{L^2(0,T;L^2)} \|\Delta \eta\|^2_{L^4(0,T;L^2)},

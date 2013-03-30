@@ -7,8 +7,8 @@ approach similar to that used in \cite{Cayco86}.  Second, in
 \autoref{thm:Errors}, we prove error estimates in the $L^2$ and $H^1$ norms by
 using a duality argument.
 
-First, we must introduce some bounds of the forms introduced in
-\autoref{sec:QGEStrong}.
+The following lemma will introduce some useful bounds for the forms introduced
+in \autoref{sec:QGEStrong}.
 \begin{lemma} \label{lma:ContinuousForms}
   The linear form $(F,\chi)$, the bilinear forms $(\nabla \psi, \nabla \chi)$,
   $(\Delta \psi, \Delta \chi)$, $(\psi_x, \chi)$ and the trilinear form $b(\psi;
@@ -27,7 +27,7 @@ First, we must introduce some bounds of the forms introduced in
 \end{lemma}
 \begin{proof}
   We first start with the simplest proof, that being the proof for
-  \eqref{eqn:a1Cont}. This follows directly from the H\"older inequality, i.e.
+  \eqref{eqn:a1Cont}. This follows directly from the H\"older inequality, \eqref{eqn:Holder}, i.e.
   \begin{equation*}
     (\Delta \psi, \Delta \chi) \le \|\Delta \psi\|_{L^p}\,\|\Delta \chi\|_{L^r},
     \quad \frac{1}{p} + \frac{1}{r} = 1
@@ -41,12 +41,12 @@ First, we must introduce some bounds of the forms introduced in
   \begin{equation*}
     (F,\chi) \le \|F\|_{-2}|\chi|_2.
   \end{equation*}
-  Next, we prove \eqref{eqn:a0cont} by first applying H\"older inequality with
+  Next, we prove \eqref{eqn:a0cont} by first applying H\"older inequality, \eqref{eqn:Holder} with
   $p=r=2$ and therefore
   \begin{equation*}
     (\nabla \psi, \nabla \chi) \le \|\nabla \psi\|\, \|\nabla \chi\|.
   \end{equation*}
-  Now, we apply the Poincar\'e inequality to get the desired result
+  Now, we apply the Poincar\'e inequality, \eqref{eqn:Poincare} to get the desired result
   \begin{equation*}
     (\nabla \psi, \nabla \chi) \le \Gamma_0 |\psi|_2, |\chi|_2,
   \end{equation*}
@@ -63,7 +63,7 @@ First, we must introduce some bounds of the forms introduced in
     (\psi_x, \chi) \le \Gamma_2\,|\psi|_2\, |\chi|_2,
   \end{equation*}
   where $\Gamma_2$ is a multiplication of three Poincar\'e constants. \\
-  Finally, for \eqref{eqn:BH2Bounds} we start by applying the H\"older inequality
+  Finally, for \eqref{eqn:BH2Bounds} we start by applying the H\"older inequality, \eqref{eqn:Holder}
   \begin{equation}
     b(\psi;\varphi,\chi) \le \|\Delta \psi\|_{L^p} \|\nabla \varphi\|_{L^q}
       \|\nabla \chi\|_{L^r},\quad \frac{1}{p}+\frac{1}{q}+\frac{1}{r}=1,
@@ -74,13 +74,13 @@ First, we must introduce some bounds of the forms introduced in
     b(\psi;\varphi,\chi) \le \|\Delta \psi\| \|\nabla \varphi\|_{L^4} \|\nabla
       \chi\|_{L^4}.
   \end{equation*}
-  Then applying the Ladyzhenskaya inequality results in
+  Then applying the Ladyzhenskaya inequality, \eqref{eqn:Ladyzhenskaya} results in
   \begin{equation*}
     b(\psi;\varphi,\chi) \le \Gamma \|\Delta \psi\|
       \|\nabla \varphi\|^{\nicefrac{1}{2}} \|\Delta \varphi\|^{\nicefrac{1}{2}}
       \|\nabla \chi\|^{\nicefrac{1}{2}} \|\Delta \chi\|^{\nicefrac{1}{2}}.
   \end{equation*}
-  Using the Poincar\'e inequality gives
+  Using the Poincar\'e inequality, \eqref{eqn:Poincare} gives
   \begin{equation*}
     b(\psi;\varphi,\chi) \le \Gamma_1 \|\Delta \psi\|\, \|\Delta \varphi\|\,
       \|\Delta \chi\|.
@@ -114,7 +114,7 @@ First, we must introduce some bounds of the forms introduced in
         { Re^{-1} - \Gamma_1 \, Re \, Ro^{-1} \, \| F \|_{-2} }
     \label{eqn:constant_definition}
   \end{equation}
-  is a generic constant that can depend on $Re$, $Ro$, $\Gamma_1$, $F$, but
+  is a generic constant that can depend on $Re$, $Ro$, $\Gamma_1$, $\Gamma_2$, $F$, but
   \emph{not} on the meshsize $h$.
 \end{thm}
 
@@ -209,7 +209,7 @@ First, we must introduce some bounds of the forms introduced in
     \begin{split}
       Re^{-1} (\Delta \Phi^h, \Delta \Phi^h) = -Re^{-1} (\Delta \eta, \Delta \Phi^h)
         - b(\Phi^h;\psi,\Phi^h) - b(\eta;\psi,\Phi^h) \\
-      - b(\psi^h;\eta,\Phi^h) + R)^{-1} (\eta_x,\Phi^h).
+      - b(\psi^h;\eta,\Phi^h) + Ro^{-1} (\eta_x,\Phi^h).
     \end{split}
     \label{eqn:ErrorZeroed}
   \end{equation}
@@ -224,15 +224,15 @@ First, we must introduce some bounds of the forms introduced in
       Re^{-1} \, |\Phi^h|^2_2 \le Re^{-1} \,  |\eta|_2 \, |\Phi^h|_2 + \Gamma_1
         \biggl( |\eta|_2 \, |\psi|_2 \, |\Phi^h|_2 + |\psi^h|_2 \, |\eta|_2 \,
           |\Phi^h|_2 \biggr) \\
-      + \Gamma_1 \, |\Phi^h|^2_2 \, |\psi|_2 + Ro^{-1} \, |\eta|_2 \, |\Phi^h|_2 .
+      + \Gamma_1 \, |\Phi^h|^2_2 \, |\psi|_2 + Ro^{-1}\, \Gamma_2 \, |\eta|_2 \, |\Phi^h|_2 .
     \end{split}
     \label{eqn:varphiIneq}
   \end{equation}
   Simplifying and rearranging terms in \eqref{eqn:varphiIneq} gives
   \begin{equation}
       |\Phi^h|_2 \le \left( Re^{-1} - \Gamma_1 \, | \psi |_2 \right)^{-1} \,
-        \left( Re^{-1} + \Gamma_1 \, |\psi|_2 + \Gamma_1 \, |\psi^h|_2 + Ro^{-1}
-          \right) \, |\eta|_2 .
+        \left( Re^{-1} + \Gamma_1 \, |\psi|_2 + \Gamma_1 \, |\psi^h|_2 +
+        Ro^{-1}\, \Gamma_2 \right) \, |\eta|_2 .
     \label{eqn:phihIneq}
   \end{equation}
   Using \eqref{eqn:phihIneq} and the triangle inequality along with the
@@ -241,13 +241,13 @@ First, we must introduce some bounds of the forms introduced in
   \begin{align}
     |e|_2 &\le |\eta|_2 + |\Phi^h|_2 \nonumber \\[0.2cm]
     &\le \left[ 1 + \frac{Re^{-1} + \Gamma_1 \, |\psi|_2 + \Gamma_1 \,
-      |\psi^h|_2 + Ro^{-1}} {Re^{-1} - \Gamma_1 \, |\psi|_2} \right] \, |\eta|_2
+      |\psi^h|_2 + Ro^{-1}\, \Gamma_2} {Re^{-1} - \Gamma_1 \, |\psi|_2} \right] \, |\eta|_2
       \nonumber \\[0.2cm]
     &\le \left[ 1 + \frac{Re^{-1} + \Gamma_1 \, \left( Re \, Ro^{-1} \, \| F
       \|_{-2} \right) + \Gamma_1 \, \left( Re \, Ro^{-1} \, \| F \|_{-2} \right)
-      + Ro^{-1}} {Re^{-1} - \Gamma_1 \, \left( Re \, Ro^{-1} \, \| F \|_{-2}
+      + Ro^{-1}\, \Gamma_2} {Re^{-1} - \Gamma_1 \, \left( Re \, Ro^{-1} \, \| F \|_{-2}
       \right) } \right] \, |\eta|_2 \nonumber \\
-    &= \left[ \frac{ Ro^{-1} + 2 \, Re^{-1} + \Gamma_1 \, Re \, Ro^{-1} \,
+    &= \left[ \frac{ Ro^{-1}\, \Gamma_2 + 2 \, Re^{-1} + \Gamma_1 \, Re \, Ro^{-1} \,
       \| F \|_{-2} } { Re^{-1} - \Gamma_1 \, Re \, Ro^{-1} \, \| F \|_{-2} }
         \right] \, | \psi-\lambda^h |_2 ,
     \label{eqn:EnergyError}
@@ -343,11 +343,30 @@ the following elliptic regularity estimates:
 where $C$ is a generic constant that can depend on the data, but not on the
 meshsize $h$.
 \begin{remark}
-  We note that this type of elliptic regularity was also assumed in
-  \cite{Cayco86} for the streamfunction formulation of the 2D NSE.  In that
-  report, it was also noted that for a polygonal domain satisfying a minimum
-  angle condition, Rannacher et al. \cite{} had actually proved this elliptic
-  regularity.
+  We note that this type of elliptic regularity was also assumed in \cite{Cayco86}
+  for the streamfunction formulation of the 2D NSE.  In that report, it was also
+  noted that, for a polygonal domain with maximum interior vertex angle $\theta <
+  126^{\circ}$, the assumed elliptic regularity was actually proved by Blum and
+  Rannacher \cite{blum1980boundary}.  We note that the theory developed in
+  \cite{blum1980boundary} carries over to our case as well.  In Section 5 in
+  \cite{blum1980boundary} it is proved that, for weakly nonlinear problems that
+  involve the biharmonic operator as linear main part and that satisfy certain
+  growth restrictions, each weak solution satisfies elliptic regularity results of
+  the form \eqref{eqn:dual_operator_6a}-\eqref{eqn:dual_operator_6c}.  Assuming
+  that $\Omega$ is a bounded polygonal domain with inner angle $\omega$ at each
+  boundary corner satisfying $\omega < 126.283696\ldots^{\circ}$, Theorem 7 in
+  \cite{blum1980boundary} with $k = 0$ and $k = 1$ implies
+  \eqref{eqn:dual_operator_6a}-\eqref{eqn:dual_operator_6c}.  Using an argument
+  similar to that used in Section 6(b) in \cite{blum1980boundary} to prove that
+  the streamfunction formulation of the 2D NSE satisfies the restrictions in
+  Theorem 7, we can prove that $\psi^*$, the solution of our dual problem
+  \eqref{eqn:dual_operator_5}, satisfies the elliptic regularity results in
+  \eqref{eqn:dual_operator_6a}-\eqref{eqn:dual_operator_6c}.  Indeed, the main
+  point in Section 6(b) in \cite{blum1980boundary} is that the corner
+  singularities arising in flows around sharp corners are essentially determined
+  by the linear main part $\Delta^2$ in the streamfunction formulation of the 2D
+  NSE, which is the linear main part of our dual problem
+  \eqref{eqn:dual_operator_5} as well.
 \end{remark}
 
 The error estimates in the $L^2$ and $H^1$ norms that we prove in
