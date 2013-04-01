@@ -108,8 +108,7 @@ with the semi-discretization. We will rely heavily on the
 \end{proof}
 The next theorem proves the convergence of the FE approximation $\psi^h$ to the
 exact solution, $\psi$, to QGE \eqref{eqn:QGE_psi}. The proof is similar to of
-the proof for Theorem 22 in \cite{Layton08}.
-{\color{red} {\LARGE Rewrite to match the real constants.}
+the proof for Theorem 22 in \cite{Layton08}. \\
 \begin{thm} \label{thm:StrongConvergence}
   Let $\psi$ be a strong solution to the QGE \eqref{eqn:QGE_psi}. Then there
   exists a \\ $C(T, F, \psi_0, \Gamma_1, \Gamma_2, Re, Ro,\int_0^T\! |\Delta
@@ -117,17 +116,32 @@ the proof for Theorem 22 in \cite{Layton08}.
   \begin{equation}
     \begin{split}
       \|\nabla (\psi &- \psi^h) \|^2 + Re^{-1}
-        \int_{0}^{T}\! \|\Delta (\psi - \psi^h)\|^2 \, dt \le C\biggl\{
-        \|\nabla(\psi_0 - \psi^h(0))\|^2 \\
-      & + \inf_{\chi^h(t) \in X^h} \biggl[
-        \int_0^T\! \|\nabla(\psi - \chi^h)_t\|^2_{-1}
-        + Re^{-1} \|\Delta(\psi - \chi^h)\|^2\, dt \\
-      & \qquad + \|\Delta(\psi - \chi^h)\|_{L^4(0,T;L^2)}
-        + \|\nabla (\psi - \chi^h)\|^2\biggr] \biggr\}
+        \int_{0}^{T}\! \|\Delta (\psi - \psi^h)\|^2 \, dt
+        \le C_1(T,Re,\Gamma_3)\,\|\nabla(\psi_0 - \psi^h(0))\|^2 \\
+      & + \inf_{\omega^h(t) \in X^h} \biggl\{
+        C_2(T,Re,\Gamma_3)\,\int_0^T\! \|\nabla(\psi - \omega^h)_t\|^2_{-1}
+        + C_3(Re,Ro,\Gamma_2)\, \|\Delta(\psi - \omega^h)\|^2\, dt \\
+      & + C_4(T,Re,Ro,F,\Gamma_1,\Gamma_2,\Gamma_4, \int_{0}^{T}\!\|\Delta
+        \psi\|^4\, dt)\,\|\Delta(\psi - \omega^h)\|_{L^4(0,T;L^2)} \\
+      & + 2\,\|\nabla (\psi - \omega^h)\|^2\biggr\},
     \end{split}
     \label{eqn:StrongConvergence}
   \end{equation}
-\end{thm}}
+  where
+  \begin{align}
+    C_1(T,Re,\Gamma_3) &:= 4\, \exp\left(\frac{Re^{-3} \Gamma_3^4}{432}
+      \int_{0}^{T}\! \|\Delta \psi\|^4\, dt\right), \label{eqn:C1}\\
+    C_2(T,Re,\Gamma_3) &:= \frac{9}{4}\, Re\, C_1(T,Re,\Gamma_3), \label{eqn:C2}\\
+    C_3(Re,Ro,\Gamma_2) &:= 2 + 2\left(Re^{-2} + Ro^{-2}\, \Gamma_2^2\right), \label{eqn:C3} \\
+    C_4(T,F,\psi_0,Re,Ro,\Gamma_1,\Gamma_3,\Gamma_4,\int_{0}^{T}\! \|\Delta
+    \psi\|^4\, dt) &:= \frac{C_2(T,Re,\Gamma_3)}{2} \\
+      & \biggl(\Gamma_1^2 \int_{0}^{T}\! \|\psi\|^4\, dt + \Gamma_4
+        C^*(F,\psi_0,Re,Ro)\biggr) \label{eqn:C4}
+  \end{align}
+  and $C^*(F,\psi_0,Re,Ro),\, \Gamma_1,\, \Gamma_2,\, \Gamma_3,\, \Gamma_4$ are
+  a stability bound from \autoref{prop:Stability}, constants from
+  \autoref{lma:ContinuousForms} and \autoref{lma:BH1Bound}, respectively.
+\end{thm}
 \begin{proof}
   Let $\chi = \chi^h \in X^h$ and subtract \eqref{eqn:SemiDiscretization} from
   \eqref{eqn:QGEWF} then let $e:=\psi - \psi^h$ and we obtain
@@ -353,7 +367,7 @@ the proof for Theorem 22 in \cite{Layton08}.
     \begin{split}
       \|\nabla \Phi^h(T)\|^2 + Re^{-1} \int_0^T\! \|\Delta \Phi^h\|^2 &\, dt
         \le C^*_8(T,Re) \|\nabla \Phi^h(0)\|^2 \\
-      & + C^*_9(T,Re)\biggl[ \int_0^T\! \|\nabla \eta_t\|_{-1}^2
+      & + C^*_9(T,Re,\Gamma_3)\biggl[ \int_0^T\! \|\nabla \eta_t\|_{-1}^2
         + C^*_6(Re,Ro,\Gamma_2) \|\Delta \eta\|^2\, dt \\
       & + \int_0^T\!  \left( C_7(\Gamma_1)\, \|\Delta \psi\|^2
         + C^*_3(F,\psi_0,Re,Ro,\Gamma_4)\,\|\Delta \psi^h\|\right)
@@ -363,9 +377,9 @@ the proof for Theorem 22 in \cite{Layton08}.
   where
   \begin{align}
     C^*_8(T,Re,\Gamma_3) &= \exp\!\left(\dfrac{Re^{-3}\Gamma_3^4}{432}
-      \int_{0}^{T}\!\|\Delta \psi^4\|\, dt\right), \label{eqn:C1TRe} \\
+      \int_{0}^{T}\!\|\Delta \psi\|^4\, dt\right), \label{eqn:C1TRe} \\
     C^*_9(T,Re,\Gamma_3) &= \dfrac{9}{2} Re\, \exp\!\left(\dfrac{Re^{-3}\Gamma_3^4}{432}
-      \int_{0}^{T}\!\|\Delta \psi^4\|\, dt\right). \label{eqn:C2TRe}
+      \int_{0}^{T}\!\|\Delta \psi\|^4\, dt\right). \label{eqn:C2TRe}
   \end{align}
   By the H\"older inequality, \eqref{eqn:Holder} we have
   \begin{align}
@@ -386,7 +400,7 @@ the proof for Theorem 22 in \cite{Layton08}.
     & + C^*_9(T,Re,\Gamma_3)\biggl[ \int_0^T\! \|\nabla \eta_t\|_{-1}^2
       + C^*_6(Re,Ro,\Gamma_2) \|\Delta \eta\|^2\, dt \\
     & +\left(C^*_7(\Gamma_1)\,C^*_{11}
-      + C^*_3(Re,Ro,F,\Gamma_4)\,C^*_{10}(Re,Ro,F)\right)
+      + C^*_3(F,\psi_0,Re,Ro,\Gamma_4)\,C^*_{10}(Re,Ro,F)\right)
       \|\Delta \eta\|^2_{L^4(0,T;L^2)}\biggr].
   \end{align*}
   \begin{remark}
@@ -405,7 +419,7 @@ the proof for Theorem 22 in \cite{Layton08}.
       + \left(1 + C^*_6(Re,Ro,\Gamma_2)\right)
       \|\Delta \left(\psi - \omega^h\right)\|^2\, dt \\
     & + \left(C^*_7(\Gamma_1)\, C^*_{11}
-      + C^*_3(Re,Ro,,F,\Gamma_4)\,C^*_{10}(Re,Ro,F)\right)
+      + C^*_3(F,\psi_0,Re,Ro,\Gamma_4)\,C^*_{10}(Re,Ro,F)\right)
       \|\Delta \left(\psi - \omega^h\right)\|^2_{L^4(0,T;L^2)} \\
     & + \|\nabla \left(\psi - \omega^h\right)(T)\|^2.
   \end{align*}
@@ -421,7 +435,7 @@ the proof for Theorem 22 in \cite{Layton08}.
       + \left(1 + C^*_6(Re,Ro,\Gamma_2)\right)
       \|\Delta \left(\psi - \omega^h\right)\|^2\, dt \\
     & + \left(C^*_7(\Gamma_1)\, C^*_{11}
-      + C^*_3(Re,Ro,,F,\Gamma_4)\,C^*_{10}(Re,Ro,F)\right)
+      + C^*_3(F,\psi_0,Re,Ro,\Gamma_4)\,C^*_{10}(Re,Ro,F)\right)
       \|\Delta \left(\psi - \omega^h\right)\|^2_{L^4(0,T;L^2)} \\
     & + \|\nabla \left(\psi - \omega^h\right)(T)\|^2.
   \end{align*}
@@ -430,9 +444,10 @@ the proof for Theorem 22 in \cite{Layton08}.
     C_1(T,Re,\Gamma_3) &= 4\, C^*_8(T,Re,\Gamma_3) \\
     C_2(T,Re,\Gamma_3) &= 2\, C^*_9(T,Re,\Gamma_3) \\
     C_3(Re,Ro,\Gamma_2) &= 2 + 2\,C^*_6(Re,Ro,\Gamma_2) \\
-    C_4(T,Re,Ro,F,\Gamma_1,\Gamma_4,\int_{0}^{T}\!\|\Delta \psi\|^4\, dt) &=
-      2\, C^*_9(T,Re)\,\left(C^*_7(\Gamma_1)\, \int_{0}^{T}\!\|\Delta \psi\|^4\,dt
-      + C^*_3(Re,Ro,F,\Gamma_4)\, C^*_{10}(Re,Ro,F)\right)
+    C_4(T,F,\psi_0,Re,Ro,\Gamma_1,\Gamma_3,\Gamma_4,
+      \int_{0}^{T}\!\|\Delta \psi\|^4\, dt) &= 2\, C^*_9(T,Re,\Gamma_3) \\
+       \biggl(C^*_7(\Gamma_1)\, &\int_{0}^{T}\!\|\Delta \psi\|^4\,dt
+      + C^*_3(F,\psi_0,Re,Ro,\Gamma_4)\, C^*_{10}(F,\psi_0,Re,Ro)\biggr)
   \end{align*}
   gives
   \begin{align*}
@@ -442,12 +457,11 @@ the proof for Theorem 22 in \cite{Layton08}.
     & + \inf_{\omega^h \in X^h} \biggl\{C_2(T,Re,\Gamma_3)
       \int_0^T\! \|\nabla \left( \psi - \omega^h\right)_t\|_{-1}^2
       + C_3(Re,Ro,\Gamma_2)\,\|\Delta \left(\psi - \omega^h\right)\|^2\, dt \\
-    & + C_4(T,Re,Ro,F,\Gamma_1,\Gamma_2,\Gamma_4,\int_{0}^{T}\!\|\Delta
-      \psi\|^4\, dt)\, \|\Delta \left(\psi -
-      \omega^h\right)\|^2_{L^4(0,T;L^2)}\, dt \\
+    & + C_4(T,F,\psi_0,Re,Ro,\Gamma_1,\Gamma_3,\Gamma_4,\int_{0}^{T}\!\|\Delta
+      \psi\|^4\, dt)\, \|\Delta \left(\psi - \omega^h\right)\|^2_{L^4(0,T;L^2)} \\
     & + 2\, \|\nabla \left(\psi - \omega^h\right)(T)\|^2\biggr\},
   \end{align*}
-  which is th desired result.
+  which is the desired result.
 \end{proof}
 
 \begin{lemma} \label{lma:Interpolation}

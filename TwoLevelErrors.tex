@@ -75,12 +75,13 @@ linearized about $\psi^H$ has a unique solution.
   \end{equation*}
   Therefore, by definition it follows that $\|\hat{\psi}\|_2 \le Re\, Ro^{-1} \|F\|_{-2}$.
 \end{proof}
-{\color{red} {\LARGE Look closer at the following lemma and the proof to be sure
-of proper space, i.e. should it be $X^H$ or $X^h$.}
+The following lemma shows that the solution to the fine mesh problem,
+\eqref{eqn:Fine} exists and has a stability bound dependent on $Re,\, Ro$, and
+the forcing function $F$.
 \begin{lemma} \label{lma:Fineh}
-  The solution to \eqref{eqn:Coarse} exists and satisfies
+  The solution to \eqref{eqn:Fine} exists and satisfies
   \begin{equation*}
-    \|\psi^H\|_2 \le Re\, Ro^{-1} \|F\|_{-2}.
+    \|\psi^h\|_2 \le Re\, Ro^{-1} \|F\|_{-2}.
   \end{equation*}
 \end{lemma}
 \begin{proof}
@@ -95,7 +96,7 @@ of proper space, i.e. should it be $X^H$ or $X^h$.}
   \begin{equation*}
     \|\psi^h\| \le Re\, Ro^{-1} \|F\|_{-2}.
   \end{equation*}
-\end{proof}}
+\end{proof}
 
 The following theorem gives the error bound after Step 2 and is the main result
 of this section. The proof of this theorem is similar to the proof for a similar
