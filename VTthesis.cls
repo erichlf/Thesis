@@ -1,23 +1,28 @@
-% v1.23 by Erich L Foster 29 March 2013
+% v1.25 by Erich L Foster 01 April 2013
 %%% IDENTIFICATION --------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}[01/01/10]
-\ProvidesClass{VTthesis}[24/04/2012 v4.0 Virginia Tech Thesis Proposal and Thesis Class]
+\ProvidesClass{VTthesis}[01/04/2013 v1.25 Virginia Tech Thesis Proposal and Thesis Class]
 \RequirePackage{etoolbox}
 %Declaration of options
+\def\@@ptsize{12pt}
 \newbool{@sig}
 \boolfalse{@sig}
 \newbool{@proposal}
 \boolfalse{@proposal}
-\newbool{@dbl}
-\boolfalse{@dbl}
 \newbool{@dft}
 \boolfalse{@dft}
+\newbool{@dbl}
+\boolfalse{@dbl}
 
+\DeclareOption{10pt}{\def\@@ptsize{10pt}}
+\DeclareOption{11pt}{\def\@@ptsize{11pt}}
+\DeclareOption{12pt}{\def\@@ptsize{12pt}}
+\DeclareOption{13pt}{\def\@@ptsize{13pt}}
 \DeclareOption{sig}{\booltrue{@sig}}
 \DeclareOption{nosig}{\boolfalse{@sig}}
 \DeclareOption{proposal}{\booltrue{@proposal}}
-\DeclareOption{doublespace}{\booltrue{@dbl}}
 \DeclareOption{draft}{\booltrue{@dft}}
+\DeclareOption{doublespace}{\booltrue{@dbl}}
 %%% EXECUTION OF OPTIONS --------------------------------------------------
 %% default to:
 \ExecuteOptions{nosig}
@@ -26,7 +31,7 @@
 
 %%% PACKAGE LOADING -------------------------------------------------------
 %% based on std report class
-\LoadClass[12pt,letterpaper]{report}%book}
+\LoadClass[\@@ptsize,letterpaper]{report}%book}
 
 %% AMSLaTeX math environments and symbols
 \RequirePackage{amsmath,amsthm,amssymb}
@@ -154,8 +159,7 @@ frame=single,
   \cleardoublepage
   \pagenumbering{roman}
   \fancyhead[L,R]{}
-  \fancyhead[C]{\textbf{DRAFT}}
-  \ifbool{@dft}{\fancyfoot[C]{\thepage}}{\fancyfoot[C]{\thepage}}
+  \ifbool{@dft}{\fancyhead[C]{\textbf{DRAFT}}}{\fancyfoot[C]{\thepage}}{\fancyfoot[C]{\thepage}}
   \fancyfoot[L,R]{}
   \renewcommand\headrulewidth{0.0pt}}
 \newcommand{\mainmatter}{

@@ -1,4 +1,4 @@
-\documentclass[doublespace]{VTthesis}
+\documentclass[12pt,draft,doublespace]{VTthesis}
 \usepackage{elf}
 \usepackage{wrapfig}
 \usepackage{subcaption}
@@ -7,7 +7,8 @@
   Finite Elements for the Quasi-Geostrophic Equations of the Ocean
 }
 
-\keywords{Quasi-geostrophic equations, finite element method, Argyris element.}
+\keywords{Quasi-geostrophic equations, finite element method, Argyris element,
+wind-driven ocean currents.}
 
 \author{Erich L Foster}
 \program{Mathematics}
@@ -72,6 +73,7 @@
     \input{SQGE.tex}
 
   \chapter{Mathematical Framework} \label{ch:WellPosed}
+  \input{Framework.tex}
     \section{QGE Strong Formulation} \label{sec:QGEStrong}
     \input{QGE.SF.tex}
     \section{SQGE Weak Formulation} \label{sec:SQGEStrong}
@@ -80,6 +82,7 @@
       \input{SQGE.WP.tex}
 
     \chapter{Finite Element Discretization}\label{ch:FEM}
+    \input{FE.tex}
     \section{QGE Finite Element Discretization} \label{sec:QGEFEM}
     \input{QGE.FEF.tex}
     \section{SQGE Finite Element Discretization} \label{sec:SQGEFEM}
@@ -113,12 +116,13 @@
     \input{QGE.Errors.tex}
 
   \chapter{Numerical Experiments} \label{ch:Tests}
-  \section{SQGE} \label{sec:SQGETests}
-  \input{SQGE.Tests.tex}
-  \section{SQGE Two-Level} \label{sec:SQGE2LTests}
-  \input{TwoLevel.Tests.tex}
-  \section{QGE} \label{sec:QGETests}
-  \input{QGE.Tests.tex}
+  \input{Numerical.tex}
+    \section{SQGE} \label{sec:SQGETests}
+    \input{SQGE.Tests.tex}
+    \section{SQGE Two-Level} \label{sec:SQGE2LTests}
+    \input{TwoLevel.Tests.tex}
+    \section{QGE} \label{sec:QGETests}
+    \input{QGE.Tests.tex}
 
   \chapter{Conclusions} \label{ch:Conclusions}
   \input{Conclusions.tex}

@@ -1,13 +1,11 @@
 We are now ready to derive the strong formulation of the QGE in streamfunction
 form, \eqref{eqn:QGE_psi}. To this end, it is necessary to introduce the
-appropriate functional setting.  {\color{red} Here we will need to reference
-\cite{Braess, Ciarlet, Cascon, GunzburgerApprox, GunzburgerMethods,
-Gunzburger89, Layton08, Girault79, Girault79, Medjo99}  However, in light of
-the research still needed to be done, to determine the appropriate functional
-setting for the strong form of QGE, we will for now let
-\begin{equation*}
-  X := L^{\infty}(0, T; L^2(\Omega)) \cap L^2(0, T;H^2_0(\Omega))
-\end{equation*}
+appropriate functional setting.  Let $\psi$ be a strong solution \cite{Layton08}
+of the QGE, \eqref{eqn:QGE_psi}, then
+\begin{equation}
+  \psi \in L^{\infty}(0, T; L^2(\Omega)) \cap L^2(0, T;H^2_0(\Omega))
+  \label{eqn:StrongSpace}
+\end{equation}
 where
 \begin{align*}
   L^2(0, T;H^2_0(\Omega)) &:= \left\{ \psi(t,\mathbf{x}):[0, T] \to H^2_0(\Omega):
@@ -15,8 +13,9 @@ where
   L^{\infty}(0, T;L^2(\Omega)) &:= \left\{ \psi(t,\mathbf{x}):[0, T] \to L^2(\Omega):
     \ess \sup_{0<t<T} \|\psi\| < \infty\right\}.
 \end{align*}
-The choice for this space will have to be verify using the previously referred
-to references.}
+With the functional setting in place we can derive the strong formulaiton for
+the QGE, \eqref{eqn:QGE_psi}, i.e. it is now safe to permorm manipulations such
+as multiplying by a test function and intergratng over the problem domain.
 
 Multiplying \eqref{eqn:QGE_psi} by a test function $\chi \in X$ and then
 transferring some of the derivatives from $\psi$ to $\chi$ by use of the

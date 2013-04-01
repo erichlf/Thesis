@@ -1,0 +1,62 @@
+The main goal of this Chapter is to develop rigorous numerical analysis for
+the FE discritezation of the QGE \eqref{eqn:QGE_psi} for a conforming FE
+discretization. In particular we focus on the use of the Argyris element, but
+the majority of the results apply to any conforming FE discretization of QGE
+\eqref{eqn:QGE_psi}, SQGE \eqref{eqn:SQGE_Psi}, and the two-level method applied
+to SQGE \eqref{eqn:SQGE_Psi}.
+
+In the sections that follow we rely heavily on the Young inequality, H\"older
+inequality , Cauchy-Schwarz inequality, Poincar\'e-Friedrich inequality, and
+Ladyzenskya inequality, so for completeness we will state them here.
+
+\begin{definition} \label{def:Young}
+  \textbf{Young inequality \cite{Royden2010}:}\\
+  For $1 < p,q < \infty$, $\dfrac{1}{p} + \dfrac{1}{q} = 1$, and any two
+  positive numbers $a$ and $b$,
+  \begin{equation}
+    ab \le \frac{a^p}{p} + \frac{b^q}{q}
+    \label{eqn:Young}
+  \end{equation}
+\end{definition}
+\begin{definition} \label{def:Holder}
+  \textbf{H\"older inequality \cite{Royden2010}:}\\
+  Let $\Omega$ be a measurable set, $1\le p,q < \infty$, and $\dfrac{1}{p} +
+  \dfrac{1}{q} = 1$. If $f \in L^p(\Omega)$ and $g \in L^q(\Omega)$, then their
+  product $f\cdot g$ is integrable over $\Omega$ and
+  \begin{equation}
+    \int_{\Omega}\! |f\cdot g| \, d\mathbf{x} \le \|f\|_p\, \|g\|_q.
+    \label{eqn:Holder}
+  \end{equation}
+\end{definition}
+\begin{definition} \label{def:Cauchy-Schwarz}
+  \textbf{Cauchy-Schwarz inequality \cite{Royden2010}:}\\
+  Let $\Omega$ be a measurable set and $f$ and $g$ be square-integrable over
+  $\Omega$. Then their product $f\cdot g$ is also over $\Omega$ and
+  \begin{equation}
+    \int_{\Omega}\! |f\,g|\, d\mathbf{x} \le \sqrt{\int_{\Omega}\! f^2 \,
+      d\mathbf{x}} \cdot \sqrt{\int_{\Omega}\! g^2 \, d\mathbf{x}}
+    \label{eqn:Cauchy}
+  \end{equation}
+
+\end{definition}
+\begin{definition} \label{def:Poincare}
+  \textbf{Poincar\'e-Friedrich inequality \cite{Layton08}:}\\
+  Let $\Omega$ be a measurable set and $u \in H^1_0(\Omega)$. Then there is a
+  positive constant $C_P = C_P(\Omega)$ such that
+  \begin{equation}
+    \|u\| \le C_P \|\nabla u\| \quad \forall u \in X
+    \label{eqn:Poincare}
+  \end{equation}
+\end{definition}
+\begin{definition} \label{def:Ladyzhenskaya}
+  \textbf{Ladyzhenskaya inequality \cite{Layton08}:}\\
+  For any vector function $u\,:\, \R^2 \rightarrow \R^2$ with compact support
+  and with the indicated finite $L^4$ and $L^2$ norms,
+  \begin{equation}
+    \|u\|_{L^4(\R^2)} \le 2^{\nicefrac{1}{4}}
+      \|u\|^{\nicefrac{1}{2}}_{L^2(\R^2)}
+      \|\nabla u\|^{\nicefrac{1}{2}}_{L^2(\R^2)}
+    \label{eqn:Ladyzhenskaya}
+  \end{equation}
+\end{definition}
+With these definitions we can now proceed with the error analysis.
