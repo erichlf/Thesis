@@ -38,21 +38,21 @@ Sobolev space along with their associated norms.
 As short hand we will denote the typical two-norm by $\|\cdot\|$.
 
 \begin{definition} \label{SobolevSpace}
-  \textbf{Sobolev space} \cite{Ciarlet}:
-  Let $f \in L^p(\Omega)$ and $\alpha$ a multi-index with $|\alpha| \le k$. Then
-  the Sobolev space $W^{k,p}(\Omega)$ is defined as
+  \textbf{Sobolev space} \cite{Ciarlet}: \\
+  Let $f \in L^p(\Omega)$ and $\alpha$ a multi-index with $|\alpha| \le s$. Then
+  the Sobolev space $W^{s,p}(\Omega)$ is defined as
   \begin{equation}
-    W^{k,p}(\Omega) := \left\{ f\in L^p(\Omega) : D^{\alpha} f \in
-      L^p(\Omega)\quad \forall |\alpha| \le k\right\}.
+    W^{s,p}(\Omega) := \left\{ f\in L^p(\Omega) : D^{\alpha} f \in
+      L^p(\Omega)\quad \forall |\alpha| \le s\right\}.
     \label{eqn:Sobolev}
   \end{equation}
   The associated norm is given by
   \begin{equation}
-    \|f\|_{W^{k,p}(\Omega)} := \sum_{|\alpha|\le k}
+    \|f\|_{W^{s,p}(\Omega)} := \sum_{|\alpha|\le s}
       \|D^{\alpha}f\|_{L^p(\Omega)}.
     \label{eqn:HkpNorm}
   \end{equation}
 \end{definition}
-In what follows we denote $W^{k,2}(\Omega)$ as $H^k(\Omega)$ and
-$\|f\|_{H^k(\Omega)}$ as $\|f\|_k$, while the semi-norm will be denoted
-as $|f|_k := \|D^k f\|$.}
+In what follows we denote $W^{s,2}(\Omega)$ as $H^s(\Omega)$ and
+$\|f\|_{H^s(\Omega)}$ as $\|f\|_s$, while the semi-norm will be denoted
+as $|f|_s := \|D^s f\|$.}
