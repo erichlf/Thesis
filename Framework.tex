@@ -10,7 +10,7 @@ Sobolev space along with their associated norms.
 
 {\color{red} {\LARGE Check references and definitions.}
 \begin{definition} \label{def:InnerProduct}
-  \textbf{Inner Product} \cite{Royden2010}: \\
+  \textbf{Inner Product} \cite{}: \\
   Let $f$ and $g$ be measurable functions such that $f,g : \Omega \rightarrow \R$.
   Then the \textbf{inner product} is defined as
   \begin{equation}
@@ -19,26 +19,19 @@ Sobolev space along with their associated norms.
   \end{equation}
 \end{definition}
 
-\begin{definition} \label{def:LpSpace}
-  \textbf{$L^p$-space} \cite{Royden2010}: \\
-  Let $1\le p < \infty$ and $(\Omega, \Sigma, \mu)$ be a measure space, where
-  $\Omega$ is a set, $\Sigma$ is a $\sigma$-algebra over the set $\Omega$, and
-  $\mu$ is a measure. Then the space $L^p(\Omega)$ is the set of all measurable
-  functions $f : \Omega \rightarrow \R$ such that
-  \begin{equation}
-    \left(\int_{\Omega}\! |f|^p\, d\mu\right)^{\frac{1}{p}} < \infty.
-    \label{eqn:LP}
-  \end{equation}
-  The associated norm is given by
+\begin{definition} \label{def:LpNorm}
+  \textbf{$L^p$-norm} \cite{}: \\
+  Let $1\le p < \infty$ and $f \in L^p(\Omega)$. Then the norm associated with
+  this space is given by
   \begin{equation}
     \|f\|_{L^p(\Omega)} := \left(\int_{\Omega}\! |f|^p\, d\mu\right)^{\frac{1}{p}}.
     \label{eqn:LPNorm}
   \end{equation}
 \end{definition}
-As short hand we will denote the typical two-norm by $\|\cdot\|$.
+As a short hand we will denote the typical $L^2$-norm by $\|\cdot\|$.
 
 \begin{definition} \label{SobolevSpace}
-  \textbf{Sobolev space} \cite{Ciarlet}: \\
+  \textbf{Sobolev space} \cite{}: \\
   Let $f \in L^p(\Omega)$ and $\alpha$ a multi-index with $|\alpha| \le s$. Then
   the Sobolev space $W^{s,p}(\Omega)$ is defined as
   \begin{equation}

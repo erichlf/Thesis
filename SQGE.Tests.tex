@@ -724,3 +724,29 @@ mesh can be seen in \autoref{fig:MedMesh}.}
   \end{center}
 \end{sidewaysfigure}
 
+\begin{table}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}%c|c|}
+  \hline
+  $h$ & $DoFs$ & $e_0$ & $L_2$ order & $e_1$ & $H^1$ order & $e_2$ & $H^2$ order \\[0.2em]
+  \hline
+$\nicefrac{1}{20}$ & $1074$ & $1.82\times 10^{-6}$ & $NaN$ & $1.76\times 10^{-4}$ & $NaN$ & $4.81\times 10^{-2}$ & $NaN$ \\
+$\nicefrac{1}{40}$ & $3587$ & $7.27\times 10^{-7}$ & $1.32$ & $6.45\times 10^{-5}$ & $1.45$ & $2.72\times 10^{-2}$ & $0.823$ \\
+$\nicefrac{1}{80}$ & $13338$ & $2.54\times 10^{-7}$ & $1.52$ & $2.31\times 10^{-5}$ & $1.48$ & $1.56\times 10^{-2}$ & $0.803$ \\
+$\nicefrac{1}{160}$ & $51740$ & $7.22\times 10^{-8}$ & $1.81$ & $6.76\times 10^{-6}$ & $1.77$ & $7.72\times 10^{-3}$ & $1.01$ \\
+\hline
+\end{tabular}
+\caption{Observed rates of convergence for SQGE applied to the Mediterranean
+  with forcing function $F = \sin(\frac{\pi}{2} y)$ and true solution obtained
+  from fine mesh with $h=\dfrac{1}{320}$.}
+  \label{tab:SQGEMedConvergence}
+\end{table}
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.7]{Figures/SQGEMedRe5_27Ro6_051E-4h320sin0_5piy.pdf}
+    \caption{``True'' solution of SQGE on the Mediterranean with $Re = 5.27, Ro
+      = 6.051\times 10^{-4}, F = \sin( \frac{\pi}{2} y)$, and 204,144 DoFs
+      corresponding to $h = \frac{1}{320}$.}
+    \label{fig:SQGEMed}
+  \end{center}
+\end{figure}
