@@ -97,8 +97,7 @@ multipliers for boundary constraints is given by
   \end{bmatrix}.
   \label{eqn:Lagrange}
 \end{equation}
-{\color{red}
-Since $A$ has not had any implementation of the BCs inherent to it we see that
-it is infact singular.  To avoid zeros on the main diagonal, and avoid poor
-conditioning of the system \eqref{eqn:Lagrange}, we add a small perturbation,
-$\varepsilon$, in the lower right.}
+Since the homogeneous boundary conditions were not enforced in $A$, we note that
+$A$ is singular.  To avoid poor conditioning of the system \eqref{eqn:Lagrange},
+we add a small perturbation matrix, $\varepsilon \mathbf{I}$, in the lower right
+corner of the matrix of the linear system \eqref{eqn:Lagrange}.

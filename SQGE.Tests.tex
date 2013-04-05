@@ -170,7 +170,7 @@ values of the mesh sizes, $h$ (the DoFs are also included).
   \begin{center}
     \includegraphics[scale=0.5]{figures/StommelAConvergence.pdf}
     \caption{Linear Stommel model \eqref{eqn:Stommel}, Test 1a \cite{Vallis06}:
-      Observeed errors versus expected rate of convergence.}
+      Observed errors versus expected rate of convergence.}
     \label{fig:StommelErrorsVallis}
   \end{center}
 \end{figure}
@@ -229,7 +229,7 @@ thin western boundary layer.
   \begin{center}
     \includegraphics[scale=0.5]{figures/StommelBConvergence.pdf}
     \caption{Linear Stommel model \eqref{eqn:Stommel}, Test 1b \cite{Vallis06}:
-      Observeed errors versus expected rate of convergence.}
+      Observed errors versus expected rate of convergence.}
     \label{fig:StommelErrorsVallis1}
   \end{center}
 \end{figure}
@@ -295,7 +295,7 @@ various values of the mesh sizes, $h$.
   \begin{center}
     \includegraphics[scale=0.5]{Figures/StommelMyersConvergence.pdf}
     \caption{Linear Stommel model \eqref{eqn:Stommel}, Test 2 \cite{Myers}:
-      Observeed errors versus expected rate of convergence.}
+      Observed errors versus expected rate of convergence.}
     \label{fig:StommelErrorsMeyers}
   \end{center}
 \end{figure}
@@ -380,7 +380,7 @@ respectively) for various values of the mesh sizes, $h$.
   \begin{center}
     \includegraphics[scale=0.5]{Figures/SMsinConvergence.pdf}
     \caption{Linear Stommel-Munk model \eqref{eqn:SMProb}, Test 3 \cite{Cascon}:
-      Observeed errors versus expected rate of convergence.}
+      Observed errors versus expected rate of convergence.}
     \label{fig:SMSinErrors}
   \end{center}
 \end{figure}
@@ -450,7 +450,7 @@ $h$.
   \begin{center}
     \includegraphics[scale=0.5]{Figures/SMeConvergence.pdf}
     \caption{Linear Stommel-Munk model \eqref{eqn:SMProb}, Test 4 \cite{Cascon}:
-      Observeed errors versus expected rate of convergence.}
+      Observed errors versus expected rate of convergence.}
     \label{fig:SMeErrors}
   \end{center}
 \end{figure}
@@ -485,7 +485,7 @@ corresponding to the exact solutions given in Test 1 and Test 2 of
 \tbf{Test 5:}
 In this test, we take the same exact solution presented in \emph{Test 3}, i.e.
 \begin{equation}
-  \psi(x,y) = \sin^2 \frac{\pi x}{3} \cdot \sin^2 \pi y.
+  \psi(x,y) = \sin^2 \frac{\pi x}{3} \, \sin^2 \pi y.
   \label{eqn:StreamfunctionExact1}
 \end{equation}
 Again, the forcing term $F$ and homogeneous boundary conditions, $\psi = \frac{\partial
@@ -525,7 +525,7 @@ values of the mesh sizes, $h$.
 \begin{figure}
   \begin{center}
     \includegraphics[scale=0.5]{Figures/SQGEsin2Convergence.pdf}
-    \caption{SQGE \eqref{eqn:SQGE_Psi}, Test 5: Observeed errors versus expected
+    \caption{SQGE \eqref{eqn:SQGE_Psi}, Test 5: Observed errors versus expected
       rate of convergence.}
     \label{fig:SQGEsinErrors}
   \end{center}
@@ -594,7 +594,7 @@ values of the mesh sizes, $h$.
 \begin{figure}
   \begin{center}
     \includegraphics[scale=0.5]{Figures/SQGEeConvergence.pdf}
-    \caption{SQGE \eqref{eqn:SQGE_Psi}, Test 6: Observeed errors versus expected
+    \caption{SQGE \eqref{eqn:SQGE_Psi}, Test 6: Observed errors versus expected
       rate of convergence.}
     \label{fig:SQGEeErrors}
   \end{center}
@@ -687,8 +687,8 @@ $\tau_0 = 0.6\, dyne\, cm^{-2}$ \cite{Hellerman} gives the following
 approximation for the characteristic velocity
 \begin{equation*}
 %  \begin{split}
-%    U &= \frac{3.1415 \cdot 0.6 dyne\, cm^{-2}}{1027 \nicefrac{kg}{m^3} \cdot
-%      1000\, m \cdot 1.742 \times 10^{-11}\,m^{-1}\,s^{-1} \cdot 1000\, km} \\
+%    U &= \frac{3.1415 \, 0.6 dyne\, cm^{-2}}{1027 \nicefrac{kg}{m^3} \,
+%      1000\, m \, 1.742 \times 10^{-11}\,m^{-1}\,s^{-1} \, 1000\, km} \\
     U = 1.054\times 10^{-2} \nicefrac{m}{s}.
 %  \end{split}
 \end{equation*}
@@ -729,7 +729,7 @@ mesh can be seen in \autoref{fig:MedMesh}.}
   \hline
   $h$ & $DoFs$ & $e_0$ & $L_2$ order & $e_1$ & $H^1$ order & $e_2$ & $H^2$ order \\[0.2em]
   \hline
-$\nicefrac{1}{20}$ & $1074$ & $1.82\times 10^{-6}$ & $NaN$ & $1.76\times 10^{-4}$ & $NaN$ & $4.81\times 10^{-2}$ & $NaN$ \\
+$\nicefrac{1}{20}$ & $1074$ & $1.82\times 10^{-6}$ & $-$ & $1.76\times 10^{-4}$ & $-$ & $4.81\times 10^{-2}$ & $-$ \\
 $\nicefrac{1}{40}$ & $3587$ & $7.27\times 10^{-7}$ & $1.32$ & $6.45\times 10^{-5}$ & $1.45$ & $2.72\times 10^{-2}$ & $0.823$ \\
 $\nicefrac{1}{80}$ & $13338$ & $2.54\times 10^{-7}$ & $1.52$ & $2.31\times 10^{-5}$ & $1.48$ & $1.56\times 10^{-2}$ & $0.803$ \\
 $\nicefrac{1}{160}$ & $51740$ & $7.22\times 10^{-8}$ & $1.81$ & $6.76\times 10^{-6}$ & $1.77$ & $7.72\times 10^{-3}$ & $1.01$ \\

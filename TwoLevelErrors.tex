@@ -7,14 +7,14 @@ To this end, we first introduce an improved bound on the trilinear form
 $b(\zeta; \xi, \chi)$ using the discrete Sobolev inequality
 \cite{Ciarlet,Fairag98}:
 \begin{equation*}
-  \|\nabla \varphi^h\|_{L^{\infty}} \le c \sqrt{|\ln(h)|}\cdot |\varphi^h|_2.
+  \|\nabla \varphi^h\|_{L^{\infty}} \le c \sqrt{|\ln(h)|}\, |\varphi^h|_2.
 \end{equation*}
 The following lemma follows from the above inequality and \eqref{eqn:BH2Bounds}:
 \begin{lemma} \label{lma:bImproved}
   For any $\chi^h\in X^h$, the following inequalities hold:
   \begin{align*}
-    |b(\psi;\chi^h,\xi)| &\le C\sqrt{|\ln(h)|} \cdot |\psi|_2 |\xi|_1 |\chi^h|_2, \\
-    |b(\psi;\xi,\chi^h)| &\le C\sqrt{|\ln(h)|} \cdot |\psi|_2 |\xi|_1 |\chi^h|_2.
+    |b(\psi;\chi^h,\xi)| &\le C\sqrt{|\ln(h)|} \, |\psi|_2 |\xi|_1 |\chi^h|_2, \\
+    |b(\psi;\xi,\chi^h)| &\le C\sqrt{|\ln(h)|} \, |\psi|_2 |\xi|_1 |\chi^h|_2.
   \end{align*}
 \end{lemma}
 The following lemma will prove useful for proving the error bounds for
@@ -107,7 +107,7 @@ theorem in \cite{Fairag98}.
   \eqref{eqn:Fine}. Then $\psi^h$ satisfies
   \begin{equation}
     |\psi-\psi^h|_2 \le C_1 \inf_{\lambda^h\in X^h} |\psi-\lambda^h|_2 + C_2
-      \sqrt{|\ln h|}\cdot |\psi - \psi^H|_1,
+      \sqrt{|\ln h|}\, |\psi - \psi^H|_1,
     \label{eqn:Error}
   \end{equation}
   where $C_1 = 2 + Re\,Ro^{-1} + Re^2 Ro^{-1} \Gamma_1 \|F\|_{-2}$ and $C_2= 2
@@ -208,7 +208,7 @@ theorem in \cite{Fairag98}.
   Thus, we have the following estimate for the error bounds:
   \begin{equation*}
     |\psi-\psi^h|_2 \le C_1 \inf_{\lambda^h\in X^h} |\psi-\lambda^h|_2 + C_2
-      \sqrt{|\ln h|}\cdot |\psi - \psi^H|_1
+      \sqrt{|\ln h|}\, |\psi - \psi^H|_1
   \end{equation*}
   where $C_1 = 2 + Re\,Ro^{-1}\, \Gamma_2 + Re^2 Ro^{-1} \Gamma_1 \|F\|_{-2}$
   and $C_2= 2 Re^2 Ro^{-1} \Gamma_1 C\,\|F\|_{-2}$.

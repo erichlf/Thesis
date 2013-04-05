@@ -31,9 +31,9 @@ form
 \begin{align*}
   -\frac{\partial}{\partial t} \int_{\Omega}\! \Delta \psi \, \chi \, d\mathbf{x}
     &+ Re^{-1} \int_{\Omega}\! \Delta^2 \psi \, d\mathbf{x}
-    - \int_{\Omega}\! \left(\frac{\partial\left[\Delta\psi \right]}{\partial x}\cdot \frac{\partial
+    - \int_{\Omega}\! \left(\frac{\partial\left[\Delta\psi \right]}{\partial x}\, \frac{\partial
       \psi}{\partial y} -
-    \frac{\partial\left[ \Delta\psi \right]}{\partial y}\cdot
+    \frac{\partial\left[ \Delta\psi \right]}{\partial y}\,
     \frac{\partial \psi}{\partial x}\right)\, \chi\, d\mathbf{x} \\
     &- Ro^{-1} \int_{\Omega}\! \frac{\partial \psi}{\partial x}\, \chi \, d\mathbf{x}
     = Ro^{-1} \int_{\Omega}\! F\, \chi \, d\mathbf{x},
@@ -54,13 +54,13 @@ summand individually (from left to right) and so
     -\frac{\partial}{\partial t} \int_{\Omega}\! \nabla \left( \nabla \psi \, \chi \right) -
     \nabla \psi \cdot \nabla \chi \, d\mathbf{x} \\
   &= -\frac{\partial}{\partial t} \cancelto{0}{\int_{\partial \Omega}\! \nabla \psi \, \chi
-    \cdot \mathbf{n} \, dS} + \frac{\partial}{\partial t} \int_{\Omega}\! \nabla \psi \nabla \chi
-    \, d\mathbf{x}.
+    \cdot \mathbf{n} \, dS} + \frac{\partial}{\partial t} \int_{\Omega}\! \nabla
+    \psi\, \nabla \chi \, d\mathbf{x}.
 \end{align*}
 The next summand gives
 \begin{align*}
   Re^{-1}\int_{\Omega}\! \Delta^2 \psi\, \chi \, d\mathbf{x} &= Re^{-1}\int_{\Omega}\! \nabla\left[
-    \nabla^3 \psi \, \chi \right] + \nabla^3 \psi \nabla \chi \, d\mathbf{x} \\
+    \nabla^3 \psi \, \chi \right] + \nabla^3 \psi\, \nabla \chi \, d\mathbf{x} \\
   &= Re^{-1}\cancelto{0}{\int_{\partial\Omega}\, \nabla^3 \psi\, \chi\cdot \mathbf{n}
     \, dS} - Re^{-1}\int_{\Omega}\! \nabla\left[ \Delta\psi \nabla \chi \right] - \Delta
     \psi \Delta \chi \, d\mathbf{x} \\
@@ -74,12 +74,12 @@ The third and final summand that needs to be evaluated gives
     \nabla\times\psi \, \chi \, d\mathbf{x} &= -\int_{\Omega}\!
     \nabla\left[\Delta\psi\right]\cdot \nabla\times\psi \, \chi\, d\mathbf{x}\\
   &= -\int_{\Omega}\! \nabla\left[ \Delta\psi \cdot \nabla\times\psi\, \chi
-    \right] -\Delta\psi\cdot \cancelto{0}{\nabla\left[ \nabla\times\psi \chi
+    \right] -\Delta\psi\, \cancelto{0}{\nabla\left[ \nabla\times\psi \chi
     \right]} \\
-      &\qquad - \Delta\psi\cdot \nabla\times\psi \cdot \nabla\chi \, d\mathbf{x} \\
-  &= -\cancelto{0}{\int_{\partial\Omega}\, \Delta\psi \cdot \nabla\times\psi\, \chi
+      &\qquad - \Delta\psi\, \nabla\times\psi \cdot \nabla\chi \, d\mathbf{x} \\
+  &= -\cancelto{0}{\int_{\partial\Omega}\, \Delta\psi \, \nabla\times\psi\, \chi
     \cdot \mathbf{n} \, dS} \\
-    &\qquad + \int_{\Omega}\! \Delta \psi \cdot \nabla\times \psi \cdot
+    &\qquad + \int_{\Omega}\! \Delta \psi \, \nabla\times \psi \cdot
       \nabla \chi \, d\mathbf{x} \\
   &= \int_{\Omega}\! \Delta\psi\left( \psi_y\chi_x - \psi_x\chi_y \right)\, d\mathbf{x}.
 \end{align*}

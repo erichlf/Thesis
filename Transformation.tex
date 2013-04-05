@@ -142,15 +142,15 @@ triangle $\hat{K}$ to the gradient of $\varphi$ on the triangle $K$
     \dfrac{\partial \varphi\circ F}{\partial \hat{y}}
   \end{bmatrix} \\
   &=\begin{bmatrix}
-    \dfrac{\partial \varphi\circ F}{\partial x} \cdot \dfrac{\partial x}{\partial \hat{x}} +
-      \dfrac{\partial \varphi\circ F}{\partial y} \cdot \dfrac{\partial y}{\partial \hat{x}} \\[1em]
-    \dfrac{\partial \varphi\circ F}{\partial x} \cdot \dfrac{\partial x}{\partial \hat{y}} +
-      \dfrac{\partial \varphi\circ F}{\partial y} \cdot \dfrac{\partial y}{\partial \hat{y}}
+    \dfrac{\partial \varphi\circ F}{\partial x} \, \dfrac{\partial x}{\partial \hat{x}} +
+      \dfrac{\partial \varphi\circ F}{\partial y} \, \dfrac{\partial y}{\partial \hat{x}} \\[1em]
+    \dfrac{\partial \varphi\circ F}{\partial x} \, \dfrac{\partial x}{\partial \hat{y}} +
+      \dfrac{\partial \varphi\circ F}{\partial y} \, \dfrac{\partial y}{\partial \hat{y}}
   \end{bmatrix} \\
   &= \begin{bmatrix}
     \dfrac{\partial x}{\partial \hat{x}} & \dfrac{\partial y}{\partial \hat{x}} \\[1em]
     \dfrac{\partial x}{\partial \hat{y}} & \dfrac{\partial y}{\partial \hat{y}}
-  \end{bmatrix}\cdot \begin{bmatrix}
+  \end{bmatrix}\, \begin{bmatrix}
     \dfrac{\partial \varphi\circ F}{\partial x} \\[1em] \dfrac{\partial \varphi\circ F}{\partial y}
   \end{bmatrix}
 \end{align*}
@@ -173,53 +173,53 @@ to the Hessian of $\varphi$ on the triangle $K$
   \end{bmatrix} \\
   &= \begin{bmatrix}
     \dfrac{\partial}{\partial \hat{x}}\left( \dfrac{\partial \varphi\circ
-      F}{\partial x}\cdot \dfrac{\partial x}{\partial \hat{x}} + \dfrac{\partial
-      \varphi\circ F}{\partial y}\cdot \dfrac{\partial y}{\partial
+      F}{\partial x}\, \dfrac{\partial x}{\partial \hat{x}} + \dfrac{\partial
+      \varphi\circ F}{\partial y}\, \dfrac{\partial y}{\partial
       \hat{x}} \right) \\[1em]
     \dfrac{\partial}{\partial \hat{y}}\left( \dfrac{\partial \varphi\circ
-      F}{\partial x}\cdot \dfrac{\partial x}{\partial \hat{x}} + \dfrac{\partial
-      \varphi\circ F}{\partial y}\cdot \dfrac{\partial y}{\partial
+      F}{\partial x}\, \dfrac{\partial x}{\partial \hat{x}} + \dfrac{\partial
+      \varphi\circ F}{\partial y}\, \dfrac{\partial y}{\partial
       \hat{x}} \right) \\[1em]
     \dfrac{\partial}{\partial \hat{y}}\left( \dfrac{\partial \varphi\circ
-      F}{\partial x}\cdot \dfrac{\partial x}{\partial \hat{y}} + \dfrac{\partial
-      \varphi\circ F}{\partial y}\cdot \dfrac{\partial y}{\partial
+      F}{\partial x}\, \dfrac{\partial x}{\partial \hat{y}} + \dfrac{\partial
+      \varphi\circ F}{\partial y}\, \dfrac{\partial y}{\partial
       \hat{y}} \right)
   \end{bmatrix} \\
   &= \begin{bmatrix}
-    \dfrac{\partial^2 \varphi\circ F}{\partial x^2}\cdot \left(\dfrac{\partial
+    \dfrac{\partial^2 \varphi\circ F}{\partial x^2}\, \left(\dfrac{\partial
       x}{\partial \hat{x}}\right)^2 + 2 \dfrac{\partial^2 \varphi\circ F}{\partial x
-      \partial y} \cdot \dfrac{\partial x}{\partial \hat{x}} \cdot
+      \partial y} \, \dfrac{\partial x}{\partial \hat{x}} \,
       \dfrac{\partial y}{\partial \hat{x}} + \dfrac{\partial \varphi\circ
-      F}{\partial y^2}\cdot \left(\dfrac{\partial y}{\partial \hat{x}}\right)^2 \\[1em]
-    \dfrac{\partial^2 \varphi\circ F}{\partial x^2}\cdot \dfrac{\partial
-      x}{\partial \hat{x}}\cdot \dfrac{\partial x}{\partial \hat{y}} + \left(
-      \dfrac{\partial x}{\partial \hat{x}}\cdot \dfrac{\partial y}{\partial
-      \hat{y}} + \dfrac{\partial x}{\partial \hat{y}}\cdot
+      F}{\partial y^2}\, \left(\dfrac{\partial y}{\partial \hat{x}}\right)^2 \\[1em]
+    \dfrac{\partial^2 \varphi\circ F}{\partial x^2}\, \dfrac{\partial
+      x}{\partial \hat{x}}\, \dfrac{\partial x}{\partial \hat{y}} + \left(
+      \dfrac{\partial x}{\partial \hat{x}}\, \dfrac{\partial y}{\partial
+      \hat{y}} + \dfrac{\partial x}{\partial \hat{y}}\,
       \dfrac{\partial y}{\partial \hat{x}} \right) \dfrac{\partial^2 \varphi\circ F}{\partial x
-      \partial y} + \dfrac{\partial \varphi\circ F}{\partial y^2}\cdot
-      \dfrac{\partial y}{\partial \hat{x}} \cdot \dfrac{\partial y}{\partial
+      \partial y} + \dfrac{\partial \varphi\circ F}{\partial y^2}\,
+      \dfrac{\partial y}{\partial \hat{x}} \, \dfrac{\partial y}{\partial
       \hat{y}} \\[1em]
-    \dfrac{\partial^2 \varphi\circ F}{\partial x^2}\cdot \left(\dfrac{\partial
+    \dfrac{\partial^2 \varphi\circ F}{\partial x^2}\, \left(\dfrac{\partial
       x}{\partial \hat{y}}\right)^2 + 2 \dfrac{\partial^2 \varphi\circ F}{\partial x
-      \partial \hat{y}} \cdot \dfrac{\partial x}{\partial \hat{y}} \cdot
+      \partial \hat{y}} \, \dfrac{\partial x}{\partial \hat{y}} \,
       \dfrac{\partial y}{\partial \hat{y}} + \dfrac{\partial \varphi\circ
-      F}{\partial y^2}\cdot \left(\dfrac{\partial y}{\partial \hat{y}}\right)^2
+      F}{\partial y^2}\, \left(\dfrac{\partial y}{\partial \hat{y}}\right)^2
   \end{bmatrix} \\
 \end{align*}
 \begin{align*}
   &= \begin{bmatrix}
     \left(\dfrac{\partial x}{\partial \hat{x}}\right)^2
-      & 2 \dfrac{\partial x}{\partial \hat{x}}\cdot \dfrac{\partial y}{\partial \hat{x}}
+      & 2 \dfrac{\partial x}{\partial \hat{x}}\, \dfrac{\partial y}{\partial \hat{x}}
       & \left(\dfrac{\partial y}{\partial \hat{x}}\right)^2 \\[1em]
-    \dfrac{\partial x}{\partial \hat{x}}\cdot \dfrac{\partial x}{\partial \hat{y}}
-      & \left(\dfrac{\partial x}{\partial \hat{x}}\cdot \dfrac{\partial y}{\partial
-      \hat{y}} + \dfrac{\partial x}{\partial \hat{y}}\cdot
+    \dfrac{\partial x}{\partial \hat{x}}\, \dfrac{\partial x}{\partial \hat{y}}
+      & \left(\dfrac{\partial x}{\partial \hat{x}}\, \dfrac{\partial y}{\partial
+      \hat{y}} + \dfrac{\partial x}{\partial \hat{y}}\,
       \dfrac{\partial y}{\partial \hat{x}} \right)
-      & \dfrac{\partial y}{\partial \hat{x}} \cdot \dfrac{\partial y}{\partial \hat{y}} \\[1em]
+      & \dfrac{\partial y}{\partial \hat{x}} \, \dfrac{\partial y}{\partial \hat{y}} \\[1em]
     \left(\dfrac{\partial x}{\partial \hat{y}}\right)^2
-      & 2 \dfrac{\partial x}{\partial \hat{y}}\cdot \dfrac{\partial y}{\partial \hat{y}}
+      & 2 \dfrac{\partial x}{\partial \hat{y}}\, \dfrac{\partial y}{\partial \hat{y}}
       & \left(\dfrac{\partial y}{\partial \hat{y}}\right)^2 \\[1em]
-  \end{bmatrix}\cdot \begin{bmatrix}
+  \end{bmatrix}\, \begin{bmatrix}
     \dfrac{\partial^2 \varphi\circ F}{\partial x^2} \\[1em]
     \dfrac{\partial^2 \varphi\circ F}{\partial x \partial y} \\[1em]
     \dfrac{\partial^2 \varphi\circ F}{\partial y^2}

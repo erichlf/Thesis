@@ -118,12 +118,12 @@ the proof for Theorem 22 in \cite{Layton08}. \\
       \|\nabla (\psi &- \psi^h) \|^2 + Re^{-1}
         \int_{0}^{T}\! \|\Delta (\psi - \psi^h)\|^2 \, dt
         \le C_1(T,Re,\Gamma_3)\,\|\nabla(\psi_0 - \psi^h(0))\|^2 \\
-      & + \inf_{\omega^h(t) \in X^h} \biggl\{
-        C_2(T,Re,\Gamma_3)\,\int_0^T\! \|\nabla(\psi - \omega^h)_t\|^2_{-1}
-        + C_3(Re,Ro,\Gamma_2)\, \|\Delta(\psi - \omega^h)\|^2\, dt \\
+      & + \inf_{\lambda^h(t) \in X^h} \biggl\{
+        C_2(T,Re,\Gamma_3)\,\int_0^T\! \|\nabla(\psi - \lambda^h)_t\|^2_{-1}
+        + C_3(Re,Ro,\Gamma_2)\, \|\Delta(\psi - \lambda^h)\|^2\, dt \\
       & + C_4(T,Re,Ro,F,\Gamma_1,\Gamma_2,\Gamma_4, \int_{0}^{T}\!\|\Delta
-        \psi\|^4\, dt)\,\|\Delta(\psi - \omega^h)\|_{L^4(0,T;L^2)} \\
-      & + 2\,\|\nabla (\psi - \omega^h)\|^2\biggr\},
+        \psi\|^4\, dt)\,\|\Delta(\psi - \lambda^h)\|_{L^4(0,T;L^2)} \\
+      & + 2\,\|\nabla (\psi - \lambda^h)\|^2\biggr\},
     \end{split}
     \label{eqn:StrongConvergence}
   \end{equation}
@@ -156,8 +156,8 @@ the proof for Theorem 22 in \cite{Layton08}. \\
       + Re^{-1}(\Delta e, \Delta \chi^h) - Ro^{-1} (e_x, \chi^h) = 0\quad
       \forall \chi^h \in X^h \subset X.
   \end{equation*}
-  Take $\omega^h:[0,T] \to X^h$ arbitrary and decomposing the error $e = \eta -
-  \Phi^h$, where $\eta := \psi - \omega^h$ and $\Phi^h := \psi^h - \omega^h$,
+  Take $\lambda^h:[0,T] \to X^h$ arbitrary and decomposing the error $e = \eta -
+  \Phi^h$, where $\eta := \psi - \lambda^h$ and $\Phi^h := \psi^h - \lambda^h$,
   results in
   \begin{align*}
     (\nabla \Phi^h_t, \nabla \chi^h) + Re^{-1}(\Delta \Phi^h, \Delta \chi^h)
@@ -415,13 +415,13 @@ the proof for Theorem 22 in \cite{Layton08}. \\
     \frac{1}{2} \|\nabla \left( \psi - \psi^h\right)(T) \|^2
     &+ \frac{Re^{-1}}{2} \int_0^T\! \|\Delta \left(\psi - \psi^h\right)\|^2\, dt
       \le C^*_8(T,Re,\Gamma_3) \|\nabla \Phi^h(0)\|^2 \\
-    & + C^*_9(T,Re,\Gamma_3) \int_0^T\! \|\nabla \left( \psi - \omega^h\right)_t\|_{-1}^2
+    & + C^*_9(T,Re,\Gamma_3) \int_0^T\! \|\nabla \left( \psi - \lambda^h\right)_t\|_{-1}^2
       + \left(1 + C^*_6(Re,Ro,\Gamma_2)\right)
-      \|\Delta \left(\psi - \omega^h\right)\|^2\, dt \\
+      \|\Delta \left(\psi - \lambda^h\right)\|^2\, dt \\
     & + \left(C^*_7(\Gamma_1)\, C^*_{11}
       + C^*_3(F,\psi_0,Re,Ro,\Gamma_4)\,C^*_{10}(Re,Ro,F)\right)
-      \|\Delta \left(\psi - \omega^h\right)\|^2_{L^4(0,T;L^2)} \\
-    & + \|\nabla \left(\psi - \omega^h\right)(T)\|^2.
+      \|\Delta \left(\psi - \lambda^h\right)\|^2_{L^4(0,T;L^2)} \\
+    & + \|\nabla \left(\psi - \lambda^h\right)(T)\|^2.
   \end{align*}
   By the triangle inequality we have $2\, \|\nabla e(0)\|^2 \ge \|\nabla
   \Phi^h(0)\|^2 + \|\nabla \eta(0)\|^2$, therefore adding
@@ -431,15 +431,15 @@ the proof for Theorem 22 in \cite{Layton08}. \\
     \frac{1}{2} \|\nabla \left( \psi - \psi^h\right)(T) \|^2
     &+ \frac{Re^{-1}}{2} \int_0^T\! \|\Delta \left(\psi - \psi^h\right)\|^2\, dt
       \le 2\,C^*_8(T,Re,\Gamma_3) \|\nabla e(0)\|^2 \\
-    & + C^*_9(T,Re,\Gamma_3) \int_0^T\! \|\nabla \left( \psi - \omega^h\right)_t\|_{-1}^2
+    & + C^*_9(T,Re,\Gamma_3) \int_0^T\! \|\nabla \left( \psi - \lambda^h\right)_t\|_{-1}^2
       + \left(1 + C^*_6(Re,Ro,\Gamma_2)\right)
-      \|\Delta \left(\psi - \omega^h\right)\|^2\, dt \\
+      \|\Delta \left(\psi - \lambda^h\right)\|^2\, dt \\
     & + \left(C^*_7(\Gamma_1)\, C^*_{11}
       + C^*_3(F,\psi_0,Re,Ro,\Gamma_4)\,C^*_{10}(Re,Ro,F)\right)
-      \|\Delta \left(\psi - \omega^h\right)\|^2_{L^4(0,T;L^2)} \\
-    & + \|\nabla \left(\psi - \omega^h\right)(T)\|^2.
+      \|\Delta \left(\psi - \lambda^h\right)\|^2_{L^4(0,T;L^2)} \\
+    & + \|\nabla \left(\psi - \lambda^h\right)(T)\|^2.
   \end{align*}
-  Finally, taking $\inf_{\omega^h \in X^h}$ of both sides and letting
+  Finally, taking $\inf_{\lambda^h \in X^h}$ of both sides and letting
   \begin{align*}
     C_1(T,Re,\Gamma_3) &= 4\, C^*_8(T,Re,\Gamma_3) \\
     C_2(T,Re,\Gamma_3) &= 2\, C^*_9(T,Re,\Gamma_3) \\
@@ -454,28 +454,100 @@ the proof for Theorem 22 in \cite{Layton08}. \\
     \|\nabla \left( \psi - \psi^h\right)(T) \|^2
       &+ Re^{-1} \int_0^T\! \|\Delta \left(\psi - \psi^h\right)\|^2\, dt
       \le C_1(T,Re,\Gamma_3)\|\nabla\left[\psi - \psi^h\right](0)\|^2 \\
-    & + \inf_{\omega^h \in X^h} \biggl\{C_2(T,Re,\Gamma_3)
-      \int_0^T\! \|\nabla \left( \psi - \omega^h\right)_t\|_{-1}^2
-      + C_3(Re,Ro,\Gamma_2)\,\|\Delta \left(\psi - \omega^h\right)\|^2\, dt \\
+    & + \inf_{\lambda^h \in X^h} \biggl\{C_2(T,Re,\Gamma_3)
+      \int_0^T\! \|\nabla \left( \psi - \lambda^h\right)_t\|_{-1}^2
+      + C_3(Re,Ro,\Gamma_2)\,\|\Delta \left(\psi - \lambda^h\right)\|^2\, dt \\
     & + C_4(T,F,\psi_0,Re,Ro,\Gamma_1,\Gamma_3,\Gamma_4,\int_{0}^{T}\!\|\Delta
-      \psi\|^4\, dt)\, \|\Delta \left(\psi - \omega^h\right)\|^2_{L^4(0,T;L^2)} \\
-    & + 2\, \|\nabla \left(\psi - \omega^h\right)(T)\|^2\biggr\},
+      \psi\|^4\, dt)\, \|\Delta \left(\psi - \lambda^h\right)\|^2_{L^4(0,T;L^2)} \\
+    & + 2\, \|\nabla \left(\psi - \lambda^h\right)(T)\|^2\biggr\},
   \end{align*}
   which is the desired result.
 \end{proof}
 
+{\color{red} {\large Are these the correct rates? Are we in the correct space? Can we
+get another power of $h$ here?} \\
+The following lemma will allow for the determination of FE error bounds in the
+term involving $\frac{\partial}{\partial t}$.
 \begin{lemma} \label{lma:Interpolation}
-
+  Suppose the nodes $N_j$ of the finite element mesh do not move. Let $X^h
+  \subset C^1 \bigcap X$, consisting of Argyris elements. Then
+  \begin{align}
+    \frac{\partial}{\partial t}\left( I^h \psi \right) &=
+      I^h \left( \frac{\partial \psi}{\partial t}\right), \label{eqn:dInterp} \\
+    \left\|\frac{\partial \left[\nabla \psi\right]}{\partial t}
+      - \frac{\partial}{\partial t} \nabla \left(I^h \psi\right)\right\|
+      &\le C\, h^4\, \left|\frac{\partial \psi}{\partial t}\right|_5,
+      \text{ and } \label{eqn:dH1} \\
+    \left\|\frac{\partial \left[\nabla \psi\right]}{\partial t}
+      - \frac{\partial}{\partial t} \nabla \left(I^h \psi\right)\right\|_{-1}
+      &\le C\, h^4\, \left|\frac{\partial \psi}{\partial t}\right|_5. \label{eqn:dH-1}
+  \end{align}
 \end{lemma}
+\begin{proof}
+  Equation \eqref{eqn:dInterp} follows from the explicit formulas for the linear
+  interpolant, equation \eqref{eqn:dH1} follows from a combination of
+  \eqref{eqn:dInterp} and \eqref{eqn:ArgyrisBound} with $p=2,q=2,m=1,$ and
+  $k=4$. Finally, equation \eqref{eqn:dH-1} follows from the fact that
+  $\|\cdot\|_{-1} \le \|\cdot\|$.
+\end{proof}
+
+\begin{lemma} \label{lma:IntegralErrors}
+  Let $X^h$ denote the finite element space associated with the Argyris element.
+  Suppose the interpolation estimates from \autoref{lma:Interpolation} hold and
+  that $\psi, \psi_t \in C^1(\Omega \times [0,T])$. Then,
+  \begin{equation}
+    \int_{0}^{T}\! \|\nabla \left(\psi - \lambda^h\right)_t\|_{-1}^2 + \|\Delta
+    \left(\psi - \lambda^h\right) \|^2\, dt \le C\, h^8
+    \int_{0}^{T}\! \,|\psi_t|_5^2 + |\psi|_6^2\, dt
+    \label{eqn:IntegralErrors}
+  \end{equation}
+  and
+  \begin{equation}
+    \|\Delta\left( \psi- I^h \psi\right)\|_{L^4(0,T; L^2(\Omega)}^2 \le C h^8
+      |\psi|_{L^4(0,T;H^6(\Omega)}). \label{eqn:L4Interpolation}
+  \end{equation}
+\end{lemma}
+\begin{proof}
+  At each time step we see from inequality (6.1.5) in \cite{Ciarlet} that
+  $\|\Delta\left(\psi - \psi\right)\| \le C\, h^4\, |\psi|_6$. Squaring and
+  integrating this and using the interpolation error bounds from
+  \autoref{lma:Interpolation} gives the first estimate. The second estimate
+  follows analogously, i.e.
+  \begin{align*}
+    \|\Delta \left(\psi - I^h \psi\right)\|_{L^4(0,T;L^2(\Omega))}
+    &= \left(\int_{0}^{T}\! \|\Delta\left(\psi - I^h \psi\right)\|^4\, dt
+      \right)^{\frac{1}{2}} \\
+    &\le \left(\int_{0}^{T}\! C\, h^4 |\psi|_6\, dt\right)^{\frac{1}{2}},
+  \end{align*}
+  which leads to the desired estimate $\|\Delta\left(\psi -
+  I^h\right)\|_{L^4(0,T;L^2(\Omega))} \le C\, h^8
+  \|\psi\|_{L^4(0,T;H^6(\Omega))}$.
+\end{proof}
 
 \begin{thm} \label{thm:SemiInterp}
   Let $X^h$ be the FE space associated with the Argyris element and let $I^h$
-  denote the interpolant in the space of $C^1$ piecewise polynomials of order
-  five. Suppose the interpolation estimates \autoref{lma:Interpolation}
-  in $H^{-1}(\Omega)$ hold and that $\psi, \psi_t \in C^1(\Omega\times [0,T])$.
-  Suppose also that the assumption of \autoref{thm:StrongConvergence} hold.
-  Then,
+  denote the interpolant for the Argyris element. Suppose the interpolation
+  estimates \autoref{lma:Interpolation} in $H^{-1}(\Omega)$ hold and that $\psi,
+  \psi_t \in C^1(\Omega\times [0,T])$.  Suppose also that the assumptions of
+  \autoref{thm:StrongConvergence} hold.  Then,
+  \begin{equation}
+    \begin{split}
+      \|\nabla \left( \psi - \psi^h\right)(T) \|^2
+        &+ Re^{-1} \int_0^T\! \|\Delta \left(\psi - \psi^h\right)\|^2\, dt
+        \le h^8\, C\, \biggl\{
+        C_1(T,Re,\Gamma_3) {\color{blue} |\psi|_5^2} \\
+      & + C_2(T,Re,\Gamma_3) \left( \|\psi_t\|_{L^2(0,T;H^5(\Omega))}
+        + C_3(Re,Ro,\Gamma_2)\,\|\psi\|_{L^2(0,T;H^6(\Omega))}\right) \\
+      & + C_4(T,F,\psi_0,Re,Ro,\Gamma_1,\Gamma_3,\Gamma_4,\int_{0}^{T}\!\|
+        \psi\|^4\, dt)\, \|\psi\|_{L^4(0,T;H^6(\Omega))} \\
+      & + 2\,{\color{blue} |\psi\|^2_5}\biggr\},
+    \end{split}
+    \label{eqn:SemiInterp}
+  \end{equation}
 \end{thm}
 \begin{proof}
-
+  {\color{blue} \Large Is this correct? Or should something else be done with
+them?}\\
+  The proof is a combination of the previous two lemmas.
 \end{proof}
+}

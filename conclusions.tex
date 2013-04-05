@@ -1,11 +1,37 @@
-This paper introduced a conforming finite element discretization of the streamfunction formulation of the stationary one-layer quasi-geostrophic equations based on the Argyris element. 
-For this finite element discretization, we proved optimal error estimates in the $H^2$, $H^1$ and $L^2$ norms.
-A careful numerical investigation of the finite element discretization was also performed.
-To this end, the quasi-geostrophic equations as well as the linear Stommel and Stommel-Munk models (two standard simplified settings used in the geophysical fluid dynamics literature \cite{Vallis06,Myers,Cascon}) were used in the numerical tests.
-Based on the numerical results from the six tests considered, we drew the following two conclusions: (i) our numerical results are close to those used in the published literature \cite{Vallis06,Myers,Cascon}; and (ii) the convergence rates of the numerical approximations do indeed follow the theoretical error estimates in Theorems \ref{thm:EnergyNorm} and \ref{thm:Errors}.
-The convergence rates followed exactly the theoretical ones in the test problems where the exact solution did not display a thin boundary layer, but where somewhat lower than expected in those tests that displayed a thin western boundary layer, as expected.
+In this thesis we studied the finite element discretization of the pure
+streamfunction form of the quasi-geostrophic equations. The pure streamfunction
+form of the QGE requires $C^1$ FEs to be conforming, thus the implementation of
+the of the $C^1$ FE was discussed in length. In particular, the implementation
+of the Argyris element was discussed in \autoref{sec:Argyris}, including an in
+depth discussion of the novel transformation developed by Dominguez et. el.
+\cite{Dominguez08} in \autoref{sse:Trans}. Additionally, we proposed a two-level
+FE discretization for the SQGE in \autoref{sec:TwoLevel} based on the conforming
+FE discretization used for the SQGE in \autoref{sec:SQGEFEM}. The two-level
+algorithm consists of two steps. In the first step, the nonlinear system is
+solved on a coarse mesh. In the second step, the nonlinear system is linearized
+around the approximation found in the first step, and the resulting linear
+system is solved on the fine mesh.  This method significantly improved
+simulation times for the SQGE over that of the one-level method.
 
-We plan to extend this study in several directions, including the time-dependent quasi-geostrophic equations and the two-layer quasi-geostrophic equations.
+For the conforming FE discretization of SQGE, in \autoref{sec:SQGEErrors} we
+proved, for the first time, optimal error estimates in the $H^2,H^1$, and $L^2$
+norms. The error analysis only relied on the FE discretization being conforming
+and was not specific to any particular element. Specifically, for the Argyris
+element we showed that the order of convergence in the $H^2,H^1,L^2$ norms were
+$O(h^4),O(h^5),$ and $O(h^6)$, respectively.
 
-\textcolor{blue}{Traian: Cite more Fairag, Max and Janet!!!, Layton, Temam, more Dominguez, and the 2L paper.}
+Rigorous error estimates for the two-level FE discretization were derived. These
+estimates are optimal in the following sense: for an appropriately chosen
+scaling between the coarse mesh, $H$, and the fine mesh, $h$, the error in the
+two-level method is of the same order as the error in the standard one-level
+method (i.e. solving the nonlinear system directly on the fine mesh).
 
+Numerical experiments for the two-level algorithm, with the Argyris element,
+were also carried out. The numerical results verified, numerically, the
+theoretical error estimates, both with respect to the coarse mesh size, $H$, and
+the fine mesh size, $h$.  Furthermore, the numerical results showed that, for an
+appropriate scaling between the coarse and fine meshes, the two-level method
+significantly decreases the computational time of the standard one-level method.
+
+We plan to extend this study in several directions, including the time-dependent
+quasi-geostrophic equations and the two-layer quasi-geostrophic equations.
