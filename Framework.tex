@@ -1,52 +1,54 @@
-In this chapter we build the mathematical framework needed to apply the FEM. To,
-this end we introduce the functional spaces required for the strong formulation
-of the QGE, the weak formulation of SQGE, and we also discuss the well-posedness
-of SQGE. All of which is a prerequisite to being able to both apply the FEM, as
-is done in \autoref{ch:FEM}, and then for being able to prove error estimates,
-as is done in \autoref{ch:Errors}.
+In this chapter we build the mathematical framework needed to apply the FEM. To
+this end, we introduce the functional spaces required for the formulation of the
+QGE, SQGE, and we also discuss the well-posedness of SQGE. All of which are
+prerequisites for both apply the FE discretization, as is done in
+\autoref{ch:FEM}, and the error estimates proven in \autoref{ch:Errors}.
 
 For completeness we will first define an inner product, $L^p$ spaces, and
 Sobolev space along with their associated norms.
 
-{\color{red} {\LARGE Check references and definitions.}
 \begin{definition} \label{def:InnerProduct}
-  \textbf{Inner Product} \cite{}: \\
-  Let $f$ and $g$ be measurable functions such that $f,g : \Omega \rightarrow \R$.
-  Then the \textbf{inner product} is defined as
+  \textbf{Inner Product} \cite{Kreyszig1989}: \\
+  Let $f$ and $g$ be integrable functions such that $f,g : \Omega \rightarrow \R$.
+  Then their \textbf{inner product} is defined as
   \begin{equation}
-    (f,g) := \int_{\Omega}\! f \, g\, d\mu
+    (f,g) := \int_{\Omega}\! f \, g\, d\mathbf{x}
     \label{eqn:InnerProduct}
   \end{equation}
 \end{definition}
 
 \begin{definition} \label{def:LpNorm}
-  \textbf{$L^p$-norm} \cite{}: \\
-  Let $1\le p < \infty$ and $f \in L^p(\Omega)$. Then the norm associated with
-  this space is given by
+  \textbf{$L^p$-norm} \cite{Kreyszig1989}: \\
+  Let $1\le p < \infty$ and $f \in L^p(\Omega)$ and $X$ be a norm-space, over
+  $\Omega$, with the associated norm
   \begin{equation}
-    \|f\|_{L^p(\Omega)} := \left(\int_{\Omega}\! |f|^p\, d\mu\right)^{\frac{1}{p}}.
-    \label{eqn:LPNorm}
+    \|f\| := \left(\int_{\Omega}\! |f|^p\, d\mathbf{x}\right)^{\frac{1}{p}}.
+    \label{eqn:LpNorm}
   \end{equation}
+  Then the completion of the norm-space $X$, denoted $L^p(\Omega)$ is called an
+  $L^p$-space and we denote the norm associated with $L^p(\Omega)$ as
+  $\|\cdot\|_{L^p(\Omega)}$ and is defined as in \eqref{eqn:LpNorm}.
 \end{definition}
-As a short hand we will denote the typical $L^2$-norm by $\|\cdot\|$.
+We will denote the typical $L^2$-norm by $\|\cdot\|$.
 
 \begin{definition} \label{SobolevSpace}
-  \textbf{Sobolev space} \cite{}: \\
-  Let $f \in L^p(\Omega)$ and $\alpha$ a multi-index with $|\alpha| \le s$. Then
-  the Sobolev space $W^{s,p}(\Omega)$ is defined as
+  \textbf{Sobolev space} \cite{Evans1998}: \\
+  Let $1\le p < \infty$, $f \in L^p(\Omega)$ a real valued funtion, $s$
+  non-negative, and $\alpha$ a multi-index with $|\alpha| \le s$. Then the
+  Sobolev space $W^{s,p}(\Omega)$ is defined as
   \begin{equation}
     W^{s,p}(\Omega) := \left\{ f\in L^p(\Omega) : D^{\alpha} f \in
-      L^p(\Omega)\quad \forall |\alpha| \le s\right\}.
+      L^p(\Omega)\quad \forall |\alpha| \le s\right\},
     \label{eqn:Sobolev}
   \end{equation}
-  where $D^{\alpha}f$ is the derivative of $f$ in the weak sense.\\
+  where $D^{\alpha}f$ is the order $\alpha$ derivative of $f$ in the weak sense.
   The associated norm is given by
   \begin{equation}
-    \|f\|_{W^{s,p}(\Omega)} := \sum_{|\alpha|\le s}
-      \|D^{\alpha}f\|_{L^p(\Omega)}.
+    \|f\|_{W^{s,p}(\Omega)}^p := \sum_{|\alpha|\le s}
+      \|D^{\alpha}f\|_{L^p(\Omega)}^p.
     \label{eqn:HkpNorm}
   \end{equation}
 \end{definition}
 In what follows we denote $W^{s,2}(\Omega)$ as $H^s(\Omega)$ and
 $\|f\|_{H^s(\Omega)}$ as $\|f\|_s$, while the semi-norm will be denoted
-as $|f|_s := \|D^s f\|$.}
+as $|f|_s := \|D^s f\|$.

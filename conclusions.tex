@@ -11,27 +11,57 @@ algorithm consists of two steps. In the first step, the nonlinear system is
 solved on a coarse mesh. In the second step, the nonlinear system is linearized
 around the approximation found in the first step, and the resulting linear
 system is solved on the fine mesh.  This method significantly improved
-simulation times for the SQGE over that of the one-level method.
+simulation times for the SQGE over that of the one-level method. Nest, a
+conforming FE semi-discretization was developed for the time-dependent QGE based
+upon the FE discretization developed in \autoref{sec:SQGEFEM}.
 
 For the conforming FE discretization of SQGE, in \autoref{sec:SQGEErrors} we
 proved, for the first time, optimal error estimates in the $H^2,H^1$, and $L^2$
 norms. The error analysis only relied on the FE discretization being conforming
 and was not specific to any particular element. Specifically, for the Argyris
 element we showed that the order of convergence in the $H^2,H^1,L^2$ norms were
-$O(h^4),O(h^5),$ and $O(h^6)$, respectively.
+$O(h^4),O(h^5),$ and $O(h^6)$, respectively. The error analysis in
+\autoref{sec:SQGEErrors} was then used to develop new rigorous error estimates
+for the two-level FE discretization. These estimates are optimal in the
+following sense: for an appropriately chosen scaling between the coarse mesh,
+$H$, and the fine mesh, $h$, the error in the two-level method is of the same
+order as the error in the standard one-level method (i.e. solving the nonlinear
+system directly on the fine mesh). For the semi-discretization of the QGE we
+proved similar optimal error estimates, i.e. the order of convergence for the
+energy norm is of $O(h^4)$.
 
-Rigorous error estimates for the two-level FE discretization were derived. These
-estimates are optimal in the following sense: for an appropriately chosen
-scaling between the coarse mesh, $H$, and the fine mesh, $h$, the error in the
-two-level method is of the same order as the error in the standard one-level
-method (i.e. solving the nonlinear system directly on the fine mesh).
+Numerical experiments for the SQGE (\autoref{sec:SQGETests}), two-level
+algorithm (\autoref{sec:SQGE2LTests}), and QGE (\autoref{sec:QGETests}) with the
+Argyris element, were also carried out. For the SQGE a few benchmark problems
+were used to verify our code. These benchmark problems included the Linear
+Stommel model \cite{Vallis06,Myers}, and the Linear Stommel-Munk model
+\cite{Cascon}. With the agreement of our solutions to that of the literature our
+code was thus verfied. We then verified numerically the theoretical error
+estimates developed in \autoref{sec:SQGETests}. We then performed numerical
+experiments on non-rectangular domains, including a FE discretization of the
+SQGE applied to the Mediterranean. The results (\autoref{sse:MedTest}) appeared
+to be in agreement with observed surface currents and the numerical experiments
+developed by Galan del Sastre \cite{Galan-del-Sastre2004}. The code which was
+verified in \autoref{sec:SQGETests} was then modified to allow for the use of
+the two-level method and numerical experiments were then carried out for the
+two-level method.  These numerical experiments verified numerically the
+theoretical error estimates developed in \autoref{sse:SQGE2LE}, both with
+respect to the coarse mesh size, $H$, and the fine mesh size, $h$.  Furthermore,
+the numerical results showed that, for an appropriate scaling between the coarse
+and fine meshes, the two-level method significantly decreases the computational
+time of the standard one-level method. Next, the same code which was developed
+and verified for the SQGE was then modified to deal with time-dependence. We
+applied a Implicit Euler scheme and verified numerical the theoretical spatial
+rates of convergence developed for the semi-discretization. Additionally, we
+observed expected rates of convergence in time for the Implicit Euler scheme
+($O(h)$).
 
-Numerical experiments for the two-level algorithm, with the Argyris element,
-were also carried out. The numerical results verified, numerically, the
-theoretical error estimates, both with respect to the coarse mesh size, $H$, and
-the fine mesh size, $h$.  Furthermore, the numerical results showed that, for an
-appropriate scaling between the coarse and fine meshes, the two-level method
-significantly decreases the computational time of the standard one-level method.
-
-We plan to extend this study in several directions, including the time-dependent
-quasi-geostrophic equations and the two-layer quasi-geostrophic equations.
+The QGE has many unique challenges for numerical modelling. These challenges
+include, but are not limited to, unstable solutions, resulting from internal
+layers and western boundary layers, and the QGE can be computationally expensive
+for large domains, such as the North Atlantic. To address these issues we plan
+to extend these studies in several directions, including stabilization methods
+such as \emph{Petrov-Galerkin} stabilization, \emph{adaptive mesh refinement},
+model reduction using \emph{Proper Orthogonal Decomposition}, and the
+incorporation of observed windstress data, which will include \emph{parameter
+estimation}.

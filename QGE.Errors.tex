@@ -3,8 +3,8 @@ with the semi-discretization. We will rely heavily on the
 \autoref{sec:SQGEErrors} which contains the finite error analysis for the SQGE.
 
 \begin{prop} \label{prop:Stability}
-  The solution to \eqref{eqn:SemiDiscretization}, $\psi^h$, is stable and for
-  any $t>0$
+  The solution to \eqref{eqn:SemiDiscretization}, $\psi^h$, is stable. For
+  any $t>0$ the following inequality holds:
   \begin{equation}
     \frac{1}{2}\|\nabla \psi^h(t)\|^2 + \frac{Re^{-1}}{2}\int_{0}^{t}\! \|\Delta
       \psi^h(t')\|^2 \, dt' \le \frac{1}{2} \|\nabla \psi^h_0\|^2
@@ -13,45 +13,45 @@ with the semi-discretization. We will rely heavily on the
   \end{equation}
 \end{prop}
 \begin{proof}
-  Take $\chi^h = \psi^h$ in \eqref{eqn:SemiDiscretization} and note
-  $b(\psi^h;\psi^h,\psi^h)
-  = 0$ while since $(\psi^h_x,\psi^h) = -(\psi^h,\psi^h_x)$ then $(\psi^h_x,
-  \psi^h) = 0$. Thus, we have
+  Take $\chi^h = \psi^h$ in \eqref{eqn:SemiDiscretization} and note that
+  $b(\psi^h;\psi^h,\psi^h) = 0$. Since $(\psi^h_x,\psi^h) =
+  -(\psi^h,\psi^h_x)$, we get $(\psi^h_x, \psi^h) = 0$. Thus, we have
   \begin{equation*}
     \frac{1}{2} \frac{d}{dt} \|\nabla \psi^h\|^2 + Re^{-1} \|\Delta \psi^h\|^2 =
       Ro^{-1} (F,\psi^h).
   \end{equation*}
   Using the H\"older, Poincar\'e, and Young inequalities gives
-  \begin{equation*}
+  \begin{equation}
     \frac{1}{2} \frac{d}{dt} \|\nabla \psi^h\|^2 + Re^{-1} \|\Delta \psi^h\|^2 =
       \frac{Ro^{-2} C_p}{2\epsilon} \|F\|_{-1}^2 + \frac{\epsilon}{2}\|\nabla
       \psi^h\|^2.
-  \end{equation*}
-  Now taking $\epsilon = Re^{-1}$ results in
+      \label{eqn:HolderStability}
+  \end{equation}
+  Now taking $\epsilon = Re^{-1}$ in \eqref{eqn:HolderStability} results in
   \begin{equation*}
     \frac{1}{2} \frac{d}{dt} \|\nabla \psi^h\|^2 + \frac{Re^{-1}}{2} \|\Delta
       \psi^h\|^2 = \frac{Re\,Ro^{-2} C_p}{2} \|F\|_{-1}^2.
   \end{equation*}
-  Assuming $\|\nabla \psi^h\| \in L^1(0,T)$ and integrating over $(0,t)$ gives
+  Assuming $\|\Delta \psi^h\| \in L^1(0,T)$ and integrating over $(0,t)$ gives
   the final result.
 \end{proof}
 
 \begin{lemma} \label{lma:BH1Bound}
   There are finite constants $\Gamma_3,\Gamma_4>0$ such that, for all
-  $\psi,\, \varphi,\, \chi \in X$,
+  $\psi,\, \varphi,\, \chi \in X$, the following inequalities hold:
   \begin{align}
     b(\psi;\varphi,\chi) &\le \Gamma_3 \|\Delta \psi\|\, \|\Delta \varphi\|\,
       \left(\|\nabla \chi\|^{\nicefrac{1}{2}}
       \|\Delta \chi\|^{\nicefrac{1}{2}}\right) \label{eqn:BH1BoundChi} \\
     b(\psi;\varphi,\chi) &\le \Gamma_4 \left(\|\nabla \psi\|^{\nicefrac{1}{2}}
       \|\Delta \psi\|^{\nicefrac{1}{2}}\right)\,
-      \|\Delta \varphi\|\, \|\Delta \chi\| \label{eqn:BH1BoundPsi}
+      \|\Delta \varphi\|\, \|\Delta \chi\|. \label{eqn:BH1BoundPsi}
   \end{align}
 \end{lemma}
 \begin{proof}
   We will begin with the proof of \eqref{eqn:BH1BoundChi} and then prove
   \eqref{eqn:BH1BoundPsi} last. For \eqref{eqn:BH1BoundChi} we begin in the same
-  way as we did for equation \eqref{eqn:BH2Bounds} in \autoref{lma:ContinuousForms}.
+  way as we did for estimate \eqref{eqn:BH2Bounds} in \autoref{lma:ContinuousForms}.
   That is, we apply the H\"older inequality, \eqref{eqn:Holder} to $b(\psi;
   \varphi, \chi)$ and set $p=2$, while setting $q=r=4$, giving
   \begin{equation*}
@@ -64,13 +64,15 @@ with the semi-discretization. We will rely heavily on the
       \|\nabla \varphi\|^{\nicefrac{1}{2}} \|\Delta \varphi\|^{\nicefrac{1}{2}}
       \|\nabla \chi\|^{\nicefrac{1}{2}} \|\Delta \chi\|^{\nicefrac{1}{2}}.
   \end{equation*}
-  Next we apply the Poincar\'e inequality, \eqref{eqn:Poincare} to $\|\nabla \chi\|$ resulting in
+  Next using that the semi-norm, $|\cdot|_2$, and the norm, $\|\cdot\|_2$, are
+  equivalent in $H^2_0(\Omega)$ (see (1.2.8) in Ciarlet \cite{Ciarlet}) we have
   \begin{equation*}
     b(\psi;\varphi,\chi) \le \Gamma_3 \|\Delta \psi\|\, \|\Delta \varphi\|\,
       \left(\|\nabla \chi\|^{\nicefrac{1}{2}}
       \|\Delta \chi\|^{\nicefrac{1}{2}}\right),
   \end{equation*}
-  For equation \eqref{eqn:BH1BoundPsi} we apply Lemma 5.6 from \cite{Fairag98},
+  which proves estimate \eqref{eqn:BH1BoundChi}. \\
+  For estimate \eqref{eqn:BH1BoundPsi} we apply Lemma 5.6 from \cite{Fairag98},
   i.e.,
   \begin{equation*}
     b(\psi; \varphi, \chi) = b_0(\varphi; \chi, \psi) - b_0(\chi; \varphi, \psi),
@@ -99,20 +101,22 @@ with the semi-discretization. We will rely heavily on the
       \|\nabla \psi\|^{\nicefrac{1}{2}} \|\Delta \psi\|^{\nicefrac{1}{2}}
       \|\nabla \chi\|^{\nicefrac{1}{2}} \|\Delta \chi\|^{\nicefrac{1}{2}}.
   \end{equation*}
-  Finally, applying the Poincar\'e inequality, \eqref{eqn:Poincare} give the desired result
+  Finally, using that the semi-norm, $|\cdot|_2$, and the norm, $\|\cdot\|_2$,
+  are equivalent in $H^2_0(\Omega)$ gives the desired result
   \begin{equation*}
     b(\psi;\varphi,\chi) \le \Gamma_4 \left(\|\nabla \psi\|^{\nicefrac{1}{2}}
       \|\Delta \psi\|^{\nicefrac{1}{2}}\right)\,
-      \|\Delta \varphi\|\, \|\Delta \chi\|
+      \|\Delta \varphi\|\, \|\Delta \chi\|.
   \end{equation*}
 \end{proof}
 The next theorem proves the convergence of the FE approximation $\psi^h$ to the
 exact solution, $\psi$, to QGE \eqref{eqn:QGE_psi}. The proof is similar to of
 the proof for Theorem 22 in \cite{Layton08}. \\
-\begin{thm} \label{thm:StrongConvergence}
+\begin{thm} \label{thm:SemiConvergence}
   Let $\psi$ be a strong solution to the QGE \eqref{eqn:QGE_psi}. Then there
-  exists a \\ $C(T, F, \psi_0, \Gamma_1, \Gamma_2, Re, Ro,\int_0^T\! |\Delta
-  \psi|^4\, dt)$ such that for all $t\in [0,T]$
+  exists constants \\ $C_1(T,Re,\Gamma_3)$, $C_2(T,Re,\Gamma_3)$,
+  $C_3(Re,Ro,\Gamma_2)$, and $C_4(T, F, \psi_0, \Gamma_1, \Gamma_2, Re,
+  Ro,\|\Delta \psi\|_{L^4(0,T;L^2)})$ such that for all $t\in [0,T]$
   \begin{equation}
     \begin{split}
       \|\nabla (\psi &- \psi^h) \|^2 + Re^{-1}
@@ -121,11 +125,11 @@ the proof for Theorem 22 in \cite{Layton08}. \\
       & + \inf_{\lambda^h(t) \in X^h} \biggl\{
         C_2(T,Re,\Gamma_3)\,\int_0^T\! \|\nabla(\psi - \lambda^h)_t\|^2_{-1}
         + C_3(Re,Ro,\Gamma_2)\, \|\Delta(\psi - \lambda^h)\|^2\, dt \\
-      & + C_4(T,Re,Ro,F,\Gamma_1,\Gamma_2,\Gamma_4, \int_{0}^{T}\!\|\Delta
-        \psi\|^4\, dt)\,\|\Delta(\psi - \lambda^h)\|_{L^4(0,T;L^2)} \\
+      & + C_4(T,Re,Ro,F,\Gamma_1,\Gamma_2,\Gamma_4, \|\Delta
+        \psi\|_{L^4(0,T;L^2)})\,\|\Delta(\psi - \lambda^h)\|_{L^4(0,T;L^2)} \\
       & + 2\,\|\nabla (\psi - \lambda^h)\|^2\biggr\},
     \end{split}
-    \label{eqn:StrongConvergence}
+    \label{eqn:SemiConvergence}
   \end{equation}
   where
   \begin{align}
@@ -135,11 +139,11 @@ the proof for Theorem 22 in \cite{Layton08}. \\
     C_3(Re,Ro,\Gamma_2) &:= 2 + 2\left(Re^{-2} + Ro^{-2}\, \Gamma_2^2\right), \label{eqn:C3} \\
     C_4(T,F,\psi_0,Re,Ro,\Gamma_1,\Gamma_3,\Gamma_4,\int_{0}^{T}\! \|\Delta
     \psi\|^4\, dt) &:= \frac{C_2(T,Re,\Gamma_3)}{2} \\
-      & \biggl(\Gamma_1^2 \int_{0}^{T}\! \|\psi\|^4\, dt + \Gamma_4
+      & \biggl(\Gamma_1^2 \|\Delta \psi\|^4_{L^4(0,T;L^2)} + \Gamma_4
         C^*(F,\psi_0,Re,Ro)\biggr) \label{eqn:C4}
   \end{align}
   and $C^*(F,\psi_0,Re,Ro),\, \Gamma_1,\, \Gamma_2,\, \Gamma_3,\, \Gamma_4$ are
-  a stability bound from \autoref{prop:Stability}, constants from
+  the stability bound from \autoref{prop:Stability}, and the constants from
   \autoref{lma:ContinuousForms} and \autoref{lma:BH1Bound}, respectively.
 \end{thm}
 \begin{proof}
@@ -166,8 +170,8 @@ the proof for Theorem 22 in \cite{Layton08}. \\
     & + \left[ b(\eta;\psi,\chi^h) - b(\Phi^h;\psi,\chi^h)
       + b(\psi^h;\eta,\chi^h) - b(\psi^h;\Phi^h,\chi^h)\right].
   \end{align*}
-  Let $\chi^h = \Phi^h$ then noting $b(\psi^h;\Phi^h,\Phi^h) = 0$ and $(\Phi^h_x,
-  \Phi^h) = -(\Phi^h,\Phi^h_x)$ implies $(\Phi^h_x,\Phi^h) = 0$
+  Let $\chi^h = \Phi^h$; then noting $b(\psi^h;\Phi^h,\Phi^h) = 0$ and $(\Phi^h_x,
+  \Phi^h) = -(\Phi^h,\Phi^h_x)$ implies $(\Phi^h_x,\Phi^h) = 0$, we get
   \begin{align*}
     \frac{1}{2} \frac{d}{dt} \|\nabla \Phi^h\|^2 + Re^{-1}\|\Delta \Phi^h\|^2
        = (\nabla \eta_t, \nabla \Phi^h) &+ Re^{-1}(\Delta \eta, \Delta \Phi^h)
@@ -175,13 +179,14 @@ the proof for Theorem 22 in \cite{Layton08}. \\
     & + \left[ b(\eta;\psi,\Phi^h) - b(\Phi^h;\psi,\Phi^h)
       + b(\psi^h;\eta,\Phi^h)\right].
   \end{align*}
-  Using the H\"older inequality, \eqref{eqn:Holder}, bounds for $(\psi_x,\chi)$ given in
-  \autoref{lma:ContinuousForms}, and the bounds for $b$ from
-  equation \eqref{eqn:BH2Bounds} in \autoref{lma:ContinuousForms}, and \autoref{lma:BH1Bound} we have
+  Using the H\"older inequality, \eqref{eqn:Holder}, the bounds for $(\psi_x,\chi)$
+  given in \autoref{lma:ContinuousForms}, and the bounds for $b$ from estimate
+  \eqref{eqn:BH2Bounds} in \autoref{lma:ContinuousForms}, and
+  \autoref{lma:BH1Bound} we have
   \begin{equation}
     \begin{split}
       \frac{1}{2} \frac{d}{dt} \|\nabla \Phi^h\|^2 + Re^{-1}\|\Delta \Phi^h\|^2
-        &= \|\nabla \eta_t\|_{-1} \|\Delta \Phi^h\|
+        &\le \|\nabla \eta_t\|_{-1} \|\Delta \Phi^h\|
         + Re^{-1}\|\Delta \eta\|\, \|\Delta \Phi^h\|
         + Ro^{-1} \Gamma_2 \|\Delta \eta\| \|\Delta \Phi^h\| \\
       & + \left[ b(\eta;\psi,\Phi^h) - b(\Phi^h;\psi,\Phi^h)
@@ -201,12 +206,12 @@ the proof for Theorem 22 in \cite{Layton08}. \\
       &\le \frac{\epsilon}{2} \|\Delta \Phi^h\|^2
       + \frac{Ro^{-2} \Gamma_2^2}{2 \epsilon} \|\Delta \eta\|^2. \label{eqn:YoungBeta}
   \end{align}
-  Using the Young inequality, \eqref{eqn:Young} with $\varepsilon = 2 > 0$ and
-  equation \eqref{eqn:BH2Bounds} in \autoref{lma:ContinuousForms}
+  Using the Young inequality, \eqref{eqn:Young} with $\varepsilon > 0$ and
+  estimate \eqref{eqn:BH2Bounds} in \autoref{lma:ContinuousForms}
   \begin{align*}
     b(\eta;\psi,\Phi^h) &\le \Gamma_1 \|\Delta \eta\|\,\|\Delta \psi\|\, \|\Delta \Phi^h\| \\
     &\le \frac{\varepsilon}{2} \|\Delta \Phi^h\|^2
-      + \frac{\Gamma_1^2}{2 \varepsilon} \|\Delta \eta\|^2 \|\Delta \psi\|^2, \\
+      + \frac{\Gamma_1^2}{2 \varepsilon} \|\Delta \eta\|^2 \|\Delta \psi\|^2,
   \end{align*}
   and letting $\varepsilon = 2 \epsilon$ we have
   \begin{equation}
@@ -258,17 +263,17 @@ the proof for Theorem 22 in \cite{Layton08}. \\
     \end{split}
     \label{eqn:B2Inequality}
   \end{equation}
-  For the final term involving $b(\psi^h; \eta, \Phi^h)$ we use
-  Inequality \eqref{eqn:BH1BoundPsi} and the Young inequality, \eqref{eqn:Young} with $\varepsilon =
-  2 \epsilon$, i.e.
+  For the final term involving $b(\psi^h; \eta, \Phi^h)$ we use inequality
+  \eqref{eqn:BH1BoundPsi} and the Young inequality, \eqref{eqn:Young} with
+  $\varepsilon = 2 \epsilon$, i.e.
   \begin{align}
     b(\psi^h; \eta, \Phi^h) &\le \Gamma_4\left(\|\nabla \psi^h\|^{\nicefrac{1}{2}}
       \|\Delta \psi^h\|^{\nicefrac{1}{2}}\right) \|\Delta \eta\|\,
       \|\Delta \Phi^h\| \nonumber \\
     &\le \epsilon \|\Delta \Phi^h\|^2 + \frac{\Gamma_4^2}{4\epsilon}
-      \|\nabla \psi^h\|\, \|\Delta \eta\|^2 \label{eqn:YoungPhih}
+      \|\nabla \psi^h\|\, \|\Delta \eta\|^2. \label{eqn:YoungPhih}
   \end{align}
-  and by the stability estimate in \autoref{prop:Stability}, we have
+  By the stability estimate in \autoref{prop:Stability}, we have
   \begin{equation}
     \|\nabla \psi^h\| \le C^*_2(F,\psi_0, Re, Ro).
     \label{eqn:StabilityBoundPsih}
@@ -293,9 +298,10 @@ the proof for Theorem 22 in \cite{Layton08}. \\
     \end{split}
     \label{eqn:B3Inequality}
   \end{equation}
-  Take $\epsilon = \nicefrac{Re^{-1}}{9}$ in \eqref{eqn:B3Inequality}, while
-  letting $C^*_3(F,\psi_0,Re,Ro,\Gamma_4) = \dfrac{\Gamma_4}{2}\, C^*_2(F,\psi_0,Re,Ro)$,
-  $C^*_4(Re) = \frac{9}{2} Re$, $C^*_5(Re,\Gamma_3)=\frac{1}{864}\,Re^{-3}$,
+  Take $\epsilon = \nicefrac{Re^{-1}}{9}$ in \eqref{eqn:B3Inequality}.
+  Letting
+  $C^*_3(F,\psi_0,Re,Ro,\Gamma_4) = \dfrac{\Gamma_4}{2}\, C^*_2(F,\psi_0,Re,Ro)$,
+  $C^*_4(Re) = \frac{9}{2} Re$, $C^*_5(Re,\Gamma_3)=\frac{27}{256}\,9^3\,Re^{3}$,
   $C^*_6(Re,Ro,\Gamma_2) = Re^{-2} + Ro^{-2}\Gamma_2^2$, and $C^*_7(\Gamma_1) = \dfrac{\Gamma_1^2}{2}$,
   we have
   \begin{equation}
@@ -310,12 +316,12 @@ the proof for Theorem 22 in \cite{Layton08}. \\
     \end{split}
     \label{eqn:NoEps}
   \end{equation}
-  Let $a(t):= 2\,C^*_5(Re,\Gamma_3) \|\Delta \psi\|^4$. If $a(t) \in L^1(0,T)$, then
+  Let $a(t):= 2\,C^*_5(Re,\Gamma_3) \|\Delta \psi\|^4$ and
   \begin{equation}
-    A(t) = \int_{0}^{t}\! a(t')\, dt' < \infty.
+    A(t) := \int_{0}^{t}\! a(t')\, dt' < \infty.
     \label{eqn:L4Bound}
   \end{equation}
-  Multiplying \eqref{eqn:NoEps} by the integrating factor $e^{-A(t)}$
+  Multiplying \eqref{eqn:NoEps} by the integrating factor $e^{-A(t)}$, we get
   \begin{align*}
     \biggl\{ \frac{d}{dt}\left[\|\nabla \Phi^h\|^2\right]
       &- 2\, C^*_5(Re,\Gamma_3) \|\Delta \psi\|^4 \|\nabla \Phi^h\|^2\biggr\} e^{-A(t)}
@@ -366,7 +372,7 @@ the proof for Theorem 22 in \cite{Layton08}. \\
   \begin{equation}
     \begin{split}
       \|\nabla \Phi^h(T)\|^2 + Re^{-1} \int_0^T\! \|\Delta \Phi^h\|^2 &\, dt
-        \le C^*_8(T,Re) \|\nabla \Phi^h(0)\|^2 \\
+        \le C^*_8(T,Re,\Gamma_3) \|\nabla \Phi^h(0)\|^2 \\
       & + C^*_9(T,Re,\Gamma_3)\biggl[ \int_0^T\! \|\nabla \eta_t\|_{-1}^2
         + C^*_6(Re,Ro,\Gamma_2) \|\Delta \eta\|^2\, dt \\
       & + \int_0^T\!  \left( C_7(\Gamma_1)\, \|\Delta \psi\|^2
@@ -376,10 +382,10 @@ the proof for Theorem 22 in \cite{Layton08}. \\
   \end{equation}
   where
   \begin{align}
-    C^*_8(T,Re,\Gamma_3) &= \exp\!\left(\dfrac{Re^{-3}\Gamma_3^4}{432}
-      \int_{0}^{T}\!\|\Delta \psi\|^4\, dt\right), \label{eqn:C1TRe} \\
-    C^*_9(T,Re,\Gamma_3) &= \dfrac{9}{2} Re\, \exp\!\left(\dfrac{Re^{-3}\Gamma_3^4}{432}
-      \int_{0}^{T}\!\|\Delta \psi\|^4\, dt\right). \label{eqn:C2TRe}
+    C^*_8(T,Re,\Gamma_3) &= \exp\!\left(2\,\dfrac{27}{256}\, 9^3\, Re^3\,
+      \Gamma_3^4\, \int_{0}^{T}\!\|\Delta \psi\|^4\, dt\right), \label{eqn:C1TRe} \\
+    C^*_9(T,Re,\Gamma_3) &= 9 Re\, \exp\!\left(2\,\dfrac{27}{256}\, 9^3\, Re^3\,
+      \gamma_3^4\, \int_{0}^{T}\!\|\Delta \psi\|^4\, dt\right). \label{eqn:C2TRe}
   \end{align}
   By the H\"older inequality, \eqref{eqn:Holder} we have
   \begin{align}
@@ -387,20 +393,20 @@ the proof for Theorem 22 in \cite{Layton08}. \\
       \|\Delta \psi^h\|^2_{L^2(0,T;L^2)} \|\Delta \eta\|^2_{L^4(0,T;L^2)},
     \label{eqn:HolderPsih} \\
     \int_0^T\! \|\Delta \psi\|^2 \|\Delta \eta\|^2\, dt &\le
-      \|\Delta \psi^h\|^2_{L^4(0,T;L^2)} \|\Delta \eta\|^2_{L^4(0,T;L^2)},
+      \|\Delta \psi^h\|^2_{L^4(0,T;L^2)} \|\Delta \eta\|^2_{L^4(0,T;L^2)}.
     \label{eqn:HolderPsi}
   \end{align}
-  and note that $\|\Delta \psi^h\|_{L^2(0,T;L^2)}\le C^*_{10}(Re,Ro,F)$ from the
-  stability bound (\autoref{prop:Stability}) while $\|\Delta
-  \psi\|_{L^4(0,T;L^2)}\le C^*_{11}$ by hypothesis. Thus, \eqref{eqn:CTREInequality}
+  Note that $\|\Delta \psi^h\|_{L^2(0,T;L^2)}\le C^*_{10}(Re,Ro,F)$ from the
+  stability bound (\autoref{prop:Stability}), while $\|\Delta
+  \psi\|_{L^4(0,T;L^2)}\le C^*_{11}(\|\Delta \psi \|_{L^4(0,T;L^2)})$ by hypothesis. Thus, \eqref{eqn:CTREInequality}
   can be written as
   \begin{align*}
     \|\nabla \Phi^h\|^2 + Re^{-1} \int_0^T\! \|\Delta \Phi^h\|^2\, dt
       & \le C^*_8(T,Re,\Gamma_3) \|\nabla \Phi^h(0)\|^2 \\
     & + C^*_9(T,Re,\Gamma_3)\biggl[ \int_0^T\! \|\nabla \eta_t\|_{-1}^2
       + C^*_6(Re,Ro,\Gamma_2) \|\Delta \eta\|^2\, dt \\
-    & +\left(C^*_7(\Gamma_1)\,C^*_{11}
-      + C^*_3(F,\psi_0,Re,Ro,\Gamma_4)\,C^*_{10}(Re,Ro,F)\right)
+    & +\bigl(C^*_7(\Gamma_1)\,C^*_{11}(\|\Delta \psi \|_{L^4(0,T;L^2)})
+      + C^*_3(F,\psi_0,Re,Ro,\Gamma_4)\,C^*_{10}(Re,Ro,F)\bigr)
       \|\Delta \eta\|^2_{L^4(0,T;L^2)}\biggr].
   \end{align*}
   \begin{remark}
@@ -411,143 +417,160 @@ the proof for Theorem 22 in \cite{Layton08}. \\
   \end{remark}
   Now adding $\|\nabla \eta(T)\|^2$ and $Re^{-1} \int_0^T\! \|\Delta \eta\|^2\,
   dt$ to both sides and using the triangle inequality gives
-  \begin{align*}
-    \frac{1}{2} \|\nabla \left( \psi - \psi^h\right)(T) \|^2
-    &+ \frac{Re^{-1}}{2} \int_0^T\! \|\Delta \left(\psi - \psi^h\right)\|^2\, dt
-      \le C^*_8(T,Re,\Gamma_3) \|\nabla \Phi^h(0)\|^2 \\
-    & + C^*_9(T,Re,\Gamma_3) \int_0^T\! \|\nabla \left( \psi - \lambda^h\right)_t\|_{-1}^2
-      + \left(1 + C^*_6(Re,Ro,\Gamma_2)\right)
-      \|\Delta \left(\psi - \lambda^h\right)\|^2\, dt \\
-    & + \left(C^*_7(\Gamma_1)\, C^*_{11}
-      + C^*_3(F,\psi_0,Re,Ro,\Gamma_4)\,C^*_{10}(Re,Ro,F)\right)
-      \|\Delta \left(\psi - \lambda^h\right)\|^2_{L^4(0,T;L^2)} \\
-    & + \|\nabla \left(\psi - \lambda^h\right)(T)\|^2.
-  \end{align*}
+  \begin{equation}
+    \begin{split}
+      \frac{1}{2} \|\nabla \left( \psi - \psi^h\right)(T) \|^2
+      &+ \frac{Re^{-1}}{2} \int_0^T\! \|\Delta \left(\psi - \psi^h\right)\|^2\, dt
+        \le C^*_8(T,Re,\Gamma_3) \|\nabla \Phi^h(0)\|^2 \\
+      & + C^*_9(T,Re,\Gamma_3) \int_0^T\! \|\nabla \left( \psi - \lambda^h\right)_t\|_{-1}^2
+        + \bigl(1 + C^*_6(Re,Ro,\Gamma_2)\bigr)
+        \|\Delta \left(\psi - \lambda^h\right)\|^2\, dt \\
+      & + \bigl(C^*_7(\Gamma_1)\, C^*_{11}(\|\Delta \psi \|_{L^4(0,T;L^2)})
+        + C^*_3(F,\psi_0,Re,Ro,\Gamma_4)\,C^*_{10}(Re,Ro,F)\bigr)
+        \|\Delta \left(\psi - \lambda^h\right)\|^2_{L^4(0,T;L^2)} \\
+      & + \|\nabla \left(\psi - \lambda^h\right)(T)\|^2.
+    \end{split}
+    \label{eqn:TriangleIneq1}
+  \end{equation}
   By the triangle inequality we have $2\, \|\nabla e(0)\|^2 \ge \|\nabla
   \Phi^h(0)\|^2 + \|\nabla \eta(0)\|^2$, therefore adding
-  $C_8^*(T,Re,\Gamma_3)\,\|\nabla \eta(0)\|^2$ to the right hand side and using
-  the triangle inequality gives
-  \begin{align*}
-    \frac{1}{2} \|\nabla \left( \psi - \psi^h\right)(T) \|^2
-    &+ \frac{Re^{-1}}{2} \int_0^T\! \|\Delta \left(\psi - \psi^h\right)\|^2\, dt
-      \le 2\,C^*_8(T,Re,\Gamma_3) \|\nabla e(0)\|^2 \\
-    & + C^*_9(T,Re,\Gamma_3) \int_0^T\! \|\nabla \left( \psi - \lambda^h\right)_t\|_{-1}^2
-      + \left(1 + C^*_6(Re,Ro,\Gamma_2)\right)
-      \|\Delta \left(\psi - \lambda^h\right)\|^2\, dt \\
-    & + \left(C^*_7(\Gamma_1)\, C^*_{11}
-      + C^*_3(F,\psi_0,Re,Ro,\Gamma_4)\,C^*_{10}(Re,Ro,F)\right)
-      \|\Delta \left(\psi - \lambda^h\right)\|^2_{L^4(0,T;L^2)} \\
-    & + \|\nabla \left(\psi - \lambda^h\right)(T)\|^2.
-  \end{align*}
-  Finally, taking $\inf_{\lambda^h \in X^h}$ of both sides and letting
+  $C_8^*(T,Re,\Gamma_3)\,\|\nabla \eta(0)\|^2$ to the right hand side of
+  \eqref{eqn:TriangleIneq1} and using the triangle inequality gives
+  \begin{equation}
+    \begin{split}
+      \frac{1}{2} \|\nabla \left( \psi - \psi^h\right)(T) \|^2
+      &+ \frac{Re^{-1}}{2} \int_0^T\! \|\Delta \left(\psi - \psi^h\right)\|^2\, dt
+        \le 2\,C^*_8(T,Re,\Gamma_3) \|\nabla e(0)\|^2 \\
+      & + C^*_9(T,Re,\Gamma_3) \int_0^T\! \|\nabla \left( \psi - \lambda^h\right)_t\|_{-1}^2
+        + \bigl(1 + C^*_6(Re,Ro,\Gamma_2)\bigr)
+        \|\Delta \left(\psi - \lambda^h\right)\|^2\, dt \\
+      & + \bigl(C^*_7(\Gamma_1)\, C^*_{11}(\|\Delta \psi \|_{L^4(0,T;L^2)})
+        + C^*_3(F,\psi_0,Re,Ro,\Gamma_4)\,C^*_{10}(Re,Ro,F)\bigr)
+        \|\Delta \left(\psi - \lambda^h\right)\|^2_{L^4(0,T;L^2)} \\
+      & + \|\nabla \left(\psi - \lambda^h\right)(T)\|^2.
+    \end{split}
+    \label{eqn:TriangleIneq2}
+  \end{equation}
+  Finally, taking $\inf_{\lambda^h \in X^h}$ of both sides of
+  \eqref{eqn:TriangleIneq2} and letting
   \begin{align*}
     C_1(T,Re,\Gamma_3) &= 4\, C^*_8(T,Re,\Gamma_3) \\
     C_2(T,Re,\Gamma_3) &= 2\, C^*_9(T,Re,\Gamma_3) \\
     C_3(Re,Ro,\Gamma_2) &= 2 + 2\,C^*_6(Re,Ro,\Gamma_2) \\
     C_4(T,F,\psi_0,Re,Ro,\Gamma_1,\Gamma_3,\Gamma_4,
-      \int_{0}^{T}\!\|\Delta \psi\|^4\, dt) &= 2\, C^*_9(T,Re,\Gamma_3) \\
-       \biggl(C^*_7(\Gamma_1)\, &\int_{0}^{T}\!\|\Delta \psi\|^4\,dt
+      \|\Delta \psi\|_{L^4(0,T;L^2)}) &= 2\, C^*_9(T,Re,\Gamma_3) \\
+      \biggl(C^*_7(\Gamma_1)\, &C^*_11(\|\Delta \psi\|_{L^4(0,T;L^2)})
       + C^*_3(F,\psi_0,Re,Ro,\Gamma_4)\, C^*_{10}(F,\psi_0,Re,Ro)\biggr)
   \end{align*}
   gives
   \begin{align*}
     \|\nabla \left( \psi - \psi^h\right)(T) \|^2
       &+ Re^{-1} \int_0^T\! \|\Delta \left(\psi - \psi^h\right)\|^2\, dt
-      \le C_1(T,Re,\Gamma_3)\|\nabla\left[\psi - \psi^h\right](0)\|^2 \\
+      \le C_1(T,Re,\Gamma_3)\biggl\|\nabla\left[\psi - \psi^h\right](0)\biggr\|^2 \\
     & + \inf_{\lambda^h \in X^h} \biggl\{C_2(T,Re,\Gamma_3)
-      \int_0^T\! \|\nabla \left( \psi - \lambda^h\right)_t\|_{-1}^2
-      + C_3(Re,Ro,\Gamma_2)\,\|\Delta \left(\psi - \lambda^h\right)\|^2\, dt \\
-    & + C_4(T,F,\psi_0,Re,Ro,\Gamma_1,\Gamma_3,\Gamma_4,\int_{0}^{T}\!\|\Delta
-      \psi\|^4\, dt)\, \|\Delta \left(\psi - \lambda^h\right)\|^2_{L^4(0,T;L^2)} \\
+      \int_0^T\! \biggl\|\nabla \left( \psi - \lambda^h\right)_t\biggr\|_{-1}^2
+      + C_3(Re,Ro,\Gamma_2)\,\biggl\|\Delta \left(\psi -
+      \lambda^h\right)\biggr\|^2\, dt \\
+    & + C_4(T,F,\psi_0,Re,Ro,\Gamma_1,\Gamma_3,\Gamma_4,\|\Delta
+      \psi\|_{L^4(0,T;L^2)})\, \biggl\|\Delta \left(\psi -
+      \lambda^h\right)\biggr\|^2_{L^4(0,T;L^2)} \\
     & + 2\, \|\nabla \left(\psi - \lambda^h\right)(T)\|^2\biggr\},
   \end{align*}
   which is the desired result.
 \end{proof}
 
-{\color{red} {\large Are these the correct rates? Are we in the correct space? Can we
-get another power of $h$ here?} \\
-The following lemma will allow for the determination of FE error bounds in the
-term involving $\frac{\partial}{\partial t}$.
+Next we determine the FE rates of convergence yielded by the error estimate
+\eqref{eqn:SemiConvergence} in \autoref{thm:SemiConvergence}. The following
+lemma will allow for the determination of FE convergence rates in the terms
+involving $\frac{\partial}{\partial t}$ in the error estimate
+\eqref{eqn:SemiConvergence}.
 \begin{lemma} \label{lma:Interpolation}
-  Suppose the nodes $N_j$ of the finite element mesh do not move. Let $X^h
-  \subset C^1 \bigcap X$, consisting of Argyris elements. Then
+  Suppose the nodes $N_j$ of the finite element mesh do not move. Let
+  $X^h\subset X$, consisting of Argyris elements and $I^h$ the
+  associated $\mathbb{P}^5$-interpolation operator (see Theorem 6.1.1 in
+  \cite{Ciarlet}). Then, assuming that $\psi, \psi_t \in H^6$, we have
   \begin{align}
     \frac{\partial}{\partial t}\left( I^h \psi \right) &=
       I^h \left( \frac{\partial \psi}{\partial t}\right), \label{eqn:dInterp} \\
     \left\|\frac{\partial \left[\nabla \psi\right]}{\partial t}
       - \frac{\partial}{\partial t} \nabla \left(I^h \psi\right)\right\|
-      &\le C\, h^4\, \left|\frac{\partial \psi}{\partial t}\right|_5,
+      &\le C\, h^5\, \left|\frac{\partial \psi}{\partial t}\right|_6,
       \text{ and } \label{eqn:dH1} \\
     \left\|\frac{\partial \left[\nabla \psi\right]}{\partial t}
       - \frac{\partial}{\partial t} \nabla \left(I^h \psi\right)\right\|_{-1}
-      &\le C\, h^4\, \left|\frac{\partial \psi}{\partial t}\right|_5. \label{eqn:dH-1}
+      &\le C\, h^5\, \left|\frac{\partial \psi}{\partial t}\right|_6. \label{eqn:dH-1}
   \end{align}
+  \begin{remark} \label{rmk:H6imbedC1}
+    Estimate (32) in Theorem 6 in Section 5.7 of \cite{Evans1989}
+    shows that $H^6 \hookrightarrow C^1$. Thus, the interpolation operator $I^h$
+    can be applied to $\psi$ and $\psi_t$.
+  \end{remark}
 \end{lemma}
 \begin{proof}
-  Equation \eqref{eqn:dInterp} follows from the explicit formulas for the linear
-  interpolant, equation \eqref{eqn:dH1} follows from a combination of
-  \eqref{eqn:dInterp} and \eqref{eqn:ArgyrisBound} with $p=2,q=2,m=1,$ and
-  $k=4$. Finally, equation \eqref{eqn:dH-1} follows from the fact that
-  $\|\cdot\|_{-1} \le \|\cdot\|$.
+  Equation \eqref{eqn:dInterp} follows from the explicit formulas for the
+  $\mathbb{P}^5$ interpolant, $I^h$ (see Ciarlet \cite{Ciarlet}), estimate
+  \eqref{eqn:dH1} follows from a combination of \eqref{eqn:dInterp} and
+  estimate (6.1.9) in Theorem 6.1.1 in \cite{Ciarlet} with $p=q=2$ and $m=1$.
+  Finally, estimate \eqref{eqn:dH-1} follows from the fact that $\|\cdot\|_{-1}
+  \le \|\cdot\|$.
 \end{proof}
 
 \begin{lemma} \label{lma:IntegralErrors}
-  Let $X^h$ denote the finite element space associated with the Argyris element.
-  Suppose the interpolation estimates from \autoref{lma:Interpolation} hold and
-  that $\psi, \psi_t \in C^1(\Omega \times [0,T])$. Then,
+  Let $X^h$ denote the FE space associated with the Argyris element. Suppose
+  that the interpolation estimates from \autoref{lma:Interpolation} hold and
+  that $\psi, \psi_t \in H^6(\Omega)$. Then,
   \begin{equation}
-    \int_{0}^{T}\! \|\nabla \left(\psi - \lambda^h\right)_t\|_{-1}^2 + \|\Delta
-    \left(\psi - \lambda^h\right) \|^2\, dt \le C\, h^8
-    \int_{0}^{T}\! \,|\psi_t|_5^2 + |\psi|_6^2\, dt
+    \int_{0}^{T}\! \|\nabla \left(\psi - I^h \psi\right)_t\|_{-1}^2 + \|\Delta
+    \left(\psi - I^h \psi\right) \|^2\, dt \le C\, h^8
+    \int_{0}^{T}\! h^2 \,|\psi_t|_6^2 + |\psi|_6^2\, dt
     \label{eqn:IntegralErrors}
   \end{equation}
   and
   \begin{equation}
     \|\Delta\left( \psi- I^h \psi\right)\|_{L^4(0,T; L^2(\Omega)}^2 \le C h^8
-      |\psi|_{L^4(0,T;H^6(\Omega)}). \label{eqn:L4Interpolation}
+      |\psi|_{L^4(0,T;H^6(\Omega))}^2. \label{eqn:L4Interpolation}
   \end{equation}
 \end{lemma}
 \begin{proof}
-  At each time step we see from inequality (6.1.5) in \cite{Ciarlet} that
-  $\|\Delta\left(\psi - \psi\right)\| \le C\, h^4\, |\psi|_6$. Squaring and
+  At each time instance we see from inequality (6.1.9) in \cite{Ciarlet} that
+  $\|\Delta\left(\psi - I^h \psi\right)\| \le C\, h^4\, |\psi|_6$. Squaring and
   integrating this and using the interpolation error bounds from
   \autoref{lma:Interpolation} gives the first estimate. The second estimate
   follows analogously, i.e.
   \begin{align*}
     \|\Delta \left(\psi - I^h \psi\right)\|_{L^4(0,T;L^2(\Omega))}
     &= \left(\int_{0}^{T}\! \|\Delta\left(\psi - I^h \psi\right)\|^4\, dt
-      \right)^{\frac{1}{2}} \\
-    &\le \left(\int_{0}^{T}\! C\, h^4 |\psi|_6\, dt\right)^{\frac{1}{2}},
+      \right)^{\frac{1}{4}} \\
+    &\le C\, h^4 \left(\int_{0}^{T}\! |\psi|_6^4\, dt\right)^{\frac{1}{4}},
   \end{align*}
-  which leads to the desired estimate $\|\Delta\left(\psi -
-  I^h\right)\|_{L^4(0,T;L^2(\Omega))} \le C\, h^8
-  \|\psi\|_{L^4(0,T;H^6(\Omega))}$.
+  which leads to the desired estimate $\|\Delta\left(\psi - I^h
+  \psi\right)\|_{L^4(0,T;L^2(\Omega))}^2 \le C\, h^8
+  \|\psi\|_{L^4(0,T;H^6(\Omega))}^2$.
 \end{proof}
 
 \begin{thm} \label{thm:SemiInterp}
-  Let $X^h$ be the FE space associated with the Argyris element and let $I^h$
-  denote the interpolant for the Argyris element. Suppose the interpolation
-  estimates \autoref{lma:Interpolation} in $H^{-1}(\Omega)$ hold and that $\psi,
-  \psi_t \in C^1(\Omega\times [0,T])$.  Suppose also that the assumptions of
-  \autoref{thm:StrongConvergence} hold.  Then,
+  Let $X^h$ be the FE space associated with the Argyris element and
+  an $I^h$ the associated $\mathbb{P}^5$-interpolation operator (see Theorem
+  6.1.1 in \cite{Ciarlet}).  Suppose the interpolation estimates from
+  \autoref{lma:Interpolation} hold and that $\psi, \psi_t \in H^6(\Omega)$.
+  Suppose also that the assumptions of \autoref{thm:SemiConvergence} hold.
+  Then,
   \begin{equation}
     \begin{split}
       \|\nabla \left( \psi - \psi^h\right)(T) \|^2
         &+ Re^{-1} \int_0^T\! \|\Delta \left(\psi - \psi^h\right)\|^2\, dt
         \le h^8\, C\, \biggl\{
-        C_1(T,Re,\Gamma_3) {\color{blue} |\psi|_5^2} \\
-      & + C_2(T,Re,\Gamma_3) \left( \|\psi_t\|_{L^2(0,T;H^5(\Omega))}
-        + C_3(Re,Ro,\Gamma_2)\,\|\psi\|_{L^2(0,T;H^6(\Omega))}\right) \\
-      & + C_4(T,F,\psi_0,Re,Ro,\Gamma_1,\Gamma_3,\Gamma_4,\int_{0}^{T}\!\|
-        \psi\|^4\, dt)\, \|\psi\|_{L^4(0,T;H^6(\Omega))} \\
-      & + 2\,{\color{blue} |\psi\|^2_5}\biggr\},
+        \left(C_1^2(T,Re,\Gamma_3) + 2\right)^2\, |\psi|_5^2 \\
+      & + C_2^2(T,Re,\Gamma_3) \left( \|\psi_t\|_{L^2(0,T;H^6(\Omega))}^2
+        + C_3^2(Re,Ro,\Gamma_2)\,\|\psi\|_{L^2(0,T;H^6(\Omega))}^2\right) \\
+      & +
+      C_4^2(T,F,\psi_0,Re,Ro,\Gamma_1,\Gamma_3,\Gamma_4,\|\psi\|_{L^4(0,T;L^2)})\,
+        \|\psi\|_{L^4(0,T;H^6(\Omega))}^2 \biggr\}.
     \end{split}
     \label{eqn:SemiInterp}
   \end{equation}
 \end{thm}
 \begin{proof}
-  {\color{blue} \Large Is this correct? Or should something else be done with
-them?}\\
-  The proof is a combination of the previous two lemmas.
+  The proof follows from \autoref{thm:SemiConvergence},
+  \autoref{lma:Interpolation}, and \autoref{lma:IntegralErrors}.
 \end{proof}
-}
