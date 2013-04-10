@@ -24,25 +24,34 @@ wind-driven ocean currents.}
 %\acknowledge{This is where you put your acknowledgments.}
 
 \abstract{
-  With the continuous increase in computational power, complex mathematical
-  models are becoming more and more popular in the numerical simulation of
-  \emph{oceanic and atmospheric flows}. For some \emph{geophysical flows} in
-  which \emph{computational efficiency} is of paramount importance, however,
-  simplified mathematical models are central.  However, resolving all scales can
-  still be computationally prohibitive, therefore \emph{DNS} may not be feasible
-  and other methods, such as \emph{Large Eddy Simulation}, must be used to
-  simulate the system. We present a Large Eddy Simulation model of the
-  \emph{conforming finite element} discretization of the \emph{streamfunction
-  formulation of the one-layer quasi-geostrophic equations}, which are a commonly
-  used model for the \emph{large scale wind-driven ocean circulation}.
-  \emph{Optimal error estimates} for this finite element discretization with the
-  \emph{Argyris element} and for the large eddy simulation are derived.
-  Numerical tests for the finite element discretization and large eddy
-  simulation of the quasi-geostrophic equations are presented and theoretical
-  error estimates are verified.  By benchmarking the numerical results against
-  those in the published literature, we conclude that our finite element
-  discretization is accurate. Furthermore, the numerical results have the same
-  convergence rates as those predicted by the theoretical error estimates.
+  The quasi-geostrophic equations (QGE) are usually discretized in space by the
+  finite difference method, however, the finite element (FE) method offers
+  several advantages of the finite difference method such the easy treatment of
+  complex boundaries and a natural treatment of boundary conditions
+  \cite{Myers}. Despite these advantages, there are relatively few papers that
+  consider the FE method applied to the QGE.
+
+  To our knowledge, \emph{all} FE discretizations of the QGE have been developed
+  for the streamfunction-vorticity formulation, none using the streamfunction
+  formulation. The reason is simple: The streamfunction-vorticity formulation
+  yields a second order \emph{partial differential equation (PDE)}, whereas the
+  streamfunction formulation yields a fourth order PDE. Thus, although the
+  streamfunction-vorticity formulation has two variables ($q$ and $\psi$) and
+  the streamfunction formulation has just one ($\psi$), the former is the
+  preferred formulation used in practical computations, since its conforming FE
+  discretization requires low-order ($C^0$) elements, whereas the latter
+  requires a high-order ($C^1$) FE discretization.
+
+  We present a conforming FE discretization of the QGE based on the Argyris
+  element and we present a two-level FE discretization of the Stationary QGE
+  (SQGE) based on the same conforming FE discretization using the Argyris
+  element. We also, \emph{for the first time}, develop optimal error estimates
+  for the QGE. Numerical tests for the FE discretization and the two-level FE
+  discretization of the QGE are presented and theoretical error estimates are
+  verified. By benchmarking the numerical results against those in the published
+  literature, we conclude that our FE discretization is accurate.  Furthermore,
+  the numerical results have the same convergence rates as those predicted by
+  the theoretical error estimates.
 }
 
 \begin{document}

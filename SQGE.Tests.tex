@@ -620,10 +620,10 @@ mesh gets, the better this boundary layer is captured and the better the
 numerical accuracy becomes.
 
 \subsection{Mediterranean} \label{sse:MedTest}
-We have created a FE mesh of the the Mediterranean Sea using GMSH \cite{GMSH}.
-The coastline data was obtain from GSHHS \cite{GSHHS}. Major islands such as
+We have created a FE mesh of the Mediterranean Sea using GMSH \cite{GMSH}.
+The coastline data was obtained from GSHHS \cite{GSHHS}. Major islands such as
 Corsica, Sardinia, and Sicily were connected to the nearest land mass.  This is
-needed to ensure a unique streamfunction (see the discussions by
+used to ensure a unique streamfunction (see the discussions by
 \cite{Gunzburger89,van-Gijzen1998}).  Additionally, the Atlantic was closed off
 from the Mediterranean at the Straits of Gibraltar, from the Red Sea at the Suez
 Canal, and the Sea of Marmara at the Dardanelles Strait, while the Gulf of
@@ -664,20 +664,25 @@ The following experiment used a forcing function given by $F =
     \hline
   \end{tabular}
   \end{center}
-  \caption{Table of parameter values used for the simulations of the North
-    Atlantic \cite{delSastre04}, where $A,\theta_0,\omega,H,L,r_e,\rho$ are the
+  \caption{Table of parameter values used for the simulations of the
+    Mediterranean Sea \cite{delSastre04}, where $A,\theta_0,\omega,H,L,r_e,\rho$ are the
     eddy viscosity, reference angle for the $\beta$-plane approximation, angular
     velocity of the Earth, domain height, domain length, radius of the Earth, and
     density of seawater, respectively.}
   \label{tab:OceanParameters}
 \end{table}
 
-Using the relation
+Taking the derivative of relation \eqref{eqn:beta_plane} with respect to $y$
+gives the following relation for $\beta$ to $f$:
 \begin{equation}
-  \beta = \frac{2\omega}{r_e}\cos \theta_0
+  \frac{\partial f}{\partial y} = \beta. \label{eqn:dfdy}
+\end{equation}
+Now, using the equation (2.80) from \cite{Vallis} gives
+\begin{equation}
+  \beta = \frac{2\omega}{r_e}\cos \theta_0.
   \label{eqn:Beta}
 \end{equation}
-and the parameters given in \autoref{tab:OceanParameters} we see that
+From the parameters given in \autoref{tab:OceanParameters} we see that
 \begin{equation*}
   \beta \approx 1.742\times 10^{-11}\, m^{-1}\,s^{-1}.
 \end{equation*}
@@ -709,10 +714,11 @@ streamfunction is very much in agreement with the solution obtained by Galan del
 Sastre (Figure 2.22 in \cite{Galan-del-Sastre2004}). It should be noted that
 some of the differences between our solution and Galan del Sastre's solution is
 likely a result of his inclusion of more islands and not connected those islands
-to Europe or Africa. {\color{red} The rates of convergence are much lower than
-expected, however this likely is due to the facet that the domain is non-smooth
-which is likely causing the solution to be in a space which is less regular than
-the $H^6$ regularity \cite{Soan2010} assumed by the error analysis in \autoref{sec:SQGEErrors}.}
+to Europe or Africa. The rates of convergence are much lower than expected,
+however this likely is due to the facet that the domain is non-smooth which are
+likely causing the solution to be in a space which is less regular than the
+$H^6$ regularity \cite{Soan2010} assumed by the error analysis in
+\autoref{sec:SQGEErrors}.
 
 \begin{table}
 \begin{tabular}{|c|c|c|c|c|c|c|c|}%c|c|}
@@ -735,9 +741,9 @@ the $H^6$ regularity \cite{Soan2010} assumed by the error analysis in \autoref{s
 \begin{figure}
   \begin{center}
     \includegraphics[scale=0.7]{Figures/SQGEMedRe5_27Ro6_051E-4h320sin0_5piy.pdf}
-    \caption{Solution of SQGE on the Mediterranean with $Re = 5.27, Ro
-      = 6.051\times 10^{-4}, F = \sin( \frac{\pi}{2} y)$, and 204,144 DoFs
-      corresponding to $h = \frac{1}{320}$.}
+    \caption{``True'' solution of SQGE on the Mediterranean with $Re = 5.27, Ro
+      = 6.051\times 10^{-4}, F = \sin( \frac{\pi}{2} y)$, and $955,302$ DoFs
+      corresponding to $h = \frac{1}{640}$.}
     \label{fig:SQGEMed}
   \end{center}
 \end{figure}
