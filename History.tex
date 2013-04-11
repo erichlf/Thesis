@@ -96,14 +96,20 @@ operator), which required an extra boundary condition.  In Munk's 1950
 paper\cite{Munk1950}, he used the same boundary conditions that we will
 consider, i.e. $\dfrac{\partial \psi}{\partial \mathbf{n}} = 0$.
 
-In 1948 Charney\cite{Charney1948} introduced the quasi-geostrophic
+In 1948 Charney\cite{Charney1948} introduced a method by which he ``filtered out
+the noise'' from meteorological equations. By filtering out the so-called noise
+of the meteorological equations Charney was able to greatly simplify the
+equations of motion for the ocean and atmosphere. Thus, allowing for numerical
+weather prediction which seemed to previously suffer from unsurmountable
+complexities. This method of filtering is known  the quasi-geostrophic
 approximation, which relied on the assumption that the Rossby number
 \begin{equation}
   Ro = \frac{U}{f\, L},
   \label{eqn:RossbyNumber}
 \end{equation}
 where $U,\, L$ are the characteristic velocity and length, respectively, was
-much much smaller than one. This lead to further simplifications by which ``[a]
-method is given for reducing the three-dimensional forecast problem to a
-two-dimensional one.'' \cite{Charney1949}
-{\color{red} Finish discussion on Charney's contribution.}
+much much smaller than one. Later in his 1949 paper \cite{Charney1949} Charney
+introduced a method ``for reducing the three-dimensional forecast problem to a
+two-dimensional one.'' It is the equations Charney introduced in this 1949 paper
+that has now come to be called the quasi-geostrophic equations and is the main
+focus of this thesis.

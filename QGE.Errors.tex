@@ -405,8 +405,8 @@ the proof for Theorem 22 in \cite{Layton08}. \\
       & \le C^*_8(T,Re,\Gamma_3) \|\nabla \Phi^h(0)\|^2 \\
     & + C^*_9(T,Re,\Gamma_3)\biggl[ \int_0^T\! \|\nabla \eta_t\|_{-1}^2
       + C^*_6(Re,Ro,\Gamma_2) \|\Delta \eta\|^2\, dt \\
-    & +\bigl(C^*_7(\Gamma_1)\,C^*_{11}(\|\Delta \psi \|_{L^4(0,T;L^2)})
-      + C^*_3(F,\psi_0,Re,Ro,\Gamma_4)\,C^*_{10}(Re,Ro,F)\bigr)
+    & +\bigl(C^*_7(\Gamma_1)\,C^*_{11}(\|\Delta \psi \|_{L^4(0,T;L^2)}) \\
+    & + C^*_3(F,\psi_0,Re,Ro,\Gamma_4)\,C^*_{10}(Re,Ro,F)\bigr)
       \|\Delta \eta\|^2_{L^4(0,T;L^2)}\biggr].
   \end{align*}
   \begin{remark}
@@ -419,14 +419,14 @@ the proof for Theorem 22 in \cite{Layton08}. \\
   dt$ to both sides and using the triangle inequality gives
   \begin{equation}
     \begin{split}
-      \frac{1}{2} \|\nabla \left( \psi - \psi^h\right)(T) \|^2
-      &+ \frac{Re^{-1}}{2} \int_0^T\! \|\Delta \left(\psi - \psi^h\right)\|^2\, dt
+      \frac{1}{2} \|\nabla \biggl( \psi &- \psi^h\biggr)(T) \|^2
+      + \frac{Re^{-1}}{2} \int_0^T\! \|\Delta \left(\psi - \psi^h\right)\|^2\, dt
         \le C^*_8(T,Re,\Gamma_3) \|\nabla \Phi^h(0)\|^2 \\
       & + C^*_9(T,Re,\Gamma_3) \int_0^T\! \|\nabla \left( \psi - \lambda^h\right)_t\|_{-1}^2
         + \bigl(1 + C^*_6(Re,Ro,\Gamma_2)\bigr)
         \|\Delta \left(\psi - \lambda^h\right)\|^2\, dt \\
-      & + \bigl(C^*_7(\Gamma_1)\, C^*_{11}(\|\Delta \psi \|_{L^4(0,T;L^2)})
-        + C^*_3(F,\psi_0,Re,Ro,\Gamma_4)\,C^*_{10}(Re,Ro,F)\bigr)
+      & + \bigl(C^*_7(\Gamma_1)\, C^*_{11}(\|\Delta \psi \|_{L^4(0,T;L^2)}) \\
+      & + C^*_3(F,\psi_0,Re,Ro,\Gamma_4)\,C^*_{10}(Re,Ro,F)\bigr)
         \|\Delta \left(\psi - \lambda^h\right)\|^2_{L^4(0,T;L^2)} \\
       & + \|\nabla \left(\psi - \lambda^h\right)(T)\|^2.
     \end{split}
@@ -438,14 +438,14 @@ the proof for Theorem 22 in \cite{Layton08}. \\
   \eqref{eqn:TriangleIneq1} and using the triangle inequality gives
   \begin{equation}
     \begin{split}
-      \frac{1}{2} \|\nabla \left( \psi - \psi^h\right)(T) \|^2
-      &+ \frac{Re^{-1}}{2} \int_0^T\! \|\Delta \left(\psi - \psi^h\right)\|^2\, dt
+      \frac{1}{2} \|\nabla \biggl( \psi &- \psi^h\biggr)(T) \|^2
+      + \frac{Re^{-1}}{2} \int_0^T\! \|\Delta \left(\psi - \psi^h\right)\|^2\, dt
         \le 2\,C^*_8(T,Re,\Gamma_3) \|\nabla e(0)\|^2 \\
       & + C^*_9(T,Re,\Gamma_3) \int_0^T\! \|\nabla \left( \psi - \lambda^h\right)_t\|_{-1}^2
         + \bigl(1 + C^*_6(Re,Ro,\Gamma_2)\bigr)
         \|\Delta \left(\psi - \lambda^h\right)\|^2\, dt \\
-      & + \bigl(C^*_7(\Gamma_1)\, C^*_{11}(\|\Delta \psi \|_{L^4(0,T;L^2)})
-        + C^*_3(F,\psi_0,Re,Ro,\Gamma_4)\,C^*_{10}(Re,Ro,F)\bigr)
+      & + \bigl(C^*_7(\Gamma_1)\, C^*_{11}(\|\Delta \psi \|_{L^4(0,T;L^2)}) \\
+      & + C^*_3(F,\psi_0,Re,Ro,\Gamma_4)\,C^*_{10}(Re,Ro,F)\bigr)
         \|\Delta \left(\psi - \lambda^h\right)\|^2_{L^4(0,T;L^2)} \\
       & + \|\nabla \left(\psi - \lambda^h\right)(T)\|^2.
     \end{split}
@@ -459,8 +459,8 @@ the proof for Theorem 22 in \cite{Layton08}. \\
     C_3(Re,Ro,\Gamma_2) &= 2 + 2\,C^*_6(Re,Ro,\Gamma_2) \\
     C_4(T,F,\psi_0,Re,Ro,\Gamma_1,\Gamma_3,\Gamma_4,
       \|\Delta \psi\|_{L^4(0,T;L^2)}) &= 2\, C^*_9(T,Re,\Gamma_3) \\
-      \biggl(C^*_7(\Gamma_1)\, &C^*_11(\|\Delta \psi\|_{L^4(0,T;L^2)})
-      + C^*_3(F,\psi_0,Re,Ro,\Gamma_4)\, C^*_{10}(F,\psi_0,Re,Ro)\biggr)
+      \biggl(C^*_7(\Gamma_1)\, C^*_{11}(\|\Delta \psi\|_{L^4(0,T;L^2)})
+      &+ C^*_3(F,\psi_0,Re,Ro,\Gamma_4)\, C^*_{10}(F,\psi_0,Re,Ro)\biggr)
   \end{align*}
   gives
   \begin{align*}
