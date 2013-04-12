@@ -473,7 +473,7 @@ attribute this to the inaccuracies at the thin boundary layer on the left-hand
 side (i.e., at $x=0$). The finer the mesh gets, the better this boundary layer
 is captured and the better the numerical accuracy becomes.
 
-\subsection{Stationary Quasigeostrophic Equations}\label{sse:SQGE}
+\subsection{SQGE}\label{sse:SQGE}
 This subsection presents results for the FE discretization of the streamfunction
 formulation of the SQGE \eqref{eqn:SQGE_Psi} by using the Argyris element. Our
 computational domain is $\Omega=[0,3]\times[0,1]$, the Reynolds number is
@@ -640,9 +640,12 @@ Corinth was treated as land. The resultant FE mesh can be seen in
 \end{sidewaysfigure}
 
 The following experiment used a forcing function given by $F =
-\sin(\frac{\pi}{2} y)$ which is the same forcing function given by Bryan
-\cite{Bryan1963}. We choose similar parameters as those used in
-\cite{delSastre04} and are summarized in \autoref{tab:OceanParameters}.
+\sin(\frac{\pi}{4} y)$ which is the same forcing function given by Bryan
+\cite{Bryan1963}. Note: Bryan, in fact, used $\sin(\frac{\pi}{2} y)$, but on a
+domain with a vertical extent which was of length two. In our case the vertical
+extent of the Northern Hemisphere is of length one. Thus, the appropriate forcing
+function becomes $\sin(\frac{\pi}{4} y)$. We choose similar parameters as those
+used in \cite{delSastre04} and are summarized in \autoref{tab:OceanParameters}.
 
 \begin{table}
   \begin{center}
@@ -717,7 +720,7 @@ likely a result of his inclusion of more islands and not connected those islands
 to Europe or Africa. The rates of convergence are much lower than expected,
 however this likely is due to the facet that the domain is non-smooth which are
 likely causing the solution to be in a space which is less regular than the
-$H^6$ regularity \cite{Soan2010} assumed by the error analysis in
+$H^6$ regularity \cite{Soane2010} assumed by the error analysis in
 \autoref{sec:SQGEErrors}.
 
 \begin{table}
@@ -740,7 +743,7 @@ $H^6$ regularity \cite{Soan2010} assumed by the error analysis in
 
 \begin{figure}
   \begin{center}
-    \includegraphics[scale=0.7]{Figures/SQGEMedRe5_27Ro6_051E-4h320sin0_5piy.pdf}
+    \includegraphics[scale=0.7]{Figures/SQGEMedRe5_27Ro6_051E-4h320sin0_25piy.pdf}
     \caption{``True'' solution of SQGE on the Mediterranean with $Re = 5.27, Ro
       = 6.051\times 10^{-4}, F = \sin( \frac{\pi}{2} y)$, and $955,302$ DoFs
       corresponding to $h = \frac{1}{640}$.}

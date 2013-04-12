@@ -35,9 +35,9 @@ wind-driven ocean currents.}
 
 \abstract{
   The quasi-geostrophic equations (QGE) are usually discretized in space by the
-  finite difference method, however, the finite element (FE) method offers
-  several advantages of the finite difference method such the easy treatment of
-  complex boundaries and a natural treatment of boundary conditions
+  finite difference method. The finite element (FE) method, however, offers
+  several advantages over the finite difference method, such as the easy
+  treatment of complex boundaries and a natural treatment of boundary conditions
   \cite{Myers}. Despite these advantages, there are relatively few papers that
   consider the FE method applied to the QGE.
 
@@ -55,13 +55,13 @@ wind-driven ocean currents.}
   We present a conforming FE discretization of the QGE based on the Argyris
   element and we present a two-level FE discretization of the Stationary QGE
   (SQGE) based on the same conforming FE discretization using the Argyris
-  element. We also, \emph{for the first time}, develop optimal error estimates
-  for the QGE. Numerical tests for the FE discretization and the two-level FE
-  discretization of the QGE are presented and theoretical error estimates are
-  verified. By benchmarking the numerical results against those in the published
-  literature, we conclude that our FE discretization is accurate.  Furthermore,
-  the numerical results have the same convergence rates as those predicted by
-  the theoretical error estimates.
+  element. We also, for the first time, develop optimal error estimates for the
+  FE discretization QGE. Numerical tests for the FE discretization and the
+  two-level FE discretization of the QGE are presented and theoretical error
+  estimates are verified. By benchmarking the numerical results against those in
+  the published literature, we conclude that our FE discretization is accurate.
+  Furthermore, the numerical results have the same convergence rates as those
+  predicted by the theoretical error estimates.
 }
 
 \begin{document}
@@ -76,11 +76,11 @@ wind-driven ocean currents.}
   \chapter{Introduction} \label{ch:Intro}
     \section{Motivation} \label{sec:Motivation}
     \input{Motivation.tex}
-    \section{A Brief History of Wind-Driven Theory}
+    \section{A Brief History of Wind-Driven Ocean Theory}
     \input{History.tex}
     \section{Problem Overview}
     \input{Overview.tex}
-    \section{Existing Research}
+    \section{Existing Results}
     \input{LitReview.tex}
     \section{Outline}
     \input{Outline.tex}
@@ -89,7 +89,7 @@ wind-driven ocean currents.}
   \input{Governing.tex}
     \section{The Quasi-Geostrophic Equations} \label{sec:QGE}
     \input{QGE.tex}
-    \section{Stationary QGE} \label{sec:SQGE}
+    \section{The Stationary Quasi-Grostrophic Equations} \label{sec:SQGE}
     \input{SQGE.tex}
 
   \chapter{Mathematical Framework} \label{ch:WellPosed}
@@ -98,8 +98,8 @@ wind-driven ocean currents.}
     \input{QGE.SF.tex}
     \section{SQGE Weak Formulation} \label{sec:SQGEStrong}
     \input{SQGE.WF.tex}
-      \subsection{Well-Posedness of SQGE}
-      \input{SQGE.WP.tex}
+    \section{Well-Posedness of SQGE} \label{sec:WellPosed}
+    \input{SQGE.WP.tex}
 
     \chapter{Finite Element Discretization}\label{ch:FEM}
     \input{FE.tex}
@@ -119,9 +119,9 @@ wind-driven ocean currents.}
       \input{Interpolation.tex}
       \subsection{Boundary Conditions} \label{sse:BCs}
       \input{BCs.tex}
-    \section{Two Level Method} \label{sec:TwoLevel}
+    \section{Two-Level Method} \label{sec:TwoLevel}
     \input{TwoLevel.tex}
-      \subsection{Two Level Algorithm} \label{sse:Algorithm}
+      \subsection{Two-Level Algorithm} \label{sse:Algorithm}
       \input{TwoLevelAlgorithm.tex}
     %\section{Method of Lines} \label{sec:MoL}
     %\input{MoL.tex}
@@ -130,7 +130,7 @@ wind-driven ocean currents.}
   \input{Errors.tex}
     \section{SQGE} \label{sec:SQGEErrors}
     \input{SQGE.Error.tex}
-    \section{Two Level Method} \label{sse:SQGE2LE}
+    \section{Two-Level Method} \label{sse:SQGE2LE}
     \input{TwoLevelErrors.tex}
     \section{QGE} \label{sec:QGEError}
     \input{QGE.Errors.tex}
@@ -139,7 +139,7 @@ wind-driven ocean currents.}
   \input{Numerical.tex}
     \section{SQGE} \label{sec:SQGETests}
     \input{SQGE.Tests.tex}
-    \section{SQGE Two-Level} \label{sec:SQGE2LTests}
+    \section{Two-Level SQGE} \label{sec:SQGE2LTests}
     \input{TwoLevel.Tests.tex}
     \section{QGE} \label{sec:QGETests}
     \input{QGE.Tests.tex}

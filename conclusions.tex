@@ -1,19 +1,19 @@
-In this thesis we studied the finite element discretization of the pure
-streamfunction form of the quasi-geostrophic equations. The pure streamfunction
-form of the QGE requires $C^1$ FEs to be conforming, thus the implementation of
-the of the $C^1$ FE was discussed in length. In particular, the implementation
-of the Argyris element was discussed in \autoref{sec:Argyris}, including an in
-depth discussion of the novel transformation developed by Dominguez et. el.
-\cite{Dominguez08} in \autoref{sse:Trans}. Additionally, we proposed a two-level
-FE discretization for the SQGE in \autoref{sec:TwoLevel} based on the conforming
-FE discretization used for the SQGE in \autoref{sec:SQGEFEM}. The two-level
-algorithm consists of two steps. In the first step, the nonlinear system is
-solved on a coarse mesh. In the second step, the nonlinear system is linearized
-around the approximation found in the first step, and the resulting linear
-system is solved on the fine mesh.  This method significantly improved
-simulation times for the SQGE over that of the one-level method. Nest, a
-conforming FE semi-discretization was developed for the time-dependent QGE based
-upon the FE discretization developed in \autoref{sec:SQGEFEM}.
+In this thesis we studied the FE discretization of the pure streamfunction form
+of the QGE. The pure streamfunction form of the QGE requires $C^1$ FEs to be
+conforming, thus the implementation of the of the $C^1$ FE was discussed in
+length. In particular, the implementation of the Argyris element was discussed
+in \autoref{sec:Argyris}, including an in depth discussion of the novel
+transformation developed by Dominguez et. el.  \cite{Dominguez08} in
+\autoref{sse:Trans}. Additionally, we proposed a two-level FE discretization for
+the SQGE in \autoref{sec:TwoLevel} based on the conforming FE discretization
+used for the SQGE in \autoref{sec:SQGEFEM}. The two-level algorithm consists of
+two steps. In the first step, the nonlinear system is solved on a coarse mesh.
+In the second step, the nonlinear system is linearized around the approximation
+found in the first step, and the resulting linear system is solved on the fine
+mesh.  This method significantly improved simulation times for the SQGE over
+that of the one-level method. Next, a conforming FE semi-discretization was
+developed for the time-dependent QGE based upon the FE discretization developed
+in \autoref{sec:SQGEFEM}.
 
 For the conforming FE discretization of SQGE, in \autoref{sec:SQGEErrors} we
 proved, for the first time, optimal error estimates in the $H^2,H^1$, and $L^2$
@@ -37,7 +37,7 @@ were used to verify our code. These benchmark problems included the Linear
 Stommel model \cite{Vallis06,Myers}, and the Linear Stommel-Munk model
 \cite{Cascon}. With the agreement of our solutions to that of the literature our
 code was thus verfied. We then verified numerically the theoretical error
-estimates developed in \autoref{sec:SQGETests}. We then performed numerical
+estimates developed in \autoref{sec:SQGETests} and performed numerical
 experiments on non-rectangular domains, including a FE discretization of the
 SQGE applied to the Mediterranean. The test results for the Mediterranean appeared
 to be in agreement with observed surface currents and the numerical experiments
@@ -51,22 +51,22 @@ the numerical results showed that, for an appropriate scaling between the coarse
 and fine meshes, the two-level method significantly decreases the computational
 time of the standard one-level method. Next, the same code which was developed
 and verified for the SQGE was then modified to deal with time-dependence. We
-applied a Implicit Euler scheme and verified numerical the theoretical spatial
+applied a implicit Euler scheme and verified numerically the theoretical spatial
 rates of convergence developed for the semi-discretization. Additionally, we
-observed expected rates of convergence in time for the Implicit Euler scheme
+observed expected rates of convergence in time for the implicit Euler scheme
 ($O(h)$).
 
 The QGE has many unique challenges for numerical modelling. These challenges
 include, but are not limited to, unstable solutions, resulting from internal
-layers and western boundary layers, and the QGE can be computationally expensive
-for large domains, such as the North Atlantic. To address these issues we plan
-to extend these studies in several directions, including stabilization methods
-such as \emph{Petrov-Galerkin} stabilization, \emph{adaptive mesh refinement},
-model reduction using \emph{Proper Orthogonal Decomposition}, and the
-incorporation of observed windstress data, which will include \emph{parameter
-estimation}. Additionally, the streamfunction formulation suffers from
-non-unique streamfunctions for multiply connected domains, such as the ocean and
-seas and large lakes with islands. To address this issue a method such as the
-one developed by van Gijzen et. al. \cite{van-Gijzen1998} will be explored.
-Thus, a more realistic Ocean mesh will be used and islands will no longer have
-to be connected to continents.
+layers and western boundary layers, and high computational cost for large
+domains, such as the North Atlantic. To address these issues we plan to extend
+these studies in several directions, including stabilization methods such as
+\emph{Petrov-Galerkin} stabilization, \emph{adaptive mesh refinement}, model
+reduction using \emph{Proper Orthogonal Decomposition}, and the incorporation of
+observed windstress data, which will include \emph{parameter estimation}.
+Additionally, the streamfunction formulation suffers from non-unique
+streamfunctions for multiply connected domains, such as the ocean, seas, and
+large lakes with islands. To address this issue a method such as the one
+developed by van Gijzen et. al. \cite{van-Gijzen1998} will be explored.  Thus, a
+more realistic ocean mesh will be used and islands will no longer have to be
+connected to continents.

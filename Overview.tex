@@ -18,14 +18,14 @@ treatment of multiply connected domains \cite{Myers}. Despite these advantages,
 there are relatively few papers that consider the FEM applied to the QGE (see
 for example: \cite{Cascon, Fix, LeProvost94, Myers, Stevens82}).
 
-To our knowledge, \emph{all} the finite element (FE) discretizations of the QGE
-have been developed for the streamfunction-vorticity formulation, none using the
+To our knowledge, \emph{all} the FE discretizations of the QGE have been
+developed for the streamfunction-vorticity formulation, none using the
 streamfunction formulation. The reason is simple: The streamfunction-vorticity
-formulation yields a second order \emph{partial differential equation (PDE)},
-whereas the streamfunction formulation yields a fourth order PDE. Thus, although
-the streamfunction-vorticity formulation has two variables ($q$ and $\psi$) and
-the streamfunction formulation has just one ($\psi$), the former is the
-preferred formulation used in practical computations, since its conforming FE
+formulation yields a second order \emph{PDE}, whereas the streamfunction
+formulation yields a fourth order PDE. Thus, although the
+streamfunction-vorticity formulation has two variables ($q$ and $\psi$) and the
+streamfunction formulation has just one ($\psi$), the former is the preferred
+formulation used in practical computations, since its conforming FE
 discretization requires low-order ($C^0$) elements, whereas the latter requires
 a high-order ($C^1$) FE discretization.
 
@@ -44,34 +44,31 @@ Despite the simplification made in formulating the QGE from the full-fledged
 equations of ocean, the numerical simulation of the QGE is still computationally
 challenging when integrating over long time periods, as is the case in climate
 modeling. Therefore, it is necessary to reduce the computational cost of QGE
-simulations. We will consider the \emph{Two-Level} method for reducing this
-computational cost. To our knowledge it will be the first time this approach has
-been applied to the streamfunction formulation of the QGE.
+simulations. We will consider a two-level method for reducing this computational
+cost. To our knowledge it will be the first time this approach has been applied
+to the streamfunction formulation of the QGE.
 
-Two-level finite element discretizations are very promising approaches for
-finite element discretizations of nonlinear partial differential equations
-\cite{Fairag98,Layton93}. Two-level finite element discretizations aim to
-solve a particular nonlinear elliptic equation by first solving the system on a
-coarse mesh and then using the coarse mesh solution as a linearized variable to
-solve the linearized elliptic equation on  a fine mesh. The attraction of such a
-method is that one need only solve the nonlinear equations on a coarse mesh and
-then use this solution to solve on a fine mesh, thereby reducing computational
-time without sacrificing much in the way of solution accuracy. The development
-of the two-level finite element discretization was originally used by Xu in
-\cite{Xu94} and later algorithms for the Navier-Stokes Equations (NSE) were
-developed by Layton \cite{Layton93}, Fairag \cite{Fairag98, Fairag03}, and Shao
-\cite{Shao11}.
+Two-level FE discretizations are very promising approaches for FE
+discretizations of nonlinear PDEs \cite{Fairag98,Layton93}. Two-level FE
+discretizations aim to solve a particular nonlinear elliptic equation by
+first solving the system on a coarse mesh and then using the coarse mesh
+solution to solve the linearized elliptic equation on
+a fine mesh. The attraction of such a method is that one need only solve the
+nonlinear equations on a coarse mesh and then use this solution to solve on a
+fine mesh, thereby reducing computational time without sacrificing much in the
+way of solution accuracy. The development of the two-level finite element
+discretization was originally used by Xu in \cite{Xu94}. Later algorithms for
+the Navier-Stokes Equations (NSE) were developed by Layton \cite{Layton93},
+Fairag \cite{Fairag98, Fairag03}, and Shao \cite{Shao11}.
 
-The goals of this paper are five-fold. First, we use a $C^1$ finite element (the
+The goals of this paper are three-fold. First, we use a $C^1$ finite element (the
 Argyris element) to discretize the streamfunction formulation of the QGE. To the
 best of our knowledge, this is the \emph{first} time that a $C^1$ finite element
 has been used in the numerical discretization of the QGE. Second, we derive
 optimal error estimates for the FE discretization of the QGE and present
 supporting numerical experiments. To the best of our knowledge, this is the
 first time that optimal error estimates for the QGE have been derived.  Third,
-we present a Two-Level algorithm for solving the streamfunction formulation of
+we present a two-level algorithm for solving the streamfunction formulation of
 the QGE and present the error analysis associated with this algorithm. To the
 best of our knowledge, this is the \emph{first} time that such an algorithm has
-been applied the the streamfunction formulation of the QGE.  Fourth, we will
-present an LES closure model for the streamfunction formulation of the QGE and
-its theoretical framework.
+been applied the the streamfunction formulation of the QGE.
