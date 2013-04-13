@@ -53,7 +53,7 @@ scale, respectively. The Stommel number and Munk scale are given by (equation
 \begin{equation*}
   \epsilon_m = \frac{A}{\beta L^3},
 \end{equation*}
-where $A$ is the eddy visosity.  The model is supplemented with appropriate
+where $A$ is the eddy viscosity.  The model is supplemented with appropriate
 boundary conditions, which will be described for each of the subsequent
 numerical tests.
 
@@ -98,7 +98,7 @@ test, denoted by Test 2, corresponds to the exact solution used by Myers
 non-homogeneous Dirichlet boundary conditions are chosen to match those given by
 the exact solution
 \begin{equation}
-  \psi(x,y) = (1-x-e^{-\nicefrac{x}{\epsilon_s}}) \sin \pi y.
+  \psi(x,y) = (1-x-e^{-\nicefrac{x}{\epsilon_s}})\, \pi\, \sin \pi y.
   \label{eqn:MyerExact}
 \end{equation}
 We choose the same Stommel number as that used by Vallis, i.e.
@@ -321,7 +321,7 @@ and the better the numerical accuracy becomes.
 \subsection{Linear Stommel-Munk Model}\label{sse:SMM}
 This subsection presents results for the FE discretization of the linear
 Stommel-Munk model \eqref{eqn:Stommel-Munk} by using the Argyris element. Our
-computational setting is the same as taht used by Cascon \emph{et al.}
+computational setting is the same as that used by Cascon \emph{et al.}
 \cite{Cascon}: The computational domain is $\Omega = [0,3]\times[0,1]$, the Munk
 scale is $\epsilon_m=6\times 10^{-5}$, the Stommel number is $\epsilon_s=0.05$,
 and the boundary conditions are
@@ -728,7 +728,7 @@ $H^6$ regularity \cite{Soane2010} assumed by the error analysis in
   \hline
   $h$ & $DoFs$ & $e_0$ & $L_2$ order & $e_1$ & $H^1$ order & $e_2$ & $H^2$ order \\[0.2em]
   \hline
-  $\nicefrac{1}{2}$ & $1122$ & $2.08\times 10^{-6}$ & $-$ & $1.95\times 10^{-4}$ & $-$ & $4.50\times 10^{-2}$ & $-$ \\
+  $\nicefrac{1}{20}$ & $1122$ & $2.08\times 10^{-6}$ & $-$ & $1.95\times 10^{-4}$ & $-$ & $4.50\times 10^{-2}$ & $-$ \\
   $\nicefrac{1}{40}$ & $4092$ & $8.00\times 10^{-7}$ & $1.38$ & $6.68\times 10^{-5}$ & $1.54$ & $2.50\times 10^{-2}$ & $0.850$ \\
   $\nicefrac{1}{80}$ & $15594$ & $2.91\times 10^{-7}$ & $1.46$ & $2.47\times 10^{-5}$ & $1.43$ & $1.49\times 10^{-2}$ & $0.741$ \\
   $\nicefrac{1}{160}$ & $60846$ & $1.04\times 10^{-7}$ & $1.49$ & $9.05\times 10^{-6}$ & $1.45$ & $8.67\times 10^{-3}$ & $0.785$ \\
