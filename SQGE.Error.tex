@@ -152,19 +152,19 @@ in \autoref{sec:QGEStrong}.
   \begin{equation}
     \begin{split}
       Re^{-1}(\Delta \left[\psi - \psi^h\right],\Delta \chi^h)
-        + b(\psi,\psi,\chi^h) - b(\psi^h,\psi^h,\chi^h) \\
+        + b(\psi;\psi,\chi^h) - b(\psi^h;\psi^h,\chi^h) \\
         - Ro^{-1} (\left[\psi-\psi^h\right]_x,\chi^h) = 0 \qquad \forall \chi^h \in
     X^h.
   \end{split}
     \label{eqn:ErrorEq}
   \end{equation}
-  Next, adding and subtracting $b(\psi^h,\psi,\chi^h)$ to \eqref{eqn:ErrorEq},
+  Next, adding and subtracting $b(\psi^h;\psi,\chi^h)$ to \eqref{eqn:ErrorEq},
   we get:
   \begin{equation}
     \begin{split}
       & Re^{-1} (\Delta \left[\psi - \psi^h\right], \Delta \chi^h)
-        + b(\psi,\psi,\chi^h) - b(\psi^h,\psi,\chi^h) %\\
-        + b(\psi^h,\psi,\chi^h) - b(\psi^h,\psi^h,\chi^h) \\
+        + b(\psi;\psi,\chi^h) - b(\psi^h;\psi,\chi^h) %\\
+        + b(\psi^h;\psi,\chi^h) - b(\psi^h;\psi^h,\chi^h) \\
       & \hspace*{3.0cm} - Ro^{-1} (\left[\psi-\psi^h\right]_x,\chi^h) = 0
         \qquad \forall \chi^h \in X^h.
     \end{split}
@@ -181,7 +181,7 @@ in \autoref{sec:QGEStrong}.
   \begin{equation}
     \begin{split}
       Re^{-1}(\Delta \eta + \Delta \Phi^h, \Delta \chi^h)
-        + b(\eta+\Phi^h,\psi,\chi^h) + b(\psi^h,\eta+\Phi^h,\chi^h) \\
+        + b(\eta+\Phi^h,\psi,\chi^h) + b(\psi^h;\eta+\Phi^h,\chi^h) \\
       + Ro^{-1} (\eta_x+\Phi^h_x,\chi^h) = 0 \qquad \forall \chi^h \in X^h.
     \end{split}
     \label{eqn:ErrorEta}
@@ -205,7 +205,7 @@ in \autoref{sec:QGEStrong}.
   \end{equation}
   Also, it follows immediately from \eqref{eqn:b} that
   \begin{equation}
-    b(\psi^h,\Phi^h,\Phi^h)=0 .
+    b(\psi^h;\Phi^h,\Phi^h)=0 .
     \label{eqn:b0}
   \end{equation}
   Combining \eqref{eqn:b0}, \eqref{eqn:a30}, and \eqref{eqn:ErrorVarphi}, we get:
