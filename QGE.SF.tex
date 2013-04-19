@@ -1,6 +1,6 @@
 We are now ready to derive the strong formulation of the QGE in streamfunction
 form, \eqref{eqn:QGE_psi}. To this end, it is necessary to introduce the
-appropriate functional setting.  Let $\psi$ be a strong solution \cite{Layton08}
+appropriate functional setting.  Let $\psi$ be a unique solution \cite{Layton08}
 of the QGE, \eqref{eqn:QGE_psi}, then
 \begin{equation}
   \psi \in L^{\infty}(0, T; L^2(\Omega)) \cap L^2(0, T;H^2_0(\Omega))
@@ -13,10 +13,16 @@ where
   L^{\infty}(0, T;L^2(\Omega)) &:= \left\{ \psi(t,\mathbf{x}):[0, T] \to L^2(\Omega):
     \ess \sup_{0<t<T} \|\psi\| < \infty\right\}.
 \end{align*}
+The difference in the functional setting for the QGE and the SQGE stems from the
 With the functional setting in place we can derive the strong formulaiton for
 the QGE, \eqref{eqn:QGE_psi}.
 
-Multiplying \eqref{eqn:QGE_psi} by a test function $\chi \in X$ and then
+Additionally, let
+\begin{equation*}
+  X := H^2_0(\Omega) = \left\{ \psi\in H^2(\Omega): \psi=\frac{\partial\psi}{\partial {\bf n}}=0
+    \text{ on } \partial\Omega \right\}.
+\end{equation*}
+Then multiplying \eqref{eqn:QGE_psi} by a test function $\chi \in X$ and then
 transferring some of the derivatives from $\psi$ to $\chi$ by use of the
 divergence theorem , we get in a standard way the \emph{strong formulation} of
 the QGE in streamfunction formulation:
@@ -30,7 +36,7 @@ We first rewrite the Jacobian term, from \eqref{eqn:QGE_psi} in a more useful
 form
 \begin{align*}
   -\frac{\partial}{\partial t} \int_{\Omega}\! \Delta \psi \, \chi \, d\mathbf{x}
-    &+ Re^{-1} \int_{\Omega}\! \Delta^2 \psi \, d\mathbf{x}
+    &+ Re^{-1} \int_{\Omega}\! \Delta^2 \psi\, \chi \, d\mathbf{x}
     - \int_{\Omega}\! \left(\frac{\partial\left[\Delta\psi \right]}{\partial x}\, \frac{\partial
       \psi}{\partial y} -
     \frac{\partial\left[ \Delta\psi \right]}{\partial y}\,
@@ -41,7 +47,7 @@ form
 which yields the following equation:
 \begin{equation*}
   -\frac{\partial}{\partial t} \int_{\Omega}\! \Delta \psi \, \chi \, d\mathbf{x}
-    + Re^{-1} \int_{\Omega}\! \Delta^2 \psi \, d\mathbf{x}
+    + Re^{-1} \int_{\Omega}\! \Delta^2 \psi\, \chi \, d\mathbf{x}
     - \int_{\Omega}\! \left(\nabla \left[\Delta\psi\right]\cdot \nabla \times
     \psi \right)\, \chi\,
     d\mathbf{x} -Ro^{-1} \int_{\Omega}\! \frac{\partial \psi}{\partial x}\,
@@ -83,7 +89,7 @@ For the third and final summand we have
       \nabla \chi \, d\mathbf{x} \\
   &= \int_{\Omega}\! \Delta\psi\left( \psi_y\chi_x - \psi_x\chi_y \right)\, d\mathbf{x}.
 \end{align*}
-Thus, the weak form of the QGE in streamfunction form is
+Thus, the weak form of the QGE in its streamfunction form is
 \begin{eqnarray}
   && \frac{\partial}{\partial t} \int_{\Omega}\! \nabla \psi\, \nabla \chi  \, d\mathbf{x}
     + Re^{-1} \, \int_{\Omega}\! \Delta \psi \, \Delta \chi \, d{\bf x} + \int_{\Omega}\! \Delta
