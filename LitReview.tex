@@ -32,12 +32,12 @@ linear, whereas the QGE is nonlinear.
 %discretization of the QGE exist.
 
 We note that the state-of-the-art in the FE error analysis for the QGE seems to
-reflect that for the \emph{two-dimensional Navier-Stokes equations (2D NSE)}, to
-which the QGE are similar in form.  Indeed, as carefully discussed in
-\cite{Gunzburger89}, the 2D NSE in streamfunction-vorticity formulation are easy
-to implement (only $C^0$ elements are needed for a conforming discretization),
-but the available error estimates are suboptimal (see Section 11.6 in
-\cite{Gunzburger89}).
+reflect the FE error analysis for the \emph{two-dimensional Navier-Stokes
+equations (2D NSE)}, to which the QGE are similar in form.  Indeed, as carefully
+discussed in \cite{Gunzburger89}, the 2D NSE in streamfunction-vorticity
+formulation are easy to implement (only $C^0$ elements are needed for a
+conforming discretization), but the available error estimates are suboptimal
+(see Section 11.6 in \cite{Gunzburger89}).
 \begin{remark}
   It must be noted that although QGE and NSE look quite similar in their
   streamfunction forms, they are quite different. A significant difference lies
@@ -45,7 +45,7 @@ but the available error estimates are suboptimal (see Section 11.6 in
   \psi}{\partial x}$. This $\beta$-term introduces the Coriolis effect and
   differentiates the western boundary from the eastern boundary.  As the Rossby
   number, $Ro$ decreases the effect of the Coriolis becomes more and more
-  significant. As can be displayed in \autoref{fig:NSEnotQGE} the stronger the
+  significant. As displayed in \autoref{fig:NSEnotQGE} the stronger the
   Coriolis force (smaller $Ro$) the narrower the western boundary layer becomes.
   Additionally, we see that in the two gyre forcing seen in
   \autoref{fig:NSEnotQGE} as $Ro$ decreases the distance between the gyres

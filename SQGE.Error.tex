@@ -26,8 +26,8 @@ in \autoref{sec:QGEStrong}.
   \end{align}
 \end{lemma}
 \begin{proof}
-  We first start with the simplest proof, that being the proof for
-  \eqref{eqn:a1Cont}. This follows directly from the H\"older inequality, \eqref{eqn:Holder}, i.e.
+  We first establish the most straightforward estimate \eqref{eqn:a1Cont}. This
+  follows directly from the H\"older inequality, \eqref{eqn:Holder}, i.e.
   \begin{equation*}
     (\Delta \psi, \Delta \chi) \le \|\Delta \psi\|_{L^p}\,\|\Delta \chi\|_{L^r},
     \quad \frac{1}{p} + \frac{1}{r} = 1
@@ -39,7 +39,8 @@ in \autoref{sec:QGEStrong}.
     \frac{(F,\chi)}{|\chi|_2} \le \sup_{\xi \in X} \frac{(F,\xi)}{|\xi|_2} =
       \|F\|_{-2}.
   \end{equation*}
-  Multiplying both sides by $|\chi|_2$ gives the desired result:
+  Multiplying both sides of the above inequality by $|\chi|_2$ gives the desired
+  result:
   \begin{equation*}
     (F,\chi) \le \|F\|_{-2}|\chi|_2.
   \end{equation*}
@@ -54,7 +55,7 @@ in \autoref{sec:QGEStrong}.
     (\nabla \psi, \nabla \chi) \le \Gamma_0 |\psi|_2, |\chi|_2,
   \end{equation*}
   where $\Gamma_0$ is the square of the Poincar\'e constant. \\
-  Next, we will prove \eqref{eqn:a3Cont} by first applying the H\"older
+  Next, we will obtain \eqref{eqn:a3Cont} by first applying the H\"older
   inequality to get
   \begin{equation*}
     (\psi_x, \chi) \le \|\psi_x\|\, \|\chi\|.
@@ -455,7 +456,7 @@ for other conforming $C^1$ finite element spaces.
     & - b(\psi , \psi , e^*) + b(\psi^h , \psi^h , e^*) \nonumber \\
     =& Re^{-1} (\Delta , \Delta e^*) - Ro^{-1}(e_x , e^*)
       + b(e , \psi , e^*) + b(\psi , e, e^*) \nonumber \\
-    & - b(e , \psi , e^*) + b(e , \psi^h , e^*) + b(e , e , \psi^*)
+    & - b(e , \psi , e^*) + b(e , \psi^h , e^*) + b(e , e , \psi^*).
     \label{eqn:theorem_dual_6}
   \end{align}
   Using the bounds in \eqref{eqn:a1Cont}-\eqref{eqn:a3Cont},

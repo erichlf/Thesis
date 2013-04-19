@@ -23,7 +23,8 @@ the QGE in streamfunction formulation:
 \begin{equation*}
   \int_{\Omega}\! \left(-\frac{\partial \left[ \Delta \psi \right]}{\partial t} + Re^{-1}
     \Delta^2 \psi +  J(\psi,\Delta \psi) - Ro^{-1}\frac{\partial \psi}{\partial
-    x}\right)\, \chi \, d\mathbf{x} = Ro^{-1} \int_{\Omega}\! F\, \chi \, d\mathbf{x}
+    x}\right)\, \chi \, d\mathbf{x} = Ro^{-1} \int_{\Omega}\! F\, \chi \,
+    d\mathbf{x}.
 \end{equation*}
 We first rewrite the Jacobian term, from \eqref{eqn:QGE_psi} in a more useful
 form
@@ -44,7 +45,7 @@ which yields the following equation:
     - \int_{\Omega}\! \left(\nabla \left[\Delta\psi\right]\cdot \nabla \times
     \psi \right)\, \chi\,
     d\mathbf{x} -Ro^{-1} \int_{\Omega}\! \frac{\partial \psi}{\partial x}\,
-    \chi \, d\mathbf{x} = Ro^{-1} \int_{\Omega}\! F\, \chi \, d\mathbf{x}
+    \chi \, d\mathbf{x} = Ro^{-1} \int_{\Omega}\! F\, \chi \, d\mathbf{x}.
 \end{equation*}
 For the remaining portion of the strong formulation we shall deal with each
 summand individually (from left to right) and so
@@ -67,7 +68,7 @@ The next summand gives
     \mathbf{n}\, dS} + Re^{-1} \int_{\Omega} \Delta \psi \Delta \chi \,
     d\mathbf{x}.
 \end{align*}
-The third and final summand that needs to be evaluated gives
+For the third and final summand we have
 \begin{align*}
   -\int_{\Omega}\! \nabla\left[ \Delta\psi\right]\cdot
     \nabla\times\psi \, \chi \, d\mathbf{x} &= -\int_{\Omega}\!

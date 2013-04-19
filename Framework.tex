@@ -5,12 +5,12 @@ prerequisites for both apply the FE discretization, as is done in
 \autoref{ch:FEM}, and the error estimates proven in \autoref{ch:Errors}.
 
 For completeness we will first define an inner product, $L^p$ spaces, and
-Sobolev space along with their associated norms.
+Sobolev spaces along with their associated norms.
 
 \begin{definition} \label{def:InnerProduct}
   \textbf{Inner Product} \cite{Kreyszig1989}: \\
-  Let $f$ and $g$ be integrable functions such that $f,g : \Omega \rightarrow \R$.
-  Then their \textbf{inner product} is defined as
+  Let $f$ and $g$ be square integrable functions such that $f,g : \Omega
+  \rightarrow \R$.  Then their \textbf{inner product} is defined as
   \begin{equation}
     (f,g) := \int_{\Omega}\! f \, g\, d\mathbf{x}
     \label{eqn:InnerProduct}
@@ -22,7 +22,7 @@ Sobolev space along with their associated norms.
   Let $1\le p < \infty$ and $f \in L^p(\Omega)$ and $X$ be a norm-space, over
   $\Omega$, with the associated norm
   \begin{equation}
-    \|f\| := \left(\int_{\Omega}\! |f|^p\, d\mathbf{x}\right)^{\frac{1}{p}}.
+    \|f\|_{L^p(\Omega)} := \left(\int_{\Omega}\! |f|^p\, d\mathbf{x}\right)^{\frac{1}{p}}.
     \label{eqn:LpNorm}
   \end{equation}
   Then the completion of the norm-space $X$, denoted $L^p(\Omega)$ is called an
@@ -33,8 +33,8 @@ We will denote the typical $L^2$-norm by $\|\cdot\|$.
 
 \begin{definition} \label{SobolevSpace}
   \textbf{Sobolev space} \cite{Evans1989}: \\
-  Let $1\le p < \infty$, $f \in L^p(\Omega)$ a real valued function, $s$
-  non-negative, and $\alpha$ a multi-index with $|\alpha| \le s$. Then the
+  Let $1\le p < \infty$, $f \in L^p(\Omega)$ be a real valued function, $s$ be
+  non-negative, and $\alpha$ be a multi-index with $|\alpha| \le s$. Then the
   Sobolev space $W^{s,p}(\Omega)$ is defined as
   \begin{equation}
     W^{s,p}(\Omega) := \left\{ f\in L^p(\Omega) : D^{\alpha} f \in

@@ -21,7 +21,7 @@ K$ such that
 Also denote the vectors representing the edge of the triangle as
 \begin{equation*}
   \mathbf{v}_1 = \mathbf{x}_2 - \mathbf{x}_1\quad \mathbf{v}_2 = \mathbf{x}_3 -
-  \mathbf{x}_1\quad \mathbf{v}_3 = \mathbf{x}_3 - \mathbf{x}_2
+  \mathbf{x}_1\quad \mathbf{v}_3 = \mathbf{x}_3 - \mathbf{x}_2.
 \end{equation*}
 Let $\mathbf{n}_i$ be the unit normal vector corresponding to the $i^{th}$ side
 obtained by rotating the vector $\mathbf{v}_i$ by $\nicefrac{\pi}{2}$ in the
@@ -53,7 +53,7 @@ $j\in\{1,\dots,21\}$ as they are listed below
     \mathcal{L}_3^{xx}, \mathcal{L}_3^{xy}, \mathcal{L}_3^{yy}, \\
   &\mathcal{L}_1^n, \mathcal{L}_2^n, \mathcal{L}_3^n,
 \end{align*}
-and the linear functionals $\hat{\mathcal{L}}_i$ and $\hat{ \mathcal{L}_i^n}$
+where the linear functionals $\hat{\mathcal{L}}_i$ and $\hat{ \mathcal{L}_i^n}$
 are the corresponding functionals on the reference triangle $\hat{K}$. The basis
 functions of the Argyris triangle are fifth degree polynomials in
 $\mathbb{P}_5(K)$
@@ -66,7 +66,7 @@ and similarly on the reference triangle
   \hat{\mathcal{L}}_i(\hat{\varphi}_j) = \delta_{ij} \quad
   i,j\in\{1,\dots,21\}.
 \end{equation*}
-Now define a new set of functionals such that
+Now define a new set of functionals by
 \begin{equation}
   \tilde{\mathcal{L}}_i(\varphi) := \hat{\mathcal{L}}_i(\varphi\circ F).
   \label{eqn:Functional}
@@ -79,7 +79,7 @@ that
   \{1,\dots,21\}.
   \label{eqn:FunctionalsC}
 \end{equation}
-Therefore, it follows \cite{Dominguez08}
+Therefore, it follows that (see \cite{Dominguez08})
 \begin{equation}
   \varphi_i\circ F = \sum_{j=1}^{21} c_{ij}\hat{\varphi}_j \quad i\in
   \{1,\dots,21\}.
@@ -132,7 +132,8 @@ where $d_{ij}$ are constants.
 Now from \eqref{eqn:Affine} we see that
 \begin{align*}
   &\frac{\partial x}{\partial \hat{x}} = B_{11}   &\frac{\partial x}{\partial \hat{y}} = B_{12} \\
-  &\frac{\partial y}{\partial \hat{x}} = B_{21}   &\frac{\partial y}{\partial \hat{y}} = B_{22}
+  &\frac{\partial y}{\partial \hat{x}} = B_{21}   &\frac{\partial y}{\partial
+    \hat{y}} = B_{22}.
 \end{align*}
 With this we can determine the relationship between the gradient of $\hat{\varphi}$ on the
 triangle $\hat{K}$ to the gradient of $\varphi$ on the triangle $K$
@@ -154,7 +155,7 @@ triangle $\hat{K}$ to the gradient of $\varphi$ on the triangle $K$
     \dfrac{\partial \varphi\circ F}{\partial x} \\[1em] \dfrac{\partial \varphi\circ F}{\partial y}
   \end{bmatrix}
 \end{align*}
-and so
+thus we have
 \begin{equation}
   \nabla_{\mathbf{\hat{x}}}\left( \varphi \circ F \right) = B^T \nabla_{\mathbf{x}} \varphi \circ F
   \label{eqn:Gradient}
@@ -251,7 +252,7 @@ Therefore we see that
     \tilde{\mathcal{L}}^{xx}_i \\ \tilde{\mathcal{L}}^{xy}_i \\ \tilde{\mathcal{L}}^{yy}_i
   \end{bmatrix} = \Theta \begin{bmatrix}
     \mathcal{L}^{xx}_i \\ \mathcal{L}^{xy}_i \\ \mathcal{L}^{yy}_i
-  \end{bmatrix} \quad
+  \end{bmatrix}.
 \end{equation*}
 Additionally, notice $\mathbf{v}_i = B\hat{\mathbf{v}}_i$ for
 $i=\{1,2,3\}$ where $\hat{\mathbf{v}}_i$ are defined on the reference triangle
@@ -333,7 +334,7 @@ $\mathbb{P}_5(K)$ and define
 Then, we get
 \begin{equation}
   \psi'(\nicefrac{1}{2}) = \frac{15}{8} (\psi(1)-\psi(0)) -
-  \frac{7}{16} (\psi'(1)+\psi'(0)) + \frac{1}{32} (\psi''(1)-\psi''(0))
+  \frac{7}{16} (\psi'(1)+\psi'(0)) + \frac{1}{32} (\psi''(1)-\psi''(0)).
   \label{eqn:Psi}
 \end{equation}
 Now take $\gamma$ to be the index corresponding to $\mathbf{v}_{\gamma} =
