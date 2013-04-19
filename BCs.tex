@@ -100,4 +100,6 @@ multipliers for boundary constraints is given by
 Since the homogeneous boundary conditions were not enforced in $A$, we note that
 $A$ is singular.  To avoid poor conditioning of the system \eqref{eqn:Lagrange},
 we add a small perturbation matrix, $\varepsilon \mathbf{I}$, in the lower right
-corner of the matrix of the linear system \eqref{eqn:Lagrange}.
+corner of the matrix of the linear system \eqref{eqn:Lagrange}. We note that a
+similar approach (the penalty method) is used in the Navier-Stokes equations
+context (see, e.g., \cite{Gunzburger89}).

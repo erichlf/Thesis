@@ -1,15 +1,15 @@
 When testing finite element code it is useful to simplify the problem even
-though in the ``real'' world stationary ``flows'' don't exist, the
-\emph{stationary} QGE (SQGE) are useful in testing code.  Additionally, the time
-dependence of the QGE, \eqref{qge_psi_1}, adds additional complexity to the
-finite element error analysis. Finite error analysis for time dependent problems
-usually can be split into two parts; analysis of the spatial discretization that
-arises through the application of finite elements, and the discretization error
-in time that arises from the application of the method of lines. Thus, a FE
-error analysis of the SQGE is a good push off point for analysis of the
-time-dependent QGE and is therefore the main motivation for presenting the SQGE.
-It is not only the theory that motivates the study of the SQGE. In practice, the
-time discretization for the QGE is built around that of the SQGE.
+though in the real world stationary flows don't exist, the \emph{stationary} QGE
+(SQGE) are useful, e.g. in testing code.  Additionally, the time dependence of
+the QGE, \eqref{qge_psi_1}, adds additional complexity to the finite element
+error analysis. Finite error analysis for time dependent problems usually can be
+split into two parts; analysis of the spatial discretization that arises through
+the application of finite elements, and the discretization error in time that
+arises from the application of the method of lines. Thus, a FE error analysis of
+the SQGE is a good push off point for analysis of the time-dependent QGE and is
+therefore the main motivation for presenting the SQGE.  It is not only the
+theory that motivates the study of the SQGE. In practice, the time
+discretization for the QGE is built around that of the SQGE.
 
 The SQGE are obtained by setting $\dfrac{\partial q}{\partial t}$ to $0$ in
 \eqref{qge_q_psi_1} and therefore we get the \emph{streamfunction formulation}

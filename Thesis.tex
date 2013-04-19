@@ -41,16 +41,16 @@ wind-driven ocean currents.}
   \cite{Myers}. Despite these advantages, there are relatively few papers that
   consider the FE method applied to the QGE.
 
-  To our knowledge, \emph{all} FE discretizations of the QGE have been developed
-  for the streamfunction-vorticity formulation, none using the streamfunction
-  formulation. The reason is simple: The streamfunction-vorticity formulation
-  yields a second order \emph{partial differential equation (PDE)}, whereas the
-  streamfunction formulation yields a fourth order PDE. Thus, although the
-  streamfunction-vorticity formulation has two variables ($q$ and $\psi$) and
-  the streamfunction formulation has just one ($\psi$), the former is the
-  preferred formulation used in practical computations, since its conforming FE
-  discretization requires low-order ($C^0$) elements, whereas the latter
-  requires a high-order ($C^1$) FE discretization.
+  Most FE discretizations of the QGE have been developed for the
+  streamfunction-vorticity formulation. The reason is simple: The
+  streamfunction-vorticity formulation yields a second order \emph{partial
+  differential equation (PDE)}, whereas the streamfunction formulation yields a
+  fourth order PDE. Thus, although the streamfunction-vorticity formulation has
+  two variables ($q$ and $\psi$) and the streamfunction formulation has just one
+  ($\psi$), the former is the preferred formulation used in practical
+  computations, since its conforming FE discretization requires low-order
+  ($C^0$) elements, whereas the latter requires a high-order ($C^1$) FE
+  discretization.
 
   We present a conforming FE discretization of the QGE based on the Argyris
   element and we present a two-level FE discretization of the Stationary QGE

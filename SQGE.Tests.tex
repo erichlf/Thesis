@@ -349,7 +349,7 @@ $L$ associated with the \emph{linear Stommel-Munk} model to the exact solution
 \autoref{fig:StommelMunkSin} presents the streamlines of the approximate
 solution obtained by using the Argyris Finite Element on a mesh with
 $h=\frac{1}{32}$ and $28550$ DoFs. Comparing \autoref{fig:StommelMunkSin} with
-Figure $7$ in \cite{Myers}, we notice that our approximation is close to that in
+Figure $7$ in \cite{Cascon}, we notice that our approximation is close to that in
 \cite{Myers}. Since the exact solution is available, we can compute the errors
 in various norms. \autoref{tab:SMsinErrors} presents the errors $e_0,\, e_1,
 \text{ and } e_2$ (i.e., the $L^2,\, H^1, \text{ and } H^2$ errors,
@@ -619,28 +619,28 @@ the thin boundary layer on the left-hand side (i.e., at $x=0$). The finer the
 mesh gets, the better this boundary layer is captured and the better the
 numerical accuracy becomes.
 
-\subsection*{Mediterranean}
-We have created a FE mesh of the Mediterranean Sea using GMSH \cite{GMSH}.
-The coastline data was obtained from GSHHS \cite{GSHHS}. Major islands such as
-Corsica, Sardinia, and Sicily were connected to the nearest land mass.  This is
-used to ensure a unique streamfunction (see the discussions by
-\cite{Gunzburger89,van-Gijzen1998}).  Additionally, the Atlantic was closed off
-from the Mediterranean at the Straits of Gibraltar, from the Red Sea at the Suez
-Canal, and the Sea of Marmara at the Dardanelles Strait, while the Gulf of
-Corinth was treated as land. The resultant FE mesh can be seen in
+\subsection*{Mediterranean Sea}
+We have created a FE mesh of the Mediterranean Sea using GMSH \cite{GMSH}.  The
+coastline data was obtained from GSHHS \cite{GSHHS}. Major islands such as
+Corsica, Sardinia, and Sicily were connected to the nearest land mass in order
+to ensure a unique streamfunction (see the discussions in
+\cite{Gunzburger89,van-Gijzen1998}).  Additionally, the Atlantic Ocean was
+closed off from the Mediterranean Sea at the Straits of Gibraltar, from the Red
+Sea at the Suez Canal, and the Sea of Marmara at the Dardanelles Strait, while
+the Gulf of Corinth was treated as land. The resultant FE mesh is displayed in
 \autoref{fig:MedMesh}.
 
 \begin{sidewaysfigure}
   \begin{center}
     \includegraphics[scale=0.5]{Figures/MediterraneanMesh.png}
-    \caption{Mesh of the Mediterranean created using GMSH \cite{GMSH} mesh size
-    corresponds to $h=\frac{1}{320}$ with $DoF=240,342$.}
+    \caption{Mesh of the Mediterranean Sea created using GMSH \cite{GMSH}. The
+    mesh size corresponds to $h=\frac{1}{320}$ with $DoF=240,342$.}
     \label{fig:MedMesh}
   \end{center}
 \end{sidewaysfigure}
 
 The following experiment used a forcing function given by $F =
-\sin(\frac{\pi}{4} y)$ which is the same forcing function given by Bryan
+\sin\left(\frac{\pi}{4} y\right)$ which is the same forcing function given by Bryan
 \cite{Bryan1963}. Note: Bryan, in fact, used $\sin(\frac{\pi}{2} y)$, but on a
 domain with a vertical extent which was of length two. In our case the vertical
 extent of the Northern Hemisphere is of length one. Thus, the appropriate forcing
@@ -663,7 +663,7 @@ used in \cite{delSastre04} and are summarized in \autoref{tab:OceanParameters}.
     \hline
     $r_e$ & $6378.1\,km$ \\
     \hline
-    $\rho$ & $1027\, \nicefrac{kg}{m^3}$ \\
+    $\rho$ & $1024\, \nicefrac{kg}{m^3}$ \\
     \hline
   \end{tabular}
   \end{center}
@@ -676,11 +676,8 @@ used in \cite{delSastre04} and are summarized in \autoref{tab:OceanParameters}.
 \end{table}
 
 Taking the derivative of relation \eqref{eqn:beta_plane} with respect to $y$
-gives the following relation for $\beta$ to $f$:
-\begin{equation}
-  \frac{\partial f}{\partial y} = \beta. \label{eqn:dfdy}
-\end{equation}
-Now, using the equation (2.80) from \cite{Vallis06} gives
+gives the following relation for $\beta$ to $f$ and using the equation (2.80)
+from \cite{Vallis06} gives
 \begin{equation}
   \beta = \frac{2\omega}{r_e}\cos \theta_0.
   \label{eqn:Beta}
@@ -691,21 +688,21 @@ From the parameters given in \autoref{tab:OceanParameters} we see that
 \end{equation*}
 Using this approximation for $\beta$ and \eqref{eqn:velocity_scale} with
 $\tau_0 = 0.6\, dyne\, cm^{-2}$ \cite{Hellerman} gives the following
-approximation for the characteristic velocity
+approximation for the characteristic velocity:
 \begin{equation*}
 %  \begin{split}
 %    U &= \frac{3.1415 \, 0.6 dyne\, cm^{-2}}{1027 \nicefrac{kg}{m^3} \,
 %      1000\, m \, 1.742 \times 10^{-11}\,m^{-1}\,s^{-1} \, 1000\, km} \\
-    U = 1.054\times 10^{-2} \nicefrac{m}{s}.
+    U \approx 1.054\times 10^{-2} \nicefrac{m}{s}.
 %  \end{split}
 \end{equation*}
-Therefore, the Rossby number is
+Therefore by \eqref{eqn:rossby_number}, the Rossby number is
 \begin{equation*}
 %  Ro = \frac{1.054\times 10^{-2} \nicefrac{m}{s}}{1.742\times 10^{-11} m^{-1}
 %    s^{-1} (1000 km)^2}
   Ro = 6.051\times 10^{-4}
 \end{equation*}
-and the Reynolds number is
+and by \eqref{eqn:reynolds_number} the Reynolds number is
 \begin{equation*}
   Re = 5.27.
 \end{equation*}
@@ -718,7 +715,7 @@ Sastre (Figure 2.22 in \cite{Galan-del-Sastre2004}). It should be noted that
 some of the differences between our solution and Galan del Sastre's solution is
 likely a result of his inclusion of more islands and not connected those islands
 to Europe or Africa. The rates of convergence are much lower than expected,
-however this likely is due to the facet that the domain is non-smooth which are
+however this likely is due to the fact that the domain is non-smooth which is
 likely causing the solution to be in a space which is less regular than the
 $H^6$ regularity \cite{Soane2010} assumed by the error analysis in
 \autoref{sec:SQGEErrors}.
@@ -735,7 +732,7 @@ $H^6$ regularity \cite{Soane2010} assumed by the error analysis in
   $\nicefrac{1}{320}$ & $240342$ & $3.10\times 10^{-8}$ & $1.75$ & $2.75\times 10^{-6}$ & $1.72$ & $4.35\times 10^{-3}$ & $0.994$ \\
 \hline
 \end{tabular}
-\caption{Observed rates of convergence for SQGE applied to the Mediterranean
+\caption{Observed rates of convergence for SQGE applied to the Mediterranean Sea
   with forcing function $F = \sin(\frac{\pi}{2} y)$ and true solution obtained
   from fine mesh with $h=\dfrac{1}{640}$.}
   \label{tab:SQGEMedConvergence}
@@ -744,7 +741,7 @@ $H^6$ regularity \cite{Soane2010} assumed by the error analysis in
 \begin{figure}
   \begin{center}
     \includegraphics[scale=0.7]{Figures/SQGEMedRe5_27Ro6_051E-4h320sin0_25piy.pdf}
-    \caption{``True'' solution of SQGE on the Mediterranean with $Re = 5.27, Ro
+    \caption{``True'' solution of SQGE on the Mediterranean Sea with $Re = 5.27, Ro
       = 6.051\times 10^{-4}, F = \sin( \frac{\pi}{2} y)$, and $955,302$ DoFs
       corresponding to $h = \frac{1}{640}$.}
     \label{fig:SQGEMed}

@@ -164,8 +164,8 @@ thus we have
 If we define the condensed Hessian, in the same way as Dominguez et. al.
 \cite{Dominguez08}, as $H_x(\varphi) = \left[ \varphi_{xx},\, \varphi_{xy},\,
 \varphi_{yy}\right]^T$ then using \eqref{eqn:Affine} we can determine the
-relationship between the Hessian of $\hat{\varphi}$ on the triangle $\hat{K}$
-to the Hessian of $\varphi$ on the triangle $K$
+relationship between the condensed Hessian of $\hat{\varphi}$ on the triangle
+$\hat{K}$ to the condensed Hessian of $\varphi$ on the triangle $K$
 \begin{align*}
   H_{\mathbf{\hat{x}}}(\varphi\circ F) &= \begin{bmatrix}
     \dfrac{\partial^2 \varphi\circ F}{\partial \hat{x}^2} \\[1em]
@@ -185,7 +185,9 @@ to the Hessian of $\varphi$ on the triangle $K$
       F}{\partial x}\, \dfrac{\partial x}{\partial \hat{y}} + \dfrac{\partial
       \varphi\circ F}{\partial y}\, \dfrac{\partial y}{\partial
       \hat{y}} \right)
-  \end{bmatrix} \\
+  \end{bmatrix}
+\end{align*}
+\begin{align*}
   &= \begin{bmatrix}
     \dfrac{\partial^2 \varphi\circ F}{\partial x^2}\, \left(\dfrac{\partial
       x}{\partial \hat{x}}\right)^2 + 2 \dfrac{\partial^2 \varphi\circ F}{\partial x
@@ -205,7 +207,7 @@ to the Hessian of $\varphi$ on the triangle $K$
       \partial \hat{y}} \, \dfrac{\partial x}{\partial \hat{y}} \,
       \dfrac{\partial y}{\partial \hat{y}} + \dfrac{\partial \varphi\circ
       F}{\partial y^2}\, \left(\dfrac{\partial y}{\partial \hat{y}}\right)^2
-  \end{bmatrix} \\
+  \end{bmatrix}
 \end{align*}
 \begin{align*}
   &= \begin{bmatrix}
