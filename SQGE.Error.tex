@@ -1,6 +1,6 @@
 The main goal of this section is to develop a rigorous error analysis for the FE
-discretization of the SQGE \eqref{eqn:SQGE_Psi} by using the conforming FEs. In
-particular we develop error bounds for the FE discretiztion of
+discretization of the SQGE \eqref{eqn:SQGE_Psi} by using conforming FEs. In
+particular, we develop error bounds for the FE discretiztion of
 \eqref{eqn:SQGE_Psi} with Argyris element in \autoref{thm:Errors}. First, in
 \autoref{thm:EnergyNorm} we prove error estimates in the $H^2$ norm by using an
 approach similar to that used in \cite{Cayco86}.  Second, in
@@ -79,18 +79,21 @@ in \autoref{sec:QGEStrong}.
       \chi\|_{L^4}.
   \end{equation*}
   Then applying the Ladyzhenskaya inequality, \eqref{eqn:Ladyzhenskaya} results in
-  \begin{equation*}
+  \begin{equation}
     b(\psi;\varphi,\chi) \le \Gamma \|\Delta \psi\|
       \|\nabla \varphi\|^{\nicefrac{1}{2}} \|\Delta \varphi\|^{\nicefrac{1}{2}}
       \|\nabla \chi\|^{\nicefrac{1}{2}} \|\Delta \chi\|^{\nicefrac{1}{2}},
-  \end{equation*}
-  where $\Gamma$ is the Ladyzhenskaya constant, from \eqref{eqn:Ladyzhenskaya}.
-  Using the Poincar\'e inequality, \eqref{eqn:Poincare} gives
+    \label{eqn:bLady}
+  \end{equation}
+  where $\Gamma$ is the square Ladyzhenskaya constant, from
+  \eqref{eqn:Ladyzhenskaya}.  Using the Poincar\'e inequality,
+  \eqref{eqn:Poincare} gives
   \begin{equation*}
     b(\psi;\varphi,\chi) \le \Gamma_1 \|\Delta \psi\|\, \|\Delta \varphi\|\,
       \|\Delta \chi\|,
   \end{equation*}
-  where $\Gamma_1$ is the Poincar\'e constant.
+  where $\Gamma_1$ is the square of the Poincar\'e constant time $\Gamma$ from
+  \eqref{eqn:bLady}.
 \end{proof}
 
 \begin{thm}
@@ -309,11 +312,14 @@ of \autoref{thm:stability_sqge}).
 Next, we apply Green's theorem to the second term on the right-hand side of
 \eqref{eqn:dual_operator_1}:
 \begin{align}
-  \biggl( J(\chi , \Delta \psi) , \psi^* \biggr) =& \chi_x \, \Delta \psi_y \, \psi^*
-     - \chi_y \, \Delta \psi_x \, \psi^* \nonumber \\
-  \stackrel{Green}{=}& - \chi \, \Delta \psi_{y x} \, \psi^* - \chi \, \Delta
-    \psi_y \, \psi^*_x + \chi \, \Delta \psi_{x y} \, \psi^* + \chi \, \Delta
-    \psi_x \, \psi^*_y \nonumber \\
+  \biggl( J(\chi , \Delta \psi) , \psi^* \biggr) =& \int_{\Omega}\! \chi_x \,
+    \Delta \psi_y \, \psi^* - \chi_y \, \Delta \psi_x \, \psi^* \nonumber\,
+    d\mathbf{x} \\
+  \stackrel{Green}{=}& \cancelto{0}{\int_{\partial \Omega}\!
+      \left(\chi \, \Delta \psi_{x y} \, \psi^* - \chi \, \Delta \psi_{y x} \,
+      \psi^* \right) \cdot \mathbf{n} \, dS}
+    + \int_{\Omega}\! \chi \, \Delta \psi_x \, \psi^*_y
+      - \chi \, \Delta \psi_y \, \psi^*_x\, d\mathbf{x} \nonumber \\[1em]
   =& \biggl( \chi , J(\Delta \psi , \psi^*) \biggr) .
   \label{eqn:dual_operator_2}
 \end{align}
@@ -390,9 +396,9 @@ for other conforming $C^1$ finite element spaces.
   exist positive constants $C_0, \, C_1 \text{ and } C_2$ that can depend on
   $Re$, $Ro$, $\Gamma_1$, $\Gamma_2$, $F$, but \emph{not} on the meshsize $h$, such that
   \begin{align}
-    |\psi - \psi^h|_2 &\le C_2 \, h^4 , \label{eqn:H2Error} \\
-    |\psi - \psi^h|_1 &\le C_1 \, h^5 , \label{eqn:H1Error} \\
-    \|\psi - \psi^h\|_0 &\le C_0 \, h^6 . \label{eqn:L2Error}
+    |\psi - \psi^h|_2 &\le C_2 \, h^4\, |\psi|_6, \label{eqn:H2Error} \\
+    |\psi - \psi^h|_1 &\le C_1 \, h^5\, |\psi|_6, \label{eqn:H1Error} \\
+    \|\psi - \psi^h\|_0 &\le C_0 \, h^6\, |\psi|_6. \label{eqn:L2Error}
   \end{align}
 \end{thm}
 \begin{proof}
@@ -411,9 +417,9 @@ for other conforming $C^1$ finite element spaces.
 
   We start by proving the $L^2$ norm estimate \eqref{eqn:L2Error}.
   \begin{align}
-    |e|^2 = (e , e) =& (\mathcal{L} \, e , \psi^*)
-      = (e , \mathcal{L}^* \, \psi^*) \nonumber \\
-    =& (e , \mathcal{L}^* \, e^*) + (e , \mathcal{L}^* \, {\psi^*}^h)
+    |e|^2 = (e, e) &= (e , \mathcal{L}^* \, \psi^*)
+      = (\mathcal{L} \, e , \psi^*) \nonumber \\
+    &= (e , \mathcal{L}^* \, e^*) + (e , \mathcal{L}^* \, {\psi^*}^h)
       = (\mathcal{L} \, e , e^*) + (\mathcal{L} \, e , {\psi^*}^h) .
     \label{eqn:theorem_dual_2}
   \end{align}
@@ -448,7 +454,7 @@ for other conforming $C^1$ finite element spaces.
     =& Re^{-1} \, (\Delta e , \Delta e^*)
       - Ro^{-1} \, \left( \frac{\partial e}{\partial x} , e^* \right)
       + \left( J(e , \Delta \psi) + J(\psi , \Delta e) , e^* \right) \nonumber \\
-    +& \left( J(e , \Delta \, \psi) + J(\psi , \Delta \, e)
+    & + \left( J(e , \Delta \, \psi) + J(\psi , \Delta \, e)
       - J(\psi , \Delta \, \psi) + J(\psi^h , \Delta \, \psi^h)
       \, , \, {\psi^*}^h \right) \nonumber \\
     =& Re^{-1} (\Delta e ,\Delta e^*) - Ro^{-1}(e_x , e^*)
@@ -521,8 +527,8 @@ for other conforming $C^1$ finite element spaces.
   Using the obvious simplifications and the $H^2$ error estimate
   \eqref{eqn:H2Error} in \eqref{eqn:theorem_dual_13} yields:
   \begin{equation}
-    |e| \leq C \, h^2 \, | e |_2 + C \, | e |_2^2 \leq C \, h^6 + C \, h^8
-      = C_0 \, h^6 ,
+    |e| \leq C \, h^2 \, | e |_2 + C \, | e |_2^2 \leq C \, h^6 |\psi|_6 + C \,
+      h^8 |\psi|_6^2 = C_0 \, h^6\, |\psi|_6 ,
     \label{eqn:theorem_dual_14}
   \end{equation}
   which proves the $L^2$ error estimate \eqref{eqn:L2Error}.
@@ -534,7 +540,7 @@ for other conforming $C^1$ finite element spaces.
   $\mathcal{L}^*$:
   \begin{align}
     |e|_1^2 =& (\nabla e , \nabla e) = ( e , - \Delta e) =
-      (\mathcal{L} \, e , \psi^*) = (e , \mathcal{L}^* \, \psi^*) \nonumber \\
+      (e , \mathcal{L}^* \, \psi^*) = (\mathcal{L} \, e , \psi^*) \nonumber \\
     =& (e , \mathcal{L}^* \, e^*) + (e , \mathcal{L}^* \, {\psi^*}^h)
       = (\mathcal{L} \, e , e^*) + (\mathcal{L} \, e , {\psi^*}^h) .
     \label{eqn:theorem_dual_15}
@@ -583,8 +589,8 @@ for other conforming $C^1$ finite element spaces.
   Using the obvious simplifications and the $H^2$ error estimate
   \eqref{eqn:H2Error} in \eqref{eqn:theorem_dual_21} yields:
   \begin{equation}
-    |e|_1 \leq C \, h \, | e |_2 + C \, | e |_2^2 \leq C \, h^5 + C \, h^8
-      = C_1 \, h^5 ,
+    |e|_1 \leq C \, h \, | e |_2 + C \, | e |_2^2 \leq C \, h^5\, |\psi|_6 + C
+      \, h^8\, |\psi|_6 = C_1 \, h^5 |\psi|_6,
     \label{eqn:theorem_dual_22}
   \end{equation}
   which proves the $H^1$ error estimate \eqref{eqn:H1Error}.

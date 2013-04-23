@@ -185,9 +185,7 @@ $\hat{K}$ to the condensed Hessian of $\varphi$ on the triangle $K$
       F}{\partial x}\, \dfrac{\partial x}{\partial \hat{y}} + \dfrac{\partial
       \varphi\circ F}{\partial y}\, \dfrac{\partial y}{\partial
       \hat{y}} \right)
-  \end{bmatrix}
-\end{align*}
-\begin{align*}
+  \end{bmatrix} \\
   &= \begin{bmatrix}
     \dfrac{\partial^2 \varphi\circ F}{\partial x^2}\, \left(\dfrac{\partial
       x}{\partial \hat{x}}\right)^2 + 2 \dfrac{\partial^2 \varphi\circ F}{\partial x
@@ -207,9 +205,7 @@ $\hat{K}$ to the condensed Hessian of $\varphi$ on the triangle $K$
       \partial \hat{y}} \, \dfrac{\partial x}{\partial \hat{y}} \,
       \dfrac{\partial y}{\partial \hat{y}} + \dfrac{\partial \varphi\circ
       F}{\partial y^2}\, \left(\dfrac{\partial y}{\partial \hat{y}}\right)^2
-  \end{bmatrix}
-\end{align*}
-\begin{align*}
+  \end{bmatrix} \\
   &= \begin{bmatrix}
     \left(\dfrac{\partial x}{\partial \hat{x}}\right)^2
       & 2 \dfrac{\partial x}{\partial \hat{x}}\, \dfrac{\partial y}{\partial \hat{x}}
@@ -325,13 +321,13 @@ It also holds that
 For the degrees of freedom corresponding to the vertices, i.e. function values,
 first derivative values, and second/mixed derivative values, it should be clear
 that $\mathcal{L}^*_i = \mathcal{L}_i$ for $i=1,\dots,18$. For the degrees of
-freedom corresponding to the normal derivatives at the midpoints we see that
-since $\ell_i \mathbf{n}_i = R \mathbf{v}_i$ we see that $\mathcal{L}^{\perp}_i
-= \ell_i \mathcal{L}^n_i$. Now let $\phi$ be an arbitrary polynomial in
-$\mathbb{P}_5(K)$ and define
+freedom corresponding to the normal derivatives and tangential derivatives at
+the midpoints we see that since $\ell_i \mathbf{n}_i = R \mathbf{v}_i$ and
+$\mathcal{L}^{\perp}_i = \ell_i \mathcal{L}^n_i$. Now let $\phi$ be an arbitrary
+polynomial in $\mathbb{P}_5(K)$ and define
 \begin{equation*}
   \psi(t) := \varphi(t\mathbf{x}_{\beta} + (1-t)\mathbf{x}_{\alpha}) \in
-  \mathbb{P}_5(t) \; \alpha<\beta \text{ and} \alpha,\,\beta \in \{1,2,3\}.
+  \mathbb{P}_5(t) \quad \alpha<\beta \text{ and } \alpha,\,\beta \in \{1,2,3\}.
 \end{equation*}
 Then, we get
 \begin{equation}

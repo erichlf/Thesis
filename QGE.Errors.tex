@@ -18,19 +18,19 @@ with the semi-discretization. We will rely heavily on the
   -(\psi^h,\psi^h_x)$, we get $(\psi^h_x, \psi^h) = 0$. Thus, we have
   \begin{equation*}
     \frac{1}{2} \frac{d}{dt} \|\nabla \psi^h\|^2 + Re^{-1} \|\Delta \psi^h\|^2 =
-      Ro^{-1} (F,\psi^h).
+      Ro^{-1} (F,\psi^h) \le Ro^{-1} \|F\|_{-1}\,\|\nabla \chi\|.
   \end{equation*}
-  Using the H\"older, Poincar\'e, and Young inequalities gives
+  Using Young inequality gives
   \begin{equation}
     \frac{1}{2} \frac{d}{dt} \|\nabla \psi^h\|^2 + Re^{-1} \|\Delta \psi^h\|^2 =
-      \frac{Ro^{-2} C_p}{2\epsilon} \|F\|_{-1}^2 + \frac{\epsilon}{2}\|\nabla
+      \frac{Ro^{-2}}{2\epsilon} \|F\|_{-1}^2 + \frac{\epsilon}{2}\|\nabla
       \psi^h\|^2.
       \label{eqn:HolderStability}
   \end{equation}
   Now taking $\epsilon = Re^{-1}$ in \eqref{eqn:HolderStability} results in
   \begin{equation*}
     \frac{1}{2} \frac{d}{dt} \|\nabla \psi^h\|^2 + \frac{Re^{-1}}{2} \|\Delta
-      \psi^h\|^2 = \frac{Re\,Ro^{-2} C_p}{2} \|F\|_{-1}^2.
+      \psi^h\|^2 = \frac{Re\,Ro^{-2}}{2} \|F\|_{-1}^2.
   \end{equation*}
   Assuming $\|\Delta \psi^h\| \in L^1(0,T)$ and integrating over $(0,t)$ gives
   the final result.
@@ -72,19 +72,8 @@ with the semi-discretization. We will rely heavily on the
       \|\Delta \chi\|^{\nicefrac{1}{2}}\right),
   \end{equation*}
   which proves estimate \eqref{eqn:BH1BoundChi}. \\
-  For estimate \eqref{eqn:BH1BoundPsi} we apply Lemma 5.6 from \cite{Fairag98},
-  i.e.,
-  \begin{equation*}
-    b(\psi; \varphi, \chi) = b_0(\varphi; \chi, \psi) - b_0(\chi; \varphi, \psi),
-  \end{equation*}
-  where
-  \begin{equation}
-    b_0(\varphi;\chi,\psi) = \int_{\Omega}\!
-      (\varphi_{xy} \chi_y - \varphi_{yy} \chi_x) \psi_y
-      - (\varphi_{xy} \chi_x - \varphi_{xx} \chi_y) \psi_x \, d\mathbf{x}.
-    \label{eqn:b0def}
-  \end{equation}
-  Therefore using \eqref{eqn:b0def}, H\"older inequality, \eqref{eqn:Holder} reads
+  For estimate \eqref{eqn:BH1BoundPsi} we apply \autoref{lma:trilinear},
+  thus using \eqref{eqn:trilinear}, H\"older inequality, \eqref{eqn:Holder} reads
   \begin{equation}
     b(\psi; \varphi, \chi) \le \|\nabla \psi\|_{L^p} \|\Delta \varphi\|_{L^q}
     \|\nabla \chi\|_{L^r},\quad \frac{1}{p} + \frac{1}{q} + \frac{1}{r} = 1.

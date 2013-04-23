@@ -33,7 +33,7 @@ The following lemma will prove useful for proving the error bounds for
     \label{eqn:trilinear}
   \end{equation}
 \end{lemma}
-For a proof see \cite{Fairag98}.
+For a proof see the corresponding Lemma 5.6 in \cite{Fairag98}.
 
 Before proving any error bounds we first prove that the continuous problem
 linearized about $\psi^H$ has a unique solution.
@@ -219,14 +219,15 @@ As an example, consider the case of the Argyris triangle. For this element we
 have the following inequalities, which follow from approximation theory
 \cite{Bernadou94} and Theorem 6.1.1 \cite{Ciarlet}:
 \begin{align}
-  |\psi - \psi^h|_j &\le Ch^{6-j} \label{eqn:fineOrder} \\
-  |\psi - \psi^H|_j &\le CH^{6-j} \label{eqn:coarseOrder}
+  |\psi - \psi^h|_j &\le C\,h^{6-j}\, |\psi|_6 \label{eqn:fineOrder} \\
+  |\psi - \psi^H|_j &\le C\,H^{6-j}\, |\psi|_6  \label{eqn:coarseOrder}
 \end{align}
 \begin{corollary} \label{crl:Argyris2L}
   Let $X^h,\, X^H \in H^2_0(\Omega)$ be the Argyris finite elements. Then,
   $\psi^h$ satisfies
   \begin{equation}
-    |\psi - \psi^h|_2 \le C_1 h^4 + C_2 \sqrt{|\ln(h)|}\, H^5.
+    |\psi - \psi^h|_2 \le C_1\, h^4\, |\psi|_6 + C_2\, \sqrt{|\ln(h)|}\, H^5\,
+      |\psi|_6.
     \label{eqn:TwoLevelError}
   \end{equation}
 \end{corollary}

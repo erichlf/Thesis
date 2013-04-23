@@ -630,14 +630,14 @@ Sea at the Suez Canal, and the Sea of Marmara at the Dardanelles Strait, while
 the Gulf of Corinth was treated as land. The resultant FE mesh is displayed in
 \autoref{fig:MedMesh}.
 
-\begin{sidewaysfigure}
+\begin{figure}
   \begin{center}
-    \includegraphics[scale=0.5]{Figures/MediterraneanMesh.png}
+    \includegraphics[scale=0.4]{Figures/MediterraneanMesh.png}
     \caption{Mesh of the Mediterranean Sea created using GMSH \cite{GMSH}. The
     mesh size corresponds to $h=\frac{1}{320}$ with $DoF=240,342$.}
     \label{fig:MedMesh}
   \end{center}
-\end{sidewaysfigure}
+\end{figure}
 
 The following experiment used a forcing function given by $F =
 \sin\left(\frac{\pi}{4} y\right)$ which is the same forcing function given by Bryan
@@ -711,14 +711,17 @@ The solution obtained by applying the SQGE to the Mediterranean with parameters
 given in \autoref{tab:OceanParameters} and forcing function $F =
 \sin(\frac{\pi}{2} y)$ can be seen in \autoref{fig:SQGEMed}. The shape of the
 streamfunction is very much in agreement with the solution obtained by Galan del
-Sastre (Figure 2.22 in \cite{Galan-del-Sastre2004}). It should be noted that
-some of the differences between our solution and Galan del Sastre's solution is
-likely a result of his inclusion of more islands and not connected those islands
-to Europe or Africa. The rates of convergence are much lower than expected,
-however this likely is due to the fact that the domain is non-smooth which is
-likely causing the solution to be in a space which is less regular than the
-$H^6$ regularity \cite{Soane2010} assumed by the error analysis in
-\autoref{sec:SQGEErrors}.
+Sastre (Figure 2.22 in \cite{Galan-del-Sastre2004}). Additionally,  we note that
+the resultant large scale structures in \autoref{fig:SQGEMed} are very similar
+to those in \autoref{fig:GyresMed}. It should be noted that some of the
+differences between our solution and the solution obtained by Galan del Sastre's
+and our solution and the observed large scale structures seen in
+\autoref{fig:GyresMed} are likely a result of his inclusion of more islands and
+not connected those islands to Europe or Africa. The rates of convergence are
+much lower than expected, however this likely is due to the fact that the domain
+is non-smooth which is likely causing the solution to be in a space which is
+less regular than the $H^6$ regularity \cite{Soane2010} assumed by the error
+analysis in \autoref{sec:SQGEErrors}.
 
 \begin{table}
 \begin{tabular}{|c|c|c|c|c|c|c|c|}%c|c|}
@@ -739,11 +742,24 @@ $H^6$ regularity \cite{Soane2010} assumed by the error analysis in
 \end{table}
 
 \begin{figure}
+  \begin{subfigure}[b]{\textwidth}
   \begin{center}
-    \includegraphics[scale=0.7]{Figures/SQGEMedRe5_27Ro6_051E-4h320sin0_25piy.pdf}
+    \includegraphics{Figures/SQGEMedRe5_27Ro6_051E-4h320sin0_25piy.pdf}
     \caption{``True'' solution of SQGE on the Mediterranean Sea with $Re = 5.27, Ro
       = 6.051\times 10^{-4}, F = \sin( \frac{\pi}{2} y)$, and $955,302$ DoFs
       corresponding to $h = \frac{1}{640}$.}
     \label{fig:SQGEMed}
   \end{center}
+  \end{subfigure}
+  \begin{subfigure}[b]{\textwidth}
+    \begin{center}
+      \includegraphics[scale=0.5]{Figures/GyresOfMediterranean.pdf}
+      \caption{Large scale currents of the Mediterranean Sea \cite{Ayoub1998}.}
+    \label{fig:GyresMed}
+    \end{center}
+  \end{subfigure}
+  \caption{Comparison of large scale structures visible in the numerical results
+    of the SQGE applied to the Mediterranean Sea and the observed large scale
+    structures of the Mediterranean Sea.}
+  \label{fig:MedCompare}
 \end{figure}

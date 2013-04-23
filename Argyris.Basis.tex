@@ -31,7 +31,7 @@ Thus, the $i^{th}$ basis function for the Argyris triangle can be written as
 	\label{eqn:Basis}
 \end{equation}
 
-Now, consider the reference triangle $\hat{K}$ in Figure \ref{fig:RefTriangle} with
+Now, consider the reference triangle $\hat{K}$ in \autoref{fig:RefTriangle} with
 vertices numbered counterclockwise $1,\, 2,\text{ and } 3$, i.e.
 $(\hat{x}_1,\hat{y}_1)=(0,0),\, (\hat{x}_2,\hat{y}_2)=(1,0),\text{ and } (\hat{x}_3,\hat{y}_3)=(0,1)$.
 Additionally, let the vector $v_i$ represent the $i^{th}$ edge with
@@ -42,8 +42,7 @@ Additionally, let the vector $v_i$ represent the $i^{th}$ edge with
 For book keeping purposes, we will use the convention that the $i^{th}$ normal
 vector is the rotation of the $v_i$ counter-clockwise $90^\circ$. This is the
 same convention used by Dominguez et. al. \cite{Dominguez08}. Therefore, the
-$i^{th}$ basis function can be found using the restriction in Table
-\ref{tab:Constraints}.
+$i^{th}$ basis function can be found using the restriction in \autoref{tab:Constraints}.
 
 \input{Basis.Table.tex}
 
@@ -69,7 +68,7 @@ To determine the matrix $M$ we must solve the linear system
 \begin{equation*}
   ZM^T=I_{21}
 \end{equation*}
-that results from the constraints in Table \ref{tab:Constraints}. Here
+that results from the constraints in \autoref{tab:Constraints}. Here
 \begin{equation*}
   \begin{split}Z=[z(0,0), z(0,1), z(1,0),
   z_{\hat{x}}(0,0), z_{\hat{y}}(0,0),
@@ -86,7 +85,7 @@ $I_{21}$ is a $21\times 21$ identity matrix and $M$ is the matrix containing the
 coefficients for all 21 basis functions. Therefore solving this system will
 result in a matrix, $M$, that contains the coefficients for the Argyris basis
 functions for the reference triangle as in \eqref{eqn:Basis}. Thus, the matrix
-$M$ is \\
+$M$ can be seen in \autoref{tab:Coefficients}.
 \input{Coefficients.tex}
 Therefore, the Argyris basis functions, on the reference element $\hat{K}$, are
 \input{Basis.Functions.tex}

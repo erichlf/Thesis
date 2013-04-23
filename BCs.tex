@@ -1,9 +1,9 @@
 Unlike Lagrange FEs \emph{boundary conditions} (BCs) for $C^1$ FEs can be
-challenging to develop. We will demonstrate the difficulty of implementing BCs for
+challenging to implement. We will demonstrate the difficulty of implementing BCs for
 $C^1$ FEs through an example. The example we will use is the \emph{Poisson
 problem}, which would normally have a $C^0$ FE discretization. The motivation
 for using this problem is that it should be a very familiar implementation in
-the $C^0$ and thus a useful demonstration of the difficulties in implementing
+$C^0$ and thus a useful demonstration of the difficulties of implementing
 $C^1$ FEs. Therefore, consider the following \emph{Poisson problem}
 \begin{equation}
   \begin{split}
@@ -30,15 +30,15 @@ Thus, for conforming FEs the FE formulation is given by
 \end{equation}
 Since $u \in H^1_0(\Omega)$ and $u^h \in X^h \subset H^1_0(\Omega)$ only $C^0$
 Lagrange FEs need be used. However, for demonstration purposes we assume $u^h
-\in X^h \subset C^1(\Omega) \subset X$. Therefore, Lagrange FEs are no longer
+\in X^h \subset X \subset C^1(\Omega)$. Therefore, Lagrange FEs are no longer
 an appropriate choice for our FE discretization.
 
 With Lagrange FEs the most common way to deal with BCs is to enforce them by
 explicitly setting the degrees of freedom (DoFs) on the boundary to zero and
 reduce the linear system to contain only the internal nodes. This can be seen
-graphically in \autoref{fig:ReducedBCs}. One significant benefit to treating BCs in
-this way is in reducing the size of the linear system that must be solved, and
-therefore reducing computational time.
+graphically in \autoref{fig:ReducedBCs}. One significant benefit of treating BCs in
+this way is that one reduces the size of the linear system that must be solved, and
+therefore one reduce computational time.
 
 \input{ReducedBC}
 
@@ -55,12 +55,14 @@ setting the appropriate DoFs to zero in this manner requires some analysis of
 the problem domain before implementation, which is problematic when one wants to
 implement a generalized code. To read more about implementation of boundary
 conditions for Hermite type FEs see Remark 2.3.8 in Ciarlet \cite{Ciarlet}. To
-avoid this one can implement a Lagrange Multiplier scheme
+avoid analyzing boundary conditions for each domain one can implement a Lagrange
+Multiplier scheme
 \cite{Babuska1973,Barbosa1991,Barbosa1992,Bramble1981,Pitkaranta1980,Pitkaranta1981}.
 
 \input{SplitBoundary}
 
-Rewrite the FE formulation, \eqref{eqn:PoissonFE}, in the following way
+We begin by rewriting the FE formulation, \eqref{eqn:PoissonFE}, in the
+following way
 \begin{equation}
   \begin{split}
     A u &= \ell \\
